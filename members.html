@@ -140,143 +140,12 @@
             font-weight: 700;
         }
 
-        .view-toggle {
-            display: flex;
-            gap: 4px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 12px;
-            padding: 4px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .view-toggle button {
-            padding: 8px 16px;
-            background: none;
-            border: none;
-            border-radius: 8px;
-            color: rgba(17, 42, 70, 0.4);
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            font-family: "Inter", sans-serif;
-            font-weight: 600;
-        }
-
-        .view-toggle button.active {
-            background: #112A46;
-            color: #fff;
-        }
-        .view-toggle button:hover:not(.active) {
-            color: rgba(17, 42, 70, 0.7);
-        }
-
-        /* Filters */
-        .filters-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.25);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.20);
-            align-items: center;
-            backdrop-filter: blur(10px);
-        }
-
-        .filter-group {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .filter-group label {
-            color: rgba(17, 42, 70, 0.5);
-            font-size: 13px;
-            font-weight: 600;
-            font-family: "Inter", sans-serif;
-        }
-
-        .filter-group select,
-        .filter-group input {
-            padding: 8px 14px;
-            background: rgba(255, 255, 255, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            color: #112A46;
-            font-size: 14px;
-            font-family: "Inter", sans-serif;
-            outline: none;
-            min-width: 120px;
-        }
-
-        .filter-group select:focus,
-        .filter-group input:focus {
-            border-color: #112A46;
-            box-shadow: 0 0 0 4px rgba(17, 42, 70, 0.08);
-        }
-
-        .filter-group select option {
-            background: #ACC8E5;
-            color: #112A46;
-        }
-
-        .filter-group input[type="range"] {
-            width: 120px;
-            padding: 0;
-            background: transparent;
-            accent-color: #112A46;
-            cursor: pointer;
-        }
-
-        .filter-group .range-labels {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            color: rgba(17, 42, 70, 0.3);
-            min-width: 60px;
-            font-family: "Inter", sans-serif;
-        }
-
-        .filter-actions {
-            display: flex;
-            gap: 8px;
-            margin-left: auto;
-        }
-
-        .filter-actions button {
-            padding: 8px 20px;
-            border-radius: 8px;
-            border: none;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: "Inter", sans-serif;
-        }
-
-        .btn-apply {
-            background: #112A46;
-            color: #fff;
-        }
-        .btn-apply:hover {
-            background: #2E5A88;
-            transform: translateY(-2px);
-        }
-
-        .btn-reset {
-            background: rgba(255, 255, 255, 0.3);
-            color: rgba(17, 42, 70, 0.5);
-            border: 1px solid rgba(17, 42, 70, 0.1);
-        }
-        .btn-reset:hover {
-            background: rgba(255, 255, 255, 0.5);
-        }
-
-        /* Members Grid */
+        /* ============================================================ */
+        /* ✅ FIXED: 2 COLUMNS GRID                                   */
+        /* ============================================================ */
         .members-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 24px;
         }
 
@@ -487,91 +356,250 @@
             transform: translateY(-2px);
         }
 
-        /* List View */
-        .members-grid.list-view {
-            grid-template-columns: 1fr;
-        }
-
-        .members-grid.list-view .member-card {
-            display: flex;
-            align-items: stretch;
-        }
-
-        .members-grid.list-view .member-card__image {
-            width: 180px;
-            height: auto;
-            min-height: 180px;
-            flex-shrink: 0;
-        }
-
-        .members-grid.list-view .member-card__info {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .members-grid.list-view .member-card__actions {
-            border-top: none;
-            padding-top: 0;
-            margin-top: 0;
-        }
-
-        /* Empty State */
-        .empty-state {
-            text-align: center;
-            padding: 80px 20px;
-            color: rgba(17, 42, 70, 0.3);
-            grid-column: 1 / -1;
-        }
-
-        .empty-state .icon {
-            font-size: 64px;
-            margin-bottom: 16px;
-        }
-
-        .empty-state h3 {
-            font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 24px;
-            color: #112A46;
-            margin-bottom: 8px;
-        }
-
-        .empty-state p {
-            font-family: "Inter", sans-serif;
-        }
-
-        /* Pagination */
-        .pagination {
-            display: flex;
+        /* ============================================================ */
+        /* VIEW PROFILE MODAL                                          */
+        /* ============================================================ */
+        .profile-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            align-items: center;
             justify-content: center;
-            gap: 8px;
-            margin-top: 40px;
+            padding: 20px;
+            animation: fadeInModal 0.3s ease;
         }
 
-        .pagination button {
-            padding: 8px 16px;
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 8px;
-            color: rgba(17, 42, 70, 0.4);
+        .profile-modal.active {
+            display: flex;
+        }
+
+        @keyframes fadeInModal {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .profile-modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            max-width: 500px;
+            width: 100%;
+            padding: 40px 32px 32px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .profile-modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: rgba(17, 42, 70, 0.3);
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: "Inter", sans-serif;
+        }
+
+        .profile-modal-close:hover {
+            color: #112A46;
+            transform: rotate(90deg);
+        }
+
+        .profile-modal-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #112A46;
+            margin: 0 auto 16px;
+            display: block;
+        }
+
+        .profile-modal-name {
+            font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
+            font-size: 28px;
+            color: #112A46;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .profile-modal-details {
+            margin-top: 16px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .profile-modal-details .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(17, 42, 70, 0.06);
+            font-family: "Inter", sans-serif;
+            font-size: 15px;
+        }
+
+        .profile-modal-details .detail-item .label {
+            color: rgba(17, 42, 70, 0.4);
+            font-weight: 500;
+        }
+
+        .profile-modal-details .detail-item .value {
+            color: #112A46;
             font-weight: 600;
         }
 
-        .pagination button:hover {
-            background: rgba(255, 255, 255, 0.3);
+        .profile-modal-bio {
+            margin-top: 12px;
+            padding: 12px 16px;
+            background: rgba(17, 42, 70, 0.04);
+            border-radius: 10px;
+            font-family: "Inter", sans-serif;
+            font-size: 14px;
+            color: rgba(17, 42, 70, 0.7);
+            line-height: 1.6;
         }
-        .pagination button.active {
+
+        .profile-modal-interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 12px;
+        }
+
+        .profile-modal-interests .tag {
+            padding: 4px 14px;
+            background: rgba(17, 42, 70, 0.06);
+            border-radius: 50px;
+            font-size: 12px;
+            color: #112A46;
+            font-family: "Inter", sans-serif;
+            font-weight: 500;
+        }
+
+        .profile-modal .btn-message-profile {
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
             background: #112A46;
             color: #fff;
-            border-color: #112A46;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Inter", sans-serif;
         }
-        .pagination button:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
+
+        .profile-modal .btn-message-profile:hover {
+            background: #2E5A88;
+            transform: translateY(-2px);
+        }
+
+        .profile-modal-photos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .profile-modal-photos img {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid rgba(17, 42, 70, 0.06);
+        }
+
+        /* ============================================================ */
+        /* RESPONSIVE                                                  */
+        /* ============================================================ */
+        @media (max-width: 768px) {
+            .members-grid {
+                grid-template-columns: 1fr; /* ✅ Single column on mobile */
+            }
+
+            .members-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .members-header h1 {
+                font-size: 28px;
+            }
+            .filters-section {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .filter-group {
+                flex-wrap: wrap;
+            }
+            .filter-group select,
+            .filter-group input {
+                min-width: 100%;
+            }
+            .filter-actions {
+                margin-left: 0;
+            }
+            .view-toggle button {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+            .cb-shell-header__inner {
+                height: 64px;
+                padding: 0 16px;
+            }
+            .cb-shell-brand {
+                font-size: 20px;
+            }
+            .cb-shell-button {
+                padding: 6px 16px;
+                font-size: 12px;
+            }
+            .profile-modal-content {
+                padding: 28px 20px 24px;
+            }
+            .profile-modal-avatar {
+                width: 80px;
+                height: 80px;
+            }
+            .profile-modal-name {
+                font-size: 22px;
+            }
+            .profile-modal-photos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .members-grid {
+                grid-template-columns: 1fr;
+            }
+            .member-card__actions {
+                flex-wrap: wrap;
+            }
+            .member-card__actions button {
+                min-width: 80px;
+            }
+            .toast {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                text-align: center;
+            }
+            .profile-modal-photos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .profile-modal-photos img {
+                height: 60px;
+            }
         }
 
         /* Toast */
@@ -605,72 +633,9 @@
             background: #dc3545;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .members-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .members-header h1 {
-                font-size: 28px;
-            }
-            .filters-section {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .filter-group {
-                flex-wrap: wrap;
-            }
-            .filter-group select,
-            .filter-group input {
-                min-width: 100%;
-            }
-            .filter-actions {
-                margin-left: 0;
-            }
-            .members-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            }
-            .members-grid.list-view .member-card {
-                flex-direction: column;
-            }
-            .members-grid.list-view .member-card__image {
-                width: 100%;
-                height: 180px;
-            }
-            .view-toggle button {
-                padding: 6px 12px;
-                font-size: 12px;
-            }
-            .cb-shell-header__inner {
-                height: 64px;
-                padding: 0 16px;
-            }
-            .cb-shell-brand {
-                font-size: 20px;
-            }
-            .cb-shell-button {
-                padding: 6px 16px;
-                font-size: 12px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .members-grid {
-                grid-template-columns: 1fr;
-            }
-            .member-card__actions {
-                flex-wrap: wrap;
-            }
-            .member-card__actions button {
-                min-width: 80px;
-            }
-            .toast {
-                bottom: 20px;
-                right: 20px;
-                left: 20px;
-                text-align: center;
-            }
+        /* Spinner keyframe */
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -752,6 +717,52 @@
         <div class="pagination" id="pagination"></div>
     </main>
 
+    <!-- ============================================================ -->
+    <!-- VIEW PROFILE MODAL                                           -->
+    <!-- ============================================================ -->
+    <div class="profile-modal" id="profile-modal">
+        <div class="profile-modal-content">
+            <button class="profile-modal-close" onclick="closeProfileModal()">✕</button>
+            <img class="profile-modal-avatar" id="modal-avatar" src="" alt="Profile">
+            <h2 class="profile-modal-name" id="modal-name">Name</h2>
+
+            <div class="profile-modal-details" id="modal-details">
+                <div class="detail-item">
+                    <span class="label">Age</span>
+                    <span class="value" id="modal-age">—</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Gender</span>
+                    <span class="value" id="modal-gender">—</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Location</span>
+                    <span class="value" id="modal-location">—</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Status</span>
+                    <span class="value" id="modal-status">—</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Verified</span>
+                    <span class="value" id="modal-verified">—</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Premium</span>
+                    <span class="value" id="modal-premium">—</span>
+                </div>
+            </div>
+
+            <div class="profile-modal-bio" id="modal-bio">No bio available.</div>
+
+            <div class="profile-modal-interests" id="modal-interests"></div>
+
+            <div class="profile-modal-photos" id="modal-photos"></div>
+
+            <button class="btn-message-profile" id="modal-message-btn" onclick="modalSendMessage()">💬 Send Message</button>
+        </div>
+    </div>
+
     <!-- Toast -->
     <div class="toast" id="toast"></div>
 
@@ -778,9 +789,7 @@
             collection,
             onSnapshot,
             query,
-            orderBy,
-            where,
-            getDocs
+            orderBy
         } from "firebase/firestore";
         import { getAuth, onAuthStateChanged } from "firebase/auth";
 
@@ -809,6 +818,7 @@
         const perPage = 6;
         let currentView = 'grid';
         let isLoading = true;
+        let selectedMemberId = null;
 
         // ============================================================
         // DOM REFS
@@ -908,7 +918,7 @@
                                 ${(member.interests || []).map(i => `<span class="interest-tag">#${i}</span>`).join('')}
                             </div>
                             <div class="member-card__actions">
-                                <button class="btn-view" onclick="window.viewProfile('${member.id}')">👤 View</button>
+                                <button class="btn-view" onclick="window.openProfileModal('${member.id}')">👤 View</button>
                                 <button class="btn-message" onclick="window.sendMessage('${member.id}')">💬 Message</button>
                             </div>
                         </div>
@@ -924,7 +934,11 @@
         // ============================================================
         window.setView = function(view) {
             currentView = view;
-            grid.className = 'members-grid' + (view === 'list' ? ' list-view' : '');
+            if (view === 'grid') {
+                grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
+            } else {
+                grid.style.gridTemplateColumns = '1fr';
+            }
             document.getElementById('grid-view').classList.toggle('active', view === 'grid');
             document.getElementById('list-view').classList.toggle('active', view === 'list');
             renderMembers(filteredMembers);
@@ -1001,7 +1015,85 @@
         }
 
         // ============================================================
-        // 🔥 UPDATED: SEND MESSAGE - Goes to Chat Page
+        // 🔥 VIEW PROFILE MODAL
+        // ============================================================
+        window.openProfileModal = function(id) {
+            const member = allMembers.find(m => m.id === id);
+            if (!member) {
+                showToast('❌ Member not found', 'error');
+                return;
+            }
+
+            selectedMemberId = id;
+
+            // Set avatar
+            const photos = member.photos || [];
+            const mainPhoto = photos.length > 0 ? photos[0] : `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name || 'User')}&background=112A46&color=fff&size=200`;
+            document.getElementById('modal-avatar').src = mainPhoto;
+            document.getElementById('modal-avatar').onerror = function() {
+                this.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name || 'User')}&background=112A46&color=fff&size=200`;
+            };
+
+            // Set name
+            document.getElementById('modal-name').textContent = member.name || 'Unknown';
+
+            // Set details
+            document.getElementById('modal-age').textContent = member.age || '—';
+            document.getElementById('modal-gender').textContent = member.gender || '—';
+            document.getElementById('modal-location').textContent = member.location || '—';
+            document.getElementById('modal-status').textContent = member.online ? '🟢 Online' : '⚪ Offline';
+            document.getElementById('modal-verified').textContent = member.verified ? '✅ Yes' : '❌ No';
+            document.getElementById('modal-premium').textContent = member.premium ? '⭐ Yes' : '—';
+
+            // Set bio
+            document.getElementById('modal-bio').textContent = member.bio || 'No bio available.';
+
+            // Set interests
+            const interestsContainer = document.getElementById('modal-interests');
+            if (member.interests && member.interests.length > 0) {
+                interestsContainer.innerHTML = member.interests.map(i => `<span class="tag">#${i}</span>`).join('');
+            } else {
+                interestsContainer.innerHTML = '<span style="color:rgba(17,42,70,0.3);font-size:14px;">No interests listed</span>';
+            }
+
+            // Set photos
+            const photosContainer = document.getElementById('modal-photos');
+            if (photos.length > 0) {
+                photosContainer.innerHTML = photos.map(p => `<img src="${p}" alt="Photo" onerror="this.style.display='none'">`).join('');
+            } else {
+                photosContainer.innerHTML = '<span style="color:rgba(17,42,70,0.3);font-size:14px;grid-column:1/-1;">No photos available</span>';
+            }
+
+            // Set message button
+            document.getElementById('modal-message-btn').onclick = function() {
+                window.sendMessage(id);
+            };
+
+            document.getElementById('profile-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        window.closeProfileModal = function() {
+            document.getElementById('profile-modal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on click outside
+        document.getElementById('profile-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeProfileModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeProfileModal();
+            }
+        });
+
+        // ============================================================
+        // SEND MESSAGE
         // ============================================================
         window.sendMessage = function(id) {
             const member = allMembers.find(m => m.id === id);
@@ -1009,6 +1101,9 @@
                 showToast('❌ Member not found', 'error');
                 return;
             }
+
+            // Close modal if open
+            closeProfileModal();
 
             // Check if logged in
             const user = localStorage.getItem('classydate_user');
@@ -1020,17 +1115,12 @@
                 return;
             }
 
-            // Go directly to chat page with member ID
             window.location.href = `chat.html?user=${id}&name=${encodeURIComponent(member.name)}`;
         }
 
-        // ============================================================
-        // VIEW PROFILE
-        // ============================================================
-        window.viewProfile = function(id) {
-            const member = allMembers.find(m => m.id === id);
-            if (member) {
-                showToast(`👤 Viewing profile: ${member.name}`, 'success');
+        window.modalSendMessage = function() {
+            if (selectedMemberId) {
+                window.sendMessage(selectedMemberId);
             }
         }
 
@@ -1071,9 +1161,10 @@
         // ============================================================
         // INIT
         // ============================================================
-        console.log('💎 ClassyDate Members Page - Firebase Version!');
-        console.log('📊 Members will load from Firebase Firestore');
-        console.log('🔑 Message button goes to chat.html');
+        console.log('💎 ClassyDate Members Page - 2 Columns!');
+        console.log('📊 Members load from Firebase Firestore');
+        console.log('👤 View button opens profile modal');
+        console.log('💬 Message button goes to chat.html');
     </script>
 
 </body>
