@@ -7,12 +7,10 @@
     <meta name="description" content="Browse ClassyDate members and find meaningful connections.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -140,13 +138,11 @@
             font-weight: 700;
         }
 
-        /* ============================================================ */
-        /* ✅ FIXED: 2 COLUMNS GRID                                   */
-        /* ============================================================ */
+        /* ✅ 2 COLUMNS ON ALL SCREENS */
         .members-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
+            gap: 20px;
         }
 
         /* Member Card */
@@ -168,7 +164,7 @@
 
         .member-card__image {
             position: relative;
-            height: 240px;
+            height: 220px;
             overflow: hidden;
             background: #ACC8E5;
         }
@@ -260,7 +256,7 @@
         }
 
         .member-card__info {
-            padding: 18px 20px 20px;
+            padding: 16px 18px 18px;
         }
 
         .member-card__name {
@@ -271,7 +267,7 @@
 
         .member-card__name h3 {
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             color: #112A46;
         }
@@ -279,21 +275,21 @@
         .member-card__name .age {
             color: rgba(17, 42, 70, 0.5);
             font-weight: 400;
-            font-size: 15px;
+            font-size: 14px;
             font-family: "Inter", sans-serif;
         }
 
         .member-card__location {
             color: rgba(17, 42, 70, 0.5);
-            font-size: 14px;
+            font-size: 13px;
             margin-top: 2px;
             font-family: "Inter", sans-serif;
         }
 
         .member-card__bio {
             color: rgba(17, 42, 70, 0.6);
-            font-size: 14px;
-            margin-top: 8px;
+            font-size: 13px;
+            margin-top: 6px;
             line-height: 1.5;
             display: -webkit-box;
             -webkit-line-clamp: 2;
@@ -305,15 +301,15 @@
         .member-card__interests {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 10px;
+            gap: 4px;
+            margin-top: 8px;
         }
 
         .interest-tag {
-            padding: 2px 12px;
+            padding: 2px 10px;
             background: rgba(255, 255, 255, 0.3);
             border-radius: 50px;
-            font-size: 11px;
+            font-size: 10px;
             color: rgba(17, 42, 70, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.15);
             font-family: "Inter", sans-serif;
@@ -322,8 +318,8 @@
         .member-card__actions {
             display: flex;
             gap: 8px;
-            margin-top: 14px;
-            padding-top: 14px;
+            margin-top: 12px;
+            padding-top: 12px;
             border-top: 1px solid rgba(17, 42, 70, 0.06);
         }
 
@@ -333,7 +329,7 @@
             border: none;
             border-radius: 8px;
             font-weight: 600;
-            font-size: 13px;
+            font-size: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: "Inter", sans-serif;
@@ -356,250 +352,41 @@
             transform: translateY(-2px);
         }
 
-        /* ============================================================ */
-        /* VIEW PROFILE MODAL                                          */
-        /* ============================================================ */
-        .profile-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            animation: fadeInModal 0.3s ease;
-        }
+        /* ✅ REMOVED: Filters Section */
+        /* ✅ REMOVED: View Toggle (Grid/List) */
 
-        .profile-modal.active {
+        /* Pagination */
+        .pagination {
             display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 30px;
         }
 
-        @keyframes fadeInModal {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .profile-modal-content {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
-            max-width: 500px;
-            width: 100%;
-            padding: 40px 32px 32px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-        }
-
-        .profile-modal-close {
-            position: absolute;
-            top: 16px;
-            right: 20px;
-            background: none;
-            border: none;
-            font-size: 28px;
-            color: rgba(17, 42, 70, 0.3);
+        .pagination button {
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            color: rgba(17, 42, 70, 0.4);
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: "Inter", sans-serif;
-        }
-
-        .profile-modal-close:hover {
-            color: #112A46;
-            transform: rotate(90deg);
-        }
-
-        .profile-modal-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #112A46;
-            margin: 0 auto 16px;
-            display: block;
-        }
-
-        .profile-modal-name {
-            font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 28px;
-            color: #112A46;
-            text-align: center;
-            font-weight: 700;
-        }
-
-        .profile-modal-details {
-            margin-top: 16px;
-            display: grid;
-            gap: 10px;
-        }
-
-        .profile-modal-details .detail-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(17, 42, 70, 0.06);
-            font-family: "Inter", sans-serif;
-            font-size: 15px;
-        }
-
-        .profile-modal-details .detail-item .label {
-            color: rgba(17, 42, 70, 0.4);
-            font-weight: 500;
-        }
-
-        .profile-modal-details .detail-item .value {
-            color: #112A46;
             font-weight: 600;
+            font-size: 13px;
         }
 
-        .profile-modal-bio {
-            margin-top: 12px;
-            padding: 12px 16px;
-            background: rgba(17, 42, 70, 0.04);
-            border-radius: 10px;
-            font-family: "Inter", sans-serif;
-            font-size: 14px;
-            color: rgba(17, 42, 70, 0.7);
-            line-height: 1.6;
+        .pagination button:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
-
-        .profile-modal-interests {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 12px;
-        }
-
-        .profile-modal-interests .tag {
-            padding: 4px 14px;
-            background: rgba(17, 42, 70, 0.06);
-            border-radius: 50px;
-            font-size: 12px;
-            color: #112A46;
-            font-family: "Inter", sans-serif;
-            font-weight: 500;
-        }
-
-        .profile-modal .btn-message-profile {
-            width: 100%;
-            padding: 14px;
-            margin-top: 20px;
+        .pagination button.active {
             background: #112A46;
             color: #fff;
-            border: none;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: "Inter", sans-serif;
+            border-color: #112A46;
         }
-
-        .profile-modal .btn-message-profile:hover {
-            background: #2E5A88;
-            transform: translateY(-2px);
-        }
-
-        .profile-modal-photos {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .profile-modal-photos img {
-            width: 100%;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 8px;
-            border: 1px solid rgba(17, 42, 70, 0.06);
-        }
-
-        /* ============================================================ */
-        /* RESPONSIVE                                                  */
-        /* ============================================================ */
-        @media (max-width: 768px) {
-            .members-grid {
-                grid-template-columns: 1fr; /* ✅ Single column on mobile */
-            }
-
-            .members-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .members-header h1 {
-                font-size: 28px;
-            }
-            .filters-section {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .filter-group {
-                flex-wrap: wrap;
-            }
-            .filter-group select,
-            .filter-group input {
-                min-width: 100%;
-            }
-            .filter-actions {
-                margin-left: 0;
-            }
-            .view-toggle button {
-                padding: 6px 12px;
-                font-size: 12px;
-            }
-            .cb-shell-header__inner {
-                height: 64px;
-                padding: 0 16px;
-            }
-            .cb-shell-brand {
-                font-size: 20px;
-            }
-            .cb-shell-button {
-                padding: 6px 16px;
-                font-size: 12px;
-            }
-            .profile-modal-content {
-                padding: 28px 20px 24px;
-            }
-            .profile-modal-avatar {
-                width: 80px;
-                height: 80px;
-            }
-            .profile-modal-name {
-                font-size: 22px;
-            }
-            .profile-modal-photos {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .members-grid {
-                grid-template-columns: 1fr;
-            }
-            .member-card__actions {
-                flex-wrap: wrap;
-            }
-            .member-card__actions button {
-                min-width: 80px;
-            }
-            .toast {
-                bottom: 20px;
-                right: 20px;
-                left: 20px;
-                text-align: center;
-            }
-            .profile-modal-photos {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .profile-modal-photos img {
-                height: 60px;
-            }
+        .pagination button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
         }
 
         /* Toast */
@@ -633,9 +420,174 @@
             background: #dc3545;
         }
 
-        /* Spinner keyframe */
+        /* ============================================================ */
+        /* ✅ 2 COLUMNS ON MOBILE - SCALED DOWN                       */
+        /* ============================================================ */
+        @media (max-width: 768px) {
+            .members-header h1 {
+                font-size: 28px;
+            }
+
+            .members-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .member-card__image {
+                height: 160px;
+            }
+
+            .member-card__info {
+                padding: 12px 14px 14px;
+            }
+
+            .member-card__name h3 {
+                font-size: 15px;
+            }
+
+            .member-card__name .age {
+                font-size: 12px;
+            }
+
+            .member-card__location {
+                font-size: 11px;
+            }
+
+            .member-card__bio {
+                font-size: 12px;
+                -webkit-line-clamp: 1;
+            }
+
+            .member-card__interests {
+                gap: 3px;
+            }
+
+            .interest-tag {
+                font-size: 9px;
+                padding: 1px 8px;
+            }
+
+            .member-card__actions button {
+                font-size: 11px;
+                padding: 6px;
+            }
+
+            .cb-shell-header__inner {
+                height: 60px;
+                padding: 0 12px;
+            }
+
+            .cb-shell-brand {
+                font-size: 18px;
+            }
+
+            .cb-shell-button {
+                padding: 4px 12px;
+                font-size: 11px;
+            }
+
+            .toast {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .members-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+
+            .member-card__image {
+                height: 120px;
+            }
+
+            .member-card__info {
+                padding: 8px 10px 10px;
+            }
+
+            .member-card__name h3 {
+                font-size: 13px;
+            }
+
+            .member-card__name .age {
+                font-size: 11px;
+            }
+
+            .member-card__location {
+                font-size: 10px;
+            }
+
+            .member-card__bio {
+                font-size: 10px;
+                -webkit-line-clamp: 1;
+            }
+
+            .member-card__interests {
+                gap: 2px;
+                margin-top: 4px;
+            }
+
+            .interest-tag {
+                font-size: 8px;
+                padding: 1px 6px;
+            }
+
+            .member-card__actions {
+                gap: 4px;
+                margin-top: 8px;
+                padding-top: 8px;
+            }
+
+            .member-card__actions button {
+                font-size: 10px;
+                padding: 4px 6px;
+            }
+
+            .badge {
+                font-size: 8px;
+                padding: 2px 8px;
+            }
+
+            .member-card__status {
+                font-size: 9px;
+                padding: 2px 8px 2px 6px;
+            }
+
+            .status-dot {
+                width: 6px;
+                height: 6px;
+            }
+        }
+
+        /* Spinner */
         @keyframes spin {
             to { transform: rotate(360deg); }
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: rgba(17, 42, 70, 0.3);
+            grid-column: 1 / -1;
+        }
+
+        .empty-state .icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+
+        .empty-state h3 {
+            font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
+            font-size: 24px;
+            color: #112A46;
+            margin-bottom: 8px;
+        }
+
+        .empty-state p {
+            font-family: "Inter", sans-serif;
         }
     </style>
 </head>
@@ -660,108 +612,14 @@
                 <h1>Browse <span>Members</span></h1>
                 <span class="member-count">Showing <strong id="total-count">0</strong> members</span>
             </div>
-            <div class="view-toggle">
-                <button class="active" onclick="setView('grid')" id="grid-view">▦ Grid</button>
-                <button onclick="setView('list')" id="list-view">☰ List</button>
-            </div>
         </div>
 
-        <!-- Filters -->
-        <div class="filters-section">
-            <div class="filter-group">
-                <label>Gender</label>
-                <select id="filter-gender">
-                    <option value="all">All</option>
-                    <option value="male">Men</option>
-                    <option value="female">Women</option>
-                </select>
-            </div>
-
-            <div class="filter-group">
-                <label>Status</label>
-                <select id="filter-status">
-                    <option value="all">All</option>
-                    <option value="online">Online</option>
-                    <option value="offline">Offline</option>
-                </select>
-            </div>
-
-            <div class="filter-group">
-                <label>Age</label>
-                <input type="range" id="filter-age" min="18" max="80" value="50">
-                <span class="range-labels">
-                    <span>18</span>
-                    <span id="age-display">50</span>
-                    <span>80</span>
-                </span>
-            </div>
-
-            <div class="filter-group">
-                <label>Verified</label>
-                <select id="filter-verified">
-                    <option value="all">All</option>
-                    <option value="verified">Verified Only</option>
-                </select>
-            </div>
-
-            <div class="filter-actions">
-                <button class="btn-apply" onclick="applyFilters()">Apply</button>
-                <button class="btn-reset" onclick="resetFilters()">Reset</button>
-            </div>
-        </div>
-
-        <!-- Members Grid -->
+        <!-- Members Grid - 2 COLUMNS ON ALL SCREENS -->
         <div class="members-grid" id="members-grid"></div>
 
         <!-- Pagination -->
         <div class="pagination" id="pagination"></div>
     </main>
-
-    <!-- ============================================================ -->
-    <!-- VIEW PROFILE MODAL                                           -->
-    <!-- ============================================================ -->
-    <div class="profile-modal" id="profile-modal">
-        <div class="profile-modal-content">
-            <button class="profile-modal-close" onclick="closeProfileModal()">✕</button>
-            <img class="profile-modal-avatar" id="modal-avatar" src="" alt="Profile">
-            <h2 class="profile-modal-name" id="modal-name">Name</h2>
-
-            <div class="profile-modal-details" id="modal-details">
-                <div class="detail-item">
-                    <span class="label">Age</span>
-                    <span class="value" id="modal-age">—</span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Gender</span>
-                    <span class="value" id="modal-gender">—</span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Location</span>
-                    <span class="value" id="modal-location">—</span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Status</span>
-                    <span class="value" id="modal-status">—</span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Verified</span>
-                    <span class="value" id="modal-verified">—</span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Premium</span>
-                    <span class="value" id="modal-premium">—</span>
-                </div>
-            </div>
-
-            <div class="profile-modal-bio" id="modal-bio">No bio available.</div>
-
-            <div class="profile-modal-interests" id="modal-interests"></div>
-
-            <div class="profile-modal-photos" id="modal-photos"></div>
-
-            <button class="btn-message-profile" id="modal-message-btn" onclick="modalSendMessage()">💬 Send Message</button>
-        </div>
-    </div>
 
     <!-- Toast -->
     <div class="toast" id="toast"></div>
@@ -816,9 +674,7 @@
         let filteredMembers = [];
         let currentPage = 1;
         const perPage = 6;
-        let currentView = 'grid';
         let isLoading = true;
-        let selectedMemberId = null;
 
         // ============================================================
         // DOM REFS
@@ -842,8 +698,11 @@
             });
             isLoading = false;
             console.log('📊 Members loaded from Firebase:', allMembers.length);
-            applyFilters();
+            // No filters - show all members
+            filteredMembers = [...allMembers];
             totalCount.textContent = allMembers.length;
+            renderMembers(filteredMembers);
+            updatePagination(filteredMembers.length);
         }, (error) => {
             console.error('Error loading members:', error);
             showToast('Error loading members from Firebase', 'error');
@@ -876,7 +735,6 @@
                     <div class="empty-state" style="grid-column:1/-1;">
                         <div class="icon">🔍</div>
                         <h3>No members found</h3>
-                        <p>Try adjusting your filters to see more results.</p>
                         <p style="margin-top:12px;font-size:13px;color:rgba(17,42,70,0.3);">
                             ${allMembers.length > 0 ? `Total members in database: ${allMembers.length}` : 'No members added yet. Go to Admin panel to add members.'}
                         </p>
@@ -918,7 +776,7 @@
                                 ${(member.interests || []).map(i => `<span class="interest-tag">#${i}</span>`).join('')}
                             </div>
                             <div class="member-card__actions">
-                                <button class="btn-view" onclick="window.openProfileModal('${member.id}')">👤 View</button>
+                                <button class="btn-view" onclick="window.viewProfile('${member.id}')">👤 View</button>
                                 <button class="btn-message" onclick="window.sendMessage('${member.id}')">💬 Message</button>
                             </div>
                         </div>
@@ -930,60 +788,6 @@
         }
 
         // ============================================================
-        // VIEW TOGGLE
-        // ============================================================
-        window.setView = function(view) {
-            currentView = view;
-            if (view === 'grid') {
-                grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
-            } else {
-                grid.style.gridTemplateColumns = '1fr';
-            }
-            document.getElementById('grid-view').classList.toggle('active', view === 'grid');
-            document.getElementById('list-view').classList.toggle('active', view === 'list');
-            renderMembers(filteredMembers);
-        }
-
-        // ============================================================
-        // FILTERS
-        // ============================================================
-        window.applyFilters = function() {
-            const gender = document.getElementById('filter-gender').value;
-            const status = document.getElementById('filter-status').value;
-            const maxAge = parseInt(document.getElementById('filter-age').value);
-            const verified = document.getElementById('filter-verified').value;
-
-            filteredMembers = allMembers.filter(member => {
-                if (gender !== 'all' && member.gender !== gender) return false;
-                if (status !== 'all' && member.online !== (status === 'online')) return false;
-                if (member.age > maxAge) return false;
-                if (verified === 'verified' && !member.verified) return false;
-                return true;
-            });
-
-            currentPage = 1;
-            renderMembers(filteredMembers);
-            showToast(`Showing ${filteredMembers.length} members`, 'success');
-        }
-
-        window.resetFilters = function() {
-            document.getElementById('filter-gender').value = 'all';
-            document.getElementById('filter-status').value = 'all';
-            document.getElementById('filter-age').value = '50';
-            document.getElementById('age-display').textContent = '50';
-            document.getElementById('filter-verified').value = 'all';
-
-            filteredMembers = [...allMembers];
-            currentPage = 1;
-            renderMembers(filteredMembers);
-            showToast('Filters reset!', 'success');
-        }
-
-        document.getElementById('filter-age').addEventListener('input', function() {
-            document.getElementById('age-display').textContent = this.value;
-        });
-
-        // ============================================================
         // PAGINATION
         // ============================================================
         function updatePagination(total) {
@@ -992,6 +796,10 @@
                 paginationContainer.innerHTML = '';
                 return;
             }
+
+            // Get current page members
+            const start = (currentPage - 1) * perPage;
+            const pageMembers = filteredMembers.slice(start, start + perPage);
 
             let html = `<button onclick="window.goToPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>‹ Prev</button>`;
             for (let i = 1; i <= Math.min(pages, 5); i++) {
@@ -1015,82 +823,14 @@
         }
 
         // ============================================================
-        // 🔥 VIEW PROFILE MODAL
+        // VIEW PROFILE
         // ============================================================
-        window.openProfileModal = function(id) {
+        window.viewProfile = function(id) {
             const member = allMembers.find(m => m.id === id);
-            if (!member) {
-                showToast('❌ Member not found', 'error');
-                return;
+            if (member) {
+                showToast(`👤 Viewing profile: ${member.name}`, 'success');
             }
-
-            selectedMemberId = id;
-
-            // Set avatar
-            const photos = member.photos || [];
-            const mainPhoto = photos.length > 0 ? photos[0] : `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name || 'User')}&background=112A46&color=fff&size=200`;
-            document.getElementById('modal-avatar').src = mainPhoto;
-            document.getElementById('modal-avatar').onerror = function() {
-                this.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name || 'User')}&background=112A46&color=fff&size=200`;
-            };
-
-            // Set name
-            document.getElementById('modal-name').textContent = member.name || 'Unknown';
-
-            // Set details
-            document.getElementById('modal-age').textContent = member.age || '—';
-            document.getElementById('modal-gender').textContent = member.gender || '—';
-            document.getElementById('modal-location').textContent = member.location || '—';
-            document.getElementById('modal-status').textContent = member.online ? '🟢 Online' : '⚪ Offline';
-            document.getElementById('modal-verified').textContent = member.verified ? '✅ Yes' : '❌ No';
-            document.getElementById('modal-premium').textContent = member.premium ? '⭐ Yes' : '—';
-
-            // Set bio
-            document.getElementById('modal-bio').textContent = member.bio || 'No bio available.';
-
-            // Set interests
-            const interestsContainer = document.getElementById('modal-interests');
-            if (member.interests && member.interests.length > 0) {
-                interestsContainer.innerHTML = member.interests.map(i => `<span class="tag">#${i}</span>`).join('');
-            } else {
-                interestsContainer.innerHTML = '<span style="color:rgba(17,42,70,0.3);font-size:14px;">No interests listed</span>';
-            }
-
-            // Set photos
-            const photosContainer = document.getElementById('modal-photos');
-            if (photos.length > 0) {
-                photosContainer.innerHTML = photos.map(p => `<img src="${p}" alt="Photo" onerror="this.style.display='none'">`).join('');
-            } else {
-                photosContainer.innerHTML = '<span style="color:rgba(17,42,70,0.3);font-size:14px;grid-column:1/-1;">No photos available</span>';
-            }
-
-            // Set message button
-            document.getElementById('modal-message-btn').onclick = function() {
-                window.sendMessage(id);
-            };
-
-            document.getElementById('profile-modal').classList.add('active');
-            document.body.style.overflow = 'hidden';
         }
-
-        window.closeProfileModal = function() {
-            document.getElementById('profile-modal').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Close modal on click outside
-        document.getElementById('profile-modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeProfileModal();
-            }
-        });
-
-        // Close on Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeProfileModal();
-            }
-        });
 
         // ============================================================
         // SEND MESSAGE
@@ -1101,9 +841,6 @@
                 showToast('❌ Member not found', 'error');
                 return;
             }
-
-            // Close modal if open
-            closeProfileModal();
 
             // Check if logged in
             const user = localStorage.getItem('classydate_user');
@@ -1116,12 +853,6 @@
             }
 
             window.location.href = `chat.html?user=${id}&name=${encodeURIComponent(member.name)}`;
-        }
-
-        window.modalSendMessage = function() {
-            if (selectedMemberId) {
-                window.sendMessage(selectedMemberId);
-            }
         }
 
         // ============================================================
@@ -1161,10 +892,10 @@
         // ============================================================
         // INIT
         // ============================================================
-        console.log('💎 ClassyDate Members Page - 2 Columns!');
+        console.log('💎 ClassyDate Members Page - Clean 2 Columns!');
         console.log('📊 Members load from Firebase Firestore');
-        console.log('👤 View button opens profile modal');
         console.log('💬 Message button goes to chat.html');
+        console.log('📱 2 columns on ALL devices (desktop + mobile)!');
     </script>
 
 </body>
