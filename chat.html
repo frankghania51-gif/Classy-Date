@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <title>Chat | ClassyDate</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: #ACC8E5;
+            color: #112A46;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .cb-shell-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(172, 200, 229, 0.92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(17, 42, 70, 0.08);
+        }
+
+        .cb-shell-header__inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .cb-shell-brand {
+            display: flex;
+            align-items: center;
+            font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #112A46;
+        }
+        .cb-shell-brand span {
+            font-family: "Inter", sans-serif;
+            font-weight: 300;
+            color: #2E5A88;
+        }
+
+        .cb-shell-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cb-shell-button {
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: "Inter", sans-serif;
+        }
+
+        .cb-shell-button--back {
+            background: rgba(17, 42, 70, 0.08);
+            color: #112A46;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .cb-shell-button--back:hover {
+            background: rgba(17, 42, 70, 0.15);
+        }
+
+        .cb-shell-button--profile {
+            background: #112A46;
+            color: #fff;
+        }
+        .cb-shell-button--profile:hover {
+            background: #2E5A88;
+            transform: translateY(-2px);
+        }
+
+        .chat-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 80px 20px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .chat-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.30);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.20);
+            backdrop-filter: blur(10px);
+            margin-bottom: 16px;
+            flex-shrink: 0;
+        }
+
+        .chat-header__avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #112A46;
+            flex-shrink: 0;
+        }
+
+        .chat-header__info {
+            flex: 1;
+        }
+
+        .chat-header__info h2 {
+            font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #112A46;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .chat-header__info .verified-badge {
+            font-size: 11px;
+            background: rgba(17, 42, 70, 0.10);
+            padding: 2px 10px;
+            border-radius: 50px;
+            font-weight: 600;
+            color: #112A46;
+        }
+
+        .chat-header__info .location {
+            font-size: 13px;
+            color: rgba(17, 42, 70, 0.5);
+        }
+
+        .chat-header__status {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .status-dot--online {
+            background: #28a745;
+            animation: pulse-dot 2s infinite;
+        }
+
+        .status-dot--offline {
+            background: rgba(17, 42, 70, 0.2);
+        }
+
+        @keyframes pulse-dot {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        .chat-header__actions button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            color: #112A46;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Inter", sans-serif;
+            font-size: 16px;
+        }
+        .chat-header__actions button:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .messages-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            backdrop-filter: blur(5px);
+            margin-bottom: 16px;
+            min-height: 300px;
+            max-height: calc(100vh - 320px);
+        }
+
+        .messages-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .messages-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        .messages-container::-webkit-scrollbar-thumb {
+            background: rgba(17, 42, 70, 0.2);
+            border-radius: 10px;
+        }
+
+        .message {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 12px;
+            animation: messageIn 0.3s ease;
+        }
+
+        @keyframes messageIn {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message--received {
+            align-items: flex-start;
+        }
+        .message--sent {
+            align-items: flex-end;
+        }
+
+        .message__bubble {
+            max-width: 75%;
+            padding: 12px 16px;
+            border-radius: 16px;
+            font-size: 15px;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        .message--received .message__bubble {
+            background: rgba(255, 255, 255, 0.40);
+            color: #112A46;
+            border-bottom-left-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .message--sent .message__bubble {
+            background: #112A46;
+            color: #fff;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message__time {
+            font-size: 11px;
+            color: rgba(17, 42, 70, 0.3);
+            margin-top: 4px;
+            padding: 0 4px;
+        }
+
+        .message__sender {
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(17, 42, 70, 0.4);
+            margin-bottom: 4px;
+            padding: 0 4px;
+        }
+
+        .typing-indicator {
+            display: none;
+            padding: 8px 16px;
+            font-size: 14px;
+            color: rgba(17, 42, 70, 0.4);
+            font-weight: 500;
+            font-family: "Inter", sans-serif;
+        }
+
+        .typing-indicator.show {
+            display: block;
+            animation: messageIn 0.3s ease;
+        }
+
+        .typing-indicator .dots span {
+            display: inline-block;
+            animation: dotBounce 1.4s infinite;
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        .typing-indicator .dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .typing-indicator .dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes dotBounce {
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-6px);
+            }
+        }
+
+        .message-input-container {
+            display: flex;
+            gap: 12px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.30);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.20);
+            backdrop-filter: blur(10px);
+            flex-shrink: 0;
+            align-items: center;
+        }
+
+        .message-input-container input {
+            flex: 1;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: #112A46;
+            font-size: 15px;
+            outline: none;
+            font-family: "Inter", sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .message-input-container input::placeholder {
+            color: rgba(17, 42, 70, 0.3);
+        }
+
+        .message-input-container input:focus {
+            border-color: #112A46;
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 0 4px rgba(17, 42, 70, 0.06);
+        }
+
+        .message-input-container .input-actions button {
+            padding: 10px 14px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.3);
+            color: #112A46;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            font-family: "Inter", sans-serif;
+        }
+
+        .message-input-container .input-actions button:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-send {
+            padding: 12px 28px !important;
+            background: #112A46 !important;
+            color: #fff !important;
+            font-weight: 700 !important;
+            font-size: 14px !important;
+            border-radius: 12px !important;
+            cursor: pointer !important;
+        }
+
+        .btn-send:hover {
+            background: #2E5A88 !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 20px rgba(17, 42, 70, 0.2);
+        }
+
+        .empty-chat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: rgba(17, 42, 70, 0.3);
+            text-align: center;
+        }
+
+        .empty-chat .icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+
+        .empty-chat h3 {
+            font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
+            font-size: 24px;
+            color: #112A46;
+            margin-bottom: 8px;
+        }
+
+        .empty-chat p {
+            font-size: 15px;
+            font-family: "Inter", sans-serif;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 14px 24px;
+            background: #112A46;
+            color: #fff;
+            border-radius: 12px;
+            font-family: "Inter", sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            z-index: 999;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .toast.success {
+            background: #28a745;
+        }
+        .toast.error {
+            background: #dc3545;
+        }
+
+        @media (max-width: 768px) {
+            .chat-wrapper {
+                padding: 72px 12px 12px;
+                height: 100vh;
+            }
+            .chat-header {
+                padding: 12px 16px;
+                flex-wrap: wrap;
+            }
+            .chat-header__avatar {
+                width: 44px;
+                height: 44px;
+            }
+            .chat-header__info h2 {
+                font-size: 17px;
+            }
+            .chat-header__info .location {
+                font-size: 12px;
+            }
+            .chat-header__status {
+                font-size: 12px;
+            }
+            .messages-container {
+                padding: 12px 14px;
+                max-height: calc(100vh - 280px);
+            }
+            .message__bubble {
+                font-size: 14px;
+                padding: 10px 14px;
+                max-width: 85%;
+            }
+            .message-input-container {
+                padding: 10px 12px;
+                flex-wrap: wrap;
+            }
+            .message-input-container input {
+                font-size: 14px;
+                padding: 10px 14px;
+                min-width: 100px;
+            }
+            .btn-send {
+                padding: 10px 20px !important;
+                font-size: 13px !important;
+            }
+            .cb-shell-brand {
+                font-size: 18px;
+            }
+            .cb-shell-button {
+                padding: 6px 14px;
+                font-size: 12px;
+            }
+            .toast {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .chat-header {
+                gap: 10px;
+            }
+            .chat-header__info h2 {
+                font-size: 15px;
+                flex-wrap: wrap;
+            }
+            .chat-header__status {
+                font-size: 11px;
+            }
+            .message__bubble {
+                font-size: 13px;
+                padding: 8px 12px;
+                max-width: 90%;
+            }
+            .message-input-container input {
+                font-size: 13px;
+                padding: 8px 12px;
+            }
+            .message-input-container .input-actions button {
+                padding: 8px 10px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="cb-shell-header" role="banner">
+        <div class="cb-shell-header__inner">
+            <a class="cb-shell-brand" href="/">Classy<span>Date</span></a>
+            <div class="cb-shell-actions">
+                <a href="members.html" class="cb-shell-button cb-shell-button--back">← Back to Members</a>
+                <a href="#" class="cb-shell-button cb-shell-button--profile">👤 My Profile</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="chat-wrapper">
+        <div class="chat-header" id="chat-header">
+            <img class="chat-header__avatar" id="chat-avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Member">
+            <div class="chat-header__info">
+                <h2>
+                    <span id="chat-name">Sarah Johnson</span>
+                    <span class="verified-badge">💎 Verified</span>
+                </h2>
+                <div class="location">📍 <span id="chat-location">New York, USA</span></div>
+            </div>
+            <div class="chat-header__status">
+                <span class="status-dot status-dot--online" id="chat-status-dot"></span>
+                <span id="chat-status-text">Online</span>
+            </div>
+            <div class="chat-header__actions">
+                <button onclick="showToast('📞 Voice call coming soon!', 'success')">📞</button>
+                <button onclick="showToast('📹 Video call coming soon!', 'success')">📹</button>
+            </div>
+        </div>
+
+        <div class="messages-container" id="messages-container">
+            <div class="empty-chat">
+                <div class="icon">💬</div>
+                <h3>No messages yet</h3>
+                <p>Send a message to start the conversation!</p>
+            </div>
+        </div>
+
+        <div class="typing-indicator" id="typing-indicator">
+            <span id="typing-name">Sarah</span> is typing
+            <span class="dots">
+                <span>.</span><span>.</span><span>.</span>
+            </span>
+        </div>
+
+        <div class="message-input-container">
+            <button onclick="showToast('📎 Attachments coming soon!', 'success')">📎</button>
+            <input type="text" id="message-input" placeholder="Type a message...">
+            <div class="input-actions">
+                <button onclick="showToast('😊 Emojis coming soon!', 'success')">😊</button>
+                <button class="btn-send" id="send-btn">📤 Send</button>
+            </div>
+        </div>
+    </main>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // ============================================================
+        // 🔥 FIXED: HARDCODED MEMBER
+        // ============================================================
+        const chatPartner = {
+            id: 1,
+            name: "Sarah Johnson",
+            location: "New York, USA",
+            photo: "https://randomuser.me/api/portraits/women/44.jpg",
+            verified: true,
+            online: true
+        };
+
+        // ============================================================
+        // STATE
+        // ============================================================
+        let messages = [];
+
+        // ============================================================
+        // INIT
+        // ============================================================
+        function initChat() {
+            console.log('🔥 Chat Partner:', chatPartner);
+
+            document.getElementById('chat-avatar').src = chatPartner.photo;
+            document.getElementById('chat-avatar').onerror = function() {
+                this.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(chatPartner.name) + '&background=112A46&color=fff&size=200';
+            };
+            document.getElementById('chat-name').textContent = chatPartner.name;
+            document.getElementById('chat-location').textContent = chatPartner.location;
+
+            const statusDot = document.getElementById('chat-status-dot');
+            const statusText = document.getElementById('chat-status-text');
+            if (chatPartner.online) {
+                statusDot.className = 'status-dot status-dot--online';
+                statusText.textContent = 'Online';
+            } else {
+                statusDot.className = 'status-dot status-dot--offline';
+                statusText.textContent = 'Offline';
+            }
+
+            document.getElementById('message-input').disabled = false;
+            document.getElementById('message-input').placeholder = `Message ${chatPartner.name}...`;
+
+            renderMessages();
+
+            document.title = `Chat with ${chatPartner.name} | ClassyDate`;
+
+            console.log('💬 Chat page ready!');
+        }
+
+        // ============================================================
+        // RENDER MESSAGES
+        // ============================================================
+        function renderMessages() {
+            const container = document.getElementById('messages-container');
+
+            if (messages.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-chat">
+                        <div class="icon">💬</div>
+                        <h3>No messages yet</h3>
+                        <p>Send a message to start the conversation!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = messages.map(msg => {
+                const isSent = msg.sender === 'You';
+                return `
+                    <div class="message message--${isSent ? 'sent' : 'received'}">
+                        ${!isSent ? `<div class="message__sender">${msg.sender}</div>` : ''}
+                        <div class="message__bubble">${msg.text}</div>
+                        <div class="message__time">${msg.time}</div>
+                    </div>
+                `;
+            }).join('');
+
+            container.scrollTop = container.scrollHeight;
+        }
+
+        // ============================================================
+        // 🔥🔥🔥 SEND MESSAGE - REDIRECTS TO SUSCRIBE.HTML 🔥🔥🔥
+        // ============================================================
+        function sendMessage() {
+            const input = document.getElementById('message-input');
+            const text = input.value.trim();
+
+            console.log('📤 Send button clicked!');
+            console.log('📝 Message text:', text);
+
+            if (!text) {
+                showToast('Please type a message first!', 'error');
+                return;
+            }
+
+            console.log('✅ Sending message to:', chatPartner.name);
+
+            showToast('💎 Please subscribe to send messages!', 'error');
+
+            localStorage.setItem('pending_message', JSON.stringify({
+                memberId: chatPartner.id,
+                memberName: chatPartner.name,
+                message: text
+            }));
+
+            localStorage.setItem('redirect_after_subscribe', `chat.html?user=${chatPartner.id}`);
+
+            input.value = '';
+
+            setTimeout(() => {
+                console.log('🔀 Redirecting to suscribe.html');
+                window.location.href = 'suscribe.html';
+            }, 1200);
+        }
+
+        // ============================================================
+        // TOAST
+        // ============================================================
+        let toastTimeout;
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast ' + type;
+            toast.classList.add('show');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // ============================================================
+        // DOM EVENTS
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('send-btn').addEventListener('click', sendMessage);
+
+            document.getElementById('message-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
+        });
+
+        // ============================================================
+        // INIT
+        // ============================================================
+        initChat();
+
+        console.log('💬 ClassyDate Chat Page loaded!');
+        console.log('📤 Send button redirects to suscribe.html');
+    </script>
+
+</body>
+</html>

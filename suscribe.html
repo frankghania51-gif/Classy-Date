@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <title>Complete Your Profile | ClassyDate</title>
+    <meta name="description" content="Complete your profile to start your ClassyDate journey.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: #ACC8E5;
+            color: #112A46;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* Header */
+        .subscribe-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(172, 200, 229, 0.92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(17, 42, 70, 0.08);
+            padding: 0 20px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+        }
+
+        .subscribe-header .brand {
+            font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #112A46;
+        }
+
+        .subscribe-header .brand span {
+            font-family: "Inter", sans-serif;
+            font-weight: 300;
+            color: #2E5A88;
+        }
+
+        /* Main */
+        .subscribe-wrapper {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px 60px;
+            min-height: 100vh;
+            background: radial-gradient(ellipse at center top, rgba(17, 42, 70, 0.04), transparent 70%);
+        }
+
+        .subscribe-card {
+            max-width: 520px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 48px 40px 40px;
+            border: 1px solid rgba(255, 255, 255, 0.30);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .subscribe-card__header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .subscribe-card__header .icon {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .subscribe-card__header h1 {
+            font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
+            font-size: 28px;
+            color: #112A46;
+            font-weight: 700;
+        }
+
+        .subscribe-card__header p {
+            color: rgba(17, 42, 70, 0.5);
+            font-size: 15px;
+            margin-top: 4px;
+            font-family: "Inter", sans-serif;
+        }
+
+        /* Steps */
+        .steps {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 28px;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(17, 42, 70, 0.3);
+            font-family: "Inter", sans-serif;
+        }
+
+        .step .num {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(17, 42, 70, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            color: rgba(17, 42, 70, 0.2);
+        }
+
+        .step.active .num {
+            background: #112A46;
+            color: #fff;
+        }
+
+        .step.active {
+            color: #112A46;
+        }
+
+        .step .line {
+            width: 30px;
+            height: 2px;
+            background: rgba(17, 42, 70, 0.06);
+        }
+
+        .step.active .line {
+            background: #112A46;
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(17, 42, 70, 0.7);
+            margin-bottom: 6px;
+            font-family: "Inter", sans-serif;
+        }
+
+        .form-group label .required {
+            color: #dc3545;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            color: #112A46;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            outline: none;
+            font-family: "Inter", sans-serif;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23112A46' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+        }
+
+        .form-group select option {
+            background: #ACC8E5;
+            color: #112A46;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(17, 42, 70, 0.3);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #112A46;
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 0 4px rgba(17, 42, 70, 0.08);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 12px;
+        }
+
+        .radio-option {
+            flex: 1;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 15px;
+            color: rgba(17, 42, 70, 0.4);
+            font-family: "Inter", sans-serif;
+        }
+
+        .radio-option:hover {
+            border-color: rgba(17, 42, 70, 0.3);
+        }
+
+        .radio-option.active {
+            border-color: #112A46;
+            background: rgba(17, 42, 70, 0.06);
+            color: #112A46;
+        }
+
+        .radio-option input[type="radio"] {
+            display: none;
+        }
+
+        /* Button */
+        .btn-proceed {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #112A46, #2E5A88);
+            color: #fff;
+            border: none;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Inter", sans-serif;
+            margin-top: 8px;
+        }
+
+        .btn-proceed:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(17, 42, 70, 0.35);
+            background: linear-gradient(135deg, #2E5A88, #112A46);
+        }
+
+        .btn-proceed:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Error */
+        .error-message {
+            display: none;
+            background: rgba(220, 53, 69, 0.08);
+            border: 1px solid rgba(220, 53, 69, 0.15);
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: #dc3545;
+            font-size: 14px;
+            margin-bottom: 16px;
+            font-family: "Inter", sans-serif;
+        }
+
+        .error-message.show {
+            display: block;
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-10px); }
+            40% { transform: translateX(10px); }
+            60% { transform: translateX(-6px); }
+            80% { transform: translateX(6px); }
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 14px 24px;
+            background: #112A46;
+            color: #fff;
+            border-radius: 12px;
+            font-family: "Inter", sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            z-index: 999;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .toast.success {
+            background: #28a745;
+        }
+        .toast.error {
+            background: #dc3545;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .subscribe-card {
+                padding: 32px 24px 28px;
+            }
+            .subscribe-card__header h1 {
+                font-size: 24px;
+            }
+            .steps {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .step .line {
+                display: none;
+            }
+            .radio-group {
+                flex-direction: column;
+            }
+            .subscribe-header .brand {
+                font-size: 20px;
+            }
+            .toast {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="subscribe-header">
+        <a class="brand" href="/">Classy<span>Date</span></a>
+    </header>
+
+    <!-- Main -->
+    <main class="subscribe-wrapper">
+        <div class="subscribe-card">
+            <div class="subscribe-card__header">
+                <span class="icon">📋</span>
+                <h1>Complete Your Profile</h1>
+                <p>Tell us a bit about yourself</p>
+            </div>
+
+            <!-- Steps -->
+            <div class="steps">
+                <div class="step active">
+                    <span class="num">1</span> Details
+                    <span class="line"></span>
+                </div>
+                <div class="step">
+                    <span class="num">2</span> Payment
+                    <span class="line"></span>
+                </div>
+                <div class="step">
+                    <span class="num">3</span> Complete
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div class="error-message" id="error-message">
+                ⚠️ Please fill in all required fields.
+            </div>
+
+            <!-- Form -->
+            <form id="subscribe-form" onsubmit="return handleSubmit(event)">
+                <div class="form-group">
+                    <label for="fullname">Full Name <span class="required">*</span></label>
+                    <input type="text" id="fullname" placeholder="e.g. John Doe" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Age <span class="required">*</span></label>
+                    <input type="number" id="age" placeholder="e.g. 25" min="18" max="99" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Do you have kids? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-option" id="kids-yes" onclick="selectKids('yes')">
+                            <input type="radio" name="kids" value="yes"> Yes
+                        </label>
+                        <label class="radio-option" id="kids-no" onclick="selectKids('no')">
+                            <input type="radio" name="kids" value="no"> No
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="country">Country <span class="required">*</span></label>
+                    <select id="country" required>
+                        <option value="">Select your country...</option>
+                        <option value="zimbabwe">🇿🇼 Zimbabwe</option>
+                        <option value="kenya">🇰🇪 Kenya</option>
+                        <option value="ghana">🇬🇭 Ghana</option>
+                        <option value="south-africa">🇿🇦 South Africa</option>
+                        <option value="zambia">🇿🇲 Zambia</option>
+                        <option value="usa">🇺🇸 USA</option>
+                        <option value="uk">🇬🇧 United Kingdom</option>
+                        <option value="canada">🇨🇦 Canada</option>
+                        <option value="australia">🇦🇺 Australia</option>
+                        <option value="nigeria">🇳🇬 Nigeria</option>
+                        <option value="other">🌍 Other</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-proceed" id="proceed-btn">➡️ Proceed to Payment</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <!-- ============================================================ -->
+    <!-- SCRIPTS                                                      -->
+    <!-- ============================================================ -->
+    <script>
+        // ============================================================
+        // KIDS SELECTION
+        // ============================================================
+        function selectKids(value) {
+            document.querySelectorAll('.radio-option').forEach(el => el.classList.remove('active'));
+            document.getElementById(`kids-${value}`).classList.add('active');
+            document.querySelector(`input[name="kids"][value="${value}"]`).checked = true;
+        }
+
+        // ============================================================
+        // TOAST
+        // ============================================================
+        let toastTimeout;
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast ' + type;
+            toast.classList.add('show');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // ============================================================
+        // 🔥 FIXED: HANDLE SUBMIT - Country Redirect
+        // ============================================================
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            const fullname = document.getElementById('fullname').value.trim();
+            const age = document.getElementById('age').value.trim();
+            const kids = document.querySelector('input[name="kids"]:checked');
+            const country = document.getElementById('country').value;
+
+            const errorMessage = document.getElementById('error-message');
+            errorMessage.classList.remove('show');
+
+            // Validate
+            if (!fullname || fullname.length < 2) {
+                errorMessage.textContent = '⚠️ Please enter your full name.';
+                errorMessage.classList.add('show');
+                return false;
+            }
+
+            if (!age || age < 18 || age > 99) {
+                errorMessage.textContent = '⚠️ Please enter a valid age (18-99).';
+                errorMessage.classList.add('show');
+                return false;
+            }
+
+            if (!kids) {
+                errorMessage.textContent = '⚠️ Please select if you have kids.';
+                errorMessage.classList.add('show');
+                return false;
+            }
+
+            if (!country) {
+                errorMessage.textContent = '⚠️ Please select your country.';
+                errorMessage.classList.add('show');
+                return false;
+            }
+
+            // Save user details
+            const userData = {
+                fullname: fullname,
+                age: age,
+                kids: kids.value,
+                country: country
+            };
+            localStorage.setItem('classydate_user_details', JSON.stringify(userData));
+
+            // 🚀 COUNTRY-BASED REDIRECT - FIXED: Zimbabwe goes to zimbabwelogin.html
+            const redirectMap = {
+                'kenya': 'verifykenya.html',
+                'zimbabwe': 'zimbabwelogin.html',  // ✅ THIS IS THE FIX
+                'ghana': 'verifyghana.html'
+            };
+
+            // Get redirect URL or fallback to pricing
+            let redirectUrl = redirectMap[country] || 'pricing.html';
+
+            // Add member ID to URL if we have one from pending message
+            const pendingMessage = localStorage.getItem('pending_message');
+            if (pendingMessage) {
+                try {
+                    const data = JSON.parse(pendingMessage);
+                    if (data.memberId) {
+                        redirectUrl += `?user=${data.memberId}&name=${encodeURIComponent(data.memberName || '')}`;
+                    }
+                } catch (e) {}
+            }
+
+            const btn = document.getElementById('proceed-btn');
+            btn.textContent = '⏳ Redirecting...';
+            btn.disabled = true;
+
+            showToast(`📍 Redirecting to ${country} payment page...`, 'success');
+
+            setTimeout(() => {
+                window.location.href = redirectUrl;
+            }, 1000);
+
+            return false;
+        }
+
+        // ============================================================
+        // PRE-FILL FROM SESSION
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const saved = localStorage.getItem('classydate_user_details');
+            if (saved) {
+                try {
+                    const data = JSON.parse(saved);
+                    if (data.fullname) document.getElementById('fullname').value = data.fullname;
+                    if (data.age) document.getElementById('age').value = data.age;
+                    if (data.kids) selectKids(data.kids);
+                    if (data.country) document.getElementById('country').value = data.country;
+                } catch (e) {}
+            }
+
+            // Check if there's a pending message
+            const pendingMessage = localStorage.getItem('pending_message');
+            if (pendingMessage) {
+                try {
+                    const data = JSON.parse(pendingMessage);
+                    if (data.memberName) {
+                        document.querySelector('.subscribe-card__header p').textContent =
+                            `Complete your details to start chatting with ${data.memberName}!`;
+                    }
+                } catch (e) {}
+            }
+
+            console.log('📋 ClassyDate Subscribe Page loaded!');
+            console.log('🔥 Country redirects: Kenya → verifykenya.html, Zimbabwe → zimbabwelogin.html, Ghana → verifyghana.html');
+        });
+    </script>
+
+</body>
+</html>

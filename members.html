@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <title>Members | ClassyDate</title>
+    <meta name="description" content="Browse ClassyDate members and find meaningful connections.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: #ACC8E5;
+            color: #112A46;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* Header */
+        .cb-shell-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(172, 200, 229, 0.92);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(17, 42, 70, 0.08);
+        }
+
+        .cb-shell-header__inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .cb-shell-brand {
+            display: flex;
+            align-items: center;
+            font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #112A46;
+        }
+        .cb-shell-brand span {
+            font-family: "Inter", sans-serif;
+            font-weight: 300;
+            color: #2E5A88;
+        }
+
+        .cb-shell-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .cb-shell-button {
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: "Inter", sans-serif;
+        }
+        .cb-shell-button--secondary {
+            background: rgba(17, 42, 70, 0.1);
+            color: #112A46;
+            border: 1px solid rgba(17, 42, 70, 0.12);
+        }
+        .cb-shell-button--secondary:hover {
+            background: rgba(17, 42, 70, 0.18);
+        }
+        .cb-shell-button--primary {
+            background: #112A46;
+            color: #fff;
+        }
+        .cb-shell-button--primary:hover {
+            background: #2E5A88;
+            transform: translateY(-2px);
+        }
+
+        /* Members Container */
+        .members-wrapper {
+            flex: 1;
+            padding: 100px 20px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Header */
+        .members-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .members-header h1 {
+            font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
+            font-size: 36px;
+            color: #112A46;
+            font-weight: 700;
+        }
+
+        .members-header h1 span { color: #112A46; }
+
+        .members-header .member-count {
+            color: rgba(17, 42, 70, 0.5);
+            font-size: 15px;
+            font-family: "Inter", sans-serif;
+        }
+
+        .members-header .member-count strong {
+            color: #112A46;
+            font-weight: 700;
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .view-toggle button {
+            padding: 8px 16px;
+            background: none;
+            border: none;
+            border-radius: 8px;
+            color: rgba(17, 42, 70, 0.4);
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            font-family: "Inter", sans-serif;
+            font-weight: 600;
+        }
+
+        .view-toggle button.active {
+            background: #112A46;
+            color: #fff;
+        }
+        .view-toggle button:hover:not(.active) {
+            color: rgba(17, 42, 70, 0.7);
+        }
+
+        /* Filters */
+        .filters-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.20);
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-group label {
+            color: rgba(17, 42, 70, 0.5);
+            font-size: 13px;
+            font-weight: 600;
+            font-family: "Inter", sans-serif;
+        }
+
+        .filter-group select,
+        .filter-group input {
+            padding: 8px 14px;
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: #112A46;
+            font-size: 14px;
+            font-family: "Inter", sans-serif;
+            outline: none;
+            min-width: 120px;
+        }
+
+        .filter-group select:focus,
+        .filter-group input:focus {
+            border-color: #112A46;
+            box-shadow: 0 0 0 4px rgba(17, 42, 70, 0.08);
+        }
+
+        .filter-group select option {
+            background: #ACC8E5;
+            color: #112A46;
+        }
+
+        .filter-group input[type="range"] {
+            width: 120px;
+            padding: 0;
+            background: transparent;
+            accent-color: #112A46;
+            cursor: pointer;
+        }
+
+        .filter-group .range-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: rgba(17, 42, 70, 0.3);
+            min-width: 60px;
+            font-family: "Inter", sans-serif;
+        }
+
+        .filter-actions {
+            display: flex;
+            gap: 8px;
+            margin-left: auto;
+        }
+
+        .filter-actions button {
+            padding: 8px 20px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Inter", sans-serif;
+        }
+
+        .btn-apply {
+            background: #112A46;
+            color: #fff;
+        }
+        .btn-apply:hover {
+            background: #2E5A88;
+            transform: translateY(-2px);
+        }
+
+        .btn-reset {
+            background: rgba(255, 255, 255, 0.3);
+            color: rgba(17, 42, 70, 0.5);
+            border: 1px solid rgba(17, 42, 70, 0.1);
+        }
+        .btn-reset:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Members Grid */
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        /* Member Card */
+        .member-card {
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.20);
+            transition: all 0.4s ease;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .member-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(17, 42, 70, 0.2);
+            box-shadow: 0 12px 40px rgba(17, 42, 70, 0.15);
+        }
+
+        .member-card__image {
+            position: relative;
+            height: 240px;
+            overflow: hidden;
+            background: #ACC8E5;
+        }
+
+        .member-card__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .member-card:hover .member-card__image img {
+            transform: scale(1.05);
+        }
+
+        .member-card__badges {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-family: "Inter", sans-serif;
+        }
+
+        .badge--verified {
+            background: rgba(17, 42, 70, 0.15);
+            color: #112A46;
+            border: 1px solid rgba(17, 42, 70, 0.1);
+        }
+
+        .badge--premium {
+            background: rgba(17, 42, 70, 0.12);
+            color: #112A46;
+            border: 1px solid rgba(17, 42, 70, 0.08);
+        }
+
+        .badge--new {
+            background: rgba(17, 42, 70, 0.10);
+            color: #112A46;
+            border: 1px solid rgba(17, 42, 70, 0.06);
+        }
+
+        .member-card__status {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(8px);
+            padding: 4px 12px 4px 8px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-family: "Inter", sans-serif;
+            color: #112A46;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .status-dot--online {
+            background: #28a745;
+            animation: pulse-dot 2s infinite;
+        }
+
+        .status-dot--offline {
+            background: rgba(17, 42, 70, 0.2);
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .member-card__info {
+            padding: 18px 20px 20px;
+        }
+
+        .member-card__name {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .member-card__name h3 {
+            font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #112A46;
+        }
+
+        .member-card__name .age {
+            color: rgba(17, 42, 70, 0.5);
+            font-weight: 400;
+            font-size: 15px;
+            font-family: "Inter", sans-serif;
+        }
+
+        .member-card__location {
+            color: rgba(17, 42, 70, 0.5);
+            font-size: 14px;
+            margin-top: 2px;
+            font-family: "Inter", sans-serif;
+        }
+
+        .member-card__bio {
+            color: rgba(17, 42, 70, 0.6);
+            font-size: 14px;
+            margin-top: 8px;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font-family: "Inter", sans-serif;
+        }
+
+        .member-card__interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .interest-tag {
+            padding: 2px 12px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            font-size: 11px;
+            color: rgba(17, 42, 70, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-family: "Inter", sans-serif;
+        }
+
+        .member-card__actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(17, 42, 70, 0.06);
+        }
+
+        .member-card__actions button {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Inter", sans-serif;
+        }
+
+        .btn-view {
+            background: rgba(17, 42, 70, 0.08);
+            color: #112A46;
+        }
+        .btn-view:hover {
+            background: rgba(17, 42, 70, 0.15);
+        }
+
+        .btn-message {
+            background: #112A46;
+            color: #fff;
+        }
+        .btn-message:hover {
+            background: #2E5A88;
+            transform: translateY(-2px);
+        }
+
+        /* List View */
+        .members-grid.list-view {
+            grid-template-columns: 1fr;
+        }
+
+        .members-grid.list-view .member-card {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .members-grid.list-view .member-card__image {
+            width: 180px;
+            height: auto;
+            min-height: 180px;
+            flex-shrink: 0;
+        }
+
+        .members-grid.list-view .member-card__info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .members-grid.list-view .member-card__actions {
+            border-top: none;
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: rgba(17, 42, 70, 0.3);
+            grid-column: 1 / -1;
+        }
+
+        .empty-state .icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+
+        .empty-state h3 {
+            font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
+            font-size: 24px;
+            color: #112A46;
+            margin-bottom: 8px;
+        }
+
+        .empty-state p {
+            font-family: "Inter", sans-serif;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 40px;
+        }
+
+        .pagination button {
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            color: rgba(17, 42, 70, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Inter", sans-serif;
+            font-weight: 600;
+        }
+
+        .pagination button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .pagination button.active {
+            background: #112A46;
+            color: #fff;
+            border-color: #112A46;
+        }
+        .pagination button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 14px 24px;
+            background: #112A46;
+            color: #fff;
+            border-radius: 12px;
+            font-family: "Inter", sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            z-index: 999;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .toast.success {
+            background: #28a745;
+        }
+        .toast.error {
+            background: #dc3545;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .members-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .members-header h1 {
+                font-size: 28px;
+            }
+            .filters-section {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .filter-group {
+                flex-wrap: wrap;
+            }
+            .filter-group select,
+            .filter-group input {
+                min-width: 100%;
+            }
+            .filter-actions {
+                margin-left: 0;
+            }
+            .members-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            .members-grid.list-view .member-card {
+                flex-direction: column;
+            }
+            .members-grid.list-view .member-card__image {
+                width: 100%;
+                height: 180px;
+            }
+            .view-toggle button {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+            .cb-shell-header__inner {
+                height: 64px;
+                padding: 0 16px;
+            }
+            .cb-shell-brand {
+                font-size: 20px;
+            }
+            .cb-shell-button {
+                padding: 6px 16px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .members-grid {
+                grid-template-columns: 1fr;
+            }
+            .member-card__actions {
+                flex-wrap: wrap;
+            }
+            .member-card__actions button {
+                min-width: 80px;
+            }
+            .toast {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="cb-shell-header" role="banner">
+        <div class="cb-shell-header__inner">
+            <a class="cb-shell-brand" href="/">Classy<span>Date</span></a>
+            <div class="cb-shell-actions">
+                <a href="signup.html" class="cb-shell-button cb-shell-button--secondary">Join</a>
+                <a href="login.html" class="cb-shell-button cb-shell-button--primary">Log in</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main class="members-wrapper">
+        <!-- Header -->
+        <div class="members-header">
+            <div>
+                <h1>Browse <span>Members</span></h1>
+                <span class="member-count">Showing <strong id="total-count">0</strong> members</span>
+            </div>
+            <div class="view-toggle">
+                <button class="active" onclick="setView('grid')" id="grid-view">▦ Grid</button>
+                <button onclick="setView('list')" id="list-view">☰ List</button>
+            </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters-section">
+            <div class="filter-group">
+                <label>Gender</label>
+                <select id="filter-gender">
+                    <option value="all">All</option>
+                    <option value="male">Men</option>
+                    <option value="female">Women</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Status</label>
+                <select id="filter-status">
+                    <option value="all">All</option>
+                    <option value="online">Online</option>
+                    <option value="offline">Offline</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Age</label>
+                <input type="range" id="filter-age" min="18" max="80" value="50">
+                <span class="range-labels">
+                    <span>18</span>
+                    <span id="age-display">50</span>
+                    <span>80</span>
+                </span>
+            </div>
+
+            <div class="filter-group">
+                <label>Verified</label>
+                <select id="filter-verified">
+                    <option value="all">All</option>
+                    <option value="verified">Verified Only</option>
+                </select>
+            </div>
+
+            <div class="filter-actions">
+                <button class="btn-apply" onclick="applyFilters()">Apply</button>
+                <button class="btn-reset" onclick="resetFilters()">Reset</button>
+            </div>
+        </div>
+
+        <!-- Members Grid -->
+        <div class="members-grid" id="members-grid"></div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination"></div>
+    </main>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <!-- ============================================================ -->
+    <!-- SCRIPTS - Firebase Firestore                                 -->
+    <!-- ============================================================ -->
+    <script type="importmap">
+        {
+            "imports": {
+                "firebase/app": "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js",
+                "firebase/firestore": "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js",
+                "firebase/auth": "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js"
+            }
+        }
+    </script>
+
+    <script type="module">
+        // ============================================================
+        // FIREBASE CONFIG
+        // ============================================================
+        import { initializeApp } from "firebase/app";
+        import {
+            getFirestore,
+            collection,
+            onSnapshot,
+            query,
+            orderBy,
+            where,
+            getDocs
+        } from "firebase/firestore";
+        import { getAuth, onAuthStateChanged } from "firebase/auth";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyACEYbex1YBpqeH7c2bbFk-9AA7iYe_NXU",
+            authDomain: "classydate-ff97f.firebaseapp.com",
+            projectId: "classydate-ff97f",
+            storageBucket: "classydate-ff97f.firebasestorage.app",
+            messagingSenderId: "241438852209",
+            appId: "1:241438852209:web:00e9af320aa28becd307d0",
+            measurementId: "G-TET9ZFZD0P"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        console.log('🔥 Firebase connected!');
+
+        // ============================================================
+        // STATE
+        // ============================================================
+        let allMembers = [];
+        let filteredMembers = [];
+        let currentPage = 1;
+        const perPage = 6;
+        let currentView = 'grid';
+        let isLoading = true;
+
+        // ============================================================
+        // DOM REFS
+        // ============================================================
+        const grid = document.getElementById('members-grid');
+        const paginationContainer = document.getElementById('pagination');
+        const totalCount = document.getElementById('total-count');
+
+        // ============================================================
+        // LISTEN TO FIREBASE
+        // ============================================================
+        const q = query(collection(db, "members"), orderBy("createdAt", "desc"));
+
+        onSnapshot(q, (snapshot) => {
+            allMembers = [];
+            snapshot.forEach((doc) => {
+                allMembers.push({
+                    id: doc.id,
+                    ...doc.data()
+                });
+            });
+            isLoading = false;
+            console.log('📊 Members loaded from Firebase:', allMembers.length);
+            applyFilters();
+            totalCount.textContent = allMembers.length;
+        }, (error) => {
+            console.error('Error loading members:', error);
+            showToast('Error loading members from Firebase', 'error');
+            isLoading = false;
+            grid.innerHTML = `
+                <div class="empty-state" style="grid-column:1/-1;">
+                    <div class="icon">⚠️</div>
+                    <h3>Could not load members</h3>
+                    <p>Please check your Firebase connection.</p>
+                </div>
+            `;
+        });
+
+        // ============================================================
+        // RENDER
+        // ============================================================
+        function renderMembers(members) {
+            if (isLoading) {
+                grid.innerHTML = `
+                    <div style="grid-column:1/-1;text-align:center;padding:60px;color:rgba(17,42,70,0.3);">
+                        <span style="display:inline-block;width:32px;height:32px;border:3px solid rgba(17,42,70,0.1);border-top-color:#112A46;border-radius:50%;animation:spin 0.8s linear infinite;"></span>
+                        <br><br>Loading members from Firebase...
+                    </div>
+                `;
+                return;
+            }
+
+            if (members.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state" style="grid-column:1/-1;">
+                        <div class="icon">🔍</div>
+                        <h3>No members found</h3>
+                        <p>Try adjusting your filters to see more results.</p>
+                        <p style="margin-top:12px;font-size:13px;color:rgba(17,42,70,0.3);">
+                            ${allMembers.length > 0 ? `Total members in database: ${allMembers.length}` : 'No members added yet. Go to Admin panel to add members.'}
+                        </p>
+                    </div>
+                `;
+                return;
+            }
+
+            totalCount.textContent = members.length;
+
+            grid.innerHTML = members.map(member => {
+                const photos = member.photos || [];
+                const mainPhoto = photos.length > 0 ? photos[0] : `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name || 'User')}&background=112A46&color=fff&size=200`;
+                const isNew = member.joined ? new Date(member.joined) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000) : false;
+
+                return `
+                    <div class="member-card" data-id="${member.id}">
+                        <div class="member-card__image">
+                            <img src="${mainPhoto}" alt="${member.name || 'Member'}" loading="lazy" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(member.name || 'User')}&background=112A46&color=fff&size=200'">
+                            <div class="member-card__badges">
+                                ${member.verified ? '<span class="badge badge--verified">✓ Verified</span>' : ''}
+                                ${member.premium ? '<span class="badge badge--premium">⭐ Premium</span>' : ''}
+                                ${isNew ? '<span class="badge badge--new">🆕 New</span>' : ''}
+                                ${photos.length > 1 ? `<span class="badge" style="background:rgba(17,42,70,0.10);color:#112A46;">📸 +${photos.length}</span>` : ''}
+                            </div>
+                            <div class="member-card__status">
+                                <span class="status-dot status-dot--${member.online ? 'online' : 'offline'}"></span>
+                                ${member.online ? 'Online' : 'Offline'}
+                            </div>
+                        </div>
+                        <div class="member-card__info">
+                            <div class="member-card__name">
+                                <h3>${member.name || 'Unknown'}</h3>
+                                <span class="age">${member.age || '?'}</span>
+                            </div>
+                            <div class="member-card__location">📍 ${member.location || 'Location Unknown'}</div>
+                            <div class="member-card__bio">${member.bio || 'No bio yet.'}</div>
+                            <div class="member-card__interests">
+                                ${(member.interests || []).map(i => `<span class="interest-tag">#${i}</span>`).join('')}
+                            </div>
+                            <div class="member-card__actions">
+                                <button class="btn-view" onclick="window.viewProfile('${member.id}')">👤 View</button>
+                                <button class="btn-message" onclick="window.sendMessage('${member.id}')">💬 Message</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            updatePagination(members.length);
+        }
+
+        // ============================================================
+        // VIEW TOGGLE
+        // ============================================================
+        window.setView = function(view) {
+            currentView = view;
+            grid.className = 'members-grid' + (view === 'list' ? ' list-view' : '');
+            document.getElementById('grid-view').classList.toggle('active', view === 'grid');
+            document.getElementById('list-view').classList.toggle('active', view === 'list');
+            renderMembers(filteredMembers);
+        }
+
+        // ============================================================
+        // FILTERS
+        // ============================================================
+        window.applyFilters = function() {
+            const gender = document.getElementById('filter-gender').value;
+            const status = document.getElementById('filter-status').value;
+            const maxAge = parseInt(document.getElementById('filter-age').value);
+            const verified = document.getElementById('filter-verified').value;
+
+            filteredMembers = allMembers.filter(member => {
+                if (gender !== 'all' && member.gender !== gender) return false;
+                if (status !== 'all' && member.online !== (status === 'online')) return false;
+                if (member.age > maxAge) return false;
+                if (verified === 'verified' && !member.verified) return false;
+                return true;
+            });
+
+            currentPage = 1;
+            renderMembers(filteredMembers);
+            showToast(`Showing ${filteredMembers.length} members`, 'success');
+        }
+
+        window.resetFilters = function() {
+            document.getElementById('filter-gender').value = 'all';
+            document.getElementById('filter-status').value = 'all';
+            document.getElementById('filter-age').value = '50';
+            document.getElementById('age-display').textContent = '50';
+            document.getElementById('filter-verified').value = 'all';
+
+            filteredMembers = [...allMembers];
+            currentPage = 1;
+            renderMembers(filteredMembers);
+            showToast('Filters reset!', 'success');
+        }
+
+        document.getElementById('filter-age').addEventListener('input', function() {
+            document.getElementById('age-display').textContent = this.value;
+        });
+
+        // ============================================================
+        // PAGINATION
+        // ============================================================
+        function updatePagination(total) {
+            const pages = Math.ceil(total / perPage);
+            if (pages <= 1) {
+                paginationContainer.innerHTML = '';
+                return;
+            }
+
+            let html = `<button onclick="window.goToPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>‹ Prev</button>`;
+            for (let i = 1; i <= Math.min(pages, 5); i++) {
+                html += `<button class="${i === currentPage ? 'active' : ''}" onclick="window.goToPage(${i})">${i}</button>`;
+            }
+            if (pages > 5) {
+                html += `<span style="color:rgba(17,42,70,0.15);padding:8px;">…</span>`;
+                html += `<button onclick="window.goToPage(${pages})">${pages}</button>`;
+            }
+            html += `<button onclick="window.goToPage(${currentPage + 1})" ${currentPage === pages ? 'disabled' : ''}>Next ›</button>`;
+
+            paginationContainer.innerHTML = html;
+        }
+
+        window.goToPage = function(page) {
+            const total = filteredMembers.length;
+            const pages = Math.ceil(total / perPage);
+            if (page < 1 || page > pages) return;
+            currentPage = page;
+            renderMembers(filteredMembers);
+        }
+
+        // ============================================================
+        // 🔥 UPDATED: SEND MESSAGE - Goes to Chat Page
+        // ============================================================
+        window.sendMessage = function(id) {
+            const member = allMembers.find(m => m.id === id);
+            if (!member) {
+                showToast('❌ Member not found', 'error');
+                return;
+            }
+
+            // Check if logged in
+            const user = localStorage.getItem('classydate_user');
+            if (!user) {
+                showToast('🔒 Please log in to send messages', 'error');
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 1500);
+                return;
+            }
+
+            // Go directly to chat page with member ID
+            window.location.href = `chat.html?user=${id}&name=${encodeURIComponent(member.name)}`;
+        }
+
+        // ============================================================
+        // VIEW PROFILE
+        // ============================================================
+        window.viewProfile = function(id) {
+            const member = allMembers.find(m => m.id === id);
+            if (member) {
+                showToast(`👤 Viewing profile: ${member.name}`, 'success');
+            }
+        }
+
+        // ============================================================
+        // TOAST
+        // ============================================================
+        let toastTimeout;
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast ' + type;
+            toast.classList.add('show');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // ============================================================
+        // AUTH STATE
+        // ============================================================
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log('✅ User logged in:', user.email);
+            } else {
+                console.log('👤 No user logged in');
+            }
+        });
+
+        // ============================================================
+        // SPINNER KEYFRAME
+        // ============================================================
+        const style = document.createElement('style');
+        style.textContent = `@keyframes spin { to { transform: rotate(360deg); } }`;
+        document.head.appendChild(style);
+
+        // ============================================================
+        // INIT
+        // ============================================================
+        console.log('💎 ClassyDate Members Page - Firebase Version!');
+        console.log('📊 Members will load from Firebase Firestore');
+        console.log('🔑 Message button goes to chat.html');
+    </script>
+
+</body>
+</html>
