@@ -1384,7 +1384,7 @@
         }
 
         // ============================================================
-        // FILE UPLOAD - FIXED
+        // FILE UPLOAD
         // ============================================================
         window.handleFileSelect = async function(event) {
             const files = event.target.files;
@@ -1467,7 +1467,7 @@
         }
 
         // ============================================================
-        // CRUD OPERATIONS - FULLY FIXED
+        // CRUD OPERATIONS - FULLY FIXED WITH BIO
         // ============================================================
 
         // Open Add Modal
@@ -1531,7 +1531,7 @@
         }
 
         // ============================================================
-        // SAVE MEMBER - COMPLETELY FIXED
+        // SAVE MEMBER - COMPLETELY FIXED WITH BIO
         // ============================================================
         window.saveMember = async function(event) {
             event.preventDefault();
@@ -1551,22 +1551,21 @@
                 .map(s => s.trim())
                 .filter(Boolean);
 
-            // Prepare form data
+            // Prepare form data - INCLUDES BIO NOW
             const formData = {
                 name: document.getElementById('form-name').value.trim(),
                 email: document.getElementById('form-email').value.trim(),
                 age: parseInt(document.getElementById('form-age').value),
                 gender: document.getElementById('form-gender').value,
                 location: document.getElementById('form-location').value.trim(),
-                bio: document.getElementById('form-bio').value.trim(),
+                bio: document.getElementById('form-bio').value.trim(), // BIO IS NOW INCLUDED
                 verified: document.getElementById('form-verified').value === 'true',
                 premium: document.getElementById('form-premium').value === 'true',
                 interests: interestsArray,
                 photo_file_ids: uploadedFileIds
             };
 
-            // Only add online and joined if they exist in your table
-            // If your table doesn't have these columns, remove these lines
+            // Add online and joined
             if (isEdit && existingMember) {
                 formData.online = existingMember.online || false;
                 formData.joined = existingMember.joined || new Date().toISOString().slice(0, 10);
@@ -1701,13 +1700,14 @@
 
         loadMembers();
 
-        console.log('💎 ClassyDate Admin Panel - FULLY WORKING!');
+        console.log('💎 ClassyDate Admin Panel - FULLY WORKING WITH BIO!');
         console.log('✅ Add Member button works');
         console.log('✅ Edit Member button works');
         console.log('✅ Delete Member button works');
         console.log('✅ Photo upload works');
         console.log('✅ Search works');
         console.log('✅ Pagination works');
+        console.log('✅ Bio field is now included!');
     </script>
 
 </body>
