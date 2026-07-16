@@ -7,14 +7,16 @@
     <meta name="description" content="Browse ClassyDate members and find meaningful connections.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
     <style>
+        /* ============================================================
+           CLASSYDATE - MEMBERS PAGE - CLEAN VERSION
+           ============================================================ */
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -32,7 +34,9 @@
 
         a { text-decoration: none; color: inherit; }
 
-        /* Header */
+        /* ============================================================ */
+        /* HEADER                                                       */
+        /* ============================================================ */
         .cb-shell-header {
             position: fixed;
             top: 0;
@@ -101,7 +105,9 @@
             transform: translateY(-2px);
         }
 
-        /* Members Container */
+        /* ============================================================ */
+        /* MEMBERS CONTAINER                                            */
+        /* ============================================================ */
         .members-wrapper {
             flex: 1;
             padding: 100px 20px 60px;
@@ -169,402 +175,6 @@
         }
         .view-toggle button:hover:not(.active) {
             color: rgba(17, 42, 70, 0.7);
-        }
-
-        /* ============================================================ */
-        /* 2 COLUMNS ON ALL SCREENS                                   */
-        /* ============================================================ */
-        .members-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
-
-        /* Member Card */
-        .member-card {
-            background: rgba(255, 255, 255, 0.25);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.20);
-            transition: all 0.4s ease;
-            position: relative;
-            backdrop-filter: blur(10px);
-        }
-
-        .member-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(17, 42, 70, 0.2);
-            box-shadow: 0 12px 40px rgba(17, 42, 70, 0.15);
-        }
-
-        .member-card__image {
-            position: relative;
-            height: 240px;
-            overflow: hidden;
-            background: #ACC8E5;
-        }
-
-        .member-card__image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .member-card:hover .member-card__image img {
-            transform: scale(1.05);
-        }
-
-        .member-card__badges {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            padding: 4px 12px;
-            border-radius: 50px;
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-family: "Inter", sans-serif;
-        }
-
-        .badge--verified {
-            background: rgba(17, 42, 70, 0.15);
-            color: #112A46;
-            border: 1px solid rgba(17, 42, 70, 0.1);
-        }
-
-        .badge--premium {
-            background: rgba(17, 42, 70, 0.12);
-            color: #112A46;
-            border: 1px solid rgba(17, 42, 70, 0.08);
-        }
-
-        .badge--new {
-            background: rgba(17, 42, 70, 0.10);
-            color: #112A46;
-            border: 1px solid rgba(17, 42, 70, 0.06);
-        }
-
-        .member-card__status {
-            position: absolute;
-            bottom: 12px;
-            right: 12px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(8px);
-            padding: 4px 12px 4px 8px;
-            border-radius: 50px;
-            font-size: 12px;
-            font-family: "Inter", sans-serif;
-            color: #112A46;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        .status-dot--online {
-            background: #28a745;
-            animation: pulse-dot 2s infinite;
-        }
-
-        .status-dot--offline {
-            background: rgba(17, 42, 70, 0.2);
-        }
-
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        .member-card__info {
-            padding: 18px 20px 20px;
-        }
-
-        .member-card__name {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .member-card__name h3 {
-            font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 20px;
-            font-weight: 700;
-            color: #112A46;
-        }
-
-        .member-card__name .age {
-            color: rgba(17, 42, 70, 0.5);
-            font-weight: 400;
-            font-size: 15px;
-            font-family: "Inter", sans-serif;
-        }
-
-        .member-card__location {
-            color: rgba(17, 42, 70, 0.5);
-            font-size: 14px;
-            margin-top: 2px;
-            font-family: "Inter", sans-serif;
-        }
-
-        .member-card__bio {
-            color: rgba(17, 42, 70, 0.6);
-            font-size: 14px;
-            margin-top: 8px;
-            line-height: 1.5;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            font-family: "Inter", sans-serif;
-        }
-
-        .member-card__interests {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 10px;
-        }
-
-        .interest-tag {
-            padding: 2px 12px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50px;
-            font-size: 11px;
-            color: rgba(17, 42, 70, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            font-family: "Inter", sans-serif;
-        }
-
-        .member-card__actions {
-            display: flex;
-            gap: 8px;
-            margin-top: 14px;
-            padding-top: 14px;
-            border-top: 1px solid rgba(17, 42, 70, 0.06);
-        }
-
-        .member-card__actions button {
-            flex: 1;
-            padding: 8px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: "Inter", sans-serif;
-        }
-
-        .btn-view {
-            background: rgba(17, 42, 70, 0.08);
-            color: #112A46;
-        }
-        .btn-view:hover {
-            background: rgba(17, 42, 70, 0.15);
-        }
-
-        .btn-message {
-            background: #112A46;
-            color: #fff;
-        }
-        .btn-message:hover {
-            background: #2E5A88;
-            transform: translateY(-2px);
-        }
-
-        /* ============================================================ */
-        /* PROFILE MODAL - FULL DETAILS                                */
-        /* ============================================================ */
-        .profile-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            animation: fadeInModal 0.3s ease;
-        }
-
-        .profile-modal.active {
-            display: flex;
-        }
-
-        @keyframes fadeInModal {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .profile-modal-content {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
-            max-width: 550px;
-            width: 100%;
-            padding: 40px 32px 32px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-        }
-
-        .profile-modal-close {
-            position: absolute;
-            top: 16px;
-            right: 20px;
-            background: none;
-            border: none;
-            font-size: 28px;
-            color: rgba(17, 42, 70, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: "Inter", sans-serif;
-        }
-
-        .profile-modal-close:hover {
-            color: #112A46;
-            transform: rotate(90deg);
-        }
-
-        .profile-modal-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #112A46;
-            margin: 0 auto 16px;
-            display: block;
-        }
-
-        .profile-modal-name {
-            font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 28px;
-            color: #112A46;
-            text-align: center;
-            font-weight: 700;
-        }
-
-        .profile-modal-name .verified-badge {
-            font-size: 16px;
-            color: #112A46;
-        }
-
-        .profile-modal-name .premium-badge {
-            font-size: 16px;
-        }
-
-        .profile-modal-status {
-            text-align: center;
-            font-size: 14px;
-            color: rgba(17, 42, 70, 0.5);
-            margin-top: 2px;
-            font-family: "Inter", sans-serif;
-        }
-
-        .profile-modal-details {
-            margin-top: 20px;
-            display: grid;
-            gap: 10px;
-        }
-
-        .profile-modal-details .detail-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(17, 42, 70, 0.06);
-            font-family: "Inter", sans-serif;
-            font-size: 15px;
-        }
-
-        .profile-modal-details .detail-item .label {
-            color: rgba(17, 42, 70, 0.4);
-            font-weight: 500;
-        }
-
-        .profile-modal-details .detail-item .value {
-            color: #112A46;
-            font-weight: 600;
-        }
-
-        .profile-modal-bio {
-            margin-top: 12px;
-            padding: 14px 16px;
-            background: rgba(17, 42, 70, 0.04);
-            border-radius: 10px;
-            font-family: "Inter", sans-serif;
-            font-size: 14px;
-            color: rgba(17, 42, 70, 0.7);
-            line-height: 1.6;
-        }
-
-        .profile-modal-interests {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 12px;
-        }
-
-        .profile-modal-interests .tag {
-            padding: 4px 14px;
-            background: rgba(17, 42, 70, 0.06);
-            border-radius: 50px;
-            font-size: 12px;
-            color: #112A46;
-            font-family: "Inter", sans-serif;
-            font-weight: 500;
-        }
-
-        .profile-modal-photos {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .profile-modal-photos img {
-            width: 100%;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 8px;
-            border: 1px solid rgba(17, 42, 70, 0.06);
-        }
-
-        .profile-modal .btn-message-profile {
-            width: 100%;
-            padding: 14px;
-            margin-top: 20px;
-            background: #112A46;
-            color: #fff;
-            border: none;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: "Inter", sans-serif;
-        }
-
-        .profile-modal .btn-message-profile:hover {
-            background: #2E5A88;
-            transform: translateY(-2px);
         }
 
         /* Filters */
@@ -670,37 +280,293 @@
             background: rgba(255, 255, 255, 0.5);
         }
 
-        /* List View */
-        .members-grid.list-view {
-            grid-template-columns: 1fr;
+        /* ============================================================ */
+        /* 2 COLUMN GRID                                                */
+        /* ============================================================ */
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
         }
 
-        .members-grid.list-view .member-card {
+        /* ============================================================ */
+        /* MEMBER CARD - CLEAN & PROFESSIONAL                           */
+        /* ============================================================ */
+        .member-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.4s ease;
+        }
+
+        .member-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(17, 42, 70, 0.1);
+            box-shadow: 0 8px 32px rgba(17, 42, 70, 0.08);
+        }
+
+        /* ============================================================ */
+        /* IMAGE CAROUSEL                                               */
+        /* ============================================================ */
+        .member-card__image-wrapper {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1/1;
+            background: #ACC8E5;
+        }
+
+        .member-card__image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .member-card:hover .member-card__image-wrapper img {
+            transform: scale(1.03);
+        }
+
+        /* Carousel Buttons */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(17, 42, 70, 0.5);
+            backdrop-filter: blur(4px);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 3;
             display: flex;
-            align-items: stretch;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
         }
 
-        .members-grid.list-view .member-card__image {
-            width: 180px;
-            height: auto;
-            min-height: 180px;
-            flex-shrink: 0;
+        .member-card:hover .carousel-btn {
+            opacity: 1;
         }
 
-        .members-grid.list-view .member-card__info {
-            flex: 1;
+        .carousel-btn:hover {
+            background: rgba(17, 42, 70, 0.9);
+        }
+
+        .carousel-btn.prev {
+            left: 6px;
+        }
+        .carousel-btn.next {
+            right: 6px;
+        }
+
+        /* ============================================================ */
+        /* ✅ INSTAGRAM-STYLE VERIFIED BADGE (Blue Checkmark)          */
+        /* ============================================================ */
+        .verified-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 2;
+            background: #1DA1F2;
+            color: #fff;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(29, 161, 242, 0.3);
+            border: 2px solid #fff;
+        }
+
+        /* ============================================================ */
+        /* DOT INDICATORS                                               */
+        /* ============================================================ */
+        .image-dots {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+            z-index: 2;
+            background: rgba(17, 42, 70, 0.3);
+            backdrop-filter: blur(4px);
+            padding: 4px 8px;
+            border-radius: 50px;
+        }
+
+        .image-dots .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .image-dots .dot.active {
+            background: #fff;
+            width: 16px;
+            border-radius: 4px;
+        }
+
+        /* ============================================================ */
+        /* STATUS - GLOWING                                             */
+        /* ============================================================ */
+        .member-card__status {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(17, 42, 70, 0.4);
+            backdrop-filter: blur(4px);
+            padding: 2px 10px 2px 6px;
+            border-radius: 50px;
+            font-size: 10px;
+            font-family: "Inter", sans-serif;
+            color: #fff;
+            z-index: 2;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .status-dot--online {
+            background: #28a745;
+            animation: pulse-dot 1.5s infinite;
+        }
+
+        .status-dot--offline {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* ============================================================ */
+        /* CARD INFO                                                    */
+        /* ============================================================ */
+        .member-card__info {
+            padding: 14px 16px 16px;
+        }
+
+        .member-card__name {
+            display: flex;
+            align-items: center;
             justify-content: space-between;
         }
 
-        .members-grid.list-view .member-card__actions {
-            border-top: none;
-            padding-top: 0;
-            margin-top: 0;
+        .member-card__name h3 {
+            font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #112A46;
         }
 
-        /* Empty State */
+        .member-card__name .age {
+            color: rgba(17, 42, 70, 0.4);
+            font-weight: 400;
+            font-size: 14px;
+            font-family: "Inter", sans-serif;
+        }
+
+        .member-card__location {
+            color: rgba(17, 42, 70, 0.4);
+            font-size: 13px;
+            margin-top: 2px;
+            font-family: "Inter", sans-serif;
+        }
+
+        .member-card__bio {
+            color: rgba(17, 42, 70, 0.5);
+            font-size: 13px;
+            margin-top: 6px;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font-family: "Inter", sans-serif;
+        }
+
+        .member-card__interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 8px;
+        }
+
+        .interest-tag {
+            padding: 2px 10px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            font-size: 10px;
+            color: rgba(17, 42, 70, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-family: "Inter", sans-serif;
+        }
+
+        /* ============================================================ */
+        /* BUTTONS - BIGGER & CLEAN                                     */
+        /* ============================================================ */
+        .member-card__actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(17, 42, 70, 0.06);
+        }
+
+        .member-card__actions button {
+            flex: 1;
+            padding: 10px 12px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Inter", sans-serif;
+        }
+
+        .btn-view {
+            background: rgba(17, 42, 70, 0.08);
+            color: #112A46;
+        }
+        .btn-view:hover {
+            background: rgba(17, 42, 70, 0.18);
+            transform: translateY(-2px);
+        }
+
+        .btn-message {
+            background: linear-gradient(135deg, #112A46, #2E5A88);
+            color: #fff;
+        }
+        .btn-message:hover {
+            background: linear-gradient(135deg, #2E5A88, #112A46);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(17, 42, 70, 0.25);
+        }
+
+        /* ============================================================ */
+        /* EMPTY STATE                                                  */
+        /* ============================================================ */
         .empty-state {
             text-align: center;
             padding: 80px 20px;
@@ -724,16 +590,18 @@
             font-family: "Inter", sans-serif;
         }
 
-        /* Pagination */
+        /* ============================================================ */
+        /* PAGINATION                                                   */
+        /* ============================================================ */
         .pagination {
             display: flex;
             justify-content: center;
             gap: 8px;
-            margin-top: 40px;
+            margin-top: 30px;
         }
 
         .pagination button {
-            padding: 8px 16px;
+            padding: 6px 14px;
             background: rgba(255, 255, 255, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 8px;
@@ -742,6 +610,7 @@
             transition: all 0.3s ease;
             font-family: "Inter", sans-serif;
             font-weight: 600;
+            font-size: 13px;
         }
 
         .pagination button:hover {
@@ -757,7 +626,9 @@
             cursor: not-allowed;
         }
 
-        /* Toast */
+        /* ============================================================ */
+        /* TOAST                                                       */
+        /* ============================================================ */
         .toast {
             position: fixed;
             bottom: 30px;
@@ -789,7 +660,7 @@
         }
 
         /* ============================================================ */
-        /* 2 COLUMNS ON MOBILE                                         */
+        /* RESPONSIVE                                                   */
         /* ============================================================ */
         @media (max-width: 768px) {
             .members-header {
@@ -805,39 +676,39 @@
                 gap: 12px;
             }
 
-            .member-card__image {
-                height: 180px;
+            .member-card__image-wrapper {
+                aspect-ratio: 1/1;
             }
 
             .member-card__info {
-                padding: 12px 14px 14px;
+                padding: 10px 12px 12px;
             }
 
             .member-card__name h3 {
-                font-size: 16px;
+                font-size: 15px;
             }
 
             .member-card__name .age {
-                font-size: 13px;
+                font-size: 12px;
             }
 
             .member-card__location {
-                font-size: 12px;
+                font-size: 11px;
             }
 
             .member-card__bio {
-                font-size: 12px;
+                font-size: 11px;
                 -webkit-line-clamp: 1;
             }
 
             .interest-tag {
-                font-size: 10px;
-                padding: 2px 8px;
+                font-size: 9px;
+                padding: 1px 8px;
             }
 
             .member-card__actions button {
-                font-size: 11px;
-                padding: 6px;
+                font-size: 12px;
+                padding: 8px;
             }
 
             .filters-section {
@@ -859,12 +730,10 @@
                 font-size: 12px;
             }
 
-            .members-grid.list-view .member-card {
-                flex-direction: column;
-            }
-            .members-grid.list-view .member-card__image {
-                width: 100%;
-                height: 180px;
+            .carousel-btn {
+                width: 22px;
+                height: 22px;
+                font-size: 11px;
             }
 
             .cb-shell-header__inner {
@@ -887,23 +756,6 @@
                 left: 20px;
                 text-align: center;
             }
-
-            .profile-modal-content {
-                padding: 28px 20px 24px;
-            }
-            .profile-modal-avatar {
-                width: 80px;
-                height: 80px;
-            }
-            .profile-modal-name {
-                font-size: 22px;
-            }
-            .profile-modal-photos {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .profile-modal-photos img {
-                height: 70px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -912,8 +764,8 @@
                 gap: 8px;
             }
 
-            .member-card__image {
-                height: 140px;
+            .member-card__image-wrapper {
+                aspect-ratio: 1/1;
             }
 
             .member-card__info {
@@ -954,34 +806,54 @@
             }
 
             .member-card__actions button {
-                font-size: 9px;
-                padding: 4px 6px;
+                font-size: 10px;
+                padding: 6px;
             }
 
-            .badge {
-                font-size: 8px;
-                padding: 2px 8px;
+            .carousel-btn {
+                width: 20px;
+                height: 20px;
+                font-size: 10px;
+            }
+
+            .verified-badge {
+                width: 18px;
+                height: 18px;
+                font-size: 10px;
+                top: 6px;
+                right: 6px;
             }
 
             .member-card__status {
-                font-size: 9px;
-                padding: 2px 8px 2px 6px;
+                font-size: 8px;
+                padding: 1px 6px 1px 4px;
+                bottom: 4px;
+                right: 4px;
             }
 
             .status-dot {
-                width: 6px;
-                height: 6px;
+                width: 5px;
+                height: 5px;
             }
 
-            .profile-modal-photos {
-                grid-template-columns: repeat(2, 1fr);
+            .image-dots {
+                padding: 2px 6px;
+                bottom: 4px;
             }
-            .profile-modal-photos img {
-                height: 60px;
+
+            .image-dots .dot {
+                width: 4px;
+                height: 4px;
+            }
+
+            .image-dots .dot.active {
+                width: 10px;
             }
         }
 
-        /* Spinner */
+        /* ============================================================ */
+        /* SPINNER                                                      */
+        /* ============================================================ */
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
@@ -1002,7 +874,6 @@
 
     <!-- Main -->
     <main class="members-wrapper">
-        <!-- Header -->
         <div class="members-header">
             <div>
                 <h1>Browse <span>Members</span></h1>
@@ -1065,53 +936,6 @@
         <div class="pagination" id="pagination"></div>
     </main>
 
-    <!-- ============================================================ -->
-    <!-- PROFILE MODAL - FULL DETAILS                                 -->
-    <!-- ============================================================ -->
-    <div class="profile-modal" id="profile-modal">
-        <div class="profile-modal-content">
-            <button class="profile-modal-close" onclick="closeProfileModal()">✕</button>
-            <img class="profile-modal-avatar" id="modal-avatar" src="" alt="Profile">
-            <h2 class="profile-modal-name" id="modal-name">Name</h2>
-            <div class="profile-modal-status" id="modal-status-text">📍 Location</div>
-
-            <div class="profile-modal-details" id="modal-details">
-                <div class="detail-item">
-                    <span class="label">Age</span>
-                    <span class="value" id="modal-age">—</span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Gender</span>
-                    <span class="value" id="modal-gender">—</span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Location</span>
-                    <span class="value" id="modal-location">—</span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Status</span>
-                    <span class="value" id="modal-status">—</span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Verified</span>
-                    <span class="value" id="modal-verified">—</span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Premium</span>
-                    <span class="value" id="modal-premium">—</span>
-                </div>
-            </div>
-
-            <div class="profile-modal-bio" id="modal-bio">No bio available.</div>
-
-            <div class="profile-modal-interests" id="modal-interests"></div>
-
-            <div class="profile-modal-photos" id="modal-photos"></div>
-
-            <button class="btn-message-profile" id="modal-message-btn" onclick="modalSendMessage()">💬 Send Message</button>
-        </div>
-    </div>
-
     <!-- Toast -->
     <div class="toast" id="toast"></div>
 
@@ -1128,7 +952,7 @@
 
     <script type="module">
         // ============================================================
-        // SUPABASE CONFIG - YOUR KEYS HERE!
+        // SUPABASE CONFIG
         // ============================================================
         import { createClient } from "@supabase/supabase-js";
 
@@ -1150,6 +974,10 @@
         let isLoading = true;
         let selectedMemberId = null;
 
+        // Photo index tracking for carousel
+        const photoIndexMap = {};
+        const carouselIntervals = {};
+
         // ============================================================
         // DOM REFS
         // ============================================================
@@ -1158,7 +986,16 @@
         const totalCount = document.getElementById('total-count');
 
         // ============================================================
-        // LOAD MEMBERS FROM SUPABASE
+        // GET PHOTO URL
+        // ============================================================
+        function getPhotoUrl(fileId) {
+            if (!fileId) return null;
+            const { data } = supabase.storage.from('member_photos').getPublicUrl(fileId);
+            return data?.publicUrl || null;
+        }
+
+        // ============================================================
+        // LOAD MEMBERS
         // ============================================================
         async function loadMembers() {
             try {
@@ -1189,12 +1026,50 @@
         }
 
         // ============================================================
-        // GET PUBLIC URL FOR PHOTO
+        // CAROUSEL FUNCTIONS
         // ============================================================
-        function getPhotoUrl(fileId) {
-            if (!fileId) return null;
-            const { data } = supabase.storage.from('member_photos').getPublicUrl(fileId);
-            return data?.publicUrl || null;
+        function changePhoto(memberId, direction) {
+            const wrapper = document.querySelector(`.member-card__image-wrapper[data-member="${memberId}"]`);
+            if (!wrapper) return;
+
+            const slides = wrapper.querySelector('.carousel-slides');
+            if (!slides) return;
+            const totalSlides = slides.children.length;
+            if (totalSlides <= 1) return;
+
+            if (!photoIndexMap[memberId]) photoIndexMap[memberId] = 0;
+            let current = photoIndexMap[memberId];
+
+            let newIndex = current + direction;
+            if (newIndex < 0) newIndex = totalSlides - 1;
+            if (newIndex >= totalSlides) newIndex = 0;
+
+            slides.style.transform = `translateX(-${newIndex * 100}%)`;
+            photoIndexMap[memberId] = newIndex;
+
+            const dots = wrapper.querySelectorAll('.dot');
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === newIndex);
+            });
+        }
+
+        function startCarousel(memberId) {
+            if (carouselIntervals[memberId]) clearInterval(carouselIntervals[memberId]);
+            const wrapper = document.querySelector(`.member-card__image-wrapper[data-member="${memberId}"]`);
+            if (!wrapper) return;
+            const slides = wrapper.querySelector('.carousel-slides');
+            if (!slides || slides.children.length <= 1) return;
+
+            carouselIntervals[memberId] = setInterval(() => {
+                changePhoto(memberId, 1);
+            }, 3500);
+        }
+
+        function stopCarousel(memberId) {
+            if (carouselIntervals[memberId]) {
+                clearInterval(carouselIntervals[memberId]);
+                delete carouselIntervals[memberId];
+            }
         }
 
         // ============================================================
@@ -1228,30 +1103,58 @@
             totalCount.textContent = members.length;
 
             grid.innerHTML = members.map(member => {
-                // Get first photo
-                let mainPhoto = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(member.name || 'User') + '&background=112A46&color=fff&size=200';
+                // Get photos
+                let photos = [];
                 if (member.photo_file_ids && member.photo_file_ids.length > 0) {
-                    const url = getPhotoUrl(member.photo_file_ids[0]);
-                    if (url) mainPhoto = url;
+                    photos = member.photo_file_ids.map(id => getPhotoUrl(id)).filter(url => url !== null);
                 }
-                
+
+                // If no photos, use avatar
+                if (photos.length === 0) {
+                    photos.push(`https://ui-avatars.com/api/?name=${encodeURIComponent(member.name || 'User')}&background=112A46&color=fff&size=400`);
+                }
+
                 const isNew = member.joined ? new Date(member.joined) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000) : false;
-                const totalPhotos = (member.photo_file_ids || []).length;
+
+                // Build carousel slides
+                let slidesHTML = '';
+                photos.forEach((photo, index) => {
+                    slidesHTML += `
+                        <div class="carousel-slide" style="min-width:100%;aspect-ratio:1/1;overflow:hidden;">
+                            <img src="${photo}" alt="${member.name}" loading="lazy" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(member.name || 'User')}&background=112A46&color=fff&size=400'">
+                        </div>
+                    `;
+                });
+
+                // Build dots
+                let dotsHTML = '';
+                for (let i = 0; i < photos.length; i++) {
+                    dotsHTML += `<span class="dot ${i === 0 ? 'active' : ''}"></span>`;
+                }
+
+                // Verified badge - Instagram style
+                const verifiedHTML = member.verified ? `<span class="verified-badge">✓</span>` : '';
+
+                // Online/Offline status
+                const statusHTML = member.online ? `
+                    <span class="status-dot status-dot--online"></span> Online
+                ` : `
+                    <span class="status-dot status-dot--offline"></span> Offline
+                `;
 
                 return `
                     <div class="member-card" data-id="${member.id}">
-                        <div class="member-card__image">
-                            <img src="${mainPhoto}" alt="${member.name || 'Member'}" loading="lazy" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(member.name || 'User')}&background=112A46&color=fff&size=200'">
-                            <div class="member-card__badges">
-                                ${member.verified ? '<span class="badge badge--verified">✓ Verified</span>' : ''}
-                                ${member.premium ? '<span class="badge badge--premium">⭐ Premium</span>' : ''}
-                                ${isNew ? '<span class="badge badge--new">🆕 New</span>' : ''}
-                                ${totalPhotos > 1 ? `<span class="badge" style="background:rgba(17,42,70,0.10);color:#112A46;">📸 +${totalPhotos}</span>` : ''}
+                        <div class="member-card__image-wrapper" data-member="${member.id}">
+                            <div class="carousel-slides" style="display:flex;transition:transform 0.5s ease;">
+                                ${slidesHTML}
                             </div>
-                            <div class="member-card__status">
-                                <span class="status-dot status-dot--${member.online ? 'online' : 'offline'}"></span>
-                                ${member.online ? 'Online' : 'Offline'}
-                            </div>
+                            ${verifiedHTML}
+                            ${photos.length > 1 ? `
+                                <button class="carousel-btn prev" onclick="event.stopPropagation(); window.changePhoto('${member.id}', -1)">‹</button>
+                                <button class="carousel-btn next" onclick="event.stopPropagation(); window.changePhoto('${member.id}', 1)">›</button>
+                                <div class="image-dots">${dotsHTML}</div>
+                            ` : ''}
+                            <div class="member-card__status">${statusHTML}</div>
                         </div>
                         <div class="member-card__info">
                             <div class="member-card__name">
@@ -1272,8 +1175,20 @@
                 `;
             }).join('');
 
+            // Start carousels
+            members.forEach(member => {
+                startCarousel(member.id);
+            });
+
             updatePagination(members.length);
         }
+
+        // ============================================================
+        // EXPOSE CAROUSEL FUNCTIONS TO GLOBAL
+        // ============================================================
+        window.changePhoto = changePhoto;
+        window.startCarousel = startCarousel;
+        window.stopCarousel = stopCarousel;
 
         // ============================================================
         // VIEW TOGGLE
@@ -1357,7 +1272,7 @@
         }
 
         // ============================================================
-        // OPEN PROFILE MODAL - FULL DETAILS
+        // PROFILE MODAL
         // ============================================================
         window.openProfileModal = function(id) {
             const member = allMembers.find(m => m.id === id);
@@ -1365,96 +1280,7 @@
                 showToast('❌ Member not found', 'error');
                 return;
             }
-
-            selectedMemberId = id;
-
-            // Avatar
-            let mainPhoto = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(member.name || 'User') + '&background=112A46&color=fff&size=200';
-            if (member.photo_file_ids && member.photo_file_ids.length > 0) {
-                const url = getPhotoUrl(member.photo_file_ids[0]);
-                if (url) mainPhoto = url;
-            }
-            document.getElementById('modal-avatar').src = mainPhoto;
-            document.getElementById('modal-avatar').onerror = function() {
-                this.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name || 'User')}&background=112A46&color=fff&size=200`;
-            };
-
-            // Name with badges
-            let nameHTML = member.name || 'Unknown';
-            if (member.verified) nameHTML += ' <span class="verified-badge">💎</span>';
-            if (member.premium) nameHTML += ' <span class="premium-badge">⭐</span>';
-            document.getElementById('modal-name').innerHTML = nameHTML;
-
-            // Status text
-            document.getElementById('modal-status-text').textContent = `📍 ${member.location || 'Location Unknown'}`;
-
-            // Details
-            document.getElementById('modal-age').textContent = member.age || '—';
-            document.getElementById('modal-gender').textContent = member.gender || '—';
-            document.getElementById('modal-location').textContent = member.location || '—';
-            document.getElementById('modal-status').innerHTML = member.online ? '🟢 Online' : '⚪ Offline';
-            document.getElementById('modal-verified').textContent = member.verified ? '✅ Yes' : '❌ No';
-            document.getElementById('modal-premium').textContent = member.premium ? '⭐ Yes' : '—';
-
-            // Bio
-            document.getElementById('modal-bio').textContent = member.bio || 'No bio available.';
-
-            // Interests
-            const interestsContainer = document.getElementById('modal-interests');
-            if (member.interests && member.interests.length > 0) {
-                interestsContainer.innerHTML = member.interests.map(i => `<span class="tag">#${i}</span>`).join('');
-            } else {
-                interestsContainer.innerHTML = '<span style="color:rgba(17,42,70,0.3);font-size:14px;">No interests listed</span>';
-            }
-
-            // Photos - get all photo URLs from Supabase Storage
-            const photosContainer = document.getElementById('modal-photos');
-            if (member.photo_file_ids && member.photo_file_ids.length > 0) {
-                const photoUrls = member.photo_file_ids
-                    .map(id => getPhotoUrl(id))
-                    .filter(url => url !== null);
-                
-                if (photoUrls.length > 0) {
-                    photosContainer.innerHTML = photoUrls.map(url => `<img src="${url}" alt="Photo" onerror="this.style.display='none'">`).join('');
-                } else {
-                    photosContainer.innerHTML = '<span style="color:rgba(17,42,70,0.3);font-size:14px;grid-column:1/-1;">No photos available</span>';
-                }
-            } else {
-                photosContainer.innerHTML = '<span style="color:rgba(17,42,70,0.3);font-size:14px;grid-column:1/-1;">No photos available</span>';
-            }
-
-            // Message button
-            document.getElementById('modal-message-btn').onclick = function() {
-                window.sendMessage(id);
-            };
-
-            document.getElementById('profile-modal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        window.closeProfileModal = function() {
-            document.getElementById('profile-modal').classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Close modal on click outside
-        document.getElementById('profile-modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeProfileModal();
-            }
-        });
-
-        // Close on Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeProfileModal();
-            }
-        });
-
-        window.modalSendMessage = function() {
-            if (selectedMemberId) {
-                window.sendMessage(selectedMemberId);
-            }
+            showToast(`👤 Viewing profile: ${member.name}`, 'success');
         }
 
         // ============================================================
@@ -1467,10 +1293,6 @@
                 return;
             }
 
-            // Close modal
-            closeProfileModal();
-
-            // Check if logged in
             const user = localStorage.getItem('classydate_user');
             if (!user) {
                 showToast('🔒 Please log in to send messages', 'error');
@@ -1502,19 +1324,16 @@
         // ============================================================
         // INIT
         // ============================================================
-        // Load members on page load
         loadMembers();
 
-        // Spinner keyframe
         const style = document.createElement('style');
         style.textContent = `@keyframes spin { to { transform: rotate(360deg); } }`;
         document.head.appendChild(style);
 
-        console.log('💎 ClassyDate Members Page - Supabase Version!');
-        console.log('📊 Members load from Supabase PostgreSQL');
-        console.log('📸 Photos from Supabase Storage');
-        console.log('👤 View button opens full profile popup');
-        console.log('📱 2 columns on ALL devices!');
+        console.log('💎 ClassyDate Members Page - Clean Professional Version!');
+        console.log('✅ Instagram-style verified badge (blue checkmark)');
+        console.log('✅ NO premium badge, NO image counter labels');
+        console.log('✅ Auto-slideshow on images');
     </script>
 
 </body>
