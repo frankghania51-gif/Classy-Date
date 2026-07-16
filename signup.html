@@ -15,14 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
 
     <style>
-        /* ============================================================
-           CLASSYDATE - SIGN UP PAGE - ULTIMATE HOT VERSION
-           Colors: Navy #112A46 | Soft Blue #ACC8E5
-           ============================================================ */
-
-        *,
-        *::before,
-        *::after {
+        * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -38,14 +31,9 @@
             overflow-x: hidden;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        a { text-decoration: none; color: inherit; }
 
-        /* ============================================================ */
-        /* HEADER                                                       */
-        /* ============================================================ */
+        /* Header */
         .cb-shell-header {
             position: fixed;
             top: 0;
@@ -117,9 +105,7 @@
             transform: translateY(-2px);
         }
 
-        /* ============================================================ */
-        /* SIGNUP CONTAINER                                             */
-        /* ============================================================ */
+        /* Signup Container */
         .signup-wrapper {
             flex: 1;
             display: flex;
@@ -155,9 +141,7 @@
             100% { transform: translateY(-10vh) rotate(720deg) scale(0.5); opacity: 0; }
         }
 
-        /* ============================================================ */
-        /* SIGNUP CARD                                                 */
-        /* ============================================================ */
+        /* Signup Card */
         .signup-card {
             max-width: 520px;
             width: 100%;
@@ -196,9 +180,7 @@
             font-family: "Inter", sans-serif;
         }
 
-        /* ============================================================ */
-        /* FORM                                                        */
-        /* ============================================================ */
+        /* Form */
         .form-group {
             margin-bottom: 18px;
         }
@@ -213,7 +195,7 @@
         }
 
         .form-group label .required {
-            color: #112A46;
+            color: #dc3545;
         }
 
         .form-group input,
@@ -232,10 +214,10 @@
 
         .form-group select {
             cursor: pointer;
+            appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23112A46' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 16px center;
-            appearance: none;
         }
 
         .form-group select option {
@@ -260,9 +242,7 @@
             gap: 12px;
         }
 
-        /* ============================================================ */
-        /* GENDER BUTTONS                                               */
-        /* ============================================================ */
+        /* Gender Buttons */
         .gender-group {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -308,9 +288,7 @@
             gap: 8px;
         }
 
-        /* ============================================================ */
-        /* TERMS                                                        */
-        /* ============================================================ */
+        /* Terms */
         .terms-group {
             display: flex;
             align-items: flex-start;
@@ -346,9 +324,7 @@
             text-decoration: underline;
         }
 
-        /* ============================================================ */
-        /* BUTTONS                                                      */
-        /* ============================================================ */
+        /* Buttons */
         .btn-signup {
             width: 100%;
             padding: 16px;
@@ -375,9 +351,7 @@
             transform: none;
         }
 
-        /* ============================================================ */
-        /* DIVIDER                                                      */
-        /* ============================================================ */
+        /* Divider */
         .divider {
             display: flex;
             align-items: center;
@@ -396,9 +370,7 @@
             background: rgba(17, 42, 70, 0.1);
         }
 
-        /* ============================================================ */
-        /* SOCIAL SIGNUP                                                */
-        /* ============================================================ */
+        /* Social Signup */
         .social-signup {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -433,9 +405,7 @@
             font-size: 20px;
         }
 
-        /* ============================================================ */
-        /* FOOTER LINK                                                 */
-        /* ============================================================ */
+        /* Footer Link */
         .signup-footer {
             text-align: center;
             margin-top: 8px;
@@ -458,9 +428,7 @@
             text-decoration: underline;
         }
 
-        /* ============================================================ */
-        /* MESSAGES                                                     */
-        /* ============================================================ */
+        /* Messages */
         .error-message {
             display: none;
             background: rgba(17, 42, 70, 0.08);
@@ -502,48 +470,38 @@
             80% { transform: translateX(6px); }
         }
 
-        /* ============================================================ */
-        /* PASSWORD STRENGTH                                            */
-        /* ============================================================ */
-        .password-strength {
-            display: flex;
-            gap: 6px;
-            margin-top: 8px;
-        }
-
-        .password-strength .bar {
-            flex: 1;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 4px;
-            transition: background 0.3s ease;
-        }
-
-        .password-strength .bar.weak {
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 14px 24px;
             background: #112A46;
-            opacity: 0.3;
+            color: #fff;
+            border-radius: 12px;
+            font-family: "Inter", sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            z-index: 999;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
         }
 
-        .password-strength .bar.medium {
-            background: #112A46;
-            opacity: 0.6;
-        }
-
-        .password-strength .bar.strong {
-            background: #112A46;
+        .toast.show {
+            transform: translateY(0);
             opacity: 1;
         }
-
-        .password-hint {
-            font-size: 12px;
-            color: rgba(17, 42, 70, 0.4);
-            margin-top: 4px;
-            font-family: "Inter", sans-serif;
+        .toast.success {
+            background: #28a745;
+        }
+        .toast.error {
+            background: #dc3545;
         }
 
-        /* ============================================================ */
-        /* RESPONSIVE                                                  */
-        /* ============================================================ */
+        /* Responsive */
         @media (max-width: 600px) {
             .form-row {
                 grid-template-columns: 1fr 1fr;
@@ -554,37 +512,29 @@
             .signup-card {
                 padding: 32px 24px 28px;
             }
-
             .signup-card__header h1 {
                 font-size: 26px;
             }
-
             .form-row {
                 grid-template-columns: 1fr;
             }
-
             .gender-group {
                 grid-template-columns: 1fr 1fr;
             }
-
             .social-signup {
                 grid-template-columns: 1fr;
             }
-
             .cb-shell-header__inner {
                 height: 64px;
                 padding: 0 16px;
             }
-
             .cb-shell-brand {
                 font-size: 20px;
             }
-
             .cb-shell-button {
                 padding: 6px 16px;
                 font-size: 12px;
             }
-
             .terms-group {
                 align-items: flex-start;
             }
@@ -594,11 +544,9 @@
             .signup-card {
                 padding: 24px 16px 20px;
             }
-
             .cb-shell-actions {
                 gap: 6px;
             }
-
             .cb-shell-button {
                 padding: 4px 12px;
                 font-size: 11px;
@@ -608,12 +556,10 @@
 </head>
 <body>
 
-    <!-- ============================================================ -->
-    <!-- HEADER                                                       -->
-    <!-- ============================================================ -->
+    <!-- Header -->
     <header class="cb-shell-header" role="banner">
         <div class="cb-shell-header__inner">
-            <a class="cb-shell-brand" href="/" aria-label="ClassyDate">
+            <a class="cb-shell-brand" href="/">
                 Classy<span>Date</span>
             </a>
 
@@ -624,9 +570,7 @@
         </div>
     </header>
 
-    <!-- ============================================================ -->
-    <!-- SIGNUP FORM                                                  -->
-    <!-- ============================================================ -->
+    <!-- Signup Form -->
     <main class="signup-wrapper">
         <!-- Floating Hearts -->
         <div class="floating-hearts-signup">
@@ -674,17 +618,13 @@
                     <input type="email" id="email" placeholder="you@example.com" required>
                 </div>
 
-                <!-- Password -->
+                <!-- Password - NO RESTRICTIONS! -->
                 <div class="form-group">
                     <label for="password">Password <span class="required">*</span></label>
-                    <input type="password" id="password" placeholder="Min. 8 characters" required oninput="checkPasswordStrength(this.value)">
-                    <div class="password-strength">
-                        <div class="bar" id="strength-1"></div>
-                        <div class="bar" id="strength-2"></div>
-                        <div class="bar" id="strength-3"></div>
-                        <div class="bar" id="strength-4"></div>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                    <div style="font-size:12px;color:rgba(17,42,70,0.3);margin-top:4px;font-family:'Inter',sans-serif;">
+                        No restrictions — choose any password you like
                     </div>
-                    <div class="password-hint" id="password-hint">Use 8+ characters with a mix of letters, numbers &amp; symbols</div>
                 </div>
 
                 <!-- Gender -->
@@ -779,7 +719,10 @@
                     <span class="icon">🔵</span> Google
                 </button>
                 <button class="social-btn" onclick="handleSocialSignup('Facebook')">
-                    <span class="icon">🔷</span> Facebook
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#1877F2">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                    Facebook
                 </button>
             </div>
 
@@ -789,93 +732,49 @@
         </div>
     </main>
 
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
     <!-- ============================================================ -->
-    <!-- SCRIPTS - Firebase Auth                                      -->
+    <!-- SCRIPTS - Supabase Auth                                      -->
     <!-- ============================================================ -->
     <script type="importmap">
         {
             "imports": {
-                "firebase/app": "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js",
-                "firebase/auth": "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js",
-                "firebase/firestore": "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js"
+                "@supabase/supabase-js": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm"
             }
         }
     </script>
 
     <script type="module">
         // ============================================================
-        // FIREBASE CONFIG - YOUR CONFIG HERE!
+        // SUPABASE CONFIG - YOUR KEYS HERE!
         // ============================================================
-        import { initializeApp } from "firebase/app";
-        import { getAuth, createUserWithEmailAndPassword, updateProfile, onAuthStateChanged } from "firebase/auth";
-        import { getFirestore, doc, setDoc } from "firebase/firestore";
+        import { createClient } from "@supabase/supabase-js";
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyACEYbex1YBpqeH7c2bbFk-9AA7iYe_NXU",
-            authDomain: "classydate-ff97f.firebaseapp.com",
-            projectId: "classydate-ff97f",
-            storageBucket: "classydate-ff97f.firebasestorage.app",
-            messagingSenderId: "241438852209",
-            appId: "1:241438852209:web:00e9af320aa28becd307d0",
-            measurementId: "G-TET9ZFZD0P"
-        };
+        const SUPABASE_URL = 'https://ehfnzsfnsoiyiwpxqmli.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_ybgZxnGuU_Gt35rfqkEdBw_YkEdD8vl';
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
+        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        console.log('🔥 Firebase Auth + Firestore connected!');
+        console.log('🔥 Supabase Auth connected!');
 
         // ============================================================
         // EXPOSE FUNCTIONS TO GLOBAL WINDOW
         // ============================================================
-        window.auth = auth;
-        window.db = db;
-        window.createUserWithEmailAndPassword = createUserWithEmailAndPassword;
-        window.updateProfile = updateProfile;
-        window.doc = doc;
-        window.setDoc = setDoc;
+        window.supabase = supabase;
 
         // ============================================================
-        // PASSWORD STRENGTH
+        // CHECK IF USER IS ALREADY LOGGED IN
         // ============================================================
-        window.checkPasswordStrength = function(password) {
-            const bars = [
-                document.getElementById('strength-1'),
-                document.getElementById('strength-2'),
-                document.getElementById('strength-3'),
-                document.getElementById('strength-4')
-            ];
-            const hint = document.getElementById('password-hint');
-
-            bars.forEach(function(bar) { bar.className = 'bar'; });
-
-            if (password.length === 0) {
-                hint.textContent = 'Use 8+ characters with a mix of letters, numbers & symbols';
-                hint.style.color = 'rgba(17, 42, 70, 0.4)';
-                return;
+        async function checkUser() {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (user) {
+                console.log('✅ User already logged in:', user.email);
+                window.location.href = 'members.html';
             }
-
-            let strength = 0;
-            if (password.length >= 8) strength++;
-            if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
-            if (/\d/.test(password)) strength++;
-            if (/[^a-zA-Z0-9]/.test(password)) strength++;
-
-            const levels = ['Weak', 'Weak', 'Medium', 'Strong', 'Strong'];
-            const colors = ['weak', 'weak', 'medium', 'strong', 'strong'];
-
-            for (let i = 0; i < bars.length; i++) {
-                if (i < strength) {
-                    bars[i].classList.add(colors[strength]);
-                }
-            }
-
-            hint.textContent = 'Strength: ' + levels[strength] + ' (' + password.length + ' characters)';
-            hint.style.color = strength >= 3 ? '#112A46' : strength >= 2 ? '#112A46' : '#112A46';
-            hint.style.opacity = strength >= 3 ? '1' : strength >= 2 ? '0.6' : '0.4';
         }
+        checkUser();
 
         // ============================================================
         // GENDER SELECTION
@@ -898,7 +797,7 @@
         }
 
         // ============================================================
-        // HANDLE SIGNUP
+        // HANDLE SIGNUP - NO PASSWORD RESTRICTIONS!
         // ============================================================
         window.handleSignup = async function(event) {
             event.preventDefault();
@@ -934,8 +833,9 @@
                 return false;
             }
 
-            if (password.length < 8) {
-                errorMessage.textContent = '⚠️ Password must be at least 8 characters.';
+            // ✅ NO PASSWORD RESTRICTIONS - Just check if empty
+            if (!password || password.length === 0) {
+                errorMessage.textContent = '⚠️ Please enter a password.';
                 errorMessage.classList.add('show');
                 return false;
             }
@@ -963,48 +863,34 @@
             btn.disabled = true;
 
             try {
-                // Create user with Firebase
-                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                const user = userCredential.user;
-
-                // Update profile with display name
-                await updateProfile(user, {
-                    displayName: fullname
+                // 🔥 Create user with Supabase Auth
+                const { data, error } = await supabase.auth.signUp({
+                    email: email,
+                    password: password,
+                    options: {
+                        data: {
+                            name: fullname,
+                            gender: gender.value,
+                            location: location || '',
+                            birthDate: `${year}-${month}-${day}`
+                        }
+                    }
                 });
 
-                // Save user data to Firestore
-                let firestoreSaved = false;
-                try {
-                    await setDoc(doc(db, "users", user.uid), {
-                        uid: user.uid,
-                        name: fullname,
-                        email: email,
-                        gender: gender.value,
-                        birthDate: `${year}-${month}-${day}`,
-                        location: location || '',
-                        createdAt: new Date().toISOString(),
-                        isAdmin: false
-                    });
-                    firestoreSaved = true;
-                } catch (firestoreError) {
-                    console.warn('Firestore save error:', firestoreError);
-                }
+                if (error) throw error;
 
+                const user = data.user;
                 console.log('✅ Account created for:', email);
 
                 // Save user session
                 localStorage.setItem('classydate_user', JSON.stringify({
-                    uid: user.uid,
+                    uid: user.id,
                     email: user.email,
                     displayName: fullname
                 }));
 
                 // Show success
-                if (firestoreSaved) {
-                    successMessage.textContent = '✅ Account created successfully! Redirecting...';
-                } else {
-                    successMessage.textContent = '✅ Account created, but profile data could not be saved. Please check your Firestore rules.';
-                }
+                successMessage.textContent = '✅ Account created successfully! Redirecting...';
                 successMessage.classList.add('show');
 
                 btn.textContent = '✅ Welcome!';
@@ -1019,18 +905,12 @@
                 console.error('Signup error:', error);
 
                 let errorMsg = '⚠️ Signup failed. ';
-                switch (error.code) {
-                    case 'auth/email-already-in-use':
+                switch (error.message) {
+                    case 'User already registered':
                         errorMsg += 'This email is already registered. Please log in.';
                         break;
-                    case 'auth/invalid-email':
+                    case 'Invalid email':
                         errorMsg += 'Please enter a valid email address.';
-                        break;
-                    case 'auth/weak-password':
-                        errorMsg += 'Password is too weak. Please use at least 8 characters with a mix of letters, numbers, and symbols.';
-                        break;
-                    case 'auth/too-many-requests':
-                        errorMsg += 'Too many attempts. Please try again later.';
                         break;
                     default:
                         errorMsg += error.message;
@@ -1062,18 +942,9 @@
             });
         });
 
-        // ============================================================
-        // CHECK AUTH STATE
-        // ============================================================
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                console.log('✅ User logged in:', user.email);
-            } else {
-                console.log('👤 No user logged in');
-            }
-        });
-
-        console.log('💎 ClassyDate Sign Up Page - Firebase Auth Ready!');
+        console.log('💎 ClassyDate Sign Up Page - Supabase Auth Ready!');
+        console.log('🔐 No password restrictions - users can enter anything!');
+        console.log('📘 Facebook icon added to social signup');
     </script>
 
 </body>
