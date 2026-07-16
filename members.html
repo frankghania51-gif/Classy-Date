@@ -72,37 +72,88 @@
             color: #2E5A88;
         }
 
-        .cb-shell-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        /* ============================================================ */
+        /* ✅ 3-LINE HAMBURGER MENU                                     */
+        /* ============================================================ */
+        .menu-container {
+            position: relative;
+            display: inline-block;
         }
 
-        .cb-shell-button {
-            padding: 8px 24px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            cursor: pointer;
+        .menu-btn {
+            background: none;
             border: none;
-            font-family: "Inter", sans-serif;
-        }
-        .cb-shell-button--secondary {
-            background: rgba(17, 42, 70, 0.1);
+            cursor: pointer;
+            padding: 8px 12px;
+            font-size: 28px;
             color: #112A46;
-            border: 1px solid rgba(17, 42, 70, 0.12);
+            transition: all 0.3s ease;
+            border-radius: 8px;
         }
-        .cb-shell-button--secondary:hover {
-            background: rgba(17, 42, 70, 0.18);
+
+        .menu-btn:hover {
+            background: rgba(17, 42, 70, 0.08);
         }
-        .cb-shell-button--primary {
-            background: #112A46;
-            color: #fff;
+
+        .menu-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 50px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            min-width: 180px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            z-index: 200;
         }
-        .cb-shell-button--primary:hover {
-            background: #2E5A88;
-            transform: translateY(-2px);
+
+        .menu-dropdown.show {
+            display: block;
+            animation: slideDown 0.2s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .menu-dropdown a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            color: #112A46;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: "Inter", sans-serif;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(17, 42, 70, 0.04);
+        }
+
+        .menu-dropdown a:last-child {
+            border-bottom: none;
+        }
+
+        .menu-dropdown a:hover {
+            background: rgba(17, 42, 70, 0.06);
+        }
+
+        .menu-dropdown .menu-divider {
+            height: 1px;
+            background: rgba(17, 42, 70, 0.06);
+            margin: 4px 0;
+        }
+
+        .menu-dropdown .logout-btn {
+            color: #dc3545;
+            font-weight: 600;
+        }
+
+        .menu-dropdown .logout-btn:hover {
+            background: rgba(220, 53, 69, 0.06);
         }
 
         /* ============================================================ */
@@ -175,108 +226,7 @@
             color: rgba(17, 42, 70, 0.7);
         }
 
-        /* Filters */
-        .filters-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.25);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.20);
-            align-items: center;
-            backdrop-filter: blur(10px);
-        }
-
-        .filter-group {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .filter-group label {
-            color: rgba(17, 42, 70, 0.5);
-            font-size: 13px;
-            font-weight: 600;
-            font-family: "Inter", sans-serif;
-        }
-
-        .filter-group select,
-        .filter-group input {
-            padding: 8px 14px;
-            background: rgba(255, 255, 255, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            color: #112A46;
-            font-size: 14px;
-            font-family: "Inter", sans-serif;
-            outline: none;
-            min-width: 120px;
-        }
-
-        .filter-group select:focus,
-        .filter-group input:focus {
-            border-color: #112A46;
-            box-shadow: 0 0 0 4px rgba(17, 42, 70, 0.08);
-        }
-
-        .filter-group select option {
-            background: #ACC8E5;
-            color: #112A46;
-        }
-
-        .filter-group input[type="range"] {
-            width: 120px;
-            padding: 0;
-            background: transparent;
-            accent-color: #112A46;
-            cursor: pointer;
-        }
-
-        .filter-group .range-labels {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            color: rgba(17, 42, 70, 0.3);
-            min-width: 60px;
-            font-family: "Inter", sans-serif;
-        }
-
-        .filter-actions {
-            display: flex;
-            gap: 8px;
-            margin-left: auto;
-        }
-
-        .filter-actions button {
-            padding: 8px 20px;
-            border-radius: 8px;
-            border: none;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: "Inter", sans-serif;
-        }
-
-        .btn-apply {
-            background: #112A46;
-            color: #fff;
-        }
-        .btn-apply:hover {
-            background: #2E5A88;
-            transform: translateY(-2px);
-        }
-
-        .btn-reset {
-            background: rgba(255, 255, 255, 0.3);
-            color: rgba(17, 42, 70, 0.5);
-            border: 1px solid rgba(17, 42, 70, 0.1);
-        }
-        .btn-reset:hover {
-            background: rgba(255, 255, 255, 0.5);
-        }
+        /* ✅ FILTERS SECTION REMOVED */
 
         /* ============================================================ */
         /* 2 COLUMN GRID                                                */
@@ -486,7 +436,7 @@
             font-family: "Inter", sans-serif;
         }
 
-        /* ✅ FIXED: Bio now shows "About Me" content */
+        /* ✅ Bio shows "About Me" content */
         .member-card__bio {
             color: rgba(17, 42, 70, 0.6);
             font-size: 13px;
@@ -621,7 +571,7 @@
         }
 
         /* ============================================================ */
-        /* PROFILE MODAL - FULL SCREEN ON MOBILE                        */
+        /* PROFILE MODAL                                                */
         /* ============================================================ */
         .profile-modal {
             display: none;
@@ -754,9 +704,6 @@
             font-weight: 600;
         }
 
-        /* ============================================================ */
-        /* BIO - Uses "About Me" from member                           */
-        /* ============================================================ */
         .profile-modal-bio {
             margin-top: 10px;
             padding: 10px 14px;
@@ -786,9 +733,6 @@
             font-weight: 500;
         }
 
-        /* ============================================================ */
-        /* ✅ RESIZED MODAL PHOTOS - BALANCED SIZE                    */
-        /* ============================================================ */
         .modal-photos-container {
             margin: 10px 0 8px;
             border-radius: 12px;
@@ -873,9 +817,6 @@
             border-radius: 4px;
         }
 
-        /* ============================================================ */
-        /* MESSAGE BUTTON                                               */
-        /* ============================================================ */
         .profile-modal .btn-message-profile {
             width: 100%;
             padding: 14px;
@@ -981,20 +922,6 @@
                 padding: 10px 12px;
             }
 
-            .filters-section {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .filter-group {
-                flex-wrap: wrap;
-            }
-            .filter-group select,
-            .filter-group input {
-                min-width: 100%;
-            }
-            .filter-actions {
-                margin-left: 0;
-            }
             .view-toggle button {
                 padding: 6px 12px;
                 font-size: 12px;
@@ -1013,11 +940,6 @@
 
             .cb-shell-brand {
                 font-size: 18px;
-            }
-
-            .cb-shell-button {
-                padding: 4px 12px;
-                font-size: 11px;
             }
 
             .profile-modal-content {
@@ -1068,6 +990,10 @@
 
             .modal-photos-container {
                 max-height: 280px;
+            }
+
+            .menu-btn {
+                font-size: 24px;
             }
 
             .toast {
@@ -1207,6 +1133,16 @@
             .modal-photos-container {
                 max-height: 220px;
             }
+
+            .menu-btn {
+                font-size: 22px;
+                padding: 4px 8px;
+            }
+
+            .menu-dropdown {
+                min-width: 150px;
+                right: -8px;
+            }
         }
 
         @keyframes spin {
@@ -1216,18 +1152,26 @@
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- ============================================================ -->
+    <!-- HEADER - WITH 3-LINE MENU                                    -->
+    <!-- ============================================================ -->
     <header class="cb-shell-header" role="banner">
         <div class="cb-shell-header__inner">
             <a class="cb-shell-brand" href="/">Classy<span>Date</span></a>
-            <div class="cb-shell-actions">
-                <a href="signup.html" class="cb-shell-button cb-shell-button--secondary">Join</a>
-                <a href="login.html" class="cb-shell-button cb-shell-button--primary">Log in</a>
+
+            <!-- ✅ 3-Line Hamburger Menu -->
+            <div class="menu-container">
+                <button class="menu-btn" id="menuBtn" onclick="toggleMenu()">☰</button>
+                <div class="menu-dropdown" id="menuDropdown">
+                    <a href="#" onclick="logoutUser()" class="logout-btn">🚪 Log out</a>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Main -->
+    <!-- ============================================================ -->
+    <!-- MAIN CONTENT                                                  -->
+    <!-- ============================================================ -->
     <main class="members-wrapper">
         <div class="members-header">
             <div>
@@ -1240,49 +1184,7 @@
             </div>
         </div>
 
-        <!-- Filters -->
-        <div class="filters-section">
-            <div class="filter-group">
-                <label>Gender</label>
-                <select id="filter-gender">
-                    <option value="all">All</option>
-                    <option value="male">Men</option>
-                    <option value="female">Women</option>
-                </select>
-            </div>
-
-            <div class="filter-group">
-                <label>Status</label>
-                <select id="filter-status">
-                    <option value="all">All</option>
-                    <option value="online">Online</option>
-                    <option value="offline">Offline</option>
-                </select>
-            </div>
-
-            <div class="filter-group">
-                <label>Age</label>
-                <input type="range" id="filter-age" min="18" max="80" value="50">
-                <span class="range-labels">
-                    <span>18</span>
-                    <span id="age-display">50</span>
-                    <span>80</span>
-                </span>
-            </div>
-
-            <div class="filter-group">
-                <label>Verified</label>
-                <select id="filter-verified">
-                    <option value="all">All</option>
-                    <option value="verified">Verified Only</option>
-                </select>
-            </div>
-
-            <div class="filter-actions">
-                <button class="btn-apply" onclick="applyFilters()">Apply</button>
-                <button class="btn-reset" onclick="resetFilters()">Reset</button>
-            </div>
-        </div>
+        <!-- ✅ FILTERS SECTION REMOVED -->
 
         <!-- Members Grid -->
         <div class="members-grid" id="members-grid"></div>
@@ -1292,22 +1194,16 @@
     </main>
 
     <!-- ============================================================ -->
-    <!-- PROFILE MODAL - UPDATED                                      -->
+    <!-- PROFILE MODAL                                                -->
     <!-- ============================================================ -->
     <div class="profile-modal" id="profile-modal">
         <div class="profile-modal-content">
             <button class="profile-modal-close" onclick="closeProfileModal()">✕</button>
             
-            <!-- AVATAR -->
             <img class="profile-modal-avatar" id="modal-avatar" src="" alt="Profile">
-            
-            <!-- NAME -->
             <h2 class="profile-modal-name" id="modal-name">Name</h2>
-            
-            <!-- STATUS -->
             <div class="profile-modal-status" id="modal-status-text">📍 Location</div>
 
-            <!-- DETAILS -->
             <div class="profile-modal-details" id="modal-details">
                 <div class="detail-item">
                     <span class="label">Age</span>
@@ -1335,15 +1231,9 @@
                 </div>
             </div>
 
-            <!-- ✅ BIO - Shows "About Me" from member -->
             <div class="profile-modal-bio" id="modal-bio">No bio available.</div>
-
-            <!-- INTERESTS -->
             <div class="profile-modal-interests" id="modal-interests"></div>
 
-            <!-- ============================================================ -->
-            <!-- ✅ RESIZED PHOTOS                                            -->
-            <!-- ============================================================ -->
             <div class="modal-photos-container" id="modal-photos-container">
                 <div class="modal-carousel-wrapper" id="modal-carousel-wrapper">
                     <div class="modal-carousel-slides" id="modal-carousel-slides"></div>
@@ -1353,7 +1243,6 @@
                 <div class="modal-carousel-dots" id="modal-carousel-dots"></div>
             </div>
 
-            <!-- MESSAGE BUTTON -->
             <button class="btn-message-profile" id="modal-message-btn" onclick="modalSendMessage()">💬 Send Message</button>
         </div>
     </div>
@@ -1362,7 +1251,7 @@
     <div class="toast" id="toast"></div>
 
     <!-- ============================================================ -->
-    <!-- SCRIPTS - Supabase                                            -->
+    <!-- SCRIPTS                                                      -->
     <!-- ============================================================ -->
     <script type="importmap">
         {
@@ -1408,6 +1297,27 @@
                 console.warn('Error getting photo URL for:', fileId, error);
                 return null;
             }
+        }
+
+        // ============================================================
+        // ✅ MENU FUNCTIONS
+        // ============================================================
+        window.toggleMenu = function() {
+            const dropdown = document.getElementById('menuDropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const container = document.querySelector('.menu-container');
+            if (container && !container.contains(e.target)) {
+                document.getElementById('menuDropdown').classList.remove('show');
+            }
+        });
+
+        window.logoutUser = function() {
+            localStorage.removeItem('classydate_user');
+            window.location.href = 'login.html';
         }
 
         // ============================================================
@@ -1550,7 +1460,6 @@
 
                 const verifiedHTML = member.verified ? `<span class="verified-badge">✓</span>` : '';
                 
-                // ✅ STATUS - Only show "Online", hide "Offline"
                 const statusHTML = member.online ? `
                     <span class="status-dot status-dot--online"></span> Online
                 ` : '';
@@ -1603,41 +1512,7 @@
             renderMembers(filteredMembers);
         }
 
-        window.applyFilters = function() {
-            const gender = document.getElementById('filter-gender').value;
-            const status = document.getElementById('filter-status').value;
-            const maxAge = parseInt(document.getElementById('filter-age').value);
-            const verified = document.getElementById('filter-verified').value;
-
-            filteredMembers = allMembers.filter(member => {
-                if (gender !== 'all' && member.gender !== gender) return false;
-                if (status !== 'all' && member.online !== (status === 'online')) return false;
-                if (member.age > maxAge) return false;
-                if (verified === 'verified' && !member.verified) return false;
-                return true;
-            });
-
-            currentPage = 1;
-            renderMembers(filteredMembers);
-            showToast(`Showing ${filteredMembers.length} members`, 'success');
-        }
-
-        window.resetFilters = function() {
-            document.getElementById('filter-gender').value = 'all';
-            document.getElementById('filter-status').value = 'all';
-            document.getElementById('filter-age').value = '50';
-            document.getElementById('age-display').textContent = '50';
-            document.getElementById('filter-verified').value = 'all';
-
-            filteredMembers = [...allMembers];
-            currentPage = 1;
-            renderMembers(filteredMembers);
-            showToast('Filters reset!', 'success');
-        }
-
-        document.getElementById('filter-age').addEventListener('input', function() {
-            document.getElementById('age-display').textContent = this.value;
-        });
+        // ✅ Filters are removed - no filter functions needed
 
         function updatePagination(total) {
             const pages = Math.ceil(total / perPage);
@@ -1668,7 +1543,7 @@
         }
 
         // ============================================================
-        // OPEN PROFILE MODAL
+        // PROFILE MODAL FUNCTIONS
         // ============================================================
         window.openProfileModal = function(id) {
             const member = allMembers.find(m => m.id === id);
@@ -1679,7 +1554,6 @@
 
             selectedMemberId = id;
 
-            // Get photos
             let photos = [];
             if (member.photo_file_ids && member.photo_file_ids.length > 0) {
                 photos = member.photo_file_ids
@@ -1693,22 +1567,18 @@
                 mainPhoto = photos[0];
             }
 
-            // Avatar
             document.getElementById('modal-avatar').src = mainPhoto;
             document.getElementById('modal-avatar').onerror = function() {
                 this.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(memberName)}&background=112A46&color=fff&size=200`;
             };
 
-            // Name
             let nameHTML = memberName;
             if (member.verified) nameHTML += ' <span class="verified-badge" style="position:relative;top:auto;right:auto;display:inline-block;width:20px;height:20px;font-size:11px;margin-left:4px;">✓</span>';
             if (member.premium) nameHTML += ' ⭐';
             document.getElementById('modal-name').innerHTML = nameHTML;
 
-            // Status
             document.getElementById('modal-status-text').textContent = `📍 ${member.location || 'Location Unknown'}`;
 
-            // Details
             document.getElementById('modal-age').textContent = member.age || '—';
             document.getElementById('modal-gender').textContent = member.gender || '—';
             document.getElementById('modal-location').textContent = member.location || '—';
@@ -1716,10 +1586,8 @@
             document.getElementById('modal-verified').textContent = member.verified ? '✅ Yes' : '❌ No';
             document.getElementById('modal-premium').textContent = member.premium ? '⭐ Yes' : '—';
 
-            // ✅ BIO - Shows "About Me" from member
             document.getElementById('modal-bio').textContent = member.about_me || member.bio || 'No bio available.';
 
-            // Interests
             const interestsContainer = document.getElementById('modal-interests');
             if (member.interests && member.interests.length > 0) {
                 interestsContainer.innerHTML = member.interests.map(i => `<span class="tag">#${i}</span>`).join('');
@@ -1727,9 +1595,6 @@
                 interestsContainer.innerHTML = '<span style="color:rgba(17,42,70,0.3);font-size:14px;">No interests listed</span>';
             }
 
-            // ============================================================
-            // ✅ RESIZED PHOTOS
-            // ============================================================
             const slidesContainer = document.getElementById('modal-carousel-slides');
             const dotsContainer = document.getElementById('modal-carousel-dots');
             
@@ -1782,9 +1647,6 @@
             document.body.style.overflow = 'hidden';
         }
 
-        // ============================================================
-        // MODAL PHOTO CAROUSEL
-        // ============================================================
         window.changeModalPhoto = function(direction) {
             const slides = document.getElementById('modal-carousel-slides');
             const dots = document.querySelectorAll('.modal-dot');
@@ -1806,11 +1668,8 @@
             });
         }
 
-        // ============================================================
-        // TOUCH SWIPE SUPPORT
-        // ============================================================
+        // Touch swipe support
         let touchStartX = 0;
-        let touchEndX = 0;
 
         document.addEventListener('DOMContentLoaded', function() {
             const modalContent = document.querySelector('.profile-modal-content');
@@ -1820,7 +1679,7 @@
             }, { passive: true });
 
             modalContent.addEventListener('touchend', function(e) {
-                touchEndX = e.changedTouches[0].screenX;
+                const touchEndX = e.changedTouches[0].screenX;
                 const diff = touchStartX - touchEndX;
                 
                 if (Math.abs(diff) > 50) {
@@ -1833,9 +1692,6 @@
             }, { passive: true });
         });
 
-        // ============================================================
-        // CLOSE MODAL
-        // ============================================================
         window.closeProfileModal = function() {
             document.getElementById('profile-modal').classList.remove('active');
             document.body.style.overflow = 'auto';
@@ -1859,9 +1715,6 @@
             }
         }
 
-        // ============================================================
-        // SEND MESSAGE
-        // ============================================================
         window.sendMessage = function(id) {
             const member = allMembers.find(m => m.id === id);
             if (!member) {
@@ -1909,11 +1762,12 @@
         document.head.appendChild(style);
 
         console.log('💎 ClassyDate Members Page - UPDATED!');
-        console.log('✅ Photos resized (balanced)');
-        console.log('✅ View & Message buttons BIGGER');
-        console.log('✅ "Offline" status removed');
-        console.log('✅ Bio shows "About Me" content');
-        console.log('✅ Full screen on mobile');
+        console.log('✅ 3-line menu with only Log out');
+        console.log('✅ Filters REMOVED');
+        console.log('✅ Photos resized');
+        console.log('✅ Bigger buttons');
+        console.log('✅ Online status only');
+        console.log('✅ Bio shows "About Me"');
     </script>
 
 </body>
