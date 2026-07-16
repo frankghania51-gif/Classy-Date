@@ -612,19 +612,10 @@
                     <input type="text" id="fullname" placeholder="John Doe" required>
                 </div>
 
-                <!-- Email -->
-                <div class="form-group">
-                    <label for="email">Email Address <span class="required">*</span></label>
-                    <input type="email" id="email" placeholder="you@example.com" required>
-                </div>
-
-                <!-- Password - NO RESTRICTIONS! -->
+                <!-- Password - NO RESTRICTIONS, NO HINT TEXT -->
                 <div class="form-group">
                     <label for="password">Password <span class="required">*</span></label>
                     <input type="password" id="password" placeholder="Enter your password" required>
-                    <div style="font-size:12px;color:rgba(17,42,70,0.3);margin-top:4px;font-family:'Inter',sans-serif;">
-                        No restrictions — choose any password you like
-                    </div>
                 </div>
 
                 <!-- Gender -->
@@ -797,13 +788,12 @@
         }
 
         // ============================================================
-        // HANDLE SIGNUP - NO PASSWORD RESTRICTIONS!
+        // HANDLE SIGNUP - NO EMAIL, NO PASSWORD RESTRICTIONS
         // ============================================================
         window.handleSignup = async function(event) {
             event.preventDefault();
 
             const fullname = document.getElementById('fullname').value.trim();
-            const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
             const gender = document.querySelector('input[name="gender"]:checked');
             const month = document.getElementById('month').value;
@@ -827,11 +817,8 @@
                 return false;
             }
 
-            if (!email || !email.includes('@') || !email.includes('.')) {
-                errorMessage.textContent = '⚠️ Please enter a valid email address.';
-                errorMessage.classList.add('show');
-                return false;
-            }
+            // ✅ NO EMAIL FIELD - using a generated email
+            const email = `${fullname.toLowerCase().replace(/\s/g, '.')}_${Date.now()}@classydate.com`;
 
             // ✅ NO PASSWORD RESTRICTIONS - Just check if empty
             if (!password || password.length === 0) {
@@ -863,7 +850,7 @@
             btn.disabled = true;
 
             try {
-                // 🔥 Create user with Supabase Auth
+                // 🔥 Create user with Supabase Auth using generated email
                 const { data, error } = await supabase.auth.signUp({
                     email: email,
                     password: password,
@@ -909,9 +896,6 @@
                     case 'User already registered':
                         errorMsg += 'This email is already registered. Please log in.';
                         break;
-                    case 'Invalid email':
-                        errorMsg += 'Please enter a valid email address.';
-                        break;
                     default:
                         errorMsg += error.message;
                 }
@@ -943,7 +927,7 @@
         });
 
         console.log('💎 ClassyDate Sign Up Page - Supabase Auth Ready!');
-        console.log('🔐 No password restrictions - users can enter anything!');
+        console.log('🔐 No email field - users sign up with just name and password!');
         console.log('📘 Facebook icon added to social signup');
     </script>
 
