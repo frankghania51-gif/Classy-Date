@@ -7,20 +7,12 @@
     <meta name="description" content="Complete your subscription to unlock your connection.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
 
-    <!-- ============================================================ -->
-    <!-- FONTS                                                       -->
-    <!-- ============================================================ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
 
     <style>
-        /* ============================================================
-           CLASSYDATE - KENYA VERIFICATION PAGE
-           Colors: Safaricom Green #00A651 | Dark Green #006D32
-           ============================================================ */
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -29,58 +21,28 @@
 
         body {
             font-family: "Inter", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-            background: #f0f2f5;
-            color: #1a1a2e;
+            background: #ACC8E5;
+            color: #112A46;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        a { text-decoration: none; color: inherit; }
 
-        /* ============================================================ */
-        /* SAFARICOM THEME HEADER                                      */
-        /* ============================================================ */
-        .safaricom-header {
-            background: linear-gradient(135deg, #00A651, #006D32);
-            padding: 20px 20px 60px;
+        /* Header */
+        .page-header {
+            background: linear-gradient(135deg, #112A46, #2E5A88);
+            padding: 20px 20px 50px;
             position: relative;
-            overflow: hidden;
         }
 
-        .safaricom-header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 300px;
-            height: 300px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 50%;
-        }
-
-        .safaricom-header::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -10%;
-            width: 200px;
-            height: 200px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 50%;
-        }
-
-        .safaricom-header__inner {
+        .page-header__inner {
             max-width: 600px;
             margin: 0 auto;
-            position: relative;
-            z-index: 1;
         }
 
-        .safaricom-header__brand {
+        .page-header__brand {
             display: flex;
             align-items: center;
             gap: 12px;
@@ -90,17 +52,17 @@
             font-weight: 700;
         }
 
-        .safaricom-header__brand span {
+        .page-header__brand span {
             font-family: "Inter", sans-serif;
             font-weight: 300;
             opacity: 0.8;
         }
 
-        .safaricom-header__brand .icon {
+        .page-header__brand .icon {
             font-size: 32px;
         }
 
-        .safaricom-header__badge {
+        .page-header__badge {
             display: inline-block;
             background: rgba(255, 255, 255, 0.15);
             padding: 4px 16px;
@@ -110,52 +72,45 @@
             color: #fff;
             margin-top: 8px;
             font-family: "Inter", sans-serif;
-            backdrop-filter: blur(10px);
         }
 
-        .safaricom-header__title {
+        .page-header__title {
             color: #fff;
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
             font-size: 28px;
             font-weight: 700;
             margin-top: 16px;
-            line-height: 1.2;
         }
 
-        .safaricom-header__title .highlight {
+        .page-header__title .highlight {
             color: #FFD700;
         }
 
-        .safaricom-header__subtitle {
+        .page-header__subtitle {
             color: rgba(255, 255, 255, 0.85);
             font-size: 16px;
             margin-top: 8px;
             font-family: "Inter", sans-serif;
-            line-height: 1.6;
         }
 
-        /* ============================================================ */
-        /* MAIN CONTENT                                                */
-        /* ============================================================ */
-        .kenya-wrapper {
+        /* Main Content */
+        .main-wrapper {
             flex: 1;
             max-width: 600px;
-            margin: -40px auto 40px;
+            margin: -30px auto 40px;
             padding: 0 20px;
             width: 100%;
             position: relative;
             z-index: 2;
         }
 
-        /* ============================================================ */
-        /* PAYMENT CARD                                                */
-        /* ============================================================ */
         .payment-card {
-            background: #fff;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
             border-radius: 20px;
             padding: 32px 28px 28px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
-            border: 1px solid rgba(0, 166, 81, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.30);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
         }
 
         /* Connection Preview */
@@ -164,9 +119,9 @@
             align-items: center;
             gap: 16px;
             padding: 16px;
-            background: linear-gradient(135deg, rgba(0, 166, 81, 0.06), rgba(0, 109, 50, 0.04));
+            background: rgba(255, 255, 255, 0.3);
             border-radius: 14px;
-            border: 1px solid rgba(0, 166, 81, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             margin-bottom: 24px;
         }
 
@@ -175,7 +130,7 @@
             height: 60px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #00A651;
+            border: 3px solid #112A46;
             flex-shrink: 0;
         }
 
@@ -185,7 +140,7 @@
 
         .connection-preview__info .label {
             font-size: 12px;
-            color: rgba(0, 0, 0, 0.4);
+            color: rgba(17, 42, 70, 0.4);
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -196,27 +151,24 @@
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
             font-size: 20px;
             font-weight: 700;
-            color: #1a1a2e;
+            color: #112A46;
         }
 
         .connection-preview__info .name .verified {
-            color: #00A651;
-            font-size: 14px;
+            color: #2E5A88;
         }
 
         .connection-preview__info .location {
             font-size: 13px;
-            color: rgba(0, 0, 0, 0.4);
+            color: rgba(17, 42, 70, 0.4);
             font-family: "Inter", sans-serif;
         }
 
-        /* ============================================================ */
-        /* UNLOCK MESSAGE                                              */
-        /* ============================================================ */
+        /* Unlock Message */
         .unlock-message {
             text-align: center;
             padding: 20px 16px;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(255, 215, 0, 0.03));
+            background: rgba(255, 215, 0, 0.08);
             border-radius: 14px;
             border: 1px solid rgba(255, 215, 0, 0.15);
             margin-bottom: 24px;
@@ -231,11 +183,11 @@
         .unlock-message h3 {
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
             font-size: 20px;
-            color: #1a1a2e;
+            color: #112A46;
         }
 
         .unlock-message p {
-            color: rgba(0, 0, 0, 0.6);
+            color: rgba(17, 42, 70, 0.6);
             font-size: 15px;
             margin-top: 4px;
             font-family: "Inter", sans-serif;
@@ -243,7 +195,7 @@
 
         .unlock-message .price-tag {
             display: inline-block;
-            background: #00A651;
+            background: linear-gradient(135deg, #112A46, #2E5A88);
             color: #fff;
             padding: 6px 20px;
             border-radius: 50px;
@@ -259,68 +211,60 @@
             opacity: 0.8;
         }
 
-        /* ============================================================ */
-        /* M-PESA PAYMENT DETAILS                                      */
-        /* ============================================================ */
-        .mpesa-details {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        /* Payment Details */
+        .payment-details {
+            background: rgba(255, 255, 255, 0.3);
             border-radius: 14px;
             padding: 20px;
             margin-bottom: 24px;
-            border: 1px solid rgba(0, 166, 81, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .mpesa-details .label {
+        .payment-details .label {
             font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: rgba(0, 0, 0, 0.4);
+            color: rgba(17, 42, 70, 0.4);
             font-family: "Inter", sans-serif;
         }
 
-        .mpesa-details .paybill-row {
+        .payment-details .row {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 12px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            border-bottom: 1px solid rgba(17, 42, 70, 0.06);
         }
 
-        .mpesa-details .paybill-row:last-child {
+        .payment-details .row:last-child {
             border-bottom: none;
         }
 
-        .mpesa-details .paybill-row .key {
+        .payment-details .row .key {
             font-size: 14px;
-            color: rgba(0, 0, 0, 0.5);
+            color: rgba(17, 42, 70, 0.5);
             font-family: "Inter", sans-serif;
         }
 
-        .mpesa-details .paybill-row .value {
+        .payment-details .row .value {
             font-size: 16px;
             font-weight: 700;
-            color: #1a1a2e;
+            color: #112A46;
             font-family: "Inter", sans-serif;
         }
 
-        .mpesa-details .paybill-row .value .copy-btn {
+        .payment-details .row .value .copy-btn {
             background: none;
             border: none;
-            color: #00A651;
+            color: #2E5A88;
             cursor: pointer;
             font-size: 14px;
             padding: 0 4px;
             font-family: "Inter", sans-serif;
         }
 
-        .mpesa-details .paybill-row .value .copy-btn:hover {
-            color: #006D32;
-        }
-
-        /* ============================================================ */
-        /* SCREENSHOT UPLOAD                                           */
-        /* ============================================================ */
+        /* Upload Section */
         .upload-section {
             margin-bottom: 24px;
         }
@@ -328,7 +272,7 @@
         .upload-section .label {
             font-size: 14px;
             font-weight: 600;
-            color: #1a1a2e;
+            color: #112A46;
             display: block;
             margin-bottom: 6px;
             font-family: "Inter", sans-serif;
@@ -340,30 +284,25 @@
 
         .upload-section .sub-label {
             font-size: 13px;
-            color: rgba(0, 0, 0, 0.4);
+            color: rgba(17, 42, 70, 0.4);
             margin-bottom: 12px;
             font-family: "Inter", sans-serif;
         }
 
         .upload-zone {
-            border: 2px dashed rgba(0, 166, 81, 0.2);
+            border: 2px dashed rgba(17, 42, 70, 0.2);
             border-radius: 14px;
             padding: 30px 20px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            background: rgba(0, 166, 81, 0.02);
+            background: rgba(255, 255, 255, 0.2);
             position: relative;
         }
 
         .upload-zone:hover {
-            border-color: #00A651;
-            background: rgba(0, 166, 81, 0.04);
-        }
-
-        .upload-zone.dragover {
-            border-color: #00A651;
-            background: rgba(0, 166, 81, 0.08);
+            border-color: #112A46;
+            background: rgba(255, 255, 255, 0.3);
         }
 
         .upload-zone .icon {
@@ -373,7 +312,7 @@
         }
 
         .upload-zone p {
-            color: rgba(0, 0, 0, 0.4);
+            color: rgba(17, 42, 70, 0.4);
             font-size: 14px;
             font-family: "Inter", sans-serif;
         }
@@ -382,7 +321,7 @@
             display: inline-block;
             margin-top: 8px;
             padding: 8px 24px;
-            background: #00A651;
+            background: #112A46;
             color: #fff;
             border: none;
             border-radius: 50px;
@@ -394,7 +333,7 @@
         }
 
         .upload-zone .browse-btn:hover {
-            background: #006D32;
+            background: #2E5A88;
             transform: translateY(-2px);
         }
 
@@ -412,9 +351,9 @@
             display: none;
             margin-top: 12px;
             padding: 12px;
-            background: rgba(0, 166, 81, 0.06);
+            background: rgba(255, 255, 255, 0.3);
             border-radius: 12px;
-            border: 1px solid rgba(0, 166, 81, 0.1);
+            border: 1px solid rgba(17, 42, 70, 0.1);
             align-items: center;
             gap: 12px;
         }
@@ -438,13 +377,13 @@
         .upload-preview .info .name {
             font-size: 14px;
             font-weight: 600;
-            color: #1a1a2e;
+            color: #112A46;
             font-family: "Inter", sans-serif;
         }
 
         .upload-preview .info .size {
             font-size: 12px;
-            color: rgba(0, 0, 0, 0.4);
+            color: rgba(17, 42, 70, 0.4);
             font-family: "Inter", sans-serif;
         }
 
@@ -457,13 +396,11 @@
             padding: 4px 8px;
         }
 
-        /* ============================================================ */
-        /* SUBMIT BUTTON                                               */
-        /* ============================================================ */
+        /* Submit Button */
         .btn-verify {
             width: 100%;
             padding: 16px;
-            background: linear-gradient(135deg, #00A651, #006D32);
+            background: linear-gradient(135deg, #112A46, #2E5A88);
             color: #fff;
             border: none;
             border-radius: 14px;
@@ -480,7 +417,7 @@
 
         .btn-verify:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 166, 81, 0.35);
+            box-shadow: 0 8px 30px rgba(17, 42, 70, 0.35);
         }
 
         .btn-verify:disabled {
@@ -511,15 +448,13 @@
             to { transform: rotate(360deg); }
         }
 
-        /* ============================================================ */
-        /* TOAST NOTIFICATION                                           */
-        /* ============================================================ */
+        /* Toast */
         .toast {
             position: fixed;
             bottom: 30px;
             right: 30px;
             padding: 14px 24px;
-            background: #1a1a2e;
+            background: #112A46;
             color: #fff;
             border-radius: 12px;
             font-family: "Inter", sans-serif;
@@ -539,82 +474,55 @@
         }
 
         .toast.success {
-            background: #00A651;
+            background: #28a745;
         }
 
         .toast.error {
             background: #dc3545;
         }
 
-        /* ============================================================ */
-        /* RESPONSIVE                                                  */
-        /* ============================================================ */
         @media (max-width: 480px) {
-            .safaricom-header {
-                padding: 16px 16px 50px;
+            .page-header {
+                padding: 16px 16px 40px;
             }
-
-            .safaricom-header__title {
+            .page-header__title {
                 font-size: 22px;
             }
-
-            .safaricom-header__subtitle {
-                font-size: 14px;
-            }
-
-            .kenya-wrapper {
-                margin: -30px auto 20px;
+            .main-wrapper {
+                margin: -20px auto 20px;
                 padding: 0 16px;
             }
-
             .payment-card {
                 padding: 24px 16px 20px;
                 border-radius: 16px;
             }
-
-            .connection-preview {
-                padding: 12px;
-            }
-
             .connection-preview__avatar {
                 width: 48px;
                 height: 48px;
             }
-
             .connection-preview__info .name {
                 font-size: 17px;
             }
-
             .unlock-message h3 {
                 font-size: 17px;
             }
-
             .unlock-message .price-tag {
                 font-size: 16px;
                 padding: 4px 16px;
             }
-
-            .mpesa-details {
+            .payment-details {
                 padding: 16px;
             }
-
-            .mpesa-details .paybill-row .value {
+            .payment-details .row .value {
                 font-size: 14px;
             }
-
             .upload-zone {
                 padding: 20px 16px;
             }
-
-            .upload-zone .icon {
-                font-size: 32px;
-            }
-
             .btn-verify {
                 font-size: 16px;
                 padding: 14px;
             }
-
             .toast {
                 bottom: 20px;
                 right: 20px;
@@ -626,39 +534,34 @@
 </head>
 <body>
 
-    <!-- ============================================================ -->
-    /* SAFARICOM THEME HEADER                                       */
-    <!-- ============================================================ -->
-    <header class="safaricom-header">
-        <div class="safaricom-header__inner">
-            <div class="safaricom-header__brand">
+    <!-- Header -->
+    <header class="page-header">
+        <div class="page-header__inner">
+            <div class="page-header__brand">
                 <span class="icon">💎</span>
                 Classy<span>Date</span>
-                <span class="safaricom-header__badge">🇰🇪 Kenya</span>
+                <span class="page-header__badge">🇰🇪 Kenya</span>
             </div>
-
-            <h1 class="safaricom-header__title">
+            <h1 class="page-header__title">
                 Unlock Your <span class="highlight">Connection</span>
             </h1>
-            <p class="safaricom-header__subtitle">
-                Complete your subscription to start chatting with your match
+            <p class="page-header__subtitle">
+                Complete your subscription to start chatting
             </p>
         </div>
     </header>
 
-    <!-- ============================================================ -->
-    <!-- MAIN CONTENT                                                -->
-    <!-- ============================================================ -->
-    <main class="kenya-wrapper">
+    <!-- Main Content -->
+    <main class="main-wrapper">
         <div class="payment-card">
 
-            <!-- Connection Preview -->
-            <div class="connection-preview" id="connection-preview">
-                <img class="connection-preview__avatar" id="member-avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Member">
+            <!-- Connection Preview - DYNAMIC -->
+            <div class="connection-preview">
+                <img class="connection-preview__avatar" id="member-avatar" src="" alt="Member">
                 <div class="connection-preview__info">
                     <div class="label">💬 Connecting you with</div>
                     <div class="name" id="member-name">
-                        Loading... <span class="verified">💎</span>
+                        <span id="member-name-text">Loading...</span> <span class="verified">💎</span>
                     </div>
                     <div class="location" id="member-location">📍 Loading...</div>
                 </div>
@@ -672,42 +575,42 @@
                 <div class="price-tag">
                     🪙 200 Coins <small>= Ksh 431.00</small>
                 </div>
-                <p style="margin-top:8px;font-size:13px;color:rgba(0,0,0,0.4);">
+                <p style="margin-top:8px;font-size:13px;color:rgba(17,42,70,0.4);">
                     One-time payment · Instant access
                 </p>
             </div>
 
-            <!-- M-PESA Payment Details -->
-            <div class="mpesa-details">
+            <!-- Payment Details -->
+            <div class="payment-details">
                 <div class="label">📱 M-PESA Payment Details</div>
 
-                <div class="paybill-row">
+                <div class="row">
                     <span class="key">Number</span>
                     <span class="value">
-                        <strong style="color:#00A651;">+254754447524</strong>
+                        <strong style="color:#2E5A88;">+254754447524</strong>
                         <button class="copy-btn" onclick="copyToClipboard('+254754447524')">📋 Copy</button>
                     </span>
                 </div>
 
-                <div class="paybill-row">
+                <div class="row">
                     <span class="key">Account Name</span>
                     <span class="value">Leina</span>
                 </div>
 
-                <div class="paybill-row">
+                <div class="row">
                     <span class="key">Amount</span>
-                    <span class="value" style="color:#00A651;font-size:18px;">Ksh 431.00</span>
+                    <span class="value" style="color:#2E5A88;font-size:18px;">Ksh 431.00</span>
                 </div>
 
-                <div class="paybill-row" style="border-bottom: none;padding-bottom:0;">
+                <div class="row" style="border-bottom: none;padding-bottom:0;">
                     <span class="key">Reference</span>
-                    <span class="value" style="font-size:13px;font-weight:400;color:rgba(0,0,0,0.5);">
+                    <span class="value" style="font-size:13px;font-weight:400;color:rgba(17,42,70,0.5);">
                         Use your <strong>Phone Number</strong> as reference
                     </span>
                 </div>
             </div>
 
-            <!-- Screenshot Upload -->
+            <!-- Upload Section -->
             <div class="upload-section">
                 <label class="label">
                     Upload Payment Screenshot <span class="required">*</span>
@@ -737,23 +640,19 @@
                 <span class="btn-text">✅ Verify &amp; Unlock</span>
             </button>
 
-            <p style="text-align:center;margin-top:16px;font-size:13px;color:rgba(0,0,0,0.3);font-family:'Inter',sans-serif;">
+            <p style="text-align:center;margin-top:16px;font-size:13px;color:rgba(17,42,70,0.3);font-family:'Inter',sans-serif;">
                 ⏳ Verification takes 2-5 minutes. You'll be redirected automatically.
             </p>
         </div>
     </main>
 
-    <!-- ============================================================ -->
-    <!-- TOAST NOTIFICATION                                           -->
-    <!-- ============================================================ -->
+    <!-- Toast -->
     <div class="toast" id="toast"></div>
 
-    <!-- ============================================================ -->
-    <!-- SCRIPTS - FIXED DYNAMIC MEMBER LOADING                      -->
-    <!-- ============================================================ -->
+    <!-- Scripts -->
     <script>
         // ============================================================
-        // 🔥 FIXED: GET MEMBER INFO FROM URL OR LOCALSTORAGE
+        // 🔥 GET MEMBER INFO FROM URL
         // ============================================================
         function getMemberFromURL() {
             const params = new URLSearchParams(window.location.search);
@@ -762,17 +661,17 @@
 
             console.log('🔍 URL params:', { userId, userName });
 
-            // ✅ Try to get from URL first
+            // Try to get from URL first
             if (userId && userName) {
                 return {
                     id: parseInt(userId),
                     name: userName,
                     location: '📍 Location Unknown',
-                    photo: `https://ui-avatars.com/api/?name=${encodeURIComponent(userName)}&background=00A651&color=fff&size=200`
+                    photo: `https://ui-avatars.com/api/?name=${encodeURIComponent(userName)}&background=112A46&color=fff&size=200`
                 };
             }
 
-            // ✅ Try to get from localStorage (from members page)
+            // Try from localStorage
             const saved = localStorage.getItem('classydate_selected_member');
             if (saved) {
                 try {
@@ -782,65 +681,59 @@
                         id: data.id || 1,
                         name: data.name || 'Member',
                         location: data.location || '📍 Location Unknown',
-                        photo: data.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(data.name || 'Member')}&background=00A651&color=fff&size=200`
+                        photo: data.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(data.name || 'Member')}&background=112A46&color=fff&size=200`
                     };
-                } catch (e) {
-                    console.error('Error parsing localStorage:', e);
-                }
+                } catch (e) {}
             }
 
-            // ✅ Try to get from pending message (from members page "Message" button)
+            // Try from pending message
             const pendingMessage = localStorage.getItem('pending_message');
             if (pendingMessage) {
                 try {
                     const data = JSON.parse(pendingMessage);
-                    console.log('📦 Loaded from pending_message:', data);
                     if (data.memberId && data.memberName) {
                         return {
                             id: parseInt(data.memberId),
                             name: data.memberName,
                             location: data.memberLocation || '📍 Location Unknown',
-                            photo: data.memberPhoto || `https://ui-avatars.com/api/?name=${encodeURIComponent(data.memberName)}&background=00A651&color=fff&size=200`
+                            photo: data.memberPhoto || `https://ui-avatars.com/api/?name=${encodeURIComponent(data.memberName)}&background=112A46&color=fff&size=200`
                         };
                     }
-                } catch (e) {
-                    console.error('Error parsing pending_message:', e);
-                }
+                } catch (e) {}
             }
 
-            // ✅ Fallback - show a default member
-            console.log('⚠️ No member data found, using default');
+            // Fallback - use a generic member
             return {
                 id: 1,
                 name: 'Member',
                 location: '📍 Location Unknown',
-                photo: 'https://ui-avatars.com/api/?name=Member&background=00A651&color=fff&size=200'
+                photo: 'https://ui-avatars.com/api/?name=Member&background=112A46&color=fff&size=200'
             };
         }
 
         // ============================================================
-        // 🔥 FIXED: LOAD MEMBER INFO DYNAMICALLY
+        // 🔥 LOAD MEMBER
         // ============================================================
         const member = getMemberFromURL();
 
         console.log('✅ Member loaded:', member);
 
-        // Update the DOM with member info
+        // Update the page with member info
         document.getElementById('member-avatar').src = member.photo;
-        document.getElementById('member-name').innerHTML = member.name + ' <span class="verified">💎</span>';
+        document.getElementById('member-name-text').textContent = member.name;
         document.getElementById('member-location').textContent = member.location || '📍 Location Unknown';
         document.getElementById('unlock-name').textContent = member.name.split(' ')[0] || 'your match';
 
-        // Fallback for avatar error
+        // Avatar fallback
         document.getElementById('member-avatar').onerror = function() {
-            this.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=00A651&color=fff&size=200`;
+            this.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=112A46&color=fff&size=200`;
         };
 
-        // Store the selected member for future use
+        // Save for later
         localStorage.setItem('classydate_selected_member', JSON.stringify(member));
 
         // ============================================================
-        // FILE UPLOAD HANDLING
+        // FILE UPLOAD
         // ============================================================
         let uploadedFile = null;
 
@@ -849,7 +742,7 @@
             if (!file) return;
 
             if (!file.type.startsWith('image/')) {
-                showToast('⚠️ Please upload an image file (PNG, JPG, JPEG).', 'error');
+                showToast('⚠️ Please upload an image file.', 'error');
                 event.target.value = '';
                 return;
             }
@@ -869,7 +762,7 @@
                 document.getElementById('file-size').textContent = formatFileSize(file.size);
                 document.getElementById('upload-preview').classList.add('show');
                 document.querySelector('.upload-zone').style.display = 'none';
-                showToast('📸 Screenshot uploaded successfully!', 'success');
+                showToast('📸 Screenshot uploaded!', 'success');
             };
             reader.readAsDataURL(file);
         }
@@ -887,18 +780,16 @@
             return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
         }
 
-        // Drag and drop support
+        // Drag and drop
         const uploadZone = document.getElementById('upload-zone');
         uploadZone.addEventListener('dragover', function(e) {
             e.preventDefault();
             this.classList.add('dragover');
         });
-
         uploadZone.addEventListener('dragleave', function(e) {
             e.preventDefault();
             this.classList.remove('dragover');
         });
-
         uploadZone.addEventListener('drop', function(e) {
             e.preventDefault();
             this.classList.remove('dragover');
@@ -927,7 +818,7 @@
         }
 
         // ============================================================
-        // SUBMIT VERIFICATION
+        // SUBMIT
         // ============================================================
         function submitVerification() {
             const btn = document.getElementById('submit-btn');
@@ -944,7 +835,7 @@
                 localStorage.setItem('classydate_subscribed', 'true');
                 localStorage.setItem('classydate_selected_member', JSON.stringify(member));
 
-                showToast('✅ Payment verified! Redirecting to chat...', 'success');
+                showToast('✅ Payment verified! Redirecting...', 'success');
 
                 setTimeout(() => {
                     window.location.href = `chat.html?user=${member.id}`;
@@ -954,7 +845,7 @@
         }
 
         // ============================================================
-        // TOAST NOTIFICATION
+        // TOAST
         // ============================================================
         function showToast(message, type = 'success') {
             const toast = document.getElementById('toast');
@@ -967,20 +858,8 @@
             }, 4000);
         }
 
-        // ============================================================
-        // KEYBOARD SHORTCUTS
-        // ============================================================
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' && e.ctrlKey) {
-                submitVerification();
-            }
-        });
-
-        console.log('🇰🇪 ClassyDate Kenya Verification Page loaded!');
-        console.log(`👤 Member: ${member.name} (ID: ${member.id})`);
-        console.log(`📍 Location: ${member.location}`);
-        console.log('📱 M-PESA: +254754447524 (Leina)');
-        console.log('💰 Amount: Ksh 431.00');
+        console.log('🇰🇪 Verification Page Ready!');
+        console.log(`👤 Member: ${member.name}`);
     </script>
 
 </body>
