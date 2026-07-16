@@ -788,7 +788,7 @@
         }
 
         // ============================================================
-        // HANDLE SIGNUP - NO EMAIL, NO PASSWORD RESTRICTIONS
+        // ✅ FIXED: HANDLE SIGNUP - NO EMAIL FIELD, RATE LIMIT FIXED
         // ============================================================
         window.handleSignup = async function(event) {
             event.preventDefault();
@@ -817,10 +817,6 @@
                 return false;
             }
 
-            // ✅ NO EMAIL FIELD - using a generated email
-            const email = `${fullname.toLowerCase().replace(/\s/g, '.')}_${Date.now()}@classydate.com`;
-
-            // ✅ NO PASSWORD RESTRICTIONS - Just check if empty
             if (!password || password.length === 0) {
                 errorMessage.textContent = '⚠️ Please enter a password.';
                 errorMessage.classList.add('show');
@@ -845,12 +841,15 @@
                 return false;
             }
 
-            // Show loading state
+            // ✅ FIXED: Use consistent email format (no random timestamps)
+            const cleanName = fullname.toLowerCase().replace(/[^a-z0-9]/g, '.').replace(/\.+/g, '.');
+            const email = `${cleanName}@classydate.com`;
+
             btn.textContent = '⏳ Creating account...';
             btn.disabled = true;
 
             try {
-                // 🔥 Create user with Supabase Auth using generated email
+                // Try to sign up
                 const { data, error } = await supabase.auth.signUp({
                     email: email,
                     password: password,
@@ -864,46 +863,76 @@
                     }
                 });
 
+                // ✅ If user already exists, try to log in instead
+                if (error && error.message.includes('already registered')) {
+                    console.log('🔄 User already exists, trying to log in...');
+                    
+                    const { data: loginData, error: loginError } = await supabase.auth.signInWithPassword({
+                        email: email,
+                        password: password
+                    });
+
+                    if (loginError) {
+                        errorMessage.textContent = '⚠️ This account already exists but the password is incorrect. Please try logging in.';
+                        errorMessage.classList.add('show');
+                        btn.textContent = 'Sign up';
+                        btn.disabled = false;
+                        btn.style.background = 'linear-gradient(135deg, #112A46, #2E5A88)';
+                        return false;
+                    }
+
+                    console.log('✅ Logged in existing user:', email);
+                    localStorage.setItem('classydate_user', JSON.stringify({
+                        uid: loginData.user.id,
+                        email: loginData.user.email,
+                        displayName: fullname
+                    }));
+
+                    successMessage.textContent = '✅ Welcome back! Redirecting...';
+                    successMessage.classList.add('show');
+                    btn.textContent = '✅ Logged In!';
+                    btn.style.background = 'linear-gradient(135deg, #00C851, #007E33)';
+
+                    setTimeout(() => {
+                        window.location.href = 'members.html';
+                    }, 1500);
+                    return;
+                }
+
+                // ✅ Handle rate limit error
+                if (error && error.message.includes('rate limit')) {
+                    errorMessage.textContent = '⚠️ Too many signup attempts. Please wait a few minutes and try again, or try logging in if you already have an account.';
+                    errorMessage.classList.add('show');
+                    btn.textContent = 'Sign up';
+                    btn.disabled = false;
+                    btn.style.background = 'linear-gradient(135deg, #112A46, #2E5A88)';
+                    return false;
+                }
+
                 if (error) throw error;
 
                 const user = data.user;
                 console.log('✅ Account created for:', email);
 
-                // Save user session
                 localStorage.setItem('classydate_user', JSON.stringify({
                     uid: user.id,
                     email: user.email,
                     displayName: fullname
                 }));
 
-                // Show success
                 successMessage.textContent = '✅ Account created successfully! Redirecting...';
                 successMessage.classList.add('show');
-
                 btn.textContent = '✅ Welcome!';
                 btn.style.background = 'linear-gradient(135deg, #00C851, #007E33)';
 
-                // Redirect to members page
                 setTimeout(() => {
                     window.location.href = 'members.html';
                 }, 1500);
 
             } catch (error) {
                 console.error('Signup error:', error);
-
-                let errorMsg = '⚠️ Signup failed. ';
-                switch (error.message) {
-                    case 'User already registered':
-                        errorMsg += 'This email is already registered. Please log in.';
-                        break;
-                    default:
-                        errorMsg += error.message;
-                }
-
-                errorMessage.textContent = errorMsg;
+                errorMessage.textContent = '⚠️ Signup failed: ' + error.message;
                 errorMessage.classList.add('show');
-
-                // Reset button
                 btn.textContent = 'Sign up';
                 btn.disabled = false;
                 btn.style.background = 'linear-gradient(135deg, #112A46, #2E5A88)';
@@ -926,9 +955,10 @@
             });
         });
 
-        console.log('💎 ClassyDate Sign Up Page - Supabase Auth Ready!');
+        console.log('💎 ClassyDate Sign Up Page - FIXED VERSION!');
         console.log('🔐 No email field - users sign up with just name and password!');
-        console.log('📘 Facebook icon added to social signup');
+        console.log('✅ Rate limit errors handled gracefully!');
+        console.log('🔄 Auto-login if account already exists!');
     </script>
 
 </body>
