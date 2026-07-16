@@ -276,7 +276,39 @@
             transform: none;
         }
 
-        /* Responsive */
+        /* ============================================================ */
+        /* HELP QUOTE                                                  */
+        /* ============================================================ */
+        .help-quote {
+            margin-top: 20px;
+            padding: 16px 20px;
+            background: rgba(255, 215, 0, 0.08);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            text-align: center;
+        }
+
+        .help-quote .icon {
+            font-size: 24px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .help-quote p {
+            font-size: 14px;
+            color: rgba(17, 42, 70, 0.6);
+            font-family: "Inter", sans-serif;
+            line-height: 1.6;
+        }
+
+        .help-quote .highlight {
+            color: #112A46;
+            font-weight: 700;
+        }
+
+        /* ============================================================ */
+        /* RESPONSIVE                                                  */
+        /* ============================================================ */
         @media (max-width: 480px) {
             .pricing-card {
                 padding: 32px 24px 28px;
@@ -296,6 +328,10 @@
 
             .single-plan .price {
                 font-size: 22px;
+            }
+
+            .help-quote p {
+                font-size: 13px;
             }
         }
     </style>
@@ -345,6 +381,17 @@
             <button class="btn-subscribe" id="subscribe-btn" onclick="completeSubscription()">
                 💳 Buy Now - $13.00
             </button>
+
+            <!-- ============================================================ -->
+            <!-- HELP QUOTE                                                  -->
+            <!-- ============================================================ -->
+            <div class="help-quote">
+                <span class="icon">💬</span>
+                <p>
+                    For Easy Subscription, Kindly Ask For Help From 
+                    <span class="highlight">ClassyDate Team Assistant</span>
+                </p>
+            </div>
         </div>
     </main>
 
@@ -431,6 +478,7 @@
 
         console.log('🪙 ClassyDate Pricing Page loaded!');
         console.log('💰 150 Coins = $13.00');
+        console.log('💬 For Easy Subscription, Ask ClassyDate Team Assistant');
     </script>
 
 </body>
