@@ -627,7 +627,7 @@
 <body>
 
     <!-- ============================================================ -->
-    <!-- SAFARICOM THEME HEADER                                       -->
+    /* SAFARICOM THEME HEADER                                       */
     <!-- ============================================================ -->
     <header class="safaricom-header">
         <div class="safaricom-header__inner">
@@ -658,9 +658,9 @@
                 <div class="connection-preview__info">
                     <div class="label">💬 Connecting you with</div>
                     <div class="name" id="member-name">
-                        Sarah Johnson <span class="verified">💎</span>
+                        Loading... <span class="verified">💎</span>
                     </div>
-                    <div class="location" id="member-location">📍 New York, USA</div>
+                    <div class="location" id="member-location">📍 Loading...</div>
                 </div>
             </div>
 
@@ -668,7 +668,7 @@
             <div class="unlock-message">
                 <span class="icon">🔓</span>
                 <h3>Unlock Your Connection</h3>
-                <p>To start chatting with <strong id="unlock-name">Sarah</strong>, complete the payment:</p>
+                <p>To start chatting with <strong id="unlock-name">Loading...</strong>, complete the payment:</p>
                 <div class="price-tag">
                     🪙 200 Coins <small>= Ksh 431.00</small>
                 </div>
@@ -749,53 +749,95 @@
     <div class="toast" id="toast"></div>
 
     <!-- ============================================================ -->
-    <!-- SCRIPTS                                                      -->
+    <!-- SCRIPTS - FIXED DYNAMIC MEMBER LOADING                      -->
     <!-- ============================================================ -->
     <script>
         // ============================================================
-        // GET MEMBER INFO FROM URL
+        // 🔥 FIXED: GET MEMBER INFO FROM URL OR LOCALSTORAGE
         // ============================================================
         function getMemberFromURL() {
             const params = new URLSearchParams(window.location.search);
             const userId = params.get('user');
             const userName = params.get('name');
 
-            // Try to get from localStorage if not in URL
-            if (!userId) {
-                const saved = localStorage.getItem('classydate_selected_member');
-                if (saved) {
-                    try {
-                        const data = JSON.parse(saved);
-                        return data;
-                    } catch (e) {}
-                }
-                return { id: 1, name: 'Sarah Johnson', location: 'New York, USA', photo: 'https://randomuser.me/api/portraits/women/44.jpg' };
+            console.log('🔍 URL params:', { userId, userName });
+
+            // ✅ Try to get from URL first
+            if (userId && userName) {
+                return {
+                    id: parseInt(userId),
+                    name: userName,
+                    location: '📍 Location Unknown',
+                    photo: `https://ui-avatars.com/api/?name=${encodeURIComponent(userName)}&background=00A651&color=fff&size=200`
+                };
             }
 
+            // ✅ Try to get from localStorage (from members page)
+            const saved = localStorage.getItem('classydate_selected_member');
+            if (saved) {
+                try {
+                    const data = JSON.parse(saved);
+                    console.log('📦 Loaded from localStorage:', data);
+                    return {
+                        id: data.id || 1,
+                        name: data.name || 'Member',
+                        location: data.location || '📍 Location Unknown',
+                        photo: data.photo || `https://ui-avatars.com/api/?name=${encodeURIComponent(data.name || 'Member')}&background=00A651&color=fff&size=200`
+                    };
+                } catch (e) {
+                    console.error('Error parsing localStorage:', e);
+                }
+            }
+
+            // ✅ Try to get from pending message (from members page "Message" button)
+            const pendingMessage = localStorage.getItem('pending_message');
+            if (pendingMessage) {
+                try {
+                    const data = JSON.parse(pendingMessage);
+                    console.log('📦 Loaded from pending_message:', data);
+                    if (data.memberId && data.memberName) {
+                        return {
+                            id: parseInt(data.memberId),
+                            name: data.memberName,
+                            location: data.memberLocation || '📍 Location Unknown',
+                            photo: data.memberPhoto || `https://ui-avatars.com/api/?name=${encodeURIComponent(data.memberName)}&background=00A651&color=fff&size=200`
+                        };
+                    }
+                } catch (e) {
+                    console.error('Error parsing pending_message:', e);
+                }
+            }
+
+            // ✅ Fallback - show a default member
+            console.log('⚠️ No member data found, using default');
             return {
-                id: parseInt(userId),
-                name: userName || 'Member',
-                location: '📍 Unknown',
-                photo: `https://randomuser.me/api/portraits/${Math.random() > 0.5 ? 'women' : 'men'}/${Math.floor(Math.random() * 100)}.jpg`
+                id: 1,
+                name: 'Member',
+                location: '📍 Location Unknown',
+                photo: 'https://ui-avatars.com/api/?name=Member&background=00A651&color=fff&size=200'
             };
         }
 
         // ============================================================
-        // LOAD MEMBER INFO
+        // 🔥 FIXED: LOAD MEMBER INFO DYNAMICALLY
         // ============================================================
         const member = getMemberFromURL();
 
-        document.getElementById('member-avatar').src = member.photo || 'https://randomuser.me/api/portraits/women/44.jpg';
+        console.log('✅ Member loaded:', member);
+
+        // Update the DOM with member info
+        document.getElementById('member-avatar').src = member.photo;
         document.getElementById('member-name').innerHTML = member.name + ' <span class="verified">💎</span>';
         document.getElementById('member-location').textContent = member.location || '📍 Location Unknown';
         document.getElementById('unlock-name').textContent = member.name.split(' ')[0] || 'your match';
 
         // Fallback for avatar error
         document.getElementById('member-avatar').onerror = function() {
-            this.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(member.name) + '&background=00A651&color=fff&size=200';
+            this.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=00A651&color=fff&size=200`;
         };
 
-        console.log(`👤 Member: ${member.name} (ID: ${member.id})`);
+        // Store the selected member for future use
+        localStorage.setItem('classydate_selected_member', JSON.stringify(member));
 
         // ============================================================
         // FILE UPLOAD HANDLING
@@ -806,14 +848,12 @@
             const file = event.target.files[0];
             if (!file) return;
 
-            // Validate file type
             if (!file.type.startsWith('image/')) {
                 showToast('⚠️ Please upload an image file (PNG, JPG, JPEG).', 'error');
                 event.target.value = '';
                 return;
             }
 
-            // Validate file size (max 10MB)
             if (file.size > 10 * 1024 * 1024) {
                 showToast('⚠️ File size must be less than 10MB.', 'error');
                 event.target.value = '';
@@ -822,7 +862,6 @@
 
             uploadedFile = file;
 
-            // Show preview
             const reader = new FileReader();
             reader.onload = function(e) {
                 document.getElementById('preview-thumb').src = e.target.result;
@@ -877,7 +916,6 @@
             navigator.clipboard.writeText(text).then(() => {
                 showToast('📋 Copied: ' + text, 'success');
             }).catch(() => {
-                // Fallback
                 const input = document.createElement('input');
                 input.value = text;
                 document.body.appendChild(input);
@@ -894,28 +932,20 @@
         function submitVerification() {
             const btn = document.getElementById('submit-btn');
 
-            // Check if screenshot is uploaded
             if (!uploadedFile) {
                 showToast('⚠️ Please upload your payment screenshot.', 'error');
                 return;
             }
 
-            // Show loading state
             btn.classList.add('loading');
             btn.disabled = true;
 
-            // Simulate verification process
             setTimeout(() => {
-                // Mark user as subscribed
                 localStorage.setItem('classydate_subscribed', 'true');
-
-                // Save member for redirect
                 localStorage.setItem('classydate_selected_member', JSON.stringify(member));
 
-                // Show success
                 showToast('✅ Payment verified! Redirecting to chat...', 'success');
 
-                // Redirect to chat
                 setTimeout(() => {
                     window.location.href = `chat.html?user=${member.id}`;
                 }, 1500);
@@ -947,7 +977,8 @@
         });
 
         console.log('🇰🇪 ClassyDate Kenya Verification Page loaded!');
-        console.log(`👤 Member: ${member.name}`);
+        console.log(`👤 Member: ${member.name} (ID: ${member.id})`);
+        console.log(`📍 Location: ${member.location}`);
         console.log('📱 M-PESA: +254754447524 (Leina)');
         console.log('💰 Amount: Ksh 431.00');
     </script>
