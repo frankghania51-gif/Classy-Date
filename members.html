@@ -226,8 +226,6 @@
             color: rgba(17, 42, 70, 0.7);
         }
 
-        /* ✅ FILTERS SECTION REMOVED */
-
         /* ============================================================ */
         /* 2 COLUMN GRID                                                */
         /* ============================================================ */
@@ -436,7 +434,6 @@
             font-family: "Inter", sans-serif;
         }
 
-        /* ✅ Bio shows "About Me" content */
         .member-card__bio {
             color: rgba(17, 42, 70, 0.6);
             font-size: 13px;
@@ -1184,8 +1181,6 @@
             </div>
         </div>
 
-        <!-- ✅ FILTERS SECTION REMOVED -->
-
         <!-- Members Grid -->
         <div class="members-grid" id="members-grid"></div>
 
@@ -1321,20 +1316,22 @@
         }
 
         // ============================================================
-        // LOAD MEMBERS
+        // 🔥 FIX: LOAD MEMBERS - ONLY SHOW ADMIN-CREATED (verified = true)
         // ============================================================
         async function loadMembers() {
             try {
+                // 🔥 KEY FIX: Only load members where verified = true
                 const { data, error } = await supabase
                     .from('members')
                     .select('*')
+                    .eq('verified', true)  // 🔥 THIS IS THE FIX!
                     .order('created_at', { ascending: false });
 
                 if (error) throw error;
 
                 allMembers = data || [];
                 isLoading = false;
-                console.log('📊 Members loaded from Supabase:', allMembers.length);
+                console.log('📊 Admin members loaded from Supabase:', allMembers.length);
                 console.log('📊 Member data:', allMembers);
                 
                 totalCount.textContent = allMembers.length;
@@ -1407,7 +1404,7 @@
                 grid.innerHTML = `
                     <div style="grid-column:1/-1;text-align:center;padding:60px;color:rgba(17,42,70,0.3);">
                         <span style="display:inline-block;width:32px;height:32px;border:3px solid rgba(17,42,70,0.1);border-top-color:#112A46;border-radius:50%;animation:spin 0.8s linear infinite;"></span>
-                        <br><br>Loading members from Supabase...
+                        <br><br>Loading members...
                     </div>
                 `;
                 return;
@@ -1416,11 +1413,11 @@
             if (members.length === 0) {
                 grid.innerHTML = `
                     <div class="empty-state" style="grid-column:1/-1;">
-                        <div class="icon">🔍</div>
-                        <h3>No members found</h3>
-                        <p>Try adjusting your filters to see more results.</p>
+                        <div class="icon">💎</div>
+                        <h3>No members yet</h3>
+                        <p>Check back soon for amazing people!</p>
                         <p style="margin-top:12px;font-size:13px;color:rgba(17,42,70,0.3);">
-                            ${allMembers.length > 0 ? `Total members in database: ${allMembers.length}` : 'No members added yet. Go to Admin panel to add members.'}
+                            Only admin-approved members are shown here.
                         </p>
                     </div>
                 `;
@@ -1511,8 +1508,6 @@
             document.getElementById('list-view').classList.toggle('active', view === 'list');
             renderMembers(filteredMembers);
         }
-
-        // ✅ Filters are removed - no filter functions needed
 
         function updatePagination(total) {
             const pages = Math.ceil(total / perPage);
@@ -1761,13 +1756,10 @@
         style.textContent = `@keyframes spin { to { transform: rotate(360deg); } }`;
         document.head.appendChild(style);
 
-        console.log('💎 ClassyDate Members Page - UPDATED!');
-        console.log('✅ 3-line menu with only Log out');
-        console.log('✅ Filters REMOVED');
-        console.log('✅ Photos resized');
-        console.log('✅ Bigger buttons');
-        console.log('✅ Online status only');
-        console.log('✅ Bio shows "About Me"');
+        console.log('💎 ClassyDate Members Page - FIXED!');
+        console.log('✅ ONLY showing admin-created members (verified = true)');
+        console.log('❌ Regular sign-ups (verified = false) are HIDDEN');
+        console.log('👑 Admin: Go to admin panel to add members that appear here');
     </script>
 
 </body>
