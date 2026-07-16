@@ -191,13 +191,8 @@
         }
 
         @keyframes pulse-dot {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.3;
-            }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
         }
 
         .chat-header__actions button {
@@ -249,14 +244,8 @@
         }
 
         @keyframes messageIn {
-            0% {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         .message--received {
@@ -332,14 +321,8 @@
         }
 
         @keyframes dotBounce {
-            0%,
-            60%,
-            100% {
-                transform: translateY(0);
-            }
-            30% {
-                transform: translateY(-6px);
-            }
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-6px); }
         }
 
         .message-input-container {
@@ -567,13 +550,13 @@
 
     <main class="chat-wrapper">
         <div class="chat-header" id="chat-header">
-            <img class="chat-header__avatar" id="chat-avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Member">
+            <img class="chat-header__avatar" id="chat-avatar" src="" alt="Member">
             <div class="chat-header__info">
                 <h2>
-                    <span id="chat-name">Sarah Johnson</span>
+                    <span id="chat-name">Loading...</span>
                     <span class="verified-badge">💎 Verified</span>
                 </h2>
-                <div class="location">📍 <span id="chat-location">New York, USA</span></div>
+                <div class="location">📍 <span id="chat-location">Loading...</span></div>
             </div>
             <div class="chat-header__status">
                 <span class="status-dot status-dot--online" id="chat-status-dot"></span>
@@ -594,7 +577,7 @@
         </div>
 
         <div class="typing-indicator" id="typing-indicator">
-            <span id="typing-name">Sarah</span> is typing
+            <span id="typing-name">Loading...</span> is typing
             <span class="dots">
                 <span>.</span><span>.</span><span>.</span>
             </span>
@@ -614,16 +597,30 @@
 
     <script>
         // ============================================================
-        // 🔥 FIXED: HARDCODED MEMBER
+        // 🔥 FIXED: READ MEMBER FROM URL
         // ============================================================
+        
+        // Get member info from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const userId = urlParams.get('user');
+        const userName = urlParams.get('name');
+
+        // If no user ID, go back to members
+        if (!userId) {
+            window.location.href = 'members.html';
+        }
+
+        // Create chat partner from URL
         const chatPartner = {
-            id: 1,
-            name: "Sarah Johnson",
-            location: "New York, USA",
-            photo: "https://randomuser.me/api/portraits/women/44.jpg",
+            id: parseInt(userId) || 0,
+            name: decodeURIComponent(userName || 'Member'),
+            location: '📍 Location Unknown',
+            photo: 'https://ui-avatars.com/api/?name=' + encodeURIComponent(decodeURIComponent(userName || 'Member')) + '&background=112A46&color=fff&size=200',
             verified: true,
             online: true
         };
+
+        console.log('💬 Chat Partner from URL:', chatPartner);
 
         // ============================================================
         // STATE
@@ -636,13 +633,15 @@
         function initChat() {
             console.log('🔥 Chat Partner:', chatPartner);
 
+            // Update header with dynamic name
             document.getElementById('chat-avatar').src = chatPartner.photo;
             document.getElementById('chat-avatar').onerror = function() {
                 this.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(chatPartner.name) + '&background=112A46&color=fff&size=200';
             };
             document.getElementById('chat-name').textContent = chatPartner.name;
-            document.getElementById('chat-location').textContent = chatPartner.location;
+            document.getElementById('chat-location').textContent = '📍 Connecting...';
 
+            // Status
             const statusDot = document.getElementById('chat-status-dot');
             const statusText = document.getElementById('chat-status-text');
             if (chatPartner.online) {
@@ -653,14 +652,34 @@
                 statusText.textContent = 'Offline';
             }
 
+            // Update typing indicator
+            document.getElementById('typing-name').textContent = chatPartner.name.split(' ')[0];
+
+            // Enable input
             document.getElementById('message-input').disabled = false;
             document.getElementById('message-input').placeholder = `Message ${chatPartner.name}...`;
 
-            renderMessages();
-
+            // Update title
             document.title = `Chat with ${chatPartner.name} | ClassyDate`;
 
-            console.log('💬 Chat page ready!');
+            // Load any pending message
+            const pendingMessage = localStorage.getItem('pending_message');
+            if (pendingMessage) {
+                try {
+                    const data = JSON.parse(pendingMessage);
+                    if (data.memberId === chatPartner.id) {
+                        messages.push({
+                            sender: 'You',
+                            text: data.message,
+                            time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+                        });
+                        localStorage.removeItem('pending_message');
+                    }
+                } catch (e) {}
+            }
+
+            renderMessages();
+            console.log('💬 Chat page ready with:', chatPartner.name);
         }
 
         // ============================================================
@@ -695,7 +714,7 @@
         }
 
         // ============================================================
-        // 🔥🔥🔥 SEND MESSAGE - REDIRECTS TO SUSCRIBE.HTML 🔥🔥🔥
+        // SEND MESSAGE - Redirects to suscribe.html
         // ============================================================
         function sendMessage() {
             const input = document.getElementById('message-input');
@@ -719,7 +738,7 @@
                 message: text
             }));
 
-            localStorage.setItem('redirect_after_subscribe', `chat.html?user=${chatPartner.id}`);
+            localStorage.setItem('redirect_after_subscribe', `chat.html?user=${chatPartner.id}&name=${encodeURIComponent(chatPartner.name)}`);
 
             input.value = '';
 
@@ -764,7 +783,8 @@
         // ============================================================
         initChat();
 
-        console.log('💬 ClassyDate Chat Page loaded!');
+        console.log('💬 ClassyDate Chat Page - DYNAMIC VERSION!');
+        console.log('✅ Shows the member you clicked on');
         console.log('📤 Send button redirects to suscribe.html');
     </script>
 
