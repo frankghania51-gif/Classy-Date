@@ -1116,47 +1116,28 @@
     <div class="toast" id="toast"></div>
 
     <!-- ============================================================ -->
-    <!-- SCRIPTS - Firebase Firestore                                 -->
+    <!-- SCRIPTS - Supabase                                            -->
     <!-- ============================================================ -->
     <script type="importmap">
         {
             "imports": {
-                "firebase/app": "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js",
-                "firebase/firestore": "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js",
-                "firebase/auth": "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js"
+                "@supabase/supabase-js": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm"
             }
         }
     </script>
 
     <script type="module">
         // ============================================================
-        // FIREBASE CONFIG
+        // SUPABASE CONFIG - YOUR KEYS HERE!
         // ============================================================
-        import { initializeApp } from "firebase/app";
-        import {
-            getFirestore,
-            collection,
-            onSnapshot,
-            query,
-            orderBy
-        } from "firebase/firestore";
-        import { getAuth, onAuthStateChanged } from "firebase/auth";
+        import { createClient } from "@supabase/supabase-js";
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyACEYbex1YBpqeH7c2bbFk-9AA7iYe_NXU",
-            authDomain: "classydate-ff97f.firebaseapp.com",
-            projectId: "classydate-ff97f",
-            storageBucket: "classydate-ff97f.firebasestorage.app",
-            messagingSenderId: "241438852209",
-            appId: "1:241438852209:web:00e9af320aa28becd307d0",
-            measurementId: "G-TET9ZFZD0P"
-        };
+        const SUPABASE_URL = 'https://ehfnzsfnsoiyiwpxqmli.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_ybgZxnGuU_Gt35rfqkEdBw_YkEdD8vl';
 
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const auth = getAuth(app);
+        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        console.log('🔥 Firebase connected!');
+        console.log('🔥 Supabase connected!');
 
         // ============================================================
         // STATE
@@ -1177,34 +1158,44 @@
         const totalCount = document.getElementById('total-count');
 
         // ============================================================
-        // LISTEN TO FIREBASE
+        // LOAD MEMBERS FROM SUPABASE
         // ============================================================
-        const q = query(collection(db, "members"), orderBy("createdAt", "desc"));
+        async function loadMembers() {
+            try {
+                const { data, error } = await supabase
+                    .from('members')
+                    .select('*')
+                    .order('created_at', { ascending: false });
 
-        onSnapshot(q, (snapshot) => {
-            allMembers = [];
-            snapshot.forEach((doc) => {
-                allMembers.push({
-                    id: doc.id,
-                    ...doc.data()
-                });
-            });
-            isLoading = false;
-            console.log('📊 Members loaded from Firebase:', allMembers.length);
-            applyFilters();
-            totalCount.textContent = allMembers.length;
-        }, (error) => {
-            console.error('Error loading members:', error);
-            showToast('Error loading members from Firebase', 'error');
-            isLoading = false;
-            grid.innerHTML = `
-                <div class="empty-state" style="grid-column:1/-1;">
-                    <div class="icon">⚠️</div>
-                    <h3>Could not load members</h3>
-                    <p>Please check your Firebase connection.</p>
-                </div>
-            `;
-        });
+                if (error) throw error;
+
+                allMembers = data || [];
+                isLoading = false;
+                console.log('📊 Members loaded from Supabase:', allMembers.length);
+                applyFilters();
+                totalCount.textContent = allMembers.length;
+            } catch (error) {
+                console.error('Error loading members:', error);
+                showToast('Error loading members from Supabase: ' + error.message, 'error');
+                isLoading = false;
+                grid.innerHTML = `
+                    <div class="empty-state" style="grid-column:1/-1;">
+                        <div class="icon">⚠️</div>
+                        <h3>Could not load members</h3>
+                        <p>Please check your Supabase connection.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // ============================================================
+        // GET PUBLIC URL FOR PHOTO
+        // ============================================================
+        function getPhotoUrl(fileId) {
+            if (!fileId) return null;
+            const { data } = supabase.storage.from('member_photos').getPublicUrl(fileId);
+            return data?.publicUrl || null;
+        }
 
         // ============================================================
         // RENDER
@@ -1214,7 +1205,7 @@
                 grid.innerHTML = `
                     <div style="grid-column:1/-1;text-align:center;padding:60px;color:rgba(17,42,70,0.3);">
                         <span style="display:inline-block;width:32px;height:32px;border:3px solid rgba(17,42,70,0.1);border-top-color:#112A46;border-radius:50%;animation:spin 0.8s linear infinite;"></span>
-                        <br><br>Loading members from Firebase...
+                        <br><br>Loading members from Supabase...
                     </div>
                 `;
                 return;
@@ -1237,9 +1228,15 @@
             totalCount.textContent = members.length;
 
             grid.innerHTML = members.map(member => {
-                const photos = member.photos || [];
-                const mainPhoto = photos.length > 0 ? photos[0] : `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name || 'User')}&background=112A46&color=fff&size=200`;
+                // Get first photo
+                let mainPhoto = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(member.name || 'User') + '&background=112A46&color=fff&size=200';
+                if (member.photo_file_ids && member.photo_file_ids.length > 0) {
+                    const url = getPhotoUrl(member.photo_file_ids[0]);
+                    if (url) mainPhoto = url;
+                }
+                
                 const isNew = member.joined ? new Date(member.joined) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000) : false;
+                const totalPhotos = (member.photo_file_ids || []).length;
 
                 return `
                     <div class="member-card" data-id="${member.id}">
@@ -1249,7 +1246,7 @@
                                 ${member.verified ? '<span class="badge badge--verified">✓ Verified</span>' : ''}
                                 ${member.premium ? '<span class="badge badge--premium">⭐ Premium</span>' : ''}
                                 ${isNew ? '<span class="badge badge--new">🆕 New</span>' : ''}
-                                ${photos.length > 1 ? `<span class="badge" style="background:rgba(17,42,70,0.10);color:#112A46;">📸 +${photos.length}</span>` : ''}
+                                ${totalPhotos > 1 ? `<span class="badge" style="background:rgba(17,42,70,0.10);color:#112A46;">📸 +${totalPhotos}</span>` : ''}
                             </div>
                             <div class="member-card__status">
                                 <span class="status-dot status-dot--${member.online ? 'online' : 'offline'}"></span>
@@ -1372,8 +1369,11 @@
             selectedMemberId = id;
 
             // Avatar
-            const photos = member.photos || [];
-            const mainPhoto = photos.length > 0 ? photos[0] : `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name || 'User')}&background=112A46&color=fff&size=200`;
+            let mainPhoto = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(member.name || 'User') + '&background=112A46&color=fff&size=200';
+            if (member.photo_file_ids && member.photo_file_ids.length > 0) {
+                const url = getPhotoUrl(member.photo_file_ids[0]);
+                if (url) mainPhoto = url;
+            }
             document.getElementById('modal-avatar').src = mainPhoto;
             document.getElementById('modal-avatar').onerror = function() {
                 this.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name || 'User')}&background=112A46&color=fff&size=200`;
@@ -1407,10 +1407,18 @@
                 interestsContainer.innerHTML = '<span style="color:rgba(17,42,70,0.3);font-size:14px;">No interests listed</span>';
             }
 
-            // Photos
+            // Photos - get all photo URLs from Supabase Storage
             const photosContainer = document.getElementById('modal-photos');
-            if (photos.length > 0) {
-                photosContainer.innerHTML = photos.map(p => `<img src="${p}" alt="Photo" onerror="this.style.display='none'">`).join('');
+            if (member.photo_file_ids && member.photo_file_ids.length > 0) {
+                const photoUrls = member.photo_file_ids
+                    .map(id => getPhotoUrl(id))
+                    .filter(url => url !== null);
+                
+                if (photoUrls.length > 0) {
+                    photosContainer.innerHTML = photoUrls.map(url => `<img src="${url}" alt="Photo" onerror="this.style.display='none'">`).join('');
+                } else {
+                    photosContainer.innerHTML = '<span style="color:rgba(17,42,70,0.3);font-size:14px;grid-column:1/-1;">No photos available</span>';
+                }
             } else {
                 photosContainer.innerHTML = '<span style="color:rgba(17,42,70,0.3);font-size:14px;grid-column:1/-1;">No photos available</span>';
             }
@@ -1492,28 +1500,19 @@
         }
 
         // ============================================================
-        // AUTH STATE
+        // INIT
         // ============================================================
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                console.log('✅ User logged in:', user.email);
-            } else {
-                console.log('👤 No user logged in');
-            }
-        });
+        // Load members on page load
+        loadMembers();
 
-        // ============================================================
-        // SPINNER KEYFRAME
-        // ============================================================
+        // Spinner keyframe
         const style = document.createElement('style');
         style.textContent = `@keyframes spin { to { transform: rotate(360deg); } }`;
         document.head.appendChild(style);
 
-        // ============================================================
-        // INIT
-        // ============================================================
-        console.log('💎 ClassyDate Members Page - Full Profile Modal!');
-        console.log('📊 Members load from Firebase Firestore');
+        console.log('💎 ClassyDate Members Page - Supabase Version!');
+        console.log('📊 Members load from Supabase PostgreSQL');
+        console.log('📸 Photos from Supabase Storage');
         console.log('👤 View button opens full profile popup');
         console.log('📱 2 columns on ALL devices!');
     </script>
