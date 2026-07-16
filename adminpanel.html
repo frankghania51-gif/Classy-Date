@@ -1073,7 +1073,6 @@
 
             <form id="member-form" onsubmit="saveMember(event)">
                 <input type="hidden" id="edit-id" value="">
-                <input type="hidden" id="edit-file-ids" value="[]">
 
                 <div class="form-group">
                     <label for="form-name">Full Name <span class="required">*</span></label>
@@ -1385,7 +1384,7 @@
         }
 
         // ============================================================
-        // FILE UPLOAD
+        // FILE UPLOAD - FIXED
         // ============================================================
         window.handleFileSelect = async function(event) {
             const files = event.target.files;
@@ -1456,7 +1455,6 @@
                 <div class="uploaded-image-item">
                     <img src="${url}" alt="Uploaded photo ${index + 1}">
                     <button class="remove-image-btn" onclick="window.removeUploadedImage(${index})">✕</button>
-                    <span class="file-id">${uploadedFileIds[index]}</span>
                 </div>
             `).join('');
         }
@@ -1469,17 +1467,17 @@
         }
 
         // ============================================================
-        // ✅ FIXED: CRUD OPERATIONS
+        // CRUD OPERATIONS - FULLY FIXED
         // ============================================================
 
-        // Open Add Modal - FIXED
+        // Open Add Modal
         window.openAddModal = function() {
-            console.log('openAddModal called'); // Debug
             editingId = null;
             document.getElementById('modal-title').textContent = 'Add New Member';
             document.getElementById('modal-subtitle').textContent = 'Fill in the details to add a new member.';
             document.getElementById('modal-save-btn').textContent = '💾 Save Member';
             memberForm.reset();
+            editIdInput.value = '';
             uploadedFileIds = [];
             uploadedFileUrls = [];
             renderUploadedImages();
@@ -1532,10 +1530,28 @@
             renderUploadedImages();
         }
 
-        // Save Member
+        // ============================================================
+        // SAVE MEMBER - COMPLETELY FIXED
+        // ============================================================
         window.saveMember = async function(event) {
             event.preventDefault();
 
+            const editId = editIdInput.value;
+            const isEdit = !!editId;
+
+            // Get existing member data if editing
+            let existingMember = null;
+            if (isEdit) {
+                existingMember = members.find(m => m.id === editId);
+            }
+
+            // Format interests as array
+            const interestsArray = document.getElementById('form-interests').value
+                .split(',')
+                .map(s => s.trim())
+                .filter(Boolean);
+
+            // Prepare form data
             const formData = {
                 name: document.getElementById('form-name').value.trim(),
                 email: document.getElementById('form-email').value.trim(),
@@ -1545,46 +1561,80 @@
                 bio: document.getElementById('form-bio').value.trim(),
                 verified: document.getElementById('form-verified').value === 'true',
                 premium: document.getElementById('form-premium').value === 'true',
-                interests: document.getElementById('form-interests').value.split(',').map(s => s.trim()).filter(Boolean),
-                photo_file_ids: uploadedFileIds,
-                online: false,
-                joined: new Date().toISOString().slice(0, 10)
+                interests: interestsArray,
+                photo_file_ids: uploadedFileIds
             };
 
+            // Only add online and joined if they exist in your table
+            // If your table doesn't have these columns, remove these lines
+            if (isEdit && existingMember) {
+                formData.online = existingMember.online || false;
+                formData.joined = existingMember.joined || new Date().toISOString().slice(0, 10);
+            } else {
+                formData.online = false;
+                formData.joined = new Date().toISOString().slice(0, 10);
+            }
+
+            // Validate required fields
             if (!formData.name || !formData.email || !formData.age || !formData.gender) {
                 showToast('Please fill in all required fields.', 'error');
                 return;
             }
 
-            const editId = editIdInput.value;
+            console.log('📤 Sending data to Supabase:', formData);
 
             try {
-                if (editId) {
-                    await supabase
+                let result;
+                if (isEdit) {
+                    // UPDATE
+                    const { data, error } = await supabase
                         .from('members')
                         .update(formData)
-                        .eq('id', editId);
+                        .eq('id', editId)
+                        .select();
+                    
+                    if (error) {
+                        console.error('Update error:', error);
+                        throw error;
+                    }
+                    result = data;
                     showToast(`✅ ${formData.name} updated successfully!`, 'success');
                 } else {
-                    await supabase
+                    // INSERT
+                    const { data, error } = await supabase
                         .from('members')
-                        .insert([formData]);
+                        .insert([formData])
+                        .select();
+                    
+                    if (error) {
+                        console.error('Insert error:', error);
+                        throw error;
+                    }
+                    result = data;
                     showToast(`✅ ${formData.name} added successfully!`, 'success');
                 }
+
+                console.log('✅ Save result:', result);
 
                 closeModal();
                 memberForm.reset();
                 uploadedFileIds = [];
                 uploadedFileUrls = [];
                 renderUploadedImages();
-                loadMembers();
+                
+                // Reload members and refresh UI
+                await loadMembers();
+                filterMembers();
+                
             } catch (error) {
-                console.error('Error saving member:', error);
+                console.error('❌ Error saving member:', error);
                 showToast('Error saving member: ' + error.message, 'error');
             }
         }
 
-        // Delete Member
+        // ============================================================
+        // DELETE MEMBER
+        // ============================================================
         window.deleteMember = async function(id) {
             const member = members.find(m => m.id === id);
             if (!member) return;
@@ -1597,12 +1647,16 @@
                         }
                     }
 
-                    await supabase
+                    const { error } = await supabase
                         .from('members')
                         .delete()
                         .eq('id', id);
+                    
+                    if (error) throw error;
+                    
                     showToast(`🗑️ ${member.name} was deleted.`, 'success');
-                    loadMembers();
+                    await loadMembers();
+                    filterMembers();
                 } catch (error) {
                     console.error('Error deleting member:', error);
                     showToast('Error deleting member: ' + error.message, 'error');
