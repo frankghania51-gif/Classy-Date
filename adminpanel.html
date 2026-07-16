@@ -15,7 +15,7 @@
 
     <style>
         /* ============================================================
-           CLASSYDATE - ADMIN PANEL
+           CLASSYDATE - ADMIN PANEL - SUPABASE VERSION
            Colors: Navy #112A46 | Soft Blue #ACC8E5
            ============================================================ */
 
@@ -32,10 +32,7 @@
             min-height: 100vh;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        a { text-decoration: none; color: inherit; }
 
         .cb-shell-header {
             position: fixed;
@@ -472,7 +469,7 @@
         }
 
         /* ============================================================ */
-        /* MODAL - WITH URL INPUT ONLY                                */
+        /* MODAL - WITH FILE UPLOAD                                    */
         /* ============================================================ */
         .modal-overlay {
             display: none;
@@ -596,118 +593,129 @@
         }
 
         /* ============================================================ */
-        /* IMAGE URL INPUT - SIMPLE TEXT INPUT                        */
+        /* FILE UPLOAD - DIRECT PHOTO UPLOAD                           */
         /* ============================================================ */
-        .image-url-section {
+        .file-upload-section {
             margin-top: 8px;
         }
 
-        .image-url-section .hint {
+        .file-upload-section .hint {
             font-size: 12px;
             color: rgba(17, 42, 70, 0.4);
             margin-bottom: 6px;
             font-family: "Inter", sans-serif;
         }
 
-        .image-url-section .url-input-group {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 8px;
-        }
-
-        .image-url-section .url-input-group input {
-            flex: 1;
-            padding: 10px 14px;
-            background: rgba(255, 255, 255, 0.4);
-            border: 1px solid rgba(17, 42, 70, 0.1);
-            border-radius: 8px;
-            color: #112A46;
-            font-size: 14px;
-            font-family: "Inter", sans-serif;
-            outline: none;
-        }
-
-        .image-url-section .url-input-group input:focus {
-            border-color: #112A46;
-            background: rgba(255, 255, 255, 0.6);
-            box-shadow: 0 0 0 4px rgba(17, 42, 70, 0.06);
-        }
-
-        .image-url-section .url-input-group .add-btn {
-            padding: 10px 18px;
-            background: #112A46;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 14px;
+        .file-upload-zone {
+            border: 2px dashed rgba(17, 42, 70, 0.15);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
             cursor: pointer;
-            font-family: "Inter", sans-serif;
             transition: all 0.3s ease;
-            white-space: nowrap;
+            background: rgba(255, 255, 255, 0.2);
+            position: relative;
+            min-height: 100px;
         }
 
-        .image-url-section .url-input-group .add-btn:hover {
-            background: #2E5A88;
-            transform: translateY(-2px);
+        .file-upload-zone:hover {
+            border-color: #112A46;
+            background: rgba(255, 255, 255, 0.4);
         }
 
-        .image-url-list {
+        .file-upload-zone .icon {
+            font-size: 36px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .file-upload-zone p {
+            color: rgba(17, 42, 70, 0.4);
+            font-size: 13px;
+            font-family: "Inter", sans-serif;
+        }
+
+        .file-upload-zone input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-upload-zone .upload-progress {
+            display: none;
+            margin-top: 8px;
+            width: 100%;
+            height: 4px;
+            background: rgba(17, 42, 70, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .file-upload-zone .upload-progress .bar {
+            height: 100%;
+            background: #112A46;
+            width: 0%;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .file-upload-zone.uploading .upload-progress {
+            display: block;
+        }
+
+        .file-upload-zone.uploading .icon,
+        .file-upload-zone.uploading p {
+            display: none;
+        }
+
+        /* Uploaded Images Preview */
+        .uploaded-images {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
             margin-top: 8px;
         }
 
-        .image-url-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 4px 10px 4px 14px;
-            background: rgba(17, 42, 70, 0.06);
-            border: 1px solid rgba(17, 42, 70, 0.08);
-            border-radius: 50px;
-            font-size: 12px;
-            color: #112A46;
-            font-family: "Inter", sans-serif;
-            max-width: 100%;
+        .uploaded-image-item {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
             overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+            position: relative;
+            border: 1px solid rgba(17, 42, 70, 0.1);
         }
 
-        .image-url-tag .remove-url-btn {
-            background: none;
-            border: none;
-            color: #dc3545;
-            cursor: pointer;
-            font-size: 14px;
-            padding: 0 4px;
-            font-weight: 700;
-        }
-
-        .image-url-tag .remove-url-btn:hover {
-            color: #c82333;
-        }
-
-        .image-url-tag .preview-thumb {
-            width: 24px;
-            height: 24px;
-            border-radius: 4px;
+        .uploaded-image-item img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .image-url-tag .url-text {
-            max-width: 120px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+        .uploaded-image-item .remove-image-btn {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: rgba(220, 53, 69, 0.9);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* ============================================================ */
-        /* MODAL ACTIONS                                               */
-        /* ============================================================ */
+        .uploaded-image-item .file-id {
+            display: none;
+        }
+
         .modal .modal-actions {
             display: flex;
             gap: 12px;
@@ -746,9 +754,6 @@
             background: rgba(17, 42, 70, 0.12);
         }
 
-        /* ============================================================ */
-        /* TOAST                                                       */
-        /* ============================================================ */
         .toast {
             position: fixed;
             bottom: 30px;
@@ -798,9 +803,6 @@
             font-size: 20px;
         }
 
-        /* ============================================================ */
-        /* RESPONSIVE                                                  */
-        /* ============================================================ */
         @media (max-width: 1024px) {
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -892,18 +894,9 @@
                 left: 20px;
                 text-align: center;
             }
-            .image-url-section .url-input-group {
-                flex-wrap: wrap;
-            }
-            .image-url-section .url-input-group input {
-                min-width: 100%;
-            }
-            .image-url-section .url-input-group .add-btn {
-                width: 100%;
-                justify-content: center;
-            }
-            .image-url-tag .url-text {
-                max-width: 80px;
+            .uploaded-image-item {
+                width: 60px;
+                height: 60px;
             }
         }
 
@@ -1000,7 +993,7 @@
                     <tr>
                         <td colspan="6" style="text-align:center;padding:40px;color:rgba(17,42,70,0.3);">
                             <span style="display:inline-block;width:24px;height:24px;border:3px solid rgba(17,42,70,0.1);border-top-color:#112A46;border-radius:50%;animation:spin 0.8s linear infinite;"></span>
-                            <br><br>Loading members from Firebase...
+                            <br><br>Loading members from Supabase...
                         </td>
                     </tr>
                 </tbody>
@@ -1010,7 +1003,7 @@
     </main>
 
     <!-- ============================================================ -->
-    <!-- MODAL - WITH IMAGE URL INPUT                                -->
+    <!-- MODAL - WITH FILE UPLOAD                                    -->
     <!-- ============================================================ -->
     <div class="modal-overlay" id="modal-overlay">
         <div class="modal">
@@ -1022,6 +1015,7 @@
 
             <form id="member-form" onsubmit="saveMember(event)">
                 <input type="hidden" id="edit-id" value="">
+                <input type="hidden" id="edit-file-ids" value="[]">
 
                 <div class="form-group">
                     <label for="form-name">Full Name <span class="required">*</span></label>
@@ -1060,19 +1054,24 @@
                 </div>
 
                 <!-- ============================================================ -->
-                <!-- IMAGE URL INPUT - SIMPLE URL TAGS                         -->
+                <!-- FILE UPLOAD - DIRECT PHOTO UPLOAD                           -->
                 <!-- ============================================================ -->
-                <div class="form-group image-url-section">
-                    <label>Photo URLs</label>
-                    <p class="hint">Paste image URLs below and click "Add". You can add as many as you want.</p>
+                <div class="form-group file-upload-section">
+                    <label>Photos</label>
+                    <p class="hint">Select photos from your device to upload. You can upload multiple images.</p>
 
-                    <div class="url-input-group">
-                        <input type="text" id="image-url-input" placeholder="https://example.com/photo.jpg">
-                        <button type="button" class="add-btn" onclick="addImageURL()">➕ Add URL</button>
+                    <div class="file-upload-zone" id="file-upload-zone">
+                        <span class="icon">📸</span>
+                        <p>Tap to select photos</p>
+                        <p style="font-size:11px;color:rgba(17,42,70,0.3);">JPG, PNG, GIF up to 5MB each</p>
+                        <input type="file" id="file-input" accept="image/*" multiple onchange="handleFileSelect(event)">
+                        <div class="upload-progress">
+                            <div class="bar" id="upload-progress-bar"></div>
+                        </div>
                     </div>
 
-                    <div class="image-url-list" id="image-url-list">
-                        <!-- Image URL tags will be rendered here -->
+                    <div class="uploaded-images" id="uploaded-images">
+                        <!-- Uploaded images will appear here -->
                     </div>
                 </div>
 
@@ -1115,83 +1114,28 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- SCRIPTS                                                      -->
+    <!-- SCRIPTS - Supabase SDK                                       -->
     <!-- ============================================================ -->
     <script type="importmap">
         {
             "imports": {
-                "firebase/app": "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js",
-                "firebase/firestore": "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js",
-                "firebase/auth": "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js"
+                "@supabase/supabase-js": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm"
             }
         }
     </script>
 
     <script type="module">
         // ============================================================
-        // FIREBASE CONFIG
+        // SUPABASE CONFIG - YOUR KEYS HERE!
         // ============================================================
-        import { initializeApp } from "firebase/app";
-        import {
-            getFirestore,
-            collection,
-            doc,
-            addDoc,
-            updateDoc,
-            deleteDoc,
-            onSnapshot,
-            query,
-            orderBy
-        } from "firebase/firestore";
-        import { 
-            getAuth, 
-            onAuthStateChanged, 
-            signOut 
-        } from "firebase/auth";
+        import { createClient } from "@supabase/supabase-js";
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyACEYbex1YBpqeH7c2bbFk-9AA7iYe_NXU",
-            authDomain: "classydate-ff97f.firebaseapp.com",
-            projectId: "classydate-ff97f",
-            storageBucket: "classydate-ff97f.firebasestorage.app",
-            messagingSenderId: "241438852209",
-            appId: "1:241438852209:web:00e9af320aa28becd307d0",
-            measurementId: "G-TET9ZFZD0P"
-        };
+        const SUPABASE_URL = 'https://ehfnzsfnsoiyiwpxqmli.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_ybgZxnGuU_Gt35rfqkEdBw_YkEdD8vl';
 
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const auth = getAuth(app);
+        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        // ============================================================
-        // ADMIN AUTH - CHECK LOGIN STATUS
-        // ============================================================
-        const ADMIN_EMAIL = "admin@classydate.com";
-
-        window.logoutAdmin = async function() {
-            try {
-                await signOut(auth);
-                window.location.href = 'adminlogin.html';
-            } catch (error) {
-                console.error('Logout error:', error);
-                showToast('Error logging out', 'error');
-            }
-        };
-
-        onAuthStateChanged(auth, (user) => {
-            if (user && user.email === ADMIN_EMAIL) {
-                console.log('✅ Admin logged in:', user.email);
-                document.getElementById('admin-wrapper').style.display = 'block';
-                loadMembers();
-            } else if (user) {
-                showToast('⛔ Access denied. Admin only!', 'error');
-                setTimeout(() => {
-                    window.location.href = 'members.html';
-                }, 1500);
-            } else {
-                window.location.href = 'adminlogin.html';
-            }
-        });
+        console.log('🔗 Supabase connected!');
 
         // ============================================================
         // STATE
@@ -1201,7 +1145,9 @@
         let currentPage = 1;
         const perPage = 5;
         let isLoading = true;
-        let imageUrls = [];
+        let uploadedFileIds = []; // Store Supabase file IDs
+        let uploadedFileUrls = []; // Store public URLs
+        let editingId = null;
 
         // ============================================================
         // DOM REFS
@@ -1212,78 +1158,32 @@
         const memberForm = document.getElementById('member-form');
         const editIdInput = document.getElementById('edit-id');
         const toast = document.getElementById('toast');
-        const imageUrlList = document.getElementById('image-url-list');
+        const uploadedImagesContainer = document.getElementById('uploaded-images');
+        const fileInput = document.getElementById('file-input');
+        const uploadZone = document.getElementById('file-upload-zone');
 
         // ============================================================
-        // IMAGE URL FUNCTIONS
+        // LOAD MEMBERS FROM SUPABASE
         // ============================================================
-        function renderImageTags() {
-            if (!imageUrlList) return;
-            
-            if (imageUrls.length === 0) {
-                imageUrlList.innerHTML = `<span style="font-size:13px;color:rgba(17,42,70,0.3);font-family:'Inter',sans-serif;">No images added yet.</span>`;
-                return;
-            }
+        async function loadMembers() {
+            try {
+                const { data, error } = await supabase
+                    .from('members')
+                    .select('*')
+                    .order('created_at', { ascending: false });
 
-            imageUrlList.innerHTML = imageUrls.map((url, index) => `
-                <span class="image-url-tag">
-                    <img class="preview-thumb" src="${url}" alt="Image ${index+1}" onerror="this.style.display='none'">
-                    <span class="url-text">${url}</span>
-                    <button class="remove-url-btn" onclick="removeImageURL(${index})">✕</button>
-                </span>
-            `).join('');
-        }
+                if (error) throw error;
 
-        window.addImageURL = function() {
-            const input = document.getElementById('image-url-input');
-            const url = input.value.trim();
-            
-            if (!url) {
-                showToast('⚠️ Please paste an image URL.', 'error');
-                return;
-            }
-
-            // Basic URL validation
-            if (!url.startsWith('http://') && !url.startsWith('https://')) {
-                showToast('⚠️ Please enter a valid URL (starts with http:// or https://)', 'error');
-                return;
-            }
-
-            imageUrls.push(url);
-            input.value = '';
-            renderImageTags();
-            showToast('📸 Image URL added!', 'success');
-        };
-
-        window.removeImageURL = function(index) {
-            imageUrls.splice(index, 1);
-            renderImageTags();
-            showToast('🗑️ Image URL removed.', 'success');
-        };
-
-        // ============================================================
-        // LOAD MEMBERS
-        // ============================================================
-        function loadMembers() {
-            const q = query(collection(db, "members"), orderBy("createdAt", "desc"));
-
-            onSnapshot(q, (snapshot) => {
-                members = [];
-                snapshot.forEach((doc) => {
-                    members.push({
-                        id: doc.id,
-                        ...doc.data()
-                    });
-                });
+                members = data || [];
                 isLoading = false;
                 updateStats();
                 filterMembers();
-                console.log('📊 Members loaded:', members.length);
-            }, (error) => {
+                console.log('📊 Members loaded from Supabase:', members.length);
+            } catch (error) {
                 console.error('Error loading members:', error);
-                showToast('Error loading members from Firebase', 'error');
+                showToast('Error loading members from Supabase: ' + error.message, 'error');
                 isLoading = false;
-            });
+            }
         }
 
         // ============================================================
@@ -1342,7 +1242,7 @@
                     <tr>
                         <td colspan="6" style="text-align:center;padding:40px;color:rgba(17,42,70,0.3);">
                             <span style="display:inline-block;width:24px;height:24px;border:3px solid rgba(17,42,70,0.1);border-top-color:#112A46;border-radius:50%;animation:spin 0.8s linear infinite;"></span>
-                            <br><br>Loading members from Firebase...
+                            <br><br>Loading members from Supabase...
                         </td>
                     </tr>
                 `;
@@ -1368,9 +1268,16 @@
             }
 
             tbody.innerHTML = pageMembers.map(m => {
-                const photos = m.photos || [];
-                const mainPhoto = photos.length > 0 ? photos[0] : `https://ui-avatars.com/api/?name=${encodeURIComponent(m.name || 'User')}&background=112A46&color=fff&size=100`;
-                const totalPhotos = photos.length;
+                // Get first photo from photo_file_ids array
+                let mainPhoto = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(m.name || 'User') + '&background=112A46&color=fff&size=100';
+                if (m.photo_file_ids && m.photo_file_ids.length > 0) {
+                    const fileId = m.photo_file_ids[0];
+                    const { data } = supabase.storage.from('member_photos').getPublicUrl(fileId);
+                    if (data && data.publicUrl) {
+                        mainPhoto = data.publicUrl;
+                    }
+                }
+                const totalPhotos = (m.photo_file_ids || []).length;
 
                 return `
                     <tr>
@@ -1394,7 +1301,7 @@
                         <td>
                             ${m.verified ? '<span class="badge-small badge-small--verified">✅ Verified</span>' : '<span class="badge-small badge-small--pending">⏳ Pending</span>'}
                             ${m.premium ? '<span class="badge-small badge-small--premium">⭐ Premium</span>' : ''}
-                            ${m.photos && m.photos.length > 0 ? `<span class="badge-small" style="background:rgba(17,42,70,0.06);color:#112A46;">📸 ${m.photos.length}</span>` : ''}
+                            ${totalPhotos > 0 ? `<span class="badge-small" style="background:rgba(17,42,70,0.06);color:#112A46;">📸 ${totalPhotos}</span>` : ''}
                         </td>
                         <td>
                             <div class="actions-cell">
@@ -1444,31 +1351,131 @@
         }
 
         // ============================================================
-        // CRUD OPERATIONS
+        // FILE UPLOAD - DIRECT TO SUPABASE STORAGE
         // ============================================================
+        window.handleFileSelect = async function(event) {
+            const files = event.target.files;
+            if (!files || files.length === 0) return;
+
+            const zone = document.getElementById('file-upload-zone');
+            const progressBar = document.getElementById('upload-progress-bar');
+
+            zone.classList.add('uploading');
+
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+
+                // Validate file size (5MB max)
+                if (file.size > 5 * 1024 * 1024) {
+                    showToast(`⚠️ ${file.name} is too large (max 5MB)`, 'error');
+                    continue;
+                }
+
+                // Validate file type
+                if (!file.type.startsWith('image/')) {
+                    showToast(`⚠️ ${file.name} is not an image`, 'error');
+                    continue;
+                }
+
+                try {
+                    // Generate unique file name
+                    const fileExt = file.name.split('.').pop();
+                    const fileName = `${Date.now()}_${Math.random().toString(36).substring(2, 10)}.${fileExt}`;
+
+                    // Upload to Supabase Storage
+                    const { data, error } = await supabase.storage
+                        .from('member_photos')
+                        .upload(fileName, file);
+
+                    if (error) throw error;
+
+                    // Store the file ID
+                    uploadedFileIds.push(data.path);
+                    
+                    // Get public URL
+                    const { data: urlData } = supabase.storage
+                        .from('member_photos')
+                        .getPublicUrl(data.path);
+                    
+                    if (urlData && urlData.publicUrl) {
+                        uploadedFileUrls.push(urlData.publicUrl);
+                    }
+
+                    // Update progress bar
+                    const progress = ((i + 1) / files.length) * 100;
+                    progressBar.style.width = progress + '%';
+
+                    // Update UI with uploaded images
+                    renderUploadedImages();
+
+                    showToast(`✅ ${file.name} uploaded successfully!`, 'success');
+
+                } catch (error) {
+                    console.error('Upload error:', error);
+                    showToast(`❌ Failed to upload ${file.name}: ${error.message}`, 'error');
+                }
+            }
+
+            zone.classList.remove('uploading');
+            progressBar.style.width = '0%';
+            fileInput.value = '';
+        }
+
+        function renderUploadedImages() {
+            if (uploadedFileUrls.length === 0) {
+                uploadedImagesContainer.innerHTML = '';
+                return;
+            }
+
+            uploadedImagesContainer.innerHTML = uploadedFileUrls.map((url, index) => `
+                <div class="uploaded-image-item">
+                    <img src="${url}" alt="Uploaded photo ${index + 1}">
+                    <button class="remove-image-btn" onclick="window.removeUploadedImage(${index})">✕</button>
+                    <span class="file-id">${uploadedFileIds[index]}</span>
+                </div>
+            `).join('');
+        }
+
+        window.removeUploadedImage = function(index) {
+            // Remove from arrays
+            uploadedFileIds.splice(index, 1);
+            uploadedFileUrls.splice(index, 1);
+            renderUploadedImages();
+            showToast('🗑️ Image removed', 'success');
+        }
+
+        // ============================================================
+        // CRUD OPERATIONS - SUPABASE
+        // ============================================================
+
+        // Open Add Modal
         window.openAddModal = function() {
-            editIdInput.value = '';
+            editingId = null;
             document.getElementById('modal-title').textContent = 'Add New Member';
             document.getElementById('modal-subtitle').textContent = 'Fill in the details to add a new member.';
             document.getElementById('modal-save-btn').textContent = '💾 Save Member';
             memberForm.reset();
-            imageUrls = [];
-            renderImageTags();
+            editIdInput.value = '';
+            uploadedFileIds = [];
+            uploadedFileUrls = [];
+            renderUploadedImages();
             modalOverlay.classList.add('active');
         }
 
-        window.openEditModal = function(id) {
+        // Open Edit Modal
+        window.openEditModal = async function(id) {
             const member = members.find(m => m.id === id);
             if (!member) {
                 showToast('Member not found', 'error');
                 return;
             }
 
-            editIdInput.value = id;
+            editingId = id;
             document.getElementById('modal-title').textContent = 'Edit Member';
             document.getElementById('modal-subtitle').textContent = 'Update the member details below.';
             document.getElementById('modal-save-btn').textContent = '💾 Update Member';
 
+            editIdInput.value = id;
             document.getElementById('form-name').value = member.name || '';
             document.getElementById('form-email').value = member.email || '';
             document.getElementById('form-age').value = member.age || '';
@@ -1479,18 +1486,31 @@
             document.getElementById('form-premium').value = member.premium ? 'true' : 'false';
             document.getElementById('form-interests').value = (member.interests || []).join(', ');
 
-            imageUrls = member.photos ? [...member.photos] : [];
-            renderImageTags();
+            // Load existing photos
+            uploadedFileIds = member.photo_file_ids || [];
+            uploadedFileUrls = [];
+
+            // Get public URLs for existing photos
+            for (const fileId of uploadedFileIds) {
+                const { data } = supabase.storage.from('member_photos').getPublicUrl(fileId);
+                if (data && data.publicUrl) {
+                    uploadedFileUrls.push(data.publicUrl);
+                }
+            }
+            renderUploadedImages();
 
             modalOverlay.classList.add('active');
         }
 
+        // Close Modal
         window.closeModal = function() {
             modalOverlay.classList.remove('active');
-            imageUrls = [];
-            renderImageTags();
+            uploadedFileIds = [];
+            uploadedFileUrls = [];
+            renderUploadedImages();
         }
 
+        // Save Member (Add or Update)
         window.saveMember = async function(event) {
             event.preventDefault();
 
@@ -1504,7 +1524,7 @@
                 verified: document.getElementById('form-verified').value === 'true',
                 premium: document.getElementById('form-premium').value === 'true',
                 interests: document.getElementById('form-interests').value.split(',').map(s => s.trim()).filter(Boolean),
-                photos: [...imageUrls],
+                photo_file_ids: uploadedFileIds, // Store file IDs
                 online: false,
                 joined: new Date().toISOString().slice(0, 10)
             };
@@ -1517,36 +1537,66 @@
             const editId = editIdInput.value;
 
             try {
+                let result;
                 if (editId) {
-                    await updateDoc(doc(db, "members", editId), {
-                        ...formData,
-                        updatedAt: new Date().toISOString()
-                    });
-                    showToast(`✅ ${formData.name} updated successfully!`, 'success');
+                    // Update existing member
+                    result = await supabase
+                        .from('members')
+                        .update({
+                            ...formData,
+                            updated_at: new Date().toISOString()
+                        })
+                        .eq('id', editId);
                 } else {
-                    await addDoc(collection(db, "members"), {
-                        ...formData,
-                        createdAt: new Date().toISOString()
-                    });
-                    showToast(`✅ ${formData.name} added successfully!`, 'success');
+                    // Add new member
+                    result = await supabase
+                        .from('members')
+                        .insert([{
+                            ...formData,
+                            created_at: new Date().toISOString()
+                        }]);
                 }
 
+                if (result.error) throw result.error;
+
+                showToast(`✅ ${formData.name} ${editId ? 'updated' : 'added'} successfully!`, 'success');
                 closeModal();
                 memberForm.reset();
+                uploadedFileIds = [];
+                uploadedFileUrls = [];
+                renderUploadedImages();
+                loadMembers(); // Reload the list
+
             } catch (error) {
                 console.error('Error saving member:', error);
                 showToast('Error saving member: ' + error.message, 'error');
             }
         }
 
+        // Delete Member
         window.deleteMember = async function(id) {
             const member = members.find(m => m.id === id);
             if (!member) return;
 
             if (confirm(`Are you sure you want to delete ${member.name}? This action cannot be undone.`)) {
                 try {
-                    await deleteDoc(doc(db, "members", id));
+                    // Delete photos from storage
+                    if (member.photo_file_ids && member.photo_file_ids.length > 0) {
+                        for (const fileId of member.photo_file_ids) {
+                            await supabase.storage.from('member_photos').remove([fileId]);
+                        }
+                    }
+
+                    // Delete from database
+                    const { error } = await supabase
+                        .from('members')
+                        .delete()
+                        .eq('id', id);
+
+                    if (error) throw error;
+
                     showToast(`🗑️ ${member.name} was deleted.`, 'success');
+                    loadMembers(); // Reload the list
                 } catch (error) {
                     console.error('Error deleting member:', error);
                     showToast('Error deleting member: ' + error.message, 'error');
@@ -1567,6 +1617,15 @@
             a.click();
             URL.revokeObjectURL(url);
             showToast('📥 Members exported successfully!', 'success');
+        }
+
+        // ============================================================
+        // LOGOUT
+        // ============================================================
+        window.logoutAdmin = function() {
+            // Simple logout - you can add proper auth later
+            localStorage.removeItem('admin_logged_in');
+            window.location.href = 'adminlogin.html';
         }
 
         // ============================================================
@@ -1596,12 +1655,12 @@
             if (e.target === this) closeModal();
         });
 
-        renderImageTags();
+        // Load members on page load
+        loadMembers();
 
-        console.log('💎 ClassyDate Admin Panel loaded!');
-        console.log('🔐 Only admin@classydate.com can access this page.');
-        console.log('📸 Add unlimited image URLs!');
-        console.log('✅ Edit and Delete members working!');
+        console.log('💎 ClassyDate Admin Panel - Supabase Version!');
+        console.log('📸 Upload photos directly!');
+        console.log('📊 Data stored in Supabase PostgreSQL');
     </script>
 
 </body>
