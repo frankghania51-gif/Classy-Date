@@ -13,6 +13,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
 
     <style>
+        /* ============================================================
+           CLASSYDATE - MEMBERS PAGE - FIXED VERSION
+           ============================================================ */
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -30,6 +34,9 @@
 
         a { text-decoration: none; color: inherit; }
 
+        /* ============================================================ */
+        /* HEADER                                                       */
+        /* ============================================================ */
         .cb-shell-header {
             position: fixed;
             top: 0;
@@ -98,6 +105,9 @@
             transform: translateY(-2px);
         }
 
+        /* ============================================================ */
+        /* MEMBERS CONTAINER                                            */
+        /* ============================================================ */
         .members-wrapper {
             flex: 1;
             padding: 100px 20px 60px;
@@ -165,6 +175,7 @@
             color: rgba(17, 42, 70, 0.7);
         }
 
+        /* Filters */
         .filters-section {
             display: flex;
             flex-wrap: wrap;
@@ -267,12 +278,18 @@
             background: rgba(255, 255, 255, 0.5);
         }
 
+        /* ============================================================ */
+        /* 2 COLUMN GRID                                                */
+        /* ============================================================ */
         .members-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
         }
 
+        /* ============================================================ */
+        /* MEMBER CARD                                                  */
+        /* ============================================================ */
         .member-card {
             background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(10px);
@@ -288,6 +305,9 @@
             box-shadow: 0 8px 32px rgba(17, 42, 70, 0.08);
         }
 
+        /* ============================================================ */
+        /* IMAGE CAROUSEL                                               */
+        /* ============================================================ */
         .member-card__image-wrapper {
             position: relative;
             overflow: hidden;
@@ -338,6 +358,9 @@
         .carousel-btn.prev { left: 6px; }
         .carousel-btn.next { right: 6px; }
 
+        /* ============================================================ */
+        /* ✅ INSTAGRAM-STYLE VERIFIED BADGE                           */
+        /* ============================================================ */
         .verified-badge {
             position: absolute;
             top: 10px;
@@ -357,6 +380,9 @@
             border: 2px solid #fff;
         }
 
+        /* ============================================================ */
+        /* DOT INDICATORS                                               */
+        /* ============================================================ */
         .image-dots {
             position: absolute;
             bottom: 8px;
@@ -385,6 +411,9 @@
             border-radius: 4px;
         }
 
+        /* ============================================================ */
+        /* STATUS                                                       */
+        /* ============================================================ */
         .member-card__status {
             position: absolute;
             bottom: 8px;
@@ -423,6 +452,9 @@
             50% { opacity: 0.3; }
         }
 
+        /* ============================================================ */
+        /* CARD INFO                                                    */
+        /* ============================================================ */
         .member-card__info {
             padding: 14px 16px 16px;
         }
@@ -483,6 +515,9 @@
             font-family: "Inter", sans-serif;
         }
 
+        /* ============================================================ */
+        /* BUTTONS                                                      */
+        /* ============================================================ */
         .member-card__actions {
             display: flex;
             gap: 10px;
@@ -522,6 +557,9 @@
             box-shadow: 0 4px 16px rgba(17, 42, 70, 0.25);
         }
 
+        /* ============================================================ */
+        /* EMPTY STATE                                                  */
+        /* ============================================================ */
         .empty-state {
             text-align: center;
             padding: 80px 20px;
@@ -545,6 +583,9 @@
             font-family: "Inter", sans-serif;
         }
 
+        /* ============================================================ */
+        /* PAGINATION                                                   */
+        /* ============================================================ */
         .pagination {
             display: flex;
             justify-content: center;
@@ -578,6 +619,9 @@
             cursor: not-allowed;
         }
 
+        /* ============================================================ */
+        /* PROFILE MODAL - FULL SCREEN ON MOBILE                        */
+        /* ============================================================ */
         .profile-modal {
             display: none;
             position: fixed;
@@ -587,7 +631,7 @@
             z-index: 1000;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 0px;
             animation: fadeInModal 0.3s ease;
         }
 
@@ -603,51 +647,73 @@
         .profile-modal-content {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            border-radius: 24px;
-            max-width: 550px;
+            border-radius: 0px;
+            max-width: 100%;
             width: 100%;
-            padding: 40px 32px 32px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 24px 20px 20px;
+            border: none;
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
-            max-height: 90vh;
+            max-height: 100vh;
+            height: 100vh;
             overflow-y: auto;
             position: relative;
         }
 
         .profile-modal-close {
             position: absolute;
-            top: 16px;
-            right: 20px;
-            background: none;
+            top: 12px;
+            right: 16px;
+            background: rgba(0, 0, 0, 0.05);
             border: none;
-            font-size: 28px;
-            color: rgba(17, 42, 70, 0.3);
+            font-size: 24px;
+            color: #112A46;
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: "Inter", sans-serif;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
         }
 
         .profile-modal-close:hover {
-            color: #112A46;
+            background: rgba(0, 0, 0, 0.1);
             transform: rotate(90deg);
         }
 
+        /* ============================================================ */
+        /* AVATAR - KEPT AS YOU WANT                                   */
+        /* ============================================================ */
         .profile-modal-avatar {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #112A46;
-            margin: 0 auto 16px;
+            border: 3px solid #112A46;
+            margin: 0 auto 10px;
             display: block;
         }
 
         .profile-modal-name {
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 28px;
+            font-size: 24px;
             color: #112A46;
             text-align: center;
             font-weight: 700;
+        }
+
+        .profile-modal-name .verified-badge {
+            position: relative;
+            top: auto;
+            right: auto;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            font-size: 11px;
+            margin-left: 4px;
         }
 
         .profile-modal-status {
@@ -658,19 +724,29 @@
             font-family: "Inter", sans-serif;
         }
 
+        /* ============================================================ */
+        /* DETAILS - KEPT AS YOU WANT                                  */
+        /* ============================================================ */
         .profile-modal-details {
-            margin-top: 20px;
+            margin-top: 16px;
             display: grid;
-            gap: 10px;
+            gap: 6px;
+            background: rgba(17, 42, 70, 0.03);
+            padding: 12px 16px;
+            border-radius: 12px;
         }
 
         .profile-modal-details .detail-item {
             display: flex;
             justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(17, 42, 70, 0.06);
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(17, 42, 70, 0.04);
             font-family: "Inter", sans-serif;
-            font-size: 15px;
+            font-size: 14px;
+        }
+
+        .profile-modal-details .detail-item:last-child {
+            border-bottom: none;
         }
 
         .profile-modal-details .detail-item .label {
@@ -683,9 +759,12 @@
             font-weight: 600;
         }
 
+        /* ============================================================ */
+        /* BIO - KEPT AS YOU WANT                                      */
+        /* ============================================================ */
         .profile-modal-bio {
             margin-top: 12px;
-            padding: 14px 16px;
+            padding: 12px 16px;
             background: rgba(17, 42, 70, 0.04);
             border-radius: 10px;
             font-family: "Inter", sans-serif;
@@ -694,11 +773,15 @@
             line-height: 1.6;
         }
 
+        /* ============================================================ */
+        /* INTERESTS - KEPT AS YOU WANT                                */
+        /* ============================================================ */
         .profile-modal-interests {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
-            margin-top: 12px;
+            margin-top: 10px;
+            margin-bottom: 12px;
         }
 
         .profile-modal-interests .tag {
@@ -711,26 +794,111 @@
             font-weight: 500;
         }
 
-        .profile-modal-photos {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-top: 12px;
+        /* ============================================================ */
+        /* 🔥 LARGE SLIDING PHOTOS - NO LABELS!                        */
+        /* ============================================================ */
+        .modal-photos-container {
+            margin: 12px 0 8px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #e8ecf0;
+            position: relative;
         }
 
-        .profile-modal-photos img {
+        .modal-carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .modal-carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+            touch-action: pan-y;
+        }
+
+        .modal-carousel-slide {
+            min-width: 100%;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            background: #e8ecf0;
+        }
+
+        .modal-carousel-slide img {
             width: 100%;
-            height: 100px;
+            height: 100%;
             object-fit: cover;
-            border-radius: 8px;
-            border: 1px solid rgba(17, 42, 70, 0.06);
         }
 
+        /* ============================================================ */
+        /* CAROUSEL BUTTONS - NO LABELS                                */
+        /* ============================================================ */
+        .modal-carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            font-size: 18px;
+            cursor: pointer;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-carousel-btn:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-carousel-btn.prev {
+            left: 8px;
+        }
+
+        .modal-carousel-btn.next {
+            right: 8px;
+        }
+
+        /* ============================================================ */
+        /* DOTS - ONLY INDICATORS, NO NUMBERS                         */
+        /* ============================================================ */
+        .modal-carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 8px 0 4px;
+            background: transparent;
+        }
+
+        .modal-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(17, 42, 70, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .modal-dot.active {
+            background: #112A46;
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* ============================================================ */
+        /* MESSAGE BUTTON                                               */
+        /* ============================================================ */
         .profile-modal .btn-message-profile {
             width: 100%;
             padding: 14px;
-            margin-top: 20px;
-            background: #112A46;
+            margin-top: 12px;
+            background: linear-gradient(135deg, #112A46, #2E5A88);
             color: #fff;
             border: none;
             border-radius: 12px;
@@ -742,10 +910,13 @@
         }
 
         .profile-modal .btn-message-profile:hover {
-            background: #2E5A88;
+            background: linear-gradient(135deg, #2E5A88, #112A46);
             transform: translateY(-2px);
         }
 
+        /* ============================================================ */
+        /* TOAST                                                       */
+        /* ============================================================ */
         .toast {
             position: fixed;
             bottom: 30px;
@@ -776,6 +947,9 @@
             background: #dc3545;
         }
 
+        /* ============================================================ */
+        /* RESPONSIVE                                                   */
+        /* ============================================================ */
         @media (max-width: 768px) {
             .members-header {
                 flex-direction: column;
@@ -864,21 +1038,51 @@
                 font-size: 11px;
             }
 
+            /* ✅ FULL SCREEN MODAL ON MOBILE */
             .profile-modal-content {
-                padding: 28px 20px 24px;
+                padding: 16px 12px 12px;
+                border-radius: 0px;
+                height: 100vh;
+                max-height: 100vh;
             }
+
             .profile-modal-avatar {
-                width: 80px;
-                height: 80px;
-            }
-            .profile-modal-name {
-                font-size: 22px;
-            }
-            .profile-modal-photos {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .profile-modal-photos img {
+                width: 70px;
                 height: 70px;
+            }
+
+            .profile-modal-name {
+                font-size: 20px;
+            }
+
+            .profile-modal-details .detail-item {
+                font-size: 13px;
+                padding: 4px 0;
+            }
+
+            .profile-modal-bio {
+                font-size: 13px;
+                padding: 10px 12px;
+            }
+
+            .profile-modal-interests .tag {
+                font-size: 11px;
+                padding: 3px 10px;
+            }
+
+            .modal-carousel-btn {
+                width: 28px;
+                height: 28px;
+                font-size: 14px;
+            }
+
+            .modal-dot {
+                width: 6px;
+                height: 6px;
+            }
+
+            .modal-dot.active {
+                width: 18px;
             }
 
             .toast {
@@ -981,11 +1185,38 @@
                 width: 10px;
             }
 
-            .profile-modal-photos {
-                grid-template-columns: repeat(2, 1fr);
+            .profile-modal-content {
+                padding: 12px 10px 10px;
             }
-            .profile-modal-photos img {
+
+            .profile-modal-avatar {
+                width: 60px;
                 height: 60px;
+            }
+
+            .profile-modal-name {
+                font-size: 18px;
+            }
+
+            .profile-modal-details .detail-item {
+                font-size: 12px;
+                padding: 3px 0;
+            }
+
+            .profile-modal-bio {
+                font-size: 12px;
+                padding: 8px 10px;
+            }
+
+            .profile-modal-interests .tag {
+                font-size: 10px;
+                padding: 2px 8px;
+            }
+
+            .modal-carousel-btn {
+                width: 24px;
+                height: 24px;
+                font-size: 12px;
             }
         }
 
@@ -996,6 +1227,7 @@
 </head>
 <body>
 
+    <!-- Header -->
     <header class="cb-shell-header" role="banner">
         <div class="cb-shell-header__inner">
             <a class="cb-shell-brand" href="/">Classy<span>Date</span></a>
@@ -1006,6 +1238,7 @@
         </div>
     </header>
 
+    <!-- Main -->
     <main class="members-wrapper">
         <div class="members-header">
             <div>
@@ -1018,6 +1251,7 @@
             </div>
         </div>
 
+        <!-- Filters -->
         <div class="filters-section">
             <div class="filter-group">
                 <label>Gender</label>
@@ -1061,18 +1295,30 @@
             </div>
         </div>
 
+        <!-- Members Grid -->
         <div class="members-grid" id="members-grid"></div>
 
+        <!-- Pagination -->
         <div class="pagination" id="pagination"></div>
     </main>
 
+    <!-- ============================================================ -->
+    <!-- PROFILE MODAL - UPDATED WITH LARGE SLIDING PHOTOS            -->
+    <!-- ============================================================ -->
     <div class="profile-modal" id="profile-modal">
         <div class="profile-modal-content">
             <button class="profile-modal-close" onclick="closeProfileModal()">✕</button>
+            
+            <!-- AVATAR - KEPT -->
             <img class="profile-modal-avatar" id="modal-avatar" src="" alt="Profile">
+            
+            <!-- NAME - KEPT -->
             <h2 class="profile-modal-name" id="modal-name">Name</h2>
+            
+            <!-- STATUS - KEPT -->
             <div class="profile-modal-status" id="modal-status-text">📍 Location</div>
 
+            <!-- DETAILS - KEPT -->
             <div class="profile-modal-details" id="modal-details">
                 <div class="detail-item">
                     <span class="label">Age</span>
@@ -1100,18 +1346,35 @@
                 </div>
             </div>
 
+            <!-- BIO - KEPT -->
             <div class="profile-modal-bio" id="modal-bio">No bio available.</div>
 
+            <!-- INTERESTS - KEPT -->
             <div class="profile-modal-interests" id="modal-interests"></div>
 
-            <div class="profile-modal-photos" id="modal-photos"></div>
+            <!-- ============================================================ -->
+            <!-- 🔥 LARGE SLIDING PHOTOS - NO LABELS!                         -->
+            <!-- ============================================================ -->
+            <div class="modal-photos-container" id="modal-photos-container">
+                <div class="modal-carousel-wrapper" id="modal-carousel-wrapper">
+                    <div class="modal-carousel-slides" id="modal-carousel-slides"></div>
+                    <button class="modal-carousel-btn prev" onclick="event.stopPropagation(); changeModalPhoto(-1)">‹</button>
+                    <button class="modal-carousel-btn next" onclick="event.stopPropagation(); changeModalPhoto(1)">›</button>
+                </div>
+                <div class="modal-carousel-dots" id="modal-carousel-dots"></div>
+            </div>
 
+            <!-- MESSAGE BUTTON -->
             <button class="btn-message-profile" id="modal-message-btn" onclick="modalSendMessage()">💬 Send Message</button>
         </div>
     </div>
 
+    <!-- Toast -->
     <div class="toast" id="toast"></div>
 
+    <!-- ============================================================ -->
+    <!-- SCRIPTS - Supabase                                            -->
+    <!-- ============================================================ -->
     <script type="importmap">
         {
             "imports": {
@@ -1145,6 +1408,8 @@
         const paginationContainer = document.getElementById('pagination');
         const totalCount = document.getElementById('total-count');
 
+        let modalPhotoIndex = 0;
+
         function getPhotoUrl(fileId) {
             if (!fileId) return null;
             try {
@@ -1157,7 +1422,7 @@
         }
 
         // ============================================================
-        // 🔥 FIXED: LOAD MEMBERS - DIRECT RENDER
+        // LOAD MEMBERS
         // ============================================================
         async function loadMembers() {
             try {
@@ -1173,16 +1438,9 @@
                 console.log('📊 Members loaded from Supabase:', allMembers.length);
                 console.log('📊 Member data:', allMembers);
                 
-                // ✅ FIX: Update total count FIRST
                 totalCount.textContent = allMembers.length;
-                
-                // ✅ FIX: Set filtered members to all members
                 filteredMembers = [...allMembers];
-                
-                // ✅ FIX: Render directly, don't wait for applyFilters
                 renderMembers(filteredMembers);
-                
-                // ✅ Also update filters if needed
                 updatePagination(filteredMembers.length);
                 
             } catch (error) {
@@ -1280,15 +1538,12 @@
                         .filter(url => url !== null && url !== '');
                 }
 
-                // ✅ ALWAYS use avatar if no photos
                 const memberName = member.name || 'User';
                 const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(memberName)}&background=112A46&color=fff&size=400`;
                 
                 if (photos.length === 0) {
                     photos = [avatarUrl];
                 }
-
-                const isNew = member.joined ? new Date(member.joined) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000) : false;
 
                 let slidesHTML = '';
                 photos.forEach((photo, index) => {
@@ -1423,6 +1678,9 @@
             renderMembers(filteredMembers);
         }
 
+        // ============================================================
+        // 🔥 OPEN PROFILE MODAL - LARGE SLIDING PHOTOS
+        // ============================================================
         window.openProfileModal = function(id) {
             const member = allMembers.find(m => m.id === id);
             if (!member) {
@@ -1432,6 +1690,7 @@
 
             selectedMemberId = id;
 
+            // Get photos
             let photos = [];
             if (member.photo_file_ids && member.photo_file_ids.length > 0) {
                 photos = member.photo_file_ids
@@ -1439,23 +1698,28 @@
                     .filter(url => url !== null && url !== '');
             }
 
-            let mainPhoto = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name || 'User')}&background=112A46&color=fff&size=200`;
+            const memberName = member.name || 'User';
+            let mainPhoto = `https://ui-avatars.com/api/?name=${encodeURIComponent(memberName)}&background=112A46&color=fff&size=400`;
             if (photos.length > 0) {
                 mainPhoto = photos[0];
             }
 
+            // Avatar
             document.getElementById('modal-avatar').src = mainPhoto;
             document.getElementById('modal-avatar').onerror = function() {
-                this.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name || 'User')}&background=112A46&color=fff&size=200`;
+                this.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(memberName)}&background=112A46&color=fff&size=200`;
             };
 
-            let nameHTML = member.name || 'Unknown';
-            if (member.verified) nameHTML += ' <span class="verified-badge">✓</span>';
+            // Name
+            let nameHTML = memberName;
+            if (member.verified) nameHTML += ' <span class="verified-badge" style="position:relative;top:auto;right:auto;display:inline-block;width:20px;height:20px;font-size:11px;margin-left:4px;">✓</span>';
             if (member.premium) nameHTML += ' ⭐';
             document.getElementById('modal-name').innerHTML = nameHTML;
 
+            // Status
             document.getElementById('modal-status-text').textContent = `📍 ${member.location || 'Location Unknown'}`;
 
+            // Details
             document.getElementById('modal-age').textContent = member.age || '—';
             document.getElementById('modal-gender').textContent = member.gender || '—';
             document.getElementById('modal-location').textContent = member.location || '—';
@@ -1463,8 +1727,10 @@
             document.getElementById('modal-verified').textContent = member.verified ? '✅ Yes' : '❌ No';
             document.getElementById('modal-premium').textContent = member.premium ? '⭐ Yes' : '—';
 
+            // Bio
             document.getElementById('modal-bio').textContent = member.bio || 'No bio available.';
 
+            // Interests
             const interestsContainer = document.getElementById('modal-interests');
             if (member.interests && member.interests.length > 0) {
                 interestsContainer.innerHTML = member.interests.map(i => `<span class="tag">#${i}</span>`).join('');
@@ -1472,11 +1738,55 @@
                 interestsContainer.innerHTML = '<span style="color:rgba(17,42,70,0.3);font-size:14px;">No interests listed</span>';
             }
 
-            const photosContainer = document.getElementById('modal-photos');
+            // ============================================================
+            // 🔥 LARGE SLIDING PHOTOS - NO LABELS!
+            // ============================================================
+            const slidesContainer = document.getElementById('modal-carousel-slides');
+            const dotsContainer = document.getElementById('modal-carousel-dots');
+            
+            modalPhotoIndex = 0;
+
             if (photos.length > 0) {
-                photosContainer.innerHTML = photos.map(url => `<img src="${url}" alt="Photo" onerror="this.style.display='none'">`).join('');
+                // Build slides
+                let slidesHTML = '';
+                photos.forEach((photo, index) => {
+                    slidesHTML += `
+                        <div class="modal-carousel-slide">
+                            <img src="${photo}" alt="Photo ${index + 1}" loading="lazy" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(memberName)}&background=112A46&color=fff&size=400'">
+                        </div>
+                    `;
+                });
+                slidesContainer.innerHTML = slidesHTML;
+                slidesContainer.style.transform = 'translateX(0%)';
+
+                // Build dots
+                let dotsHTML = '';
+                photos.forEach((_, index) => {
+                    dotsHTML += `<span class="modal-dot ${index === 0 ? 'active' : ''}"></span>`;
+                });
+                dotsContainer.innerHTML = dotsHTML;
+
+                // Show/hide arrows
+                const prevBtn = document.querySelector('.modal-carousel-btn.prev');
+                const nextBtn = document.querySelector('.modal-carousel-btn.next');
+                if (photos.length <= 1) {
+                    prevBtn.style.display = 'none';
+                    nextBtn.style.display = 'none';
+                } else {
+                    prevBtn.style.display = 'flex';
+                    nextBtn.style.display = 'flex';
+                }
+
+                // Show container
+                document.getElementById('modal-photos-container').style.display = 'block';
             } else {
-                photosContainer.innerHTML = '<span style="color:rgba(17,42,70,0.3);font-size:14px;grid-column:1/-1;">No photos available</span>';
+                slidesContainer.innerHTML = `
+                    <div class="modal-carousel-slide" style="display:flex;align-items:center;justify-content:center;background:#e8ecf0;color:rgba(17,42,70,0.3);font-family:'Inter',sans-serif;font-size:16px;">
+                        No photos available
+                    </div>
+                `;
+                dotsContainer.innerHTML = '';
+                document.getElementById('modal-photos-container').style.display = 'block';
             }
 
             document.getElementById('modal-message-btn').onclick = function() {
@@ -1487,6 +1797,60 @@
             document.body.style.overflow = 'hidden';
         }
 
+        // ============================================================
+        // 🔥 MODAL PHOTO CAROUSEL
+        // ============================================================
+        window.changeModalPhoto = function(direction) {
+            const slides = document.getElementById('modal-carousel-slides');
+            const dots = document.querySelectorAll('.modal-dot');
+            
+            if (!slides) return;
+            
+            const totalSlides = slides.children.length;
+            if (totalSlides <= 1) return;
+            
+            let newIndex = modalPhotoIndex + direction;
+            if (newIndex < 0) newIndex = totalSlides - 1;
+            if (newIndex >= totalSlides) newIndex = 0;
+            
+            slides.style.transform = `translateX(-${newIndex * 100}%)`;
+            modalPhotoIndex = newIndex;
+            
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === newIndex);
+            });
+        }
+
+        // ============================================================
+        // TOUCH SWIPE SUPPORT FOR MODAL
+        // ============================================================
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const modalContent = document.querySelector('.profile-modal-content');
+            
+            modalContent.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            modalContent.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                const diff = touchStartX - touchEndX;
+                
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        window.changeModalPhoto(1);
+                    } else {
+                        window.changeModalPhoto(-1);
+                    }
+                }
+            }, { passive: true });
+        });
+
+        // ============================================================
+        // CLOSE MODAL
+        // ============================================================
         window.closeProfileModal = function() {
             document.getElementById('profile-modal').classList.remove('active');
             document.body.style.overflow = 'auto';
@@ -1510,6 +1874,9 @@
             }
         }
 
+        // ============================================================
+        // SEND MESSAGE
+        // ============================================================
         window.sendMessage = function(id) {
             const member = allMembers.find(m => m.id === id);
             if (!member) {
@@ -1531,6 +1898,9 @@
             window.location.href = `chat.html?user=${id}&name=${encodeURIComponent(member.name)}`;
         }
 
+        // ============================================================
+        // TOAST
+        // ============================================================
         let toastTimeout;
 
         function showToast(message, type = 'success') {
@@ -1545,7 +1915,7 @@
         }
 
         // ============================================================
-        // ✅ INIT - CALL loadMembers()
+        // INIT
         // ============================================================
         loadMembers();
 
@@ -1553,10 +1923,11 @@
         style.textContent = `@keyframes spin { to { transform: rotate(360deg); } }`;
         document.head.appendChild(style);
 
-        console.log('💎 ClassyDate Members Page - FIXED VERSION!');
-        console.log('✅ Members will show even without photos!');
-        console.log('✅ Direct rendering - no more empty filters!');
+        console.log('💎 ClassyDate Members Page - UPDATED!');
+        console.log('✅ Large sliding photos in modal');
+        console.log('✅ No labels on photos');
+        console.log('✅ Full screen on mobile');
+        console.log('✅ Avatar + Name + Details + Bio + Interests kept');
     </script>
-
 </body>
 </html>
