@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    <title>Choose Your Plan | ClassyDate</title>
-    <meta name="description" content="Choose your ClassyDate subscription plan.">
+    <title>Buy Coins | ClassyDate</title>
+    <meta name="description" content="Buy coins to unlock your connection.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,10 +13,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
 
     <style>
-        /* ============================================================
-           CLASSYDATE - PRICING PAGE
-           ============================================================ */
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -91,7 +87,7 @@
         }
 
         .pricing-card {
-            max-width: 560px;
+            max-width: 480px;
             width: 100%;
             background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(20px);
@@ -106,7 +102,7 @@
             margin-bottom: 32px;
         }
 
-        .pricing-card__header .flag {
+        .pricing-card__header .icon {
             font-size: 48px;
             display: block;
             margin-bottom: 8px;
@@ -124,56 +120,6 @@
             font-size: 15px;
             margin-top: 4px;
             font-family: "Inter", sans-serif;
-        }
-
-        /* Steps */
-        .steps {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 28px;
-        }
-
-        .step {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            font-weight: 600;
-            color: rgba(17, 42, 70, 0.3);
-            font-family: "Inter", sans-serif;
-        }
-
-        .step .num {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: rgba(17, 42, 70, 0.06);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 13px;
-            font-weight: 700;
-            color: rgba(17, 42, 70, 0.2);
-        }
-
-        .step.active .num {
-            background: #112A46;
-            color: #fff;
-        }
-
-        .step.active {
-            color: #112A46;
-        }
-
-        .step .line {
-            width: 30px;
-            height: 2px;
-            background: rgba(17, 42, 70, 0.06);
-        }
-
-        .step.active .line {
-            background: #112A46;
         }
 
         /* Country Display */
@@ -225,77 +171,59 @@
             background: rgba(17, 42, 70, 0.15);
         }
 
-        /* Pricing Plans */
-        .plan {
+        /* Single Plan - 150 Coins for $13.00 */
+        .single-plan {
             background: rgba(255, 255, 255, 0.3);
             border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 16px;
-            border: 2px solid rgba(255, 255, 255, 0.15);
-            transition: all 0.3s ease;
-            cursor: pointer;
+            padding: 32px 24px;
+            border: 2px solid rgba(17, 42, 70, 0.15);
+            text-align: center;
+            margin-bottom: 24px;
         }
 
-        .plan:hover {
-            border-color: rgba(17, 42, 70, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .plan.selected {
-            border-color: #112A46;
-            background: rgba(17, 42, 70, 0.04);
-        }
-
-        .plan .plan-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .single-plan .coins-icon {
+            font-size: 56px;
+            display: block;
             margin-bottom: 8px;
         }
 
-        .plan .plan-name {
+        .single-plan .coins-amount {
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 20px;
+            font-size: 42px;
             font-weight: 700;
             color: #112A46;
         }
 
-        .plan .plan-badge {
-            padding: 4px 12px;
-            border-radius: 50px;
-            font-size: 11px;
-            font-weight: 700;
-            color: #fff;
-            background: #112A46;
+        .single-plan .coins-label {
+            font-size: 16px;
+            color: rgba(17, 42, 70, 0.4);
             font-family: "Inter", sans-serif;
         }
 
-        .plan .plan-badge.popular {
-            background: #28a745;
-        }
-
-        .plan .plan-price {
+        .single-plan .price {
             font-size: 28px;
             font-weight: 700;
             color: #112A46;
+            margin-top: 12px;
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
         }
 
-        .plan .plan-price span {
+        .single-plan .price span {
             font-size: 16px;
             font-weight: 400;
             color: rgba(17, 42, 70, 0.4);
             font-family: "Inter", sans-serif;
         }
 
-        .plan .plan-features {
+        .single-plan .features {
             list-style: none;
-            margin-top: 12px;
+            margin-top: 16px;
             display: grid;
             gap: 8px;
+            text-align: left;
         }
 
-        .plan .plan-features li {
+        .single-plan .features li {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -304,9 +232,21 @@
             font-family: "Inter", sans-serif;
         }
 
-        .plan .plan-features li .check {
+        .single-plan .features li .check {
             color: #28a745;
             font-weight: 700;
+        }
+
+        .single-plan .popular-badge {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 4px 16px;
+            background: #28a745;
+            color: #fff;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            font-family: "Inter", sans-serif;
         }
 
         /* Button */
@@ -322,7 +262,6 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: "Inter", sans-serif;
-            margin-top: 8px;
         }
 
         .btn-subscribe:hover {
@@ -347,20 +286,15 @@
                 font-size: 24px;
             }
 
-            .steps {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            .step .line {
-                display: none;
-            }
-
             .pricing-header .brand {
                 font-size: 20px;
             }
 
-            .plan .plan-price {
+            .single-plan .coins-amount {
+                font-size: 32px;
+            }
+
+            .single-plan .price {
                 font-size: 22px;
             }
         }
@@ -378,24 +312,9 @@
     <main class="pricing-wrapper">
         <div class="pricing-card">
             <div class="pricing-card__header">
-                <span class="flag" id="country-flag">🌍</span>
-                <h1>Choose Your Plan</h1>
-                <p class="subtitle" id="country-subtitle">Select a plan for your country</p>
-            </div>
-
-            <!-- Steps -->
-            <div class="steps">
-                <div class="step">
-                    <span class="num">✓</span> Details
-                    <span class="line"></span>
-                </div>
-                <div class="step active">
-                    <span class="num">2</span> Pricing
-                    <span class="line"></span>
-                </div>
-                <div class="step">
-                    <span class="num">3</span> Complete
-                </div>
+                <span class="icon">🪙</span>
+                <h1>Buy Coins</h1>
+                <p class="subtitle" id="country-subtitle">Unlock your connection</p>
             </div>
 
             <!-- Country Display -->
@@ -408,13 +327,23 @@
                 <button class="edit" onclick="history.back()">✏️ Edit</button>
             </div>
 
-            <!-- Plans will be rendered here -->
-            <div id="plans-container">
-                <!-- Plans inserted by JavaScript -->
+            <!-- Single Plan - 150 Coins for $13.00 -->
+            <div class="single-plan">
+                <span class="coins-icon">🪙</span>
+                <div class="coins-amount">150</div>
+                <div class="coins-label">Coins</div>
+                <div class="price">$13.00 <span>USD</span></div>
+                <span class="popular-badge">🔥 Best Deal</span>
+                <ul class="features">
+                    <li><span class="check">✓</span> Unlock 1 connection</li>
+                    <li><span class="check">✓</span> Start chatting instantly</li>
+                    <li><span class="check">✓</span> One-time payment</li>
+                    <li><span class="check">✓</span> No subscription needed</li>
+                </ul>
             </div>
 
             <button class="btn-subscribe" id="subscribe-btn" onclick="completeSubscription()">
-                💎 Subscribe Now
+                💳 Buy Now - $13.00
             </button>
         </div>
     </main>
@@ -424,105 +353,22 @@
     <!-- ============================================================ -->
     <script>
         // ============================================================
-        // COUNTRY PRICING DATA
+        // COUNTRY DATA
         // ============================================================
         const countryData = {
-            'zimbabwe': {
-                name: 'Zimbabwe',
-                flag: '🇿🇼',
-                currency: 'USD',
-                monthly: 4.99,
-                yearly: 49.99,
-                currencySymbol: '$'
-            },
-            'south-africa': {
-                name: 'South Africa',
-                flag: '🇿🇦',
-                currency: 'USD',
-                monthly: 6.99,
-                yearly: 69.99,
-                currencySymbol: '$'
-            },
-            'zambia': {
-                name: 'Zambia',
-                flag: '🇿🇲',
-                currency: 'USD',
-                monthly: 4.99,
-                yearly: 49.99,
-                currencySymbol: '$'
-            },
-            'usa': {
-                name: 'USA',
-                flag: '🇺🇸',
-                currency: 'USD',
-                monthly: 14.99,
-                yearly: 149.99,
-                currencySymbol: '$'
-            },
-            'uk': {
-                name: 'United Kingdom',
-                flag: '🇬🇧',
-                currency: 'GBP',
-                monthly: 11.99,
-                yearly: 119.99,
-                currencySymbol: '£'
-            },
-            'canada': {
-                name: 'Canada',
-                flag: '🇨🇦',
-                currency: 'CAD',
-                monthly: 12.99,
-                yearly: 129.99,
-                currencySymbol: 'C$'
-            },
-            'australia': {
-                name: 'Australia',
-                flag: '🇦🇺',
-                currency: 'AUD',
-                monthly: 14.99,
-                yearly: 149.99,
-                currencySymbol: 'A$'
-            },
-            'nigeria': {
-                name: 'Nigeria',
-                flag: '🇳🇬',
-                currency: 'USD',
-                monthly: 5.99,
-                yearly: 59.99,
-                currencySymbol: '$'
-            },
-            'kenya': {
-                name: 'Kenya',
-                flag: '🇰🇪',
-                currency: 'USD',
-                monthly: 5.99,
-                yearly: 59.99,
-                currencySymbol: '$'
-            },
-            'india': {
-                name: 'India',
-                flag: '🇮🇳',
-                currency: 'USD',
-                monthly: 3.99,
-                yearly: 39.99,
-                currencySymbol: '$'
-            },
-            'philippines': {
-                name: 'Philippines',
-                flag: '🇵🇭',
-                currency: 'USD',
-                monthly: 4.99,
-                yearly: 49.99,
-                currencySymbol: '$'
-            },
-            'other': {
-                name: 'Other Countries',
-                flag: '🌍',
-                currency: 'USD',
-                monthly: 9.99,
-                yearly: 99.99,
-                currencySymbol: '$'
-            }
+            'zimbabwe': { name: 'Zimbabwe', flag: '🇿🇼', currency: 'USD' },
+            'south-africa': { name: 'South Africa', flag: '🇿🇦', currency: 'USD' },
+            'zambia': { name: 'Zambia', flag: '🇿🇲', currency: 'USD' },
+            'usa': { name: 'USA', flag: '🇺🇸', currency: 'USD' },
+            'uk': { name: 'United Kingdom', flag: '🇬🇧', currency: 'GBP' },
+            'canada': { name: 'Canada', flag: '🇨🇦', currency: 'CAD' },
+            'australia': { name: 'Australia', flag: '🇦🇺', currency: 'AUD' },
+            'nigeria': { name: 'Nigeria', flag: '🇳🇬', currency: 'USD' },
+            'kenya': { name: 'Kenya', flag: '🇰🇪', currency: 'USD' },
+            'uganda': { name: 'Uganda', flag: '🇺🇬', currency: 'USD' },
+            'tanzania': { name: 'Tanzania', flag: '🇹🇿', currency: 'USD' },
+            'botswana': { name: 'Botswana', flag: '🇧🇼', currency: 'USD' },
+            'other': { name: 'Other Countries', flag: '🌍', currency: 'USD' }
         };
 
         // ============================================================
@@ -534,71 +380,20 @@
         }
 
         // ============================================================
-        // RENDER PLANS
+        // LOAD COUNTRY
         // ============================================================
-        function renderPlans(countryCode) {
+        function loadCountry() {
+            const countryCode = getCountryFromURL();
             const data = countryData[countryCode] || countryData['other'];
-            const container = document.getElementById('plans-container');
 
-            // Update display
-            document.getElementById('country-flag').textContent = data.flag;
-            document.getElementById('country-subtitle').textContent = `Selected: ${data.name}`;
             document.getElementById('display-flag').textContent = data.flag;
             document.getElementById('display-country').textContent = data.name;
             document.getElementById('display-currency').textContent = `Currency: ${data.currency}`;
+            document.getElementById('country-subtitle').textContent = `Selected: ${data.name}`;
 
-            // Calculate savings
-            const monthlyTotal = data.monthly * 12;
-            const yearlySavings = Math.round((monthlyTotal - data.yearly) / monthlyTotal * 100);
-
-            container.innerHTML = `
-                <div class="plan selected" id="plan-monthly" onclick="selectPlan('monthly')">
-                    <div class="plan-header">
-                        <span class="plan-name">Monthly Plan</span>
-                        <span class="plan-badge">Flexible</span>
-                    </div>
-                    <div class="plan-price">
-                        ${data.currencySymbol}${data.monthly} <span>/ month</span>
-                    </div>
-                    <ul class="plan-features">
-                        <li><span class="check">✓</span> Unlimited messages</li>
-                        <li><span class="check">✓</span> See who likes you</li>
-                        <li><span class="check">✓</span> Premium badge</li>
-                        <li><span class="check">✓</span> Cancel anytime</li>
-                    </ul>
-                </div>
-
-                <div class="plan" id="plan-yearly" onclick="selectPlan('yearly')">
-                    <div class="plan-header">
-                        <span class="plan-name">Yearly Plan</span>
-                        <span class="plan-badge popular">🔥 Best Value</span>
-                    </div>
-                    <div class="plan-price">
-                        ${data.currencySymbol}${data.yearly} <span>/ year</span>
-                    </div>
-                    <div style="font-size:13px;color:#28a745;font-weight:600;margin-top:4px;font-family:'Inter',sans-serif;">
-                        Save ${yearlySavings}% compared to monthly
-                    </div>
-                    <ul class="plan-features">
-                        <li><span class="check">✓</span> All monthly features</li>
-                        <li><span class="check">✓</span> ${yearlySavings}% savings</li>
-                        <li><span class="check">✓</span> Priority support</li>
-                        <li><span class="check">✓</span> Free trial included</li>
-                    </ul>
-                </div>
-            `;
-
-            // Store selected plan
-            window.selectedPlan = 'monthly';
-        }
-
-        // ============================================================
-        // SELECT PLAN
-        // ============================================================
-        function selectPlan(plan) {
-            window.selectedPlan = plan;
-            document.querySelectorAll('.plan').forEach(el => el.classList.remove('selected'));
-            document.getElementById(`plan-${plan}`).classList.add('selected');
+            // Save for redirect
+            localStorage.setItem('classydate_country', countryCode);
+            localStorage.setItem('classydate_country_name', data.name);
         }
 
         // ============================================================
@@ -611,6 +406,7 @@
 
             // Mark user as subscribed
             localStorage.setItem('classydate_subscribed', 'true');
+            localStorage.setItem('classydate_coins', '150');
 
             // Get redirect URL
             const redirect = localStorage.getItem('redirect_after_subscribe') || 'members.html';
@@ -624,8 +420,7 @@
         // INIT
         // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
-            const country = getCountryFromURL();
-            renderPlans(country);
+            loadCountry();
 
             const params = new URLSearchParams(window.location.search);
             const user = params.get('user');
@@ -634,7 +429,8 @@
             }
         });
 
-        console.log('💎 ClassyDate Pricing Page loaded!');
+        console.log('🪙 ClassyDate Pricing Page loaded!');
+        console.log('💰 150 Coins = $13.00');
     </script>
 
 </body>
