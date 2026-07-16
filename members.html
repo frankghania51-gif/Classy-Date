@@ -14,7 +14,7 @@
 
     <style>
         /* ============================================================
-           CLASSYDATE - MEMBERS PAGE - FIXED VERSION
+           CLASSYDATE - MEMBERS PAGE - FULLY FIXED
            ============================================================ */
 
         * {
@@ -1295,7 +1295,7 @@
         }
 
         // ============================================================
-        // ✅ MENU FUNCTIONS
+        // ✅ MENU FUNCTIONS - FIXED LOGOUT
         // ============================================================
         window.toggleMenu = function() {
             const dropdown = document.getElementById('menuDropdown');
@@ -1310,8 +1310,19 @@
             }
         });
 
+        // 🔥 FIXED: Logout function - removes ALL session data
         window.logoutUser = function() {
+            // Remove all user session data
+            localStorage.removeItem('classy_user');
             localStorage.removeItem('classydate_user');
+            localStorage.removeItem('classy_user_email');
+            localStorage.removeItem('classy_user_name');
+            localStorage.removeItem('classy_user_id');
+            
+            // Also remove admin session if exists
+            localStorage.removeItem('admin_logged_in');
+            
+            // Redirect to login page
             window.location.href = 'login.html';
         }
 
@@ -1719,7 +1730,7 @@
 
             closeProfileModal();
 
-            const user = localStorage.getItem('classydate_user');
+            const user = localStorage.getItem('classy_user');
             if (!user) {
                 showToast('🔒 Please log in to send messages', 'error');
                 setTimeout(() => {
@@ -1756,7 +1767,8 @@
         style.textContent = `@keyframes spin { to { transform: rotate(360deg); } }`;
         document.head.appendChild(style);
 
-        console.log('💎 ClassyDate Members Page - FIXED!');
+        console.log('💎 ClassyDate Members Page - FULLY FIXED!');
+        console.log('✅ Logout now works properly');
         console.log('✅ ONLY showing admin-created members (verified = true)');
         console.log('❌ Regular sign-ups (verified = false) are HIDDEN');
         console.log('👑 Admin: Go to admin panel to add members that appear here');
