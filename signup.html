@@ -397,7 +397,7 @@
         }
 
         /* ============================================================ */
-        /* SOCIAL SIGNUP                                                */
+        /* SOCIAL SIGNUP - WITH ICONS                                  */
         /* ============================================================ */
         .social-signup {
             display: grid;
@@ -431,6 +431,9 @@
 
         .social-btn .icon {
             font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* ============================================================ */
@@ -500,45 +503,6 @@
             40% { transform: translateX(10px); }
             60% { transform: translateX(-6px); }
             80% { transform: translateX(6px); }
-        }
-
-        /* ============================================================ */
-        /* PASSWORD STRENGTH                                            */
-        /* ============================================================ */
-        .password-strength {
-            display: flex;
-            gap: 6px;
-            margin-top: 8px;
-        }
-
-        .password-strength .bar {
-            flex: 1;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 4px;
-            transition: background 0.3s ease;
-        }
-
-        .password-strength .bar.weak {
-            background: #112A46;
-            opacity: 0.3;
-        }
-
-        .password-strength .bar.medium {
-            background: #112A46;
-            opacity: 0.6;
-        }
-
-        .password-strength .bar.strong {
-            background: #112A46;
-            opacity: 1;
-        }
-
-        .password-hint {
-            font-size: 12px;
-            color: rgba(17, 42, 70, 0.4);
-            margin-top: 4px;
-            font-family: "Inter", sans-serif;
         }
 
         /* ============================================================ */
@@ -668,23 +632,11 @@
                     <input type="text" id="fullname" placeholder="John Doe" required>
                 </div>
 
-                <!-- Email -->
-                <div class="form-group">
-                    <label for="email">Email Address <span class="required">*</span></label>
-                    <input type="email" id="email" placeholder="you@example.com" required>
-                </div>
-
-                <!-- Password -->
+                <!-- ✅ EMAIL FIELD REMOVED -->
+                <!-- Password - NO RESTRICTIONS -->
                 <div class="form-group">
                     <label for="password">Password <span class="required">*</span></label>
-                    <input type="password" id="password" placeholder="Min. 8 characters" required oninput="checkPasswordStrength(this.value)">
-                    <div class="password-strength">
-                        <div class="bar" id="strength-1"></div>
-                        <div class="bar" id="strength-2"></div>
-                        <div class="bar" id="strength-3"></div>
-                        <div class="bar" id="strength-4"></div>
-                    </div>
-                    <div class="password-hint" id="password-hint">Use 8+ characters with a mix of letters, numbers &amp; symbols</div>
+                    <input type="password" id="password" placeholder="Enter your password" required>
                 </div>
 
                 <!-- Gender -->
@@ -774,12 +726,26 @@
 
             <div class="divider">or continue with</div>
 
+            <!-- Social Signup with Google + Facebook Icons -->
             <div class="social-signup">
                 <button class="social-btn" onclick="handleSocialSignup('Google')">
-                    <span class="icon">🔵</span> Google
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48">
+                            <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/>
+                            <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/>
+                            <path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/>
+                            <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/>
+                        </svg>
+                    </span>
+                    Google
                 </button>
                 <button class="social-btn" onclick="handleSocialSignup('Facebook')">
-                    <span class="icon">🔷</span> Facebook
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#1877F2">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </span>
+                    Facebook
                 </button>
             </div>
 
@@ -838,46 +804,6 @@
         window.setDoc = setDoc;
 
         // ============================================================
-        // PASSWORD STRENGTH
-        // ============================================================
-        window.checkPasswordStrength = function(password) {
-            const bars = [
-                document.getElementById('strength-1'),
-                document.getElementById('strength-2'),
-                document.getElementById('strength-3'),
-                document.getElementById('strength-4')
-            ];
-            const hint = document.getElementById('password-hint');
-
-            bars.forEach(function(bar) { bar.className = 'bar'; });
-
-            if (password.length === 0) {
-                hint.textContent = 'Use 8+ characters with a mix of letters, numbers & symbols';
-                hint.style.color = 'rgba(17, 42, 70, 0.4)';
-                return;
-            }
-
-            let strength = 0;
-            if (password.length >= 8) strength++;
-            if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
-            if (/\d/.test(password)) strength++;
-            if (/[^a-zA-Z0-9]/.test(password)) strength++;
-
-            const levels = ['Weak', 'Weak', 'Medium', 'Strong', 'Strong'];
-            const colors = ['weak', 'weak', 'medium', 'strong', 'strong'];
-
-            for (let i = 0; i < bars.length; i++) {
-                if (i < strength) {
-                    bars[i].classList.add(colors[strength]);
-                }
-            }
-
-            hint.textContent = 'Strength: ' + levels[strength] + ' (' + password.length + ' characters)';
-            hint.style.color = strength >= 3 ? '#112A46' : strength >= 2 ? '#112A46' : '#112A46';
-            hint.style.opacity = strength >= 3 ? '1' : strength >= 2 ? '0.6' : '0.4';
-        }
-
-        // ============================================================
         // GENDER SELECTION
         // ============================================================
         document.querySelectorAll('.gender-option').forEach(function(option) {
@@ -898,13 +824,12 @@
         }
 
         // ============================================================
-        // HANDLE SIGNUP
+        // HANDLE SIGNUP - NO EMAIL, NO PASSWORD RESTRICTIONS
         // ============================================================
         window.handleSignup = async function(event) {
             event.preventDefault();
 
             const fullname = document.getElementById('fullname').value.trim();
-            const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
             const gender = document.querySelector('input[name="gender"]:checked');
             const month = document.getElementById('month').value;
@@ -928,14 +853,12 @@
                 return false;
             }
 
-            if (!email || !email.includes('@') || !email.includes('.')) {
-                errorMessage.textContent = '⚠️ Please enter a valid email address.';
-                errorMessage.classList.add('show');
-                return false;
-            }
+            // ✅ NO EMAIL FIELD - using a generated email
+            const email = `${fullname.toLowerCase().replace(/\s/g, '.')}_${Date.now()}@classydate.com`;
 
-            if (password.length < 8) {
-                errorMessage.textContent = '⚠️ Password must be at least 8 characters.';
+            // ✅ NO PASSWORD RESTRICTIONS - Just check if empty
+            if (!password || password.length === 0) {
+                errorMessage.textContent = '⚠️ Please enter a password.';
                 errorMessage.classList.add('show');
                 return false;
             }
@@ -973,7 +896,6 @@
                 });
 
                 // Save user data to Firestore
-                let firestoreSaved = false;
                 try {
                     await setDoc(doc(db, "users", user.uid), {
                         uid: user.uid,
@@ -985,7 +907,6 @@
                         createdAt: new Date().toISOString(),
                         isAdmin: false
                     });
-                    firestoreSaved = true;
                 } catch (firestoreError) {
                     console.warn('Firestore save error:', firestoreError);
                 }
@@ -1000,11 +921,7 @@
                 }));
 
                 // Show success
-                if (firestoreSaved) {
-                    successMessage.textContent = '✅ Account created successfully! Redirecting...';
-                } else {
-                    successMessage.textContent = '✅ Account created, but profile data could not be saved. Please check your Firestore rules.';
-                }
+                successMessage.textContent = '✅ Account created successfully! Redirecting...';
                 successMessage.classList.add('show');
 
                 btn.textContent = '✅ Welcome!';
@@ -1027,7 +944,7 @@
                         errorMsg += 'Please enter a valid email address.';
                         break;
                     case 'auth/weak-password':
-                        errorMsg += 'Password is too weak. Please use at least 8 characters with a mix of letters, numbers, and symbols.';
+                        errorMsg += 'Password is too weak. Please use a stronger password.';
                         break;
                     case 'auth/too-many-requests':
                         errorMsg += 'Too many attempts. Please try again later.';
@@ -1074,6 +991,9 @@
         });
 
         console.log('💎 ClassyDate Sign Up Page - Firebase Auth Ready!');
+        console.log('📧 Email field removed - users sign up with just name and password!');
+        console.log('🔐 No password restrictions!');
+        console.log('📱 Google + Facebook icons added!');
     </script>
 
 </body>
