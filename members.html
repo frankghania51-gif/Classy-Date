@@ -14,7 +14,7 @@
 
     <style>
         /* ============================================================
-           CLASSYDATE - MEMBERS PAGE - CLEAN VERSION
+           CLASSYDATE - MEMBERS PAGE - FIXED VERSION
            ============================================================ */
 
         * {
@@ -116,7 +116,6 @@
             width: 100%;
         }
 
-        /* Header */
         .members-header {
             display: flex;
             justify-content: space-between;
@@ -146,7 +145,6 @@
             font-weight: 700;
         }
 
-        /* View Toggle */
         .view-toggle {
             display: flex;
             gap: 4px;
@@ -290,7 +288,7 @@
         }
 
         /* ============================================================ */
-        /* MEMBER CARD - CLEAN & PROFESSIONAL                           */
+        /* MEMBER CARD                                                  */
         /* ============================================================ */
         .member-card {
             background: rgba(255, 255, 255, 0.25);
@@ -328,7 +326,6 @@
             transform: scale(1.03);
         }
 
-        /* Carousel Buttons */
         .carousel-btn {
             position: absolute;
             top: 50%;
@@ -358,15 +355,11 @@
             background: rgba(17, 42, 70, 0.9);
         }
 
-        .carousel-btn.prev {
-            left: 6px;
-        }
-        .carousel-btn.next {
-            right: 6px;
-        }
+        .carousel-btn.prev { left: 6px; }
+        .carousel-btn.next { right: 6px; }
 
         /* ============================================================ */
-        /* ✅ INSTAGRAM-STYLE VERIFIED BADGE (Blue Checkmark)          */
+        /* ✅ INSTAGRAM-STYLE VERIFIED BADGE                           */
         /* ============================================================ */
         .verified-badge {
             position: absolute;
@@ -419,7 +412,7 @@
         }
 
         /* ============================================================ */
-        /* STATUS - GLOWING                                             */
+        /* STATUS                                                       */
         /* ============================================================ */
         .member-card__status {
             position: absolute;
@@ -523,7 +516,7 @@
         }
 
         /* ============================================================ */
-        /* BUTTONS - BIGGER & CLEAN                                     */
+        /* BUTTONS                                                      */
         /* ============================================================ */
         .member-card__actions {
             display: flex;
@@ -624,6 +617,177 @@
         .pagination button:disabled {
             opacity: 0.3;
             cursor: not-allowed;
+        }
+
+        /* ============================================================ */
+        /* PROFILE MODAL                                                */
+        /* ============================================================ */
+        .profile-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeInModal 0.3s ease;
+        }
+
+        .profile-modal.active {
+            display: flex;
+        }
+
+        @keyframes fadeInModal {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .profile-modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            max-width: 550px;
+            width: 100%;
+            padding: 40px 32px 32px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .profile-modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: rgba(17, 42, 70, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Inter", sans-serif;
+        }
+
+        .profile-modal-close:hover {
+            color: #112A46;
+            transform: rotate(90deg);
+        }
+
+        .profile-modal-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #112A46;
+            margin: 0 auto 16px;
+            display: block;
+        }
+
+        .profile-modal-name {
+            font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
+            font-size: 28px;
+            color: #112A46;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .profile-modal-status {
+            text-align: center;
+            font-size: 14px;
+            color: rgba(17, 42, 70, 0.5);
+            margin-top: 2px;
+            font-family: "Inter", sans-serif;
+        }
+
+        .profile-modal-details {
+            margin-top: 20px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .profile-modal-details .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(17, 42, 70, 0.06);
+            font-family: "Inter", sans-serif;
+            font-size: 15px;
+        }
+
+        .profile-modal-details .detail-item .label {
+            color: rgba(17, 42, 70, 0.4);
+            font-weight: 500;
+        }
+
+        .profile-modal-details .detail-item .value {
+            color: #112A46;
+            font-weight: 600;
+        }
+
+        .profile-modal-bio {
+            margin-top: 12px;
+            padding: 14px 16px;
+            background: rgba(17, 42, 70, 0.04);
+            border-radius: 10px;
+            font-family: "Inter", sans-serif;
+            font-size: 14px;
+            color: rgba(17, 42, 70, 0.7);
+            line-height: 1.6;
+        }
+
+        .profile-modal-interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 12px;
+        }
+
+        .profile-modal-interests .tag {
+            padding: 4px 14px;
+            background: rgba(17, 42, 70, 0.06);
+            border-radius: 50px;
+            font-size: 12px;
+            color: #112A46;
+            font-family: "Inter", sans-serif;
+            font-weight: 500;
+        }
+
+        .profile-modal-photos {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .profile-modal-photos img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid rgba(17, 42, 70, 0.06);
+        }
+
+        .profile-modal .btn-message-profile {
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            background: #112A46;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Inter", sans-serif;
+        }
+
+        .profile-modal .btn-message-profile:hover {
+            background: #2E5A88;
+            transform: translateY(-2px);
         }
 
         /* ============================================================ */
@@ -750,6 +914,23 @@
                 font-size: 11px;
             }
 
+            .profile-modal-content {
+                padding: 28px 20px 24px;
+            }
+            .profile-modal-avatar {
+                width: 80px;
+                height: 80px;
+            }
+            .profile-modal-name {
+                font-size: 22px;
+            }
+            .profile-modal-photos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .profile-modal-photos img {
+                height: 70px;
+            }
+
             .toast {
                 bottom: 20px;
                 right: 20px;
@@ -849,6 +1030,13 @@
             .image-dots .dot.active {
                 width: 10px;
             }
+
+            .profile-modal-photos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .profile-modal-photos img {
+                height: 60px;
+            }
         }
 
         /* ============================================================ */
@@ -936,6 +1124,53 @@
         <div class="pagination" id="pagination"></div>
     </main>
 
+    <!-- ============================================================ -->
+    <!-- PROFILE MODAL - FULL DETAILS                                 -->
+    <!-- ============================================================ -->
+    <div class="profile-modal" id="profile-modal">
+        <div class="profile-modal-content">
+            <button class="profile-modal-close" onclick="closeProfileModal()">✕</button>
+            <img class="profile-modal-avatar" id="modal-avatar" src="" alt="Profile">
+            <h2 class="profile-modal-name" id="modal-name">Name</h2>
+            <div class="profile-modal-status" id="modal-status-text">📍 Location</div>
+
+            <div class="profile-modal-details" id="modal-details">
+                <div class="detail-item">
+                    <span class="label">Age</span>
+                    <span class="value" id="modal-age">—</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Gender</span>
+                    <span class="value" id="modal-gender">—</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Location</span>
+                    <span class="value" id="modal-location">—</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Status</span>
+                    <span class="value" id="modal-status">—</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Verified</span>
+                    <span class="value" id="modal-verified">—</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Premium</span>
+                    <span class="value" id="modal-premium">—</span>
+                </div>
+            </div>
+
+            <div class="profile-modal-bio" id="modal-bio">No bio available.</div>
+
+            <div class="profile-modal-interests" id="modal-interests"></div>
+
+            <div class="profile-modal-photos" id="modal-photos"></div>
+
+            <button class="btn-message-profile" id="modal-message-btn" onclick="modalSendMessage()">💬 Send Message</button>
+        </div>
+    </div>
+
     <!-- Toast -->
     <div class="toast" id="toast"></div>
 
@@ -990,8 +1225,13 @@
         // ============================================================
         function getPhotoUrl(fileId) {
             if (!fileId) return null;
-            const { data } = supabase.storage.from('member_photos').getPublicUrl(fileId);
-            return data?.publicUrl || null;
+            try {
+                const { data } = supabase.storage.from('member_photos').getPublicUrl(fileId);
+                return data?.publicUrl || null;
+            } catch (error) {
+                console.warn('Error getting photo URL for:', fileId, error);
+                return null;
+            }
         }
 
         // ============================================================
@@ -1026,9 +1266,9 @@
         }
 
         // ============================================================
-        // CAROUSEL FUNCTIONS
+        // CAROUSEL FUNCTIONS - FIXED (Globally accessible)
         // ============================================================
-        function changePhoto(memberId, direction) {
+        window.changePhoto = function(memberId, direction) {
             const wrapper = document.querySelector(`.member-card__image-wrapper[data-member="${memberId}"]`);
             if (!wrapper) return;
 
@@ -1061,7 +1301,7 @@
             if (!slides || slides.children.length <= 1) return;
 
             carouselIntervals[memberId] = setInterval(() => {
-                changePhoto(memberId, 1);
+                window.changePhoto(memberId, 1);
             }, 3500);
         }
 
@@ -1073,7 +1313,7 @@
         }
 
         // ============================================================
-        // RENDER
+        // RENDER - FIXED
         // ============================================================
         function renderMembers(members) {
             if (isLoading) {
@@ -1103,10 +1343,12 @@
             totalCount.textContent = members.length;
 
             grid.innerHTML = members.map(member => {
-                // Get photos
+                // Get photos - with better error handling
                 let photos = [];
                 if (member.photo_file_ids && member.photo_file_ids.length > 0) {
-                    photos = member.photo_file_ids.map(id => getPhotoUrl(id)).filter(url => url !== null);
+                    photos = member.photo_file_ids
+                        .map(id => getPhotoUrl(id))
+                        .filter(url => url !== null && url !== '');
                 }
 
                 // If no photos, use avatar
@@ -1182,13 +1424,6 @@
 
             updatePagination(members.length);
         }
-
-        // ============================================================
-        // EXPOSE CAROUSEL FUNCTIONS TO GLOBAL
-        // ============================================================
-        window.changePhoto = changePhoto;
-        window.startCarousel = startCarousel;
-        window.stopCarousel = stopCarousel;
 
         // ============================================================
         // VIEW TOGGLE
@@ -1272,7 +1507,7 @@
         }
 
         // ============================================================
-        // PROFILE MODAL
+        // ✅ FIXED: PROFILE MODAL - Now opens full modal!
         // ============================================================
         window.openProfileModal = function(id) {
             const member = allMembers.find(m => m.id === id);
@@ -1280,7 +1515,94 @@
                 showToast('❌ Member not found', 'error');
                 return;
             }
-            showToast(`👤 Viewing profile: ${member.name}`, 'success');
+
+            selectedMemberId = id;
+
+            // Avatar
+            let photos = [];
+            if (member.photo_file_ids && member.photo_file_ids.length > 0) {
+                photos = member.photo_file_ids
+                    .map(id => getPhotoUrl(id))
+                    .filter(url => url !== null && url !== '');
+            }
+
+            let mainPhoto = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name || 'User')}&background=112A46&color=fff&size=200`;
+            if (photos.length > 0) {
+                mainPhoto = photos[0];
+            }
+
+            document.getElementById('modal-avatar').src = mainPhoto;
+            document.getElementById('modal-avatar').onerror = function() {
+                this.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name || 'User')}&background=112A46&color=fff&size=200`;
+            };
+
+            // Name with badges
+            let nameHTML = member.name || 'Unknown';
+            if (member.verified) nameHTML += ' <span class="verified-badge">✓</span>';
+            if (member.premium) nameHTML += ' ⭐';
+            document.getElementById('modal-name').innerHTML = nameHTML;
+
+            // Status text
+            document.getElementById('modal-status-text').textContent = `📍 ${member.location || 'Location Unknown'}`;
+
+            // Details
+            document.getElementById('modal-age').textContent = member.age || '—';
+            document.getElementById('modal-gender').textContent = member.gender || '—';
+            document.getElementById('modal-location').textContent = member.location || '—';
+            document.getElementById('modal-status').innerHTML = member.online ? '🟢 Online' : '⚪ Offline';
+            document.getElementById('modal-verified').textContent = member.verified ? '✅ Yes' : '❌ No';
+            document.getElementById('modal-premium').textContent = member.premium ? '⭐ Yes' : '—';
+
+            // Bio
+            document.getElementById('modal-bio').textContent = member.bio || 'No bio available.';
+
+            // Interests
+            const interestsContainer = document.getElementById('modal-interests');
+            if (member.interests && member.interests.length > 0) {
+                interestsContainer.innerHTML = member.interests.map(i => `<span class="tag">#${i}</span>`).join('');
+            } else {
+                interestsContainer.innerHTML = '<span style="color:rgba(17,42,70,0.3);font-size:14px;">No interests listed</span>';
+            }
+
+            // Photos
+            const photosContainer = document.getElementById('modal-photos');
+            if (photos.length > 0) {
+                photosContainer.innerHTML = photos.map(url => `<img src="${url}" alt="Photo" onerror="this.style.display='none'">`).join('');
+            } else {
+                photosContainer.innerHTML = '<span style="color:rgba(17,42,70,0.3);font-size:14px;grid-column:1/-1;">No photos available</span>';
+            }
+
+            document.getElementById('modal-message-btn').onclick = function() {
+                window.sendMessage(id);
+            };
+
+            document.getElementById('profile-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        window.closeProfileModal = function() {
+            document.getElementById('profile-modal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on click outside
+        document.getElementById('profile-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeProfileModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeProfileModal();
+            }
+        });
+
+        window.modalSendMessage = function() {
+            if (selectedMemberId) {
+                window.sendMessage(selectedMemberId);
+            }
         }
 
         // ============================================================
@@ -1293,6 +1615,10 @@
                 return;
             }
 
+            // Close modal
+            closeProfileModal();
+
+            // Check if logged in
             const user = localStorage.getItem('classydate_user');
             if (!user) {
                 showToast('🔒 Please log in to send messages', 'error');
@@ -1330,9 +1656,11 @@
         style.textContent = `@keyframes spin { to { transform: rotate(360deg); } }`;
         document.head.appendChild(style);
 
-        console.log('💎 ClassyDate Members Page - Clean Professional Version!');
+        console.log('💎 ClassyDate Members Page - FIXED VERSION!');
+        console.log('✅ Profile modal now works!');
+        console.log('✅ Carousel buttons now work!');
+        console.log('✅ Photo loading improved!');
         console.log('✅ Instagram-style verified badge (blue checkmark)');
-        console.log('✅ NO premium badge, NO image counter labels');
         console.log('✅ Auto-slideshow on images');
     </script>
 
