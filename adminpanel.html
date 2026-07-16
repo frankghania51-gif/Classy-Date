@@ -171,7 +171,7 @@
         }
 
         /* ============================================================ */
-        /* ✅ 2x2 STATS ON ALL SCREENS                                 */
+        /* 2x2 STATS                                                    */
         /* ============================================================ */
         .stats-grid {
             display: grid;
@@ -216,14 +216,12 @@
         }
 
         /* ============================================================ */
-        /* TOOLBAR                                                     */
+        /* ✅ SEARCH ONLY - NO FILTERS OR EXPORT                       */
         /* ============================================================ */
         .admin-toolbar {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            justify-content: space-between;
-            align-items: center;
             margin-bottom: 20px;
             padding: 14px 18px;
             background: rgba(255, 255, 255, 0.25);
@@ -232,17 +230,9 @@
             border: 1px solid rgba(255, 255, 255, 0.20);
         }
 
-        .admin-toolbar-left {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            align-items: center;
+        .admin-toolbar input {
             flex: 1;
-        }
-
-        .admin-toolbar-left input,
-        .admin-toolbar-left select {
-            padding: 8px 14px;
+            padding: 10px 16px;
             background: rgba(255, 255, 255, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 8px;
@@ -250,52 +240,22 @@
             font-size: 14px;
             font-family: "Inter", sans-serif;
             outline: none;
-            min-width: 120px;
+            min-width: 200px;
             transition: all 0.3s ease;
         }
 
-        .admin-toolbar-left input::placeholder {
+        .admin-toolbar input::placeholder {
             color: rgba(17, 42, 70, 0.3);
         }
 
-        .admin-toolbar-left input:focus,
-        .admin-toolbar-left select:focus {
+        .admin-toolbar input:focus {
             border-color: #112A46;
             background: rgba(255, 255, 255, 0.6);
             box-shadow: 0 0 0 4px rgba(17, 42, 70, 0.06);
         }
 
-        .admin-toolbar-right {
-            display: flex;
-            gap: 8px;
-        }
-
-        .btn-toolbar {
-            padding: 8px 18px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: "Inter", sans-serif;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .btn-export {
-            background: rgba(255, 255, 255, 0.3);
-            color: #112A46;
-            border: 1px solid rgba(17, 42, 70, 0.08);
-        }
-
-        .btn-export:hover {
-            background: rgba(255, 255, 255, 0.5);
-        }
-
         /* ============================================================ */
-        /* ✅ MEMBERS TABLE - CARD ROWS ON MOBILE                      */
+        /* MEMBERS TABLE                                                */
         /* ============================================================ */
         .admin-table-wrapper {
             background: rgba(255, 255, 255, 0.25);
@@ -705,7 +665,7 @@
         }
 
         /* ============================================================ */
-        /* ✅ RESPONSIVE - 2x2 STATS + CARD ROWS ON MOBILE            */
+        /* RESPONSIVE                                                   */
         /* ============================================================ */
         @media (max-width: 768px) {
             .cb-shell-header__inner {
@@ -735,7 +695,6 @@
                 font-size: 13px;
             }
 
-            /* ✅ 2x2 Stats on Tablet/Mobile */
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
@@ -750,32 +709,13 @@
             }
 
             .admin-toolbar {
-                flex-direction: column;
-                align-items: stretch;
                 padding: 12px 14px;
             }
 
-            .admin-toolbar-left {
-                flex-direction: column;
-                width: 100%;
+            .admin-toolbar input {
+                min-width: 100%;
             }
 
-            .admin-toolbar-left input,
-            .admin-toolbar-left select {
-                width: 100%;
-                min-width: unset;
-            }
-
-            .admin-toolbar-right {
-                width: 100%;
-            }
-
-            .admin-toolbar-right .btn-toolbar {
-                flex: 1;
-                justify-content: center;
-            }
-
-            /* ✅ CARD ROWS ON MOBILE */
             .admin-table thead {
                 display: none;
             }
@@ -944,7 +884,7 @@
             <button class="btn-add" onclick="openAddModal()">➕ Add New Member</button>
         </div>
 
-        <!-- ✅ 2x2 STATS GRID -->
+        <!-- STATS -->
         <div class="stats-grid" id="stats-grid">
             <div class="stat-card-admin">
                 <span class="stat-icon">👥</span>
@@ -968,27 +908,12 @@
             </div>
         </div>
 
-        <!-- Toolbar -->
+        <!-- ✅ SEARCH ONLY - No Filters, No Export -->
         <div class="admin-toolbar">
-            <div class="admin-toolbar-left">
-                <input type="text" id="search-input" placeholder="🔍 Search members..." oninput="filterMembers()">
-                <select id="filter-status" onchange="filterMembers()">
-                    <option value="all">All Status</option>
-                    <option value="online">Online</option>
-                    <option value="offline">Offline</option>
-                </select>
-                <select id="filter-verified" onchange="filterMembers()">
-                    <option value="all">All</option>
-                    <option value="verified">Verified</option>
-                    <option value="unverified">Unverified</option>
-                </select>
-            </div>
-            <div class="admin-toolbar-right">
-                <button class="btn-toolbar btn-export" onclick="exportData()">📥 Export</button>
-            </div>
+            <input type="text" id="search-input" placeholder="🔍 Search members..." oninput="filterMembers()">
         </div>
 
-        <!-- ✅ MEMBERS TABLE (Card rows on mobile) -->
+        <!-- MEMBERS TABLE -->
         <div class="admin-table-wrapper">
             <table class="admin-table">
                 <thead>
@@ -1015,7 +940,7 @@
     </main>
 
     <!-- ============================================================ -->
-    <!-- MODAL - Add/Edit Member                                     -->
+    <!-- MODAL                                                        -->
     <!-- ============================================================ -->
     <div class="modal-overlay" id="modal-overlay">
         <div class="modal">
@@ -1103,7 +1028,7 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- SCRIPTS - Supabase                                           -->
+    <!-- SCRIPTS                                                      -->
     <!-- ============================================================ -->
     <script type="importmap">
         {
@@ -1186,20 +1111,12 @@
         // ============================================================
         window.filterMembers = function() {
             const search = document.getElementById('search-input').value.toLowerCase().trim();
-            const statusFilter = document.getElementById('filter-status').value;
-            const verifiedFilter = document.getElementById('filter-verified').value;
 
             filteredMembers = members.filter(m => {
                 const matchSearch = (m.name || '').toLowerCase().includes(search) ||
                     (m.email || '').toLowerCase().includes(search) ||
                     (m.location || '').toLowerCase().includes(search);
-                const matchStatus = statusFilter === 'all' ||
-                    (statusFilter === 'online' && m.online) ||
-                    (statusFilter === 'offline' && !m.online);
-                const matchVerified = verifiedFilter === 'all' ||
-                    (verifiedFilter === 'verified' && m.verified) ||
-                    (verifiedFilter === 'unverified' && !m.verified);
-                return matchSearch && matchStatus && matchVerified;
+                return matchSearch;
             });
 
             currentPage = 1;
@@ -1208,7 +1125,7 @@
         }
 
         // ============================================================
-        // ✅ RENDER TABLE - Card rows on mobile
+        // RENDER TABLE
         // ============================================================
         function renderTable() {
             if (isLoading) {
@@ -1233,7 +1150,7 @@
                             <div style="text-align:center;padding:40px;color:rgba(17,42,70,0.3);">
                                 <div style="font-size:48px;margin-bottom:12px;">👤</div>
                                 <h3 style="color:#112A46;font-size:20px;font-family:'Playfair Display',serif;">No members found</h3>
-                                <p style="color:rgba(17,42,70,0.4);">Try adjusting your filters or add a new member.</p>
+                                <p style="color:rgba(17,42,70,0.4);">Try adjusting your search or add a new member.</p>
                             </div>
                         </td>
                     </tr>
@@ -1430,21 +1347,6 @@
         }
 
         // ============================================================
-        // EXPORT
-        // ============================================================
-        window.exportData = function() {
-            const dataStr = JSON.stringify(members, null, 2);
-            const blob = new Blob([dataStr], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `classydate_members_${new Date().toISOString().slice(0, 10)}.json`;
-            a.click();
-            URL.revokeObjectURL(url);
-            showToast('📥 Members exported successfully!', 'success');
-        }
-
-        // ============================================================
         // LOGOUT
         // ============================================================
         window.logoutAdmin = function() {
@@ -1481,10 +1383,8 @@
 
         loadMembers();
 
-        console.log('💎 ClassyDate Admin Panel - Responsive!');
-        console.log('✅ 2x2 stats on phones');
-        console.log('✅ Card rows on phones');
-        console.log('✅ Edit/Delete functionality');
+        console.log('💎 ClassyDate Admin Panel - Clean Version!');
+        console.log('✅ Search only - no filters or export');
     </script>
 
 </body>
