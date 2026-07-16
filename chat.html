@@ -116,6 +116,9 @@
             height: 100vh;
         }
 
+        /* ============================================================ */
+        /* CHAT HEADER                                                  */
+        /* ============================================================ */
         .chat-header {
             display: flex;
             align-items: center;
@@ -206,11 +209,15 @@
             font-family: "Inter", sans-serif;
             font-size: 16px;
         }
+
         .chat-header__actions button:hover {
             background: rgba(255, 255, 255, 0.5);
             transform: translateY(-2px);
         }
 
+        /* ============================================================ */
+        /* MESSAGES CONTAINER                                           */
+        /* ============================================================ */
         .messages-container {
             flex: 1;
             overflow-y: auto;
@@ -292,6 +299,9 @@
             padding: 0 4px;
         }
 
+        /* ============================================================ */
+        /* TYPING INDICATOR                                             */
+        /* ============================================================ */
         .typing-indicator {
             display: none;
             padding: 8px 16px;
@@ -325,6 +335,9 @@
             30% { transform: translateY(-6px); }
         }
 
+        /* ============================================================ */
+        /* MESSAGE INPUT                                                */
+        /* ============================================================ */
         .message-input-container {
             display: flex;
             gap: 12px;
@@ -420,6 +433,118 @@
             font-family: "Inter", sans-serif;
         }
 
+        /* ============================================================ */
+        /* ✅ CLEAN COINS POPUP - PROFESSIONAL DESIGN                   */
+        /* ============================================================ */
+        .coins-popup-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeInPopup 0.3s ease;
+        }
+
+        .coins-popup-overlay.active {
+            display: flex;
+        }
+
+        @keyframes fadeInPopup {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .coins-popup-card {
+            max-width: 420px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 40px 32px 32px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+        }
+
+        .coins-popup-card .icon {
+            font-size: 56px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .coins-popup-card .title {
+            font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: #112A46;
+            margin-bottom: 8px;
+        }
+
+        .coins-popup-card .divider {
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(135deg, #112A46, #2E5A88);
+            margin: 8px auto 16px;
+            border-radius: 4px;
+        }
+
+        .coins-popup-card .message {
+            font-size: 15px;
+            color: rgba(17, 42, 70, 0.6);
+            line-height: 1.6;
+            font-family: "Inter", sans-serif;
+            margin-bottom: 24px;
+        }
+
+        .coins-popup-card .message .member-name {
+            color: #112A46;
+            font-weight: 700;
+        }
+
+        .btn-proceed {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #112A46, #2E5A88);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Inter", sans-serif;
+            margin-bottom: 12px;
+        }
+
+        .btn-proceed:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(17, 42, 70, 0.25);
+        }
+
+        .btn-maybe-later {
+            background: none;
+            border: none;
+            color: rgba(17, 42, 70, 0.3);
+            font-size: 14px;
+            cursor: pointer;
+            font-family: "Inter", sans-serif;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 4px 8px;
+        }
+
+        .btn-maybe-later:hover {
+            color: rgba(17, 42, 70, 0.6);
+        }
+
+        /* ============================================================ */
+        /* TOAST                                                       */
+        /* ============================================================ */
         .toast {
             position: fixed;
             bottom: 30px;
@@ -450,6 +575,9 @@
             background: #dc3545;
         }
 
+        /* ============================================================ */
+        /* RESPONSIVE                                                   */
+        /* ============================================================ */
         @media (max-width: 768px) {
             .chat-wrapper {
                 padding: 72px 12px 12px;
@@ -501,6 +629,12 @@
                 padding: 6px 14px;
                 font-size: 12px;
             }
+            .coins-popup-card {
+                padding: 32px 24px 28px;
+            }
+            .coins-popup-card .title {
+                font-size: 22px;
+            }
             .toast {
                 bottom: 20px;
                 right: 20px;
@@ -533,11 +667,23 @@
                 padding: 8px 10px;
                 font-size: 16px;
             }
+            .coins-popup-card {
+                padding: 28px 20px 24px;
+            }
+            .coins-popup-card .title {
+                font-size: 20px;
+            }
+            .coins-popup-card .message {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- ============================================================ -->
+    <!-- HEADER                                                       -->
+    <!-- ============================================================ -->
     <header class="cb-shell-header" role="banner">
         <div class="cb-shell-header__inner">
             <a class="cb-shell-brand" href="/">Classy<span>Date</span></a>
@@ -548,6 +694,9 @@
         </div>
     </header>
 
+    <!-- ============================================================ -->
+    <!-- CHAT PAGE                                                    -->
+    <!-- ============================================================ -->
     <main class="chat-wrapper">
         <div class="chat-header" id="chat-header">
             <img class="chat-header__avatar" id="chat-avatar" src="" alt="Member">
@@ -569,11 +718,7 @@
         </div>
 
         <div class="messages-container" id="messages-container">
-            <div class="empty-chat">
-                <div class="icon">💬</div>
-                <h3>No messages yet</h3>
-                <p>Send a message to start the conversation!</p>
-            </div>
+            <!-- Messages will be rendered here -->
         </div>
 
         <div class="typing-indicator" id="typing-indicator">
@@ -593,14 +738,35 @@
         </div>
     </main>
 
+    <!-- ============================================================ -->
+    <!-- ✅ CLEAN COINS POPUP                                          -->
+    <!-- ============================================================ -->
+    <div class="coins-popup-overlay" id="coins-popup">
+        <div class="coins-popup-card">
+            <span class="icon">💎</span>
+            <h2 class="title">🔒 Not Enough Coins!</h2>
+            <div class="divider"></div>
+            <p class="message" id="popup-message">
+                Not enough coins to unlock your conversation with <span class="member-name" id="popup-name">Sarah Johnson</span>.<br><br>
+                Proceed and fill your details then purchase coins to unlock your conversation.
+            </p>
+            <button class="btn-proceed" id="popup-proceed-btn">➡️ Proceed</button>
+            <button class="btn-maybe-later" id="popup-maybe-btn">❌ Maybe later</button>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TOAST                                                       -->
+    <!-- ============================================================ -->
     <div class="toast" id="toast"></div>
 
+    <!-- ============================================================ -->
+    <!-- SCRIPTS                                                      -->
+    <!-- ============================================================ -->
     <script>
         // ============================================================
-        // 🔥 FIXED: READ MEMBER FROM URL
+        // GET MEMBER FROM URL
         // ============================================================
-        
-        // Get member info from URL
         const urlParams = new URLSearchParams(window.location.search);
         const userId = urlParams.get('user');
         const userName = urlParams.get('name');
@@ -610,17 +776,20 @@
             window.location.href = 'members.html';
         }
 
-        // Create chat partner from URL
+        const memberName = decodeURIComponent(userName || 'Member');
+        const memberLocation = urlParams.get('location') || 'Unknown';
+
+        // Create chat partner
         const chatPartner = {
             id: parseInt(userId) || 0,
-            name: decodeURIComponent(userName || 'Member'),
-            location: '📍 Location Unknown',
-            photo: 'https://ui-avatars.com/api/?name=' + encodeURIComponent(decodeURIComponent(userName || 'Member')) + '&background=112A46&color=fff&size=200',
+            name: memberName,
+            location: memberLocation,
+            photo: 'https://ui-avatars.com/api/?name=' + encodeURIComponent(memberName) + '&background=112A46&color=fff&size=200',
             verified: true,
             online: true
         };
 
-        console.log('💬 Chat Partner from URL:', chatPartner);
+        console.log('💬 Chat Partner:', chatPartner);
 
         // ============================================================
         // STATE
@@ -631,15 +800,13 @@
         // INIT
         // ============================================================
         function initChat() {
-            console.log('🔥 Chat Partner:', chatPartner);
-
-            // Update header with dynamic name
+            // Update header
             document.getElementById('chat-avatar').src = chatPartner.photo;
             document.getElementById('chat-avatar').onerror = function() {
                 this.src = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(chatPartner.name) + '&background=112A46&color=fff&size=200';
             };
             document.getElementById('chat-name').textContent = chatPartner.name;
-            document.getElementById('chat-location').textContent = '📍 Connecting...';
+            document.getElementById('chat-location').textContent = chatPartner.location;
 
             // Status
             const statusDot = document.getElementById('chat-status-dot');
@@ -662,7 +829,20 @@
             // Update title
             document.title = `Chat with ${chatPartner.name} | ClassyDate`;
 
-            // Load any pending message
+            // ============================================================
+            // ✅ ADD PRE-WRITTEN MESSAGE FROM MEMBER
+            // ============================================================
+            const preWrittenMessage = `Hello, I'm ${chatPartner.name}. I'm from ${chatPartner.location}. Nice to meet you.`;
+
+            // Add the pre-written message to chat
+            const now = new Date();
+            messages.push({
+                sender: chatPartner.name,
+                text: preWrittenMessage,
+                time: now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+            });
+
+            // Load any pending message from user
             const pendingMessage = localStorage.getItem('pending_message');
             if (pendingMessage) {
                 try {
@@ -679,6 +859,10 @@
             }
 
             renderMessages();
+
+            // Update popup name
+            document.getElementById('popup-name').textContent = chatPartner.name;
+
             console.log('💬 Chat page ready with:', chatPartner.name);
         }
 
@@ -714,7 +898,7 @@
         }
 
         // ============================================================
-        // SEND MESSAGE - Redirects to suscribe.html
+        // ✅ SEND MESSAGE - SHOW COINS POPUP
         // ============================================================
         function sendMessage() {
             const input = document.getElementById('message-input');
@@ -728,24 +912,46 @@
                 return;
             }
 
-            console.log('✅ Sending message to:', chatPartner.name);
+            // ✅ SHOW COINS POPUP
+            openCoinsPopup();
 
-            showToast('💎 Please subscribe to send messages!', 'error');
+            // Clear input
+            input.value = '';
+        }
 
-            localStorage.setItem('pending_message', JSON.stringify({
-                memberId: chatPartner.id,
-                memberName: chatPartner.name,
-                message: text
-            }));
+        // ============================================================
+        // ✅ COINS POPUP FUNCTIONS
+        // ============================================================
+        function openCoinsPopup() {
+            document.getElementById('coins-popup').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCoinsPopup() {
+            document.getElementById('coins-popup').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function proceedToSubscribe() {
+            // Save the message for after subscription
+            const input = document.getElementById('message-input');
+            const text = input.value.trim();
+
+            if (text) {
+                localStorage.setItem('pending_message', JSON.stringify({
+                    memberId: chatPartner.id,
+                    memberName: chatPartner.name,
+                    message: text
+                }));
+            }
 
             localStorage.setItem('redirect_after_subscribe', `chat.html?user=${chatPartner.id}&name=${encodeURIComponent(chatPartner.name)}`);
 
-            input.value = '';
+            closeCoinsPopup();
 
             setTimeout(() => {
-                console.log('🔀 Redirecting to suscribe.html');
                 window.location.href = 'suscribe.html';
-            }, 1200);
+            }, 300);
         }
 
         // ============================================================
@@ -768,12 +974,25 @@
         // DOM EVENTS
         // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
+            // Send button
             document.getElementById('send-btn').addEventListener('click', sendMessage);
 
+            // Enter key
             document.getElementById('message-input').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter' && !e.shiftKey) {
                     e.preventDefault();
                     sendMessage();
+                }
+            });
+
+            // Popup buttons
+            document.getElementById('popup-proceed-btn').addEventListener('click', proceedToSubscribe);
+            document.getElementById('popup-maybe-btn').addEventListener('click', closeCoinsPopup);
+
+            // Close popup on overlay click
+            document.getElementById('coins-popup').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeCoinsPopup();
                 }
             });
         });
@@ -783,9 +1002,11 @@
         // ============================================================
         initChat();
 
-        console.log('💬 ClassyDate Chat Page - DYNAMIC VERSION!');
-        console.log('✅ Shows the member you clicked on');
-        console.log('📤 Send button redirects to suscribe.html');
+        console.log('💬 ClassyDate Chat Page - CLEAN VERSION!');
+        console.log('✅ Pre-written message from member');
+        console.log('✅ Clean coins popup');
+        console.log('✅ Proceed button goes to suscribe.html');
+        console.log('✅ No coins amount displayed');
     </script>
 
 </body>
