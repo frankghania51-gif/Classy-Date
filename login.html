@@ -16,7 +16,7 @@
 
     <style>
         /* ============================================================
-           CLASSYDATE - LOGIN PAGE - SUPABASE AUTH
+           CLASSYDATE - LOGIN PAGE - ULTIMATE HOT VERSION
            Colors: Navy #112A46 | Soft Blue #ACC8E5
            ============================================================ */
 
@@ -43,7 +43,9 @@
             color: inherit;
         }
 
-        /* Header */
+        /* ============================================================ */
+        /* HEADER                                                       */
+        /* ============================================================ */
         .cb-shell-header {
             position: fixed;
             top: 0;
@@ -115,7 +117,9 @@
             transform: translateY(-2px);
         }
 
-        /* Login Container */
+        /* ============================================================ */
+        /* LOGIN CONTAINER                                              */
+        /* ============================================================ */
         .login-wrapper {
             flex: 1;
             display: flex;
@@ -151,7 +155,9 @@
             100% { transform: translateY(-10vh) rotate(720deg) scale(0.5); opacity: 0; }
         }
 
-        /* Login Card */
+        /* ============================================================ */
+        /* LOGIN CARD                                                  */
+        /* ============================================================ */
         .login-card {
             max-width: 440px;
             width: 100%;
@@ -190,7 +196,9 @@
             font-family: "Inter", sans-serif;
         }
 
-        /* Form */
+        /* ============================================================ */
+        /* FORM - USERNAME + PASSWORD                                  */
+        /* ============================================================ */
         .form-group {
             margin-bottom: 20px;
         }
@@ -264,7 +272,9 @@
             color: #112A46;
         }
 
-        /* Buttons */
+        /* ============================================================ */
+        /* BUTTONS                                                      */
+        /* ============================================================ */
         .btn-login {
             width: 100%;
             padding: 16px;
@@ -290,7 +300,9 @@
             cursor: not-allowed;
         }
 
-        /* Divider */
+        /* ============================================================ */
+        /* DIVIDER                                                      */
+        /* ============================================================ */
         .divider {
             display: flex;
             align-items: center;
@@ -309,7 +321,9 @@
             background: rgba(17, 42, 70, 0.1);
         }
 
-        /* Social Login */
+        /* ============================================================ */
+        /* SOCIAL LOGIN                                                */
+        /* ============================================================ */
         .social-login {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -342,9 +356,14 @@
 
         .social-btn .icon {
             font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Footer Link */
+        /* ============================================================ */
+        /* FOOTER LINK                                                 */
+        /* ============================================================ */
         .login-footer {
             text-align: center;
             margin-top: 8px;
@@ -367,7 +386,9 @@
             text-decoration: underline;
         }
 
-        /* Error & Success Messages */
+        /* ============================================================ */
+        /* ERROR & SUCCESS MESSAGES                                    */
+        /* ============================================================ */
         .error-message {
             display: none;
             background: rgba(17, 42, 70, 0.08);
@@ -409,60 +430,37 @@
             80% { transform: translateX(6px); }
         }
 
-        /* Toast */
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            padding: 14px 24px;
-            background: #112A46;
-            color: #fff;
-            border-radius: 12px;
-            font-family: "Inter", sans-serif;
-            font-weight: 600;
-            font-size: 14px;
-            z-index: 999;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.4s ease;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            max-width: 400px;
-        }
-
-        .toast.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        .toast.success {
-            background: #28a745;
-        }
-        .toast.error {
-            background: #dc3545;
-        }
-
-        /* Responsive */
+        /* ============================================================ */
+        /* RESPONSIVE                                                  */
+        /* ============================================================ */
         @media (max-width: 480px) {
             .login-card {
                 padding: 32px 24px 28px;
             }
+
             .login-card__header h1 {
                 font-size: 26px;
             }
+
             .form-options {
                 flex-direction: column;
                 gap: 12px;
                 align-items: flex-start;
             }
+
             .social-login {
                 grid-template-columns: 1fr;
             }
+
             .cb-shell-header__inner {
                 height: 64px;
                 padding: 0 16px;
             }
+
             .cb-shell-brand {
                 font-size: 20px;
             }
+
             .cb-shell-button {
                 padding: 6px 16px;
                 font-size: 12px;
@@ -473,9 +471,11 @@
             .login-card {
                 padding: 24px 16px 20px;
             }
+
             .cb-shell-actions {
                 gap: 6px;
             }
+
             .cb-shell-button {
                 padding: 4px 12px;
                 font-size: 11px;
@@ -485,7 +485,9 @@
 </head>
 <body>
 
-    <!-- Header -->
+    <!-- ============================================================ -->
+    <!-- HEADER                                                       -->
+    <!-- ============================================================ -->
     <header class="cb-shell-header" role="banner">
         <div class="cb-shell-header__inner">
             <a class="cb-shell-brand" href="/" aria-label="ClassyDate">
@@ -499,7 +501,9 @@
         </div>
     </header>
 
-    <!-- Login Form -->
+    <!-- ============================================================ -->
+    <!-- LOGIN FORM                                                   -->
+    <!-- ============================================================ -->
     <main class="login-wrapper">
         <!-- Floating Hearts -->
         <div class="floating-hearts-login">
@@ -524,7 +528,7 @@
 
             <!-- Error Message -->
             <div class="error-message" id="error-message">
-                ⚠️ Invalid email or password. Please try again.
+                ⚠️ Invalid username or password. Please try again.
             </div>
 
             <!-- Success Message -->
@@ -533,9 +537,10 @@
             </div>
 
             <form id="login-form" onsubmit="return handleLogin(event)">
+                <!-- ✅ CHANGED: Username field instead of email -->
                 <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" placeholder="you@example.com" required>
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Enter your username" required>
                 </div>
 
                 <div class="form-group">
@@ -555,12 +560,26 @@
 
             <div class="divider">or continue with</div>
 
+            <!-- Social Login with Google + Facebook Icons -->
             <div class="social-login">
                 <button class="social-btn" onclick="handleSocialLogin('Google')">
-                    <span class="icon">🔵</span> Google
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 48 48">
+                            <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/>
+                            <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/>
+                            <path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/>
+                            <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/>
+                        </svg>
+                    </span>
+                    Google
                 </button>
                 <button class="social-btn" onclick="handleSocialLogin('Facebook')">
-                    <span class="icon">🔷</span> Facebook
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#1877F2">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </span>
+                    Facebook
                 </button>
             </div>
 
@@ -570,57 +589,56 @@
         </div>
     </main>
 
-    <!-- Toast -->
-    <div class="toast" id="toast"></div>
-
     <!-- ============================================================ -->
-    <!-- SCRIPTS - Supabase Auth                                      -->
+    <!-- SCRIPTS - Firebase Auth                                      -->
     <!-- ============================================================ -->
     <script type="importmap">
         {
             "imports": {
-                "@supabase/supabase-js": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm"
+                "firebase/app": "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js",
+                "firebase/auth": "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js"
             }
         }
     </script>
 
     <script type="module">
         // ============================================================
-        // SUPABASE CONFIG - YOUR KEYS HERE!
+        // FIREBASE CONFIG - YOUR CONFIG HERE!
         // ============================================================
-        import { createClient } from "@supabase/supabase-js";
+        import { initializeApp } from "firebase/app";
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, setPersistence, browserLocalPersistence } from "firebase/auth";
 
-        const SUPABASE_URL = 'https://ehfnzsfnsoiyiwpxqmli.supabase.co';
-        const SUPABASE_ANON_KEY = 'sb_publishable_ybgZxnGuU_Gt35rfqkEdBw_YkEdD8vl';
+        const firebaseConfig = {
+            apiKey: "AIzaSyACEYbex1YBpqeH7c2bbFk-9AA7iYe_NXU",
+            authDomain: "classydate-ff97f.firebaseapp.com",
+            projectId: "classydate-ff97f",
+            storageBucket: "classydate-ff97f.firebasestorage.app",
+            messagingSenderId: "241438852209",
+            appId: "1:241438852209:web:00e9af320aa28becd307d0",
+            measurementId: "G-TET9ZFZD0P"
+        };
 
-        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
 
-        console.log('🔥 Supabase Auth connected!');
-
-        // ============================================================
-        // EXPOSE FUNCTIONS TO GLOBAL WINDOW
-        // ============================================================
-        window.supabase = supabase;
-
-        // ============================================================
-        // CHECK IF USER IS ALREADY LOGGED IN
-        // ============================================================
-        async function checkUser() {
-            const { data: { user } } = await supabase.auth.getUser();
-            if (user) {
-                console.log('✅ User already logged in:', user.email);
-                window.location.href = 'members.html';
-            }
-        }
-        checkUser();
+        console.log('🔥 Firebase Auth connected!');
 
         // ============================================================
-        // HANDLE LOGIN
+        // EXPOSE FUNCTIONS TO GLOBAL WINDOW FOR INLINE onclick
+        // ============================================================
+        window.auth = auth;
+        window.signInWithEmailAndPassword = signInWithEmailAndPassword;
+        window.setPersistence = setPersistence;
+        window.browserLocalPersistence = browserLocalPersistence;
+
+        // ============================================================
+        // HANDLE LOGIN - NAME + PASSWORD
         // ============================================================
         window.handleLogin = async function(event) {
             event.preventDefault();
 
-            const email = document.getElementById('email').value.trim();
+            const username = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value.trim();
             const errorMessage = document.getElementById('error-message');
             const successMessage = document.getElementById('success-message');
@@ -631,14 +649,14 @@
             successMessage.classList.remove('show');
 
             // Validation
-            if (!email || !password) {
+            if (!username || !password) {
                 errorMessage.textContent = '⚠️ Please fill in all fields.';
                 errorMessage.classList.add('show');
                 return false;
             }
 
-            if (!email.includes('@') || !email.includes('.')) {
-                errorMessage.textContent = '⚠️ Please enter a valid email address.';
+            if (username.length < 2) {
+                errorMessage.textContent = '⚠️ Please enter a valid username.';
                 errorMessage.classList.add('show');
                 return false;
             }
@@ -649,28 +667,29 @@
                 return false;
             }
 
+            // ✅ Convert username to email format (same as signup)
+            const cleanName = username.toLowerCase().replace(/[^a-z0-9]/g, '.').replace(/\.+/g, '.');
+            const email = `${cleanName}@classydate.com`;
+
+            console.log('🔑 Attempting login for:', email);
+
             // Show loading state
             loginBtn.disabled = true;
             loginBtn.textContent = '⏳ Logging in...';
             loginBtn.style.opacity = '0.7';
 
             try {
-                // 🔥 Sign in with Supabase Auth
-                const { data, error } = await supabase.auth.signInWithPassword({
-                    email: email,
-                    password: password
-                });
+                // Sign in with Firebase using generated email
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
 
-                if (error) throw error;
-
-                const user = data.user;
-                console.log('✅ Login successful for:', user.email);
+                console.log('✅ Login successful for:', email);
 
                 // Save user info
                 localStorage.setItem('classydate_user', JSON.stringify({
-                    uid: user.id,
+                    uid: user.uid,
                     email: user.email,
-                    displayName: user.user_metadata?.name || user.email.split('@')[0]
+                    displayName: user.displayName || username
                 }));
 
                 // Show success
@@ -690,15 +709,18 @@
                 console.error('Login error:', error);
 
                 let errorMsg = '⚠️ Login failed. ';
-                switch (error.message) {
-                    case 'Invalid login credentials':
-                        errorMsg += 'Incorrect email or password. Please try again.';
+                switch (error.code) {
+                    case 'auth/user-not-found':
+                        errorMsg += 'No account found with this username. Please sign up first.';
                         break;
-                    case 'Email not confirmed':
-                        errorMsg += 'Please confirm your email before logging in.';
+                    case 'auth/wrong-password':
+                        errorMsg += 'Incorrect password. Please try again.';
                         break;
-                    case 'Too many requests':
+                    case 'auth/too-many-requests':
                         errorMsg += 'Too many failed attempts. Please try again later.';
+                        break;
+                    case 'auth/invalid-email':
+                        errorMsg += 'Invalid username format. Please use letters and numbers only.';
                         break;
                     default:
                         errorMsg += error.message;
@@ -725,9 +747,20 @@
         }
 
         // ============================================================
+        // CHECK AUTH STATE ON LOAD
+        // ============================================================
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log('✅ User already logged in:', user.email);
+            } else {
+                console.log('👤 No user logged in');
+            }
+        });
+
+        // ============================================================
         // REMOVE ERRORS ON INPUT
         // ============================================================
-        document.getElementById('email').addEventListener('input', function() {
+        document.getElementById('username').addEventListener('input', function() {
             document.getElementById('error-message').classList.remove('show');
             document.getElementById('success-message').classList.remove('show');
             const btn = document.getElementById('login-btn');
@@ -747,8 +780,9 @@
             btn.style.opacity = '1';
         });
 
-        console.log('💎 ClassyDate Login Page - Supabase Auth Ready!');
-        console.log('🔐 Email/password login enabled');
+        console.log('💎 ClassyDate Login Page - Firebase Auth Ready!');
+        console.log('🔑 Login with Username + Password (no email needed!)');
+        console.log('📱 Google + Facebook icons added!');
     </script>
 
 </body>
