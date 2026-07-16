@@ -7,7 +7,6 @@
     <meta name="description" content="Admin dashboard for managing ClassyDate members.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>">
 
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
@@ -15,7 +14,7 @@
 
     <style>
         /* ============================================================
-           CLASSYDATE - ADMIN PANEL - SUPABASE VERSION
+           CLASSYDATE - ADMIN PANEL
            Colors: Navy #112A46 | Soft Blue #ACC8E5
            ============================================================ */
 
@@ -469,7 +468,7 @@
         }
 
         /* ============================================================ */
-        /* MODAL - WITH FILE UPLOAD                                    */
+        /* MODAL - WITH NEW FIELDS                                    */
         /* ============================================================ */
         .modal-overlay {
             display: none;
@@ -497,7 +496,7 @@
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             border-radius: 24px;
-            max-width: 620px;
+            max-width: 680px;
             width: 100%;
             padding: 40px 36px;
             border: 1px solid rgba(255, 255, 255, 0.3);
@@ -672,7 +671,6 @@
             display: none;
         }
 
-        /* Uploaded Images Preview */
         .uploaded-images {
             display: flex;
             flex-wrap: wrap;
@@ -710,10 +708,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .uploaded-image-item .file-id {
-            display: none;
         }
 
         .modal .modal-actions {
@@ -1003,7 +997,7 @@
     </main>
 
     <!-- ============================================================ -->
-    <!-- MODAL - WITH FILE UPLOAD                                    -->
+    <!-- MODAL - WITH NEW FIELDS                                     -->
     <!-- ============================================================ -->
     <div class="modal-overlay" id="modal-overlay">
         <div class="modal">
@@ -1017,6 +1011,9 @@
                 <input type="hidden" id="edit-id" value="">
                 <input type="hidden" id="edit-file-ids" value="[]">
 
+                <!-- ============================================================ -->
+                <!-- BASIC INFO SECTION                                           -->
+                <!-- ============================================================ -->
                 <div class="form-group">
                     <label for="form-name">Full Name <span class="required">*</span></label>
                     <input type="text" id="form-name" placeholder="John Doe" required>
@@ -1043,18 +1040,96 @@
                     </div>
                 </div>
 
+                <!-- ============================================================ -->
+                <!-- NEW FIELDS: Current Country                                  -->
+                <!-- ============================================================ -->
                 <div class="form-group">
-                    <label for="form-location">Location</label>
-                    <input type="text" id="form-location" placeholder="New York, USA">
-                </div>
-
-                <div class="form-group">
-                    <label for="form-bio">Bio</label>
-                    <textarea id="form-bio" placeholder="Write a short bio about this member..."></textarea>
+                    <label for="form-current-country">Current Country <span class="required">*</span></label>
+                    <select id="form-current-country" required>
+                        <option value="">Select country...</option>
+                        <option value="Kenya">🇰🇪 Kenya</option>
+                        <option value="Ghana">🇬🇭 Ghana</option>
+                        <option value="Zimbabwe">🇿🇼 Zimbabwe</option>
+                        <option value="South Africa">🇿🇦 South Africa</option>
+                        <option value="Uganda">🇺🇬 Uganda</option>
+                        <option value="Tanzania">🇹🇿 Tanzania</option>
+                        <option value="Nigeria">🇳🇬 Nigeria</option>
+                        <option value="USA">🇺🇸 USA</option>
+                        <option value="UK">🇬🇧 United Kingdom</option>
+                        <option value="Canada">🇨🇦 Canada</option>
+                        <option value="Australia">🇦🇺 Australia</option>
+                        <option value="Other">🌍 Other</option>
+                    </select>
                 </div>
 
                 <!-- ============================================================ -->
-                <!-- FILE UPLOAD - DIRECT PHOTO UPLOAD                           -->
+                <!-- NEW FIELDS: Occupation                                      -->
+                <!-- ============================================================ -->
+                <div class="form-group">
+                    <label for="form-occupation">Occupation</label>
+                    <input type="text" id="form-occupation" placeholder="e.g. Software Engineer, Teacher, Doctor">
+                </div>
+
+                <!-- ============================================================ -->
+                <!-- NEW FIELDS: Relationship Status                             -->
+                <!-- ============================================================ -->
+                <div class="form-group">
+                    <label for="form-relationship">Relationship Status <span class="required">*</span></label>
+                    <select id="form-relationship" required>
+                        <option value="">Select...</option>
+                        <option value="Single">💔 Single</option>
+                        <option value="Divorced">⚖️ Divorced</option>
+                        <option value="Widowed">🕊️ Widowed</option>
+                        <option value="Separated">💔 Separated</option>
+                        <option value="In a relationship">❤️ In a relationship</option>
+                        <option value="Prefer not to say">🙈 Prefer not to say</option>
+                    </select>
+                </div>
+
+                <!-- ============================================================ -->
+                <!-- NEW FIELDS: Looking For                                     -->
+                <!-- ============================================================ -->
+                <div class="form-group">
+                    <label for="form-looking-for">Looking For <span class="required">*</span></label>
+                    <select id="form-looking-for" required>
+                        <option value="">Select...</option>
+                        <option value="Marriage">💍 Marriage</option>
+                        <option value="Dating">❤️ Dating</option>
+                        <option value="Friendship">🤝 Friendship</option>
+                        <option value="Long-term relationship">💕 Long-term relationship</option>
+                        <option value="Casual">😊 Casual</option>
+                        <option value="Not sure">🤷 Not sure</option>
+                    </select>
+                </div>
+
+                <!-- ============================================================ -->
+                <!-- NEW FIELDS: Has Kids                                        -->
+                <!-- ============================================================ -->
+                <div class="form-group">
+                    <label for="form-has-kids">Has Kids <span class="required">*</span></label>
+                    <select id="form-has-kids" required>
+                        <option value="">Select...</option>
+                        <option value="true">✅ Yes</option>
+                        <option value="false">❌ No</option>
+                    </select>
+                </div>
+
+                <!-- ============================================================ -->
+                <!-- NEW FIELDS: About Me (Textarea)                             -->
+                <!-- ============================================================ -->
+                <div class="form-group">
+                    <label for="form-about-me">About Me</label>
+                    <textarea id="form-about-me" placeholder="Write a detailed description about this member..."></textarea>
+                </div>
+
+                <!-- Location -->
+                <div class="form-group">
+                    <label for="form-location">City/Location</label>
+                    <input type="text" id="form-location" placeholder="e.g. Nairobi, Accra, Harare">
+                </div>
+
+                <!-- ============================================================ -->
+                <!-- PHOTO UPLOAD SECTION                                         -->
                 <!-- ============================================================ -->
                 <div class="form-group file-upload-section">
                     <label>Photos</label>
@@ -1070,11 +1145,12 @@
                         </div>
                     </div>
 
-                    <div class="uploaded-images" id="uploaded-images">
-                        <!-- Uploaded images will appear here -->
-                    </div>
+                    <div class="uploaded-images" id="uploaded-images"></div>
                 </div>
 
+                <!-- ============================================================ -->
+                <!-- BADGES SECTION                                               -->
+                <!-- ============================================================ -->
                 <div class="form-row">
                     <div class="form-group">
                         <label for="form-verified">Verified</label>
@@ -1092,6 +1168,7 @@
                     </div>
                 </div>
 
+                <!-- Interests -->
                 <div class="form-group">
                     <label for="form-interests">Interests (comma separated)</label>
                     <input type="text" id="form-interests" placeholder="Travel, Coffee, Music">
@@ -1114,7 +1191,7 @@
     </div>
 
     <!-- ============================================================ -->
-    <!-- SCRIPTS - Supabase SDK                                       -->
+    <!-- SCRIPTS - Supabase                                           -->
     <!-- ============================================================ -->
     <script type="importmap">
         {
@@ -1126,7 +1203,7 @@
 
     <script type="module">
         // ============================================================
-        // SUPABASE CONFIG - YOUR KEYS HERE!
+        // SUPABASE CONFIG
         // ============================================================
         import { createClient } from "@supabase/supabase-js";
 
@@ -1145,8 +1222,8 @@
         let currentPage = 1;
         const perPage = 5;
         let isLoading = true;
-        let uploadedFileIds = []; // Store Supabase file IDs
-        let uploadedFileUrls = []; // Store public URLs
+        let uploadedFileIds = [];
+        let uploadedFileUrls = [];
         let editingId = null;
 
         // ============================================================
@@ -1163,7 +1240,7 @@
         const uploadZone = document.getElementById('file-upload-zone');
 
         // ============================================================
-        // LOAD MEMBERS FROM SUPABASE
+        // LOAD MEMBERS
         // ============================================================
         async function loadMembers() {
             try {
@@ -1268,7 +1345,6 @@
             }
 
             tbody.innerHTML = pageMembers.map(m => {
-                // Get first photo from photo_file_ids array
                 let mainPhoto = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(m.name || 'User') + '&background=112A46&color=fff&size=100';
                 if (m.photo_file_ids && m.photo_file_ids.length > 0) {
                     const fileId = m.photo_file_ids[0];
@@ -1351,7 +1427,7 @@
         }
 
         // ============================================================
-        // FILE UPLOAD - DIRECT TO SUPABASE STORAGE
+        // FILE UPLOAD
         // ============================================================
         window.handleFileSelect = async function(event) {
             const files = event.target.files;
@@ -1365,47 +1441,39 @@
             for (let i = 0; i < files.length; i++) {
                 const file = files[i];
 
-                // Validate file size (5MB max)
                 if (file.size > 5 * 1024 * 1024) {
                     showToast(`⚠️ ${file.name} is too large (max 5MB)`, 'error');
                     continue;
                 }
 
-                // Validate file type
                 if (!file.type.startsWith('image/')) {
                     showToast(`⚠️ ${file.name} is not an image`, 'error');
                     continue;
                 }
 
                 try {
-                    // Generate unique file name
                     const fileExt = file.name.split('.').pop();
                     const fileName = `${Date.now()}_${Math.random().toString(36).substring(2, 10)}.${fileExt}`;
 
-                    // Upload to Supabase Storage
                     const { data, error } = await supabase.storage
                         .from('member_photos')
                         .upload(fileName, file);
 
                     if (error) throw error;
 
-                    // Store the file ID
                     uploadedFileIds.push(data.path);
-                    
-                    // Get public URL
+
                     const { data: urlData } = supabase.storage
                         .from('member_photos')
                         .getPublicUrl(data.path);
-                    
+
                     if (urlData && urlData.publicUrl) {
                         uploadedFileUrls.push(urlData.publicUrl);
                     }
 
-                    // Update progress bar
                     const progress = ((i + 1) / files.length) * 100;
                     progressBar.style.width = progress + '%';
 
-                    // Update UI with uploaded images
                     renderUploadedImages();
 
                     showToast(`✅ ${file.name} uploaded successfully!`, 'success');
@@ -1437,7 +1505,6 @@
         }
 
         window.removeUploadedImage = function(index) {
-            // Remove from arrays
             uploadedFileIds.splice(index, 1);
             uploadedFileUrls.splice(index, 1);
             renderUploadedImages();
@@ -1445,24 +1512,21 @@
         }
 
         // ============================================================
-        // CRUD OPERATIONS - SUPABASE
+        // CRUD OPERATIONS
         // ============================================================
 
-        // Open Add Modal
         window.openAddModal = function() {
             editingId = null;
             document.getElementById('modal-title').textContent = 'Add New Member';
             document.getElementById('modal-subtitle').textContent = 'Fill in the details to add a new member.';
             document.getElementById('modal-save-btn').textContent = '💾 Save Member';
             memberForm.reset();
-            editIdInput.value = '';
             uploadedFileIds = [];
             uploadedFileUrls = [];
             renderUploadedImages();
             modalOverlay.classList.add('active');
         }
 
-        // Open Edit Modal
         window.openEditModal = async function(id) {
             const member = members.find(m => m.id === id);
             if (!member) {
@@ -1480,17 +1544,20 @@
             document.getElementById('form-email').value = member.email || '';
             document.getElementById('form-age').value = member.age || '';
             document.getElementById('form-gender').value = member.gender || '';
+            document.getElementById('form-current-country').value = member.current_country || '';
+            document.getElementById('form-occupation').value = member.occupation || '';
+            document.getElementById('form-relationship').value = member.relationship_status || '';
+            document.getElementById('form-looking-for').value = member.looking_for || '';
+            document.getElementById('form-has-kids').value = member.has_kids ? 'true' : 'false';
+            document.getElementById('form-about-me').value = member.about_me || '';
             document.getElementById('form-location').value = member.location || '';
-            document.getElementById('form-bio').value = member.bio || '';
             document.getElementById('form-verified').value = member.verified ? 'true' : 'false';
             document.getElementById('form-premium').value = member.premium ? 'true' : 'false';
             document.getElementById('form-interests').value = (member.interests || []).join(', ');
 
-            // Load existing photos
             uploadedFileIds = member.photo_file_ids || [];
             uploadedFileUrls = [];
 
-            // Get public URLs for existing photos
             for (const fileId of uploadedFileIds) {
                 const { data } = supabase.storage.from('member_photos').getPublicUrl(fileId);
                 if (data && data.publicUrl) {
@@ -1502,7 +1569,6 @@
             modalOverlay.classList.add('active');
         }
 
-        // Close Modal
         window.closeModal = function() {
             modalOverlay.classList.remove('active');
             uploadedFileIds = [];
@@ -1510,7 +1576,6 @@
             renderUploadedImages();
         }
 
-        // Save Member (Add or Update)
         window.saveMember = async function(event) {
             event.preventDefault();
 
@@ -1519,17 +1584,23 @@
                 email: document.getElementById('form-email').value.trim(),
                 age: parseInt(document.getElementById('form-age').value),
                 gender: document.getElementById('form-gender').value,
+                current_country: document.getElementById('form-current-country').value,
+                occupation: document.getElementById('form-occupation').value.trim(),
+                relationship_status: document.getElementById('form-relationship').value,
+                looking_for: document.getElementById('form-looking-for').value,
+                has_kids: document.getElementById('form-has-kids').value === 'true',
+                about_me: document.getElementById('form-about-me').value.trim(),
                 location: document.getElementById('form-location').value.trim(),
-                bio: document.getElementById('form-bio').value.trim(),
                 verified: document.getElementById('form-verified').value === 'true',
                 premium: document.getElementById('form-premium').value === 'true',
                 interests: document.getElementById('form-interests').value.split(',').map(s => s.trim()).filter(Boolean),
-                photo_file_ids: uploadedFileIds, // Store file IDs
+                photo_file_ids: uploadedFileIds,
                 online: false,
                 joined: new Date().toISOString().slice(0, 10)
             };
 
-            if (!formData.name || !formData.email || !formData.age || !formData.gender) {
+            if (!formData.name || !formData.email || !formData.age || !formData.gender ||
+                !formData.current_country || !formData.relationship_status || !formData.looking_for) {
                 showToast('Please fill in all required fields.', 'error');
                 return;
             }
@@ -1539,7 +1610,6 @@
             try {
                 let result;
                 if (editId) {
-                    // Update existing member
                     result = await supabase
                         .from('members')
                         .update({
@@ -1548,7 +1618,6 @@
                         })
                         .eq('id', editId);
                 } else {
-                    // Add new member
                     result = await supabase
                         .from('members')
                         .insert([{
@@ -1565,7 +1634,7 @@
                 uploadedFileIds = [];
                 uploadedFileUrls = [];
                 renderUploadedImages();
-                loadMembers(); // Reload the list
+                loadMembers();
 
             } catch (error) {
                 console.error('Error saving member:', error);
@@ -1573,21 +1642,18 @@
             }
         }
 
-        // Delete Member
         window.deleteMember = async function(id) {
             const member = members.find(m => m.id === id);
             if (!member) return;
 
             if (confirm(`Are you sure you want to delete ${member.name}? This action cannot be undone.`)) {
                 try {
-                    // Delete photos from storage
                     if (member.photo_file_ids && member.photo_file_ids.length > 0) {
                         for (const fileId of member.photo_file_ids) {
                             await supabase.storage.from('member_photos').remove([fileId]);
                         }
                     }
 
-                    // Delete from database
                     const { error } = await supabase
                         .from('members')
                         .delete()
@@ -1596,7 +1662,7 @@
                     if (error) throw error;
 
                     showToast(`🗑️ ${member.name} was deleted.`, 'success');
-                    loadMembers(); // Reload the list
+                    loadMembers();
                 } catch (error) {
                     console.error('Error deleting member:', error);
                     showToast('Error deleting member: ' + error.message, 'error');
@@ -1623,7 +1689,6 @@
         // LOGOUT
         // ============================================================
         window.logoutAdmin = function() {
-            // Simple logout - you can add proper auth later
             localStorage.removeItem('admin_logged_in');
             window.location.href = 'adminlogin.html';
         }
@@ -1655,12 +1720,11 @@
             if (e.target === this) closeModal();
         });
 
-        // Load members on page load
         loadMembers();
 
-        console.log('💎 ClassyDate Admin Panel - Supabase Version!');
-        console.log('📸 Upload photos directly!');
-        console.log('📊 Data stored in Supabase PostgreSQL');
+        console.log('💎 ClassyDate Admin Panel - Updated with New Fields!');
+        console.log('📊 New fields: Current Country, Occupation, Relationship Status, Looking For, Has Kids, About Me');
+        console.log('📸 Upload photos directly to Supabase Storage!');
     </script>
 
 </body>
