@@ -14,8 +14,7 @@
 
     <style>
         /* ============================================================
-           CLASSYDATE - ADMIN PANEL
-           Colors: Navy #112A46 | Soft Blue #ACC8E5
+           CLASSYDATE - ADMIN PANEL - RESPONSIVE
            ============================================================ */
 
         * {
@@ -33,6 +32,9 @@
 
         a { text-decoration: none; color: inherit; }
 
+        /* ============================================================ */
+        /* HEADER                                                       */
+        /* ============================================================ */
         .cb-shell-header {
             position: fixed;
             top: 0;
@@ -48,7 +50,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-            height: 72px;
+            height: 64px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -58,7 +60,7 @@
             display: flex;
             align-items: center;
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             color: #112A46;
         }
@@ -75,15 +77,16 @@
         }
 
         .cb-shell-button {
-            padding: 8px 24px;
+            padding: 8px 20px;
             border-radius: 50px;
-            font-weight: 700;
-            font-size: 14px;
+            font-weight: 600;
+            font-size: 13px;
             transition: all 0.3s ease;
             cursor: pointer;
             border: none;
             font-family: "Inter", sans-serif;
         }
+
         .cb-shell-button--secondary {
             background: rgba(17, 42, 70, 0.1);
             color: #112A46;
@@ -92,6 +95,7 @@
         .cb-shell-button--secondary:hover {
             background: rgba(17, 42, 70, 0.18);
         }
+
         .cb-shell-button--primary {
             background: #112A46;
             color: #fff;
@@ -110,10 +114,13 @@
             font-weight: 700;
         }
 
+        /* ============================================================ */
+        /* ADMIN WRAPPER                                                */
+        /* ============================================================ */
         .admin-wrapper {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 100px 20px 60px;
+            padding: 80px 20px 60px;
         }
 
         .admin-header {
@@ -121,13 +128,13 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 16px;
-            margin-bottom: 30px;
+            gap: 12px;
+            margin-bottom: 24px;
         }
 
         .admin-header h1 {
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 36px;
+            font-size: 32px;
             color: #112A46;
             font-weight: 700;
         }
@@ -135,45 +142,68 @@
         .admin-header .badge-admin {
             background: rgba(17, 42, 70, 0.08);
             color: #112A46;
-            padding: 6px 16px;
+            padding: 4px 14px;
             border-radius: 50px;
             font-size: 12px;
             font-weight: 600;
             border: 1px solid rgba(17, 42, 70, 0.06);
         }
 
+        .admin-header .btn-add {
+            padding: 10px 24px;
+            background: linear-gradient(135deg, #112A46, #2E5A88);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Inter", sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .admin-header .btn-add:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(17, 42, 70, 0.25);
+        }
+
+        /* ============================================================ */
+        /* ✅ 2x2 STATS ON ALL SCREENS                                 */
+        /* ============================================================ */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-bottom: 30px;
+            gap: 16px;
+            margin-bottom: 24px;
         }
 
         .stat-card-admin {
             background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(12px);
-            border-radius: 16px;
-            padding: 22px 24px;
+            border-radius: 14px;
+            padding: 18px 20px;
             border: 1px solid rgba(255, 255, 255, 0.20);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
+            text-align: center;
         }
 
         .stat-card-admin:hover {
-            transform: translateY(-4px);
+            transform: translateY(-3px);
             border-color: rgba(17, 42, 70, 0.15);
             box-shadow: 0 8px 30px rgba(17, 42, 70, 0.08);
         }
 
         .stat-card-admin .stat-icon {
             font-size: 28px;
-            float: right;
-            opacity: 0.4;
+            display: block;
+            margin-bottom: 2px;
         }
 
         .stat-card-admin .stat-number {
-            font-size: 34px;
+            font-size: 28px;
             font-weight: 700;
             color: #112A46;
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
@@ -182,27 +212,29 @@
         .stat-card-admin .stat-label {
             font-size: 13px;
             color: rgba(17, 42, 70, 0.5);
-            margin-top: 2px;
             font-weight: 500;
         }
 
+        /* ============================================================ */
+        /* TOOLBAR                                                     */
+        /* ============================================================ */
         .admin-toolbar {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 10px;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 24px;
-            padding: 16px 20px;
+            margin-bottom: 20px;
+            padding: 14px 18px;
             background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(12px);
-            border-radius: 16px;
+            border-radius: 14px;
             border: 1px solid rgba(255, 255, 255, 0.20);
         }
 
         .admin-toolbar-left {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
             align-items: center;
             flex: 1;
@@ -210,7 +242,7 @@
 
         .admin-toolbar-left input,
         .admin-toolbar-left select {
-            padding: 10px 16px;
+            padding: 8px 14px;
             background: rgba(255, 255, 255, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 8px;
@@ -218,7 +250,7 @@
             font-size: 14px;
             font-family: "Inter", sans-serif;
             outline: none;
-            min-width: 160px;
+            min-width: 120px;
             transition: all 0.3s ease;
         }
 
@@ -235,71 +267,40 @@
 
         .admin-toolbar-right {
             display: flex;
-            gap: 10px;
-        }
-
-        .btn-admin {
-            padding: 10px 24px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: "Inter", sans-serif;
-            display: inline-flex;
-            align-items: center;
             gap: 8px;
         }
 
-        .btn-admin--add {
-            background: linear-gradient(135deg, #112A46, #2E5A88);
-            color: #fff;
+        .btn-toolbar {
+            padding: 8px 18px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Inter", sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .btn-admin--add:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(17, 42, 70, 0.3);
-        }
-
-        .btn-admin--export {
+        .btn-export {
             background: rgba(255, 255, 255, 0.3);
             color: #112A46;
             border: 1px solid rgba(17, 42, 70, 0.08);
         }
 
-        .btn-admin--export:hover {
+        .btn-export:hover {
             background: rgba(255, 255, 255, 0.5);
         }
 
-        .btn-admin--edit {
-            background: rgba(17, 42, 70, 0.08);
-            color: #112A46;
-            border: 1px solid rgba(17, 42, 70, 0.06);
-            padding: 4px 14px;
-            font-size: 12px;
-        }
-
-        .btn-admin--edit:hover {
-            background: rgba(17, 42, 70, 0.15);
-        }
-
-        .btn-admin--delete {
-            background: rgba(220, 53, 69, 0.08);
-            color: #dc3545;
-            border: 1px solid rgba(220, 53, 69, 0.08);
-            padding: 4px 14px;
-            font-size: 12px;
-        }
-
-        .btn-admin--delete:hover {
-            background: rgba(220, 53, 69, 0.15);
-        }
-
+        /* ============================================================ */
+        /* ✅ MEMBERS TABLE - CARD ROWS ON MOBILE                      */
+        /* ============================================================ */
         .admin-table-wrapper {
             background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(12px);
-            border-radius: 16px;
+            border-radius: 14px;
             border: 1px solid rgba(255, 255, 255, 0.20);
             overflow: hidden;
         }
@@ -310,32 +311,32 @@
         }
 
         .admin-table th {
-            padding: 14px 16px;
+            padding: 12px 16px;
             text-align: left;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: rgba(17, 42, 70, 0.4);
-            background: rgba(255, 255, 255, 0.10);
+            background: rgba(255, 255, 255, 0.08);
             border-bottom: 1px solid rgba(255, 255, 255, 0.15);
             font-family: "Inter", sans-serif;
         }
 
         .admin-table td {
-            padding: 12px 16px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 10px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
             font-size: 14px;
             color: rgba(17, 42, 70, 0.8);
             vertical-align: middle;
         }
 
-        .admin-table tr:hover td {
-            background: rgba(255, 255, 255, 0.10);
-        }
-
         .admin-table tr:last-child td {
             border-bottom: none;
+        }
+
+        .admin-table tr:hover td {
+            background: rgba(255, 255, 255, 0.06);
         }
 
         .admin-table .member-cell {
@@ -345,17 +346,17 @@
         }
 
         .admin-table .member-cell img {
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             object-fit: cover;
             background: rgba(255, 255, 255, 0.2);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
 
         .admin-table .member-cell .name {
-            color: #112A46;
             font-weight: 600;
+            color: #112A46;
         }
 
         .admin-table .member-cell .email {
@@ -364,11 +365,13 @@
         }
 
         .badge-small {
-            padding: 3px 12px;
+            padding: 2px 10px;
             border-radius: 50px;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 600;
             font-family: "Inter", sans-serif;
+            display: inline-block;
+            margin: 1px 2px;
         }
 
         .badge-small--verified {
@@ -388,10 +391,10 @@
 
         .status-dot {
             display: inline-block;
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            margin-right: 6px;
+            margin-right: 4px;
         }
 
         .status-dot.online {
@@ -408,39 +411,59 @@
             50% { opacity: 0.3; }
         }
 
-        .admin-table .actions-cell {
+        .actions-cell {
             display: flex;
             gap: 6px;
+            align-items: center;
         }
 
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: rgba(17, 42, 70, 0.3);
+        .btn-action {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Inter", sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
 
-        .empty-state .icon {
-            font-size: 48px;
-            margin-bottom: 12px;
-        }
-
-        .empty-state h3 {
-            font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 22px;
+        .btn-edit {
+            background: rgba(17, 42, 70, 0.08);
             color: #112A46;
-            margin-bottom: 4px;
         }
 
+        .btn-edit:hover {
+            background: rgba(17, 42, 70, 0.18);
+            transform: translateY(-2px);
+        }
+
+        .btn-delete {
+            background: rgba(220, 53, 69, 0.08);
+            color: #dc3545;
+        }
+
+        .btn-delete:hover {
+            background: rgba(220, 53, 69, 0.18);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================================ */
+        /* PAGINATION                                                   */
+        /* ============================================================ */
         .admin-pagination {
             display: flex;
             justify-content: center;
-            gap: 8px;
-            padding: 16px 20px;
+            gap: 6px;
+            padding: 14px 16px;
             border-top: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .admin-pagination button {
-            padding: 6px 14px;
+            padding: 5px 12px;
             background: rgba(255, 255, 255, 0.15);
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 6px;
@@ -468,7 +491,7 @@
         }
 
         /* ============================================================ */
-        /* MODAL - WITH NEW FIELDS                                    */
+        /* MODAL                                                       */
         /* ============================================================ */
         .modal-overlay {
             display: none;
@@ -495,10 +518,10 @@
         .modal {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            border-radius: 24px;
-            max-width: 680px;
+            border-radius: 20px;
+            max-width: 600px;
             width: 100%;
-            padding: 40px 36px;
+            padding: 32px 28px 28px;
             border: 1px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
             max-height: 90vh;
@@ -514,14 +537,14 @@
 
         .modal .modal-header h2 {
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 26px;
+            font-size: 24px;
             color: #112A46;
         }
 
         .modal .modal-close {
             background: none;
             border: none;
-            font-size: 28px;
+            font-size: 24px;
             color: rgba(17, 42, 70, 0.3);
             cursor: pointer;
             transition: all 0.3s ease;
@@ -536,12 +559,12 @@
         .modal .modal-subtitle {
             color: rgba(17, 42, 70, 0.4);
             font-size: 14px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             font-family: "Inter", sans-serif;
         }
 
         .modal .form-group {
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .modal .form-group label {
@@ -561,10 +584,10 @@
         .modal .form-group select,
         .modal .form-group textarea {
             width: 100%;
-            padding: 12px 14px;
+            padding: 10px 14px;
             background: rgba(255, 255, 255, 0.4);
             border: 1px solid rgba(17, 42, 70, 0.1);
-            border-radius: 10px;
+            border-radius: 8px;
             color: #112A46;
             font-size: 14px;
             font-family: "Inter", sans-serif;
@@ -588,132 +611,13 @@
         .modal .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        /* ============================================================ */
-        /* FILE UPLOAD - DIRECT PHOTO UPLOAD                           */
-        /* ============================================================ */
-        .file-upload-section {
-            margin-top: 8px;
-        }
-
-        .file-upload-section .hint {
-            font-size: 12px;
-            color: rgba(17, 42, 70, 0.4);
-            margin-bottom: 6px;
-            font-family: "Inter", sans-serif;
-        }
-
-        .file-upload-zone {
-            border: 2px dashed rgba(17, 42, 70, 0.15);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.2);
-            position: relative;
-            min-height: 100px;
-        }
-
-        .file-upload-zone:hover {
-            border-color: #112A46;
-            background: rgba(255, 255, 255, 0.4);
-        }
-
-        .file-upload-zone .icon {
-            font-size: 36px;
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .file-upload-zone p {
-            color: rgba(17, 42, 70, 0.4);
-            font-size: 13px;
-            font-family: "Inter", sans-serif;
-        }
-
-        .file-upload-zone input[type="file"] {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            cursor: pointer;
-        }
-
-        .file-upload-zone .upload-progress {
-            display: none;
-            margin-top: 8px;
-            width: 100%;
-            height: 4px;
-            background: rgba(17, 42, 70, 0.1);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .file-upload-zone .upload-progress .bar {
-            height: 100%;
-            background: #112A46;
-            width: 0%;
-            border-radius: 4px;
-            transition: width 0.3s ease;
-        }
-
-        .file-upload-zone.uploading .upload-progress {
-            display: block;
-        }
-
-        .file-upload-zone.uploading .icon,
-        .file-upload-zone.uploading p {
-            display: none;
-        }
-
-        .uploaded-images {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 8px;
-        }
-
-        .uploaded-image-item {
-            width: 80px;
-            height: 80px;
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-            border: 1px solid rgba(17, 42, 70, 0.1);
-        }
-
-        .uploaded-image-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .uploaded-image-item .remove-image-btn {
-            position: absolute;
-            top: 2px;
-            right: 2px;
-            background: rgba(220, 53, 69, 0.9);
-            color: #fff;
-            border: none;
-            border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            font-size: 12px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            gap: 12px;
         }
 
         .modal .modal-actions {
             display: flex;
             gap: 12px;
-            margin-top: 24px;
+            margin-top: 20px;
         }
 
         .modal .modal-actions button {
@@ -748,11 +652,14 @@
             background: rgba(17, 42, 70, 0.12);
         }
 
+        /* ============================================================ */
+        /* TOAST                                                       */
+        /* ============================================================ */
         .toast {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            padding: 16px 24px;
+            padding: 14px 24px;
             border-radius: 12px;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
@@ -794,103 +701,211 @@
         }
 
         .toast .toast-icon {
-            font-size: 20px;
+            font-size: 18px;
         }
 
-        @media (max-width: 1024px) {
+        /* ============================================================ */
+        /* ✅ RESPONSIVE - 2x2 STATS + CARD ROWS ON MOBILE            */
+        /* ============================================================ */
+        @media (max-width: 768px) {
+            .cb-shell-header__inner {
+                height: 60px;
+                padding: 0 12px;
+            }
+
+            .cb-shell-brand {
+                font-size: 18px;
+            }
+
+            .cb-shell-button {
+                padding: 4px 12px;
+                font-size: 11px;
+            }
+
+            .admin-wrapper {
+                padding: 76px 12px 40px;
+            }
+
+            .admin-header h1 {
+                font-size: 26px;
+            }
+
+            .admin-header .btn-add {
+                padding: 8px 16px;
+                font-size: 13px;
+            }
+
+            /* ✅ 2x2 Stats on Tablet/Mobile */
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
             }
-        }
 
-        @media (max-width: 768px) {
-            .admin-header {
-                flex-direction: column;
-                align-items: flex-start;
+            .stat-card-admin {
+                padding: 14px 16px;
             }
-            .admin-header h1 {
-                font-size: 28px;
+
+            .stat-card-admin .stat-number {
+                font-size: 24px;
             }
+
             .admin-toolbar {
                 flex-direction: column;
                 align-items: stretch;
+                padding: 12px 14px;
             }
+
             .admin-toolbar-left {
                 flex-direction: column;
                 width: 100%;
             }
+
             .admin-toolbar-left input,
             .admin-toolbar-left select {
                 width: 100%;
                 min-width: unset;
             }
+
             .admin-toolbar-right {
                 width: 100%;
             }
-            .admin-toolbar-right .btn-admin {
+
+            .admin-toolbar-right .btn-toolbar {
                 flex: 1;
                 justify-content: center;
             }
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
+
+            /* ✅ CARD ROWS ON MOBILE */
+            .admin-table thead {
+                display: none;
             }
-            .stat-card-admin {
-                padding: 16px 18px;
+
+            .admin-table tbody tr {
+                display: block;
+                padding: 14px 16px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+                background: rgba(255, 255, 255, 0.05);
+                margin: 4px 0;
+                border-radius: 12px;
             }
-            .stat-card-admin .stat-number {
-                font-size: 26px;
+
+            .admin-table tbody tr:hover {
+                background: rgba(255, 255, 255, 0.12);
             }
-            .admin-table {
+
+            .admin-table tbody td {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 6px 0;
+                border: none;
                 font-size: 13px;
             }
-            .admin-table th,
-            .admin-table td {
-                padding: 8px 10px;
+
+            .admin-table tbody td:last-child {
+                border-bottom: none;
             }
+
+            .admin-table tbody td::before {
+                content: attr(data-label);
+                font-weight: 600;
+                color: rgba(17, 42, 70, 0.4);
+                font-size: 12px;
+            }
+
+            .admin-table .member-cell {
+                flex: 1;
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .admin-table .member-cell img {
+                width: 36px;
+                height: 36px;
+            }
+
+            .actions-cell {
+                gap: 4px;
+            }
+
+            .btn-action {
+                padding: 4px 10px;
+                font-size: 11px;
+            }
+
             .modal {
-                padding: 28px 20px;
+                padding: 24px 16px 20px;
             }
+
             .modal .form-row {
                 grid-template-columns: 1fr;
             }
+
             .modal .modal-actions {
                 flex-direction: column;
             }
-            .cb-shell-header__inner {
-                height: 64px;
-                padding: 0 16px;
-            }
-            .cb-shell-brand {
-                font-size: 20px;
-            }
-            .cb-shell-button {
-                padding: 6px 14px;
-                font-size: 12px;
-            }
-        }
 
-        @media (max-width: 480px) {
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-            .admin-table .actions-cell {
-                flex-direction: column;
+            .admin-pagination {
+                flex-wrap: wrap;
                 gap: 4px;
             }
-            .admin-table .actions-cell .btn-admin {
-                width: 100%;
-                justify-content: center;
+
+            .admin-pagination button {
+                padding: 4px 10px;
+                font-size: 12px;
             }
+
             .toast {
                 bottom: 20px;
                 right: 20px;
                 left: 20px;
                 text-align: center;
             }
-            .uploaded-image-item {
-                width: 60px;
-                height: 60px;
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+
+            .stat-card-admin {
+                padding: 12px 14px;
+            }
+
+            .stat-card-admin .stat-number {
+                font-size: 20px;
+            }
+
+            .stat-card-admin .stat-icon {
+                font-size: 22px;
+            }
+
+            .stat-card-admin .stat-label {
+                font-size: 11px;
+            }
+
+            .admin-header h1 {
+                font-size: 22px;
+            }
+
+            .admin-header .btn-add {
+                padding: 6px 14px;
+                font-size: 12px;
+            }
+
+            .admin-table tbody td {
+                font-size: 12px;
+                padding: 4px 0;
+            }
+
+            .admin-table tbody td::before {
+                font-size: 11px;
+            }
+
+            .btn-action {
+                padding: 3px 8px;
+                font-size: 10px;
             }
         }
 
@@ -923,12 +938,13 @@
     <main class="admin-wrapper" id="admin-wrapper">
         <div class="admin-header">
             <div>
-                <h1>Admin <span>Panel</span></h1>
+                <h1>Admin Panel</h1>
                 <span class="badge-admin">🔒 Secure Admin Access</span>
             </div>
-            <button class="btn-admin btn-admin--add" onclick="openAddModal()">➕ Add New Member</button>
+            <button class="btn-add" onclick="openAddModal()">➕ Add New Member</button>
         </div>
 
+        <!-- ✅ 2x2 STATS GRID -->
         <div class="stats-grid" id="stats-grid">
             <div class="stat-card-admin">
                 <span class="stat-icon">👥</span>
@@ -952,6 +968,7 @@
             </div>
         </div>
 
+        <!-- Toolbar -->
         <div class="admin-toolbar">
             <div class="admin-toolbar-left">
                 <input type="text" id="search-input" placeholder="🔍 Search members..." oninput="filterMembers()">
@@ -967,10 +984,11 @@
                 </select>
             </div>
             <div class="admin-toolbar-right">
-                <button class="btn-admin btn-admin--export" onclick="exportData()">📥 Export</button>
+                <button class="btn-toolbar btn-export" onclick="exportData()">📥 Export</button>
             </div>
         </div>
 
+        <!-- ✅ MEMBERS TABLE (Card rows on mobile) -->
         <div class="admin-table-wrapper">
             <table class="admin-table">
                 <thead>
@@ -997,7 +1015,7 @@
     </main>
 
     <!-- ============================================================ -->
-    <!-- MODAL - WITH NEW FIELDS                                     -->
+    <!-- MODAL - Add/Edit Member                                     -->
     <!-- ============================================================ -->
     <div class="modal-overlay" id="modal-overlay">
         <div class="modal">
@@ -1009,11 +1027,7 @@
 
             <form id="member-form" onsubmit="saveMember(event)">
                 <input type="hidden" id="edit-id" value="">
-                <input type="hidden" id="edit-file-ids" value="[]">
 
-                <!-- ============================================================ -->
-                <!-- BASIC INFO SECTION                                           -->
-                <!-- ============================================================ -->
                 <div class="form-group">
                     <label for="form-name">Full Name <span class="required">*</span></label>
                     <input type="text" id="form-name" placeholder="John Doe" required>
@@ -1040,117 +1054,16 @@
                     </div>
                 </div>
 
-                <!-- ============================================================ -->
-                <!-- NEW FIELDS: Current Country                                  -->
-                <!-- ============================================================ -->
                 <div class="form-group">
-                    <label for="form-current-country">Current Country <span class="required">*</span></label>
-                    <select id="form-current-country" required>
-                        <option value="">Select country...</option>
-                        <option value="Kenya">🇰🇪 Kenya</option>
-                        <option value="Ghana">🇬🇭 Ghana</option>
-                        <option value="Zimbabwe">🇿🇼 Zimbabwe</option>
-                        <option value="South Africa">🇿🇦 South Africa</option>
-                        <option value="Uganda">🇺🇬 Uganda</option>
-                        <option value="Tanzania">🇹🇿 Tanzania</option>
-                        <option value="Nigeria">🇳🇬 Nigeria</option>
-                        <option value="USA">🇺🇸 USA</option>
-                        <option value="UK">🇬🇧 United Kingdom</option>
-                        <option value="Canada">🇨🇦 Canada</option>
-                        <option value="Australia">🇦🇺 Australia</option>
-                        <option value="Other">🌍 Other</option>
-                    </select>
+                    <label for="form-location">Location</label>
+                    <input type="text" id="form-location" placeholder="New York, USA">
                 </div>
 
-                <!-- ============================================================ -->
-                <!-- NEW FIELDS: Occupation                                      -->
-                <!-- ============================================================ -->
                 <div class="form-group">
-                    <label for="form-occupation">Occupation</label>
-                    <input type="text" id="form-occupation" placeholder="e.g. Software Engineer, Teacher, Doctor">
+                    <label for="form-bio">Bio</label>
+                    <textarea id="form-bio" placeholder="Write a short bio about this member..."></textarea>
                 </div>
 
-                <!-- ============================================================ -->
-                <!-- NEW FIELDS: Relationship Status                             -->
-                <!-- ============================================================ -->
-                <div class="form-group">
-                    <label for="form-relationship">Relationship Status <span class="required">*</span></label>
-                    <select id="form-relationship" required>
-                        <option value="">Select...</option>
-                        <option value="Single">💔 Single</option>
-                        <option value="Divorced">⚖️ Divorced</option>
-                        <option value="Widowed">🕊️ Widowed</option>
-                        <option value="Separated">💔 Separated</option>
-                        <option value="In a relationship">❤️ In a relationship</option>
-                        <option value="Prefer not to say">🙈 Prefer not to say</option>
-                    </select>
-                </div>
-
-                <!-- ============================================================ -->
-                <!-- NEW FIELDS: Looking For                                     -->
-                <!-- ============================================================ -->
-                <div class="form-group">
-                    <label for="form-looking-for">Looking For <span class="required">*</span></label>
-                    <select id="form-looking-for" required>
-                        <option value="">Select...</option>
-                        <option value="Marriage">💍 Marriage</option>
-                        <option value="Dating">❤️ Dating</option>
-                        <option value="Friendship">🤝 Friendship</option>
-                        <option value="Long-term relationship">💕 Long-term relationship</option>
-                        <option value="Casual">😊 Casual</option>
-                        <option value="Not sure">🤷 Not sure</option>
-                    </select>
-                </div>
-
-                <!-- ============================================================ -->
-                <!-- NEW FIELDS: Has Kids                                        -->
-                <!-- ============================================================ -->
-                <div class="form-group">
-                    <label for="form-has-kids">Has Kids <span class="required">*</span></label>
-                    <select id="form-has-kids" required>
-                        <option value="">Select...</option>
-                        <option value="true">✅ Yes</option>
-                        <option value="false">❌ No</option>
-                    </select>
-                </div>
-
-                <!-- ============================================================ -->
-                <!-- NEW FIELDS: About Me (Textarea)                             -->
-                <!-- ============================================================ -->
-                <div class="form-group">
-                    <label for="form-about-me">About Me</label>
-                    <textarea id="form-about-me" placeholder="Write a detailed description about this member..."></textarea>
-                </div>
-
-                <!-- Location -->
-                <div class="form-group">
-                    <label for="form-location">City/Location</label>
-                    <input type="text" id="form-location" placeholder="e.g. Nairobi, Accra, Harare">
-                </div>
-
-                <!-- ============================================================ -->
-                <!-- PHOTO UPLOAD SECTION                                         -->
-                <!-- ============================================================ -->
-                <div class="form-group file-upload-section">
-                    <label>Photos</label>
-                    <p class="hint">Select photos from your device to upload. You can upload multiple images.</p>
-
-                    <div class="file-upload-zone" id="file-upload-zone">
-                        <span class="icon">📸</span>
-                        <p>Tap to select photos</p>
-                        <p style="font-size:11px;color:rgba(17,42,70,0.3);">JPG, PNG, GIF up to 5MB each</p>
-                        <input type="file" id="file-input" accept="image/*" multiple onchange="handleFileSelect(event)">
-                        <div class="upload-progress">
-                            <div class="bar" id="upload-progress-bar"></div>
-                        </div>
-                    </div>
-
-                    <div class="uploaded-images" id="uploaded-images"></div>
-                </div>
-
-                <!-- ============================================================ -->
-                <!-- BADGES SECTION                                               -->
-                <!-- ============================================================ -->
                 <div class="form-row">
                     <div class="form-group">
                         <label for="form-verified">Verified</label>
@@ -1168,7 +1081,6 @@
                     </div>
                 </div>
 
-                <!-- Interests -->
                 <div class="form-group">
                     <label for="form-interests">Interests (comma separated)</label>
                     <input type="text" id="form-interests" placeholder="Travel, Coffee, Music">
@@ -1202,9 +1114,6 @@
     </script>
 
     <script type="module">
-        // ============================================================
-        // SUPABASE CONFIG
-        // ============================================================
         import { createClient } from "@supabase/supabase-js";
 
         const SUPABASE_URL = 'https://ehfnzsfnsoiyiwpxqmli.supabase.co';
@@ -1214,30 +1123,18 @@
 
         console.log('🔗 Supabase connected!');
 
-        // ============================================================
-        // STATE
-        // ============================================================
         let members = [];
         let filteredMembers = [];
         let currentPage = 1;
         const perPage = 5;
         let isLoading = true;
-        let uploadedFileIds = [];
-        let uploadedFileUrls = [];
-        let editingId = null;
 
-        // ============================================================
-        // DOM REFS
-        // ============================================================
         const tbody = document.getElementById('admin-table-body');
         const paginationContainer = document.getElementById('admin-pagination');
         const modalOverlay = document.getElementById('modal-overlay');
         const memberForm = document.getElementById('member-form');
         const editIdInput = document.getElementById('edit-id');
         const toast = document.getElementById('toast');
-        const uploadedImagesContainer = document.getElementById('uploaded-images');
-        const fileInput = document.getElementById('file-input');
-        const uploadZone = document.getElementById('file-upload-zone');
 
         // ============================================================
         // LOAD MEMBERS
@@ -1311,7 +1208,7 @@
         }
 
         // ============================================================
-        // RENDER TABLE
+        // ✅ RENDER TABLE - Card rows on mobile
         // ============================================================
         function renderTable() {
             if (isLoading) {
@@ -1333,9 +1230,9 @@
                 tbody.innerHTML = `
                     <tr>
                         <td colspan="6">
-                            <div class="empty-state">
-                                <div class="icon">👤</div>
-                                <h3>No members found</h3>
+                            <div style="text-align:center;padding:40px;color:rgba(17,42,70,0.3);">
+                                <div style="font-size:48px;margin-bottom:12px;">👤</div>
+                                <h3 style="color:#112A46;font-size:20px;font-family:'Playfair Display',serif;">No members found</h3>
                                 <p style="color:rgba(17,42,70,0.4);">Try adjusting your filters or add a new member.</p>
                             </div>
                         </td>
@@ -1355,9 +1252,16 @@
                 }
                 const totalPhotos = (m.photo_file_ids || []).length;
 
+                const statusHTML = m.online ? '<span class="status-dot online"></span> Online' : '<span class="status-dot offline"></span> Offline';
+                const badgesHTML = `
+                    ${m.verified ? '<span class="badge-small badge-small--verified">✅ Verified</span>' : '<span class="badge-small badge-small--pending">⏳ Pending</span>'}
+                    ${m.premium ? '<span class="badge-small badge-small--premium">⭐ Premium</span>' : ''}
+                    ${totalPhotos > 0 ? `<span class="badge-small" style="background:rgba(17,42,70,0.06);color:#112A46;">📸 ${totalPhotos}</span>` : ''}
+                `;
+
                 return `
                     <tr>
-                        <td>
+                        <td data-label="Member">
                             <div class="member-cell">
                                 <img src="${mainPhoto}" alt="${m.name}" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(m.name || 'User')}&background=112A46&color=fff&size=100'">
                                 <div>
@@ -1366,23 +1270,14 @@
                                 </div>
                             </div>
                         </td>
-                        <td>${m.gender === 'male' ? '👨 Male' : m.gender === 'female' ? '👩 Female' : '—'}</td>
-                        <td>${m.location || '—'}</td>
-                        <td>
-                            <span style="display:flex;align-items:center;gap:6px;">
-                                <span class="status-dot ${m.online ? 'online' : 'offline'}"></span>
-                                ${m.online ? 'Online' : 'Offline'}
-                            </span>
-                        </td>
-                        <td>
-                            ${m.verified ? '<span class="badge-small badge-small--verified">✅ Verified</span>' : '<span class="badge-small badge-small--pending">⏳ Pending</span>'}
-                            ${m.premium ? '<span class="badge-small badge-small--premium">⭐ Premium</span>' : ''}
-                            ${totalPhotos > 0 ? `<span class="badge-small" style="background:rgba(17,42,70,0.06);color:#112A46;">📸 ${totalPhotos}</span>` : ''}
-                        </td>
-                        <td>
+                        <td data-label="Gender">${m.gender === 'male' ? '👨 Male' : m.gender === 'female' ? '👩 Female' : '—'}</td>
+                        <td data-label="Location">${m.location || '—'}</td>
+                        <td data-label="Status">${statusHTML}</td>
+                        <td data-label="Badges">${badgesHTML}</td>
+                        <td data-label="Actions">
                             <div class="actions-cell">
-                                <button class="btn-admin btn-admin--edit" onclick="window.openEditModal('${m.id}')">✏️ Edit</button>
-                                <button class="btn-admin btn-admin--delete" onclick="window.deleteMember('${m.id}')">🗑️ Delete</button>
+                                <button class="btn-action btn-edit" onclick="window.openEditModal('${m.id}')">✏️ Edit</button>
+                                <button class="btn-action btn-delete" onclick="window.deleteMember('${m.id}')">🗑️ Delete</button>
                             </div>
                         </td>
                     </tr>
@@ -1427,103 +1322,15 @@
         }
 
         // ============================================================
-        // FILE UPLOAD
-        // ============================================================
-        window.handleFileSelect = async function(event) {
-            const files = event.target.files;
-            if (!files || files.length === 0) return;
-
-            const zone = document.getElementById('file-upload-zone');
-            const progressBar = document.getElementById('upload-progress-bar');
-
-            zone.classList.add('uploading');
-
-            for (let i = 0; i < files.length; i++) {
-                const file = files[i];
-
-                if (file.size > 5 * 1024 * 1024) {
-                    showToast(`⚠️ ${file.name} is too large (max 5MB)`, 'error');
-                    continue;
-                }
-
-                if (!file.type.startsWith('image/')) {
-                    showToast(`⚠️ ${file.name} is not an image`, 'error');
-                    continue;
-                }
-
-                try {
-                    const fileExt = file.name.split('.').pop();
-                    const fileName = `${Date.now()}_${Math.random().toString(36).substring(2, 10)}.${fileExt}`;
-
-                    const { data, error } = await supabase.storage
-                        .from('member_photos')
-                        .upload(fileName, file);
-
-                    if (error) throw error;
-
-                    uploadedFileIds.push(data.path);
-
-                    const { data: urlData } = supabase.storage
-                        .from('member_photos')
-                        .getPublicUrl(data.path);
-
-                    if (urlData && urlData.publicUrl) {
-                        uploadedFileUrls.push(urlData.publicUrl);
-                    }
-
-                    const progress = ((i + 1) / files.length) * 100;
-                    progressBar.style.width = progress + '%';
-
-                    renderUploadedImages();
-
-                    showToast(`✅ ${file.name} uploaded successfully!`, 'success');
-
-                } catch (error) {
-                    console.error('Upload error:', error);
-                    showToast(`❌ Failed to upload ${file.name}: ${error.message}`, 'error');
-                }
-            }
-
-            zone.classList.remove('uploading');
-            progressBar.style.width = '0%';
-            fileInput.value = '';
-        }
-
-        function renderUploadedImages() {
-            if (uploadedFileUrls.length === 0) {
-                uploadedImagesContainer.innerHTML = '';
-                return;
-            }
-
-            uploadedImagesContainer.innerHTML = uploadedFileUrls.map((url, index) => `
-                <div class="uploaded-image-item">
-                    <img src="${url}" alt="Uploaded photo ${index + 1}">
-                    <button class="remove-image-btn" onclick="window.removeUploadedImage(${index})">✕</button>
-                    <span class="file-id">${uploadedFileIds[index]}</span>
-                </div>
-            `).join('');
-        }
-
-        window.removeUploadedImage = function(index) {
-            uploadedFileIds.splice(index, 1);
-            uploadedFileUrls.splice(index, 1);
-            renderUploadedImages();
-            showToast('🗑️ Image removed', 'success');
-        }
-
-        // ============================================================
         // CRUD OPERATIONS
         // ============================================================
 
         window.openAddModal = function() {
-            editingId = null;
+            editIdInput.value = '';
             document.getElementById('modal-title').textContent = 'Add New Member';
             document.getElementById('modal-subtitle').textContent = 'Fill in the details to add a new member.';
             document.getElementById('modal-save-btn').textContent = '💾 Save Member';
             memberForm.reset();
-            uploadedFileIds = [];
-            uploadedFileUrls = [];
-            renderUploadedImages();
             modalOverlay.classList.add('active');
         }
 
@@ -1534,46 +1341,26 @@
                 return;
             }
 
-            editingId = id;
+            editIdInput.value = id;
             document.getElementById('modal-title').textContent = 'Edit Member';
             document.getElementById('modal-subtitle').textContent = 'Update the member details below.';
             document.getElementById('modal-save-btn').textContent = '💾 Update Member';
 
-            editIdInput.value = id;
             document.getElementById('form-name').value = member.name || '';
             document.getElementById('form-email').value = member.email || '';
             document.getElementById('form-age').value = member.age || '';
             document.getElementById('form-gender').value = member.gender || '';
-            document.getElementById('form-current-country').value = member.current_country || '';
-            document.getElementById('form-occupation').value = member.occupation || '';
-            document.getElementById('form-relationship').value = member.relationship_status || '';
-            document.getElementById('form-looking-for').value = member.looking_for || '';
-            document.getElementById('form-has-kids').value = member.has_kids ? 'true' : 'false';
-            document.getElementById('form-about-me').value = member.about_me || '';
             document.getElementById('form-location').value = member.location || '';
+            document.getElementById('form-bio').value = member.bio || '';
             document.getElementById('form-verified').value = member.verified ? 'true' : 'false';
             document.getElementById('form-premium').value = member.premium ? 'true' : 'false';
             document.getElementById('form-interests').value = (member.interests || []).join(', ');
-
-            uploadedFileIds = member.photo_file_ids || [];
-            uploadedFileUrls = [];
-
-            for (const fileId of uploadedFileIds) {
-                const { data } = supabase.storage.from('member_photos').getPublicUrl(fileId);
-                if (data && data.publicUrl) {
-                    uploadedFileUrls.push(data.publicUrl);
-                }
-            }
-            renderUploadedImages();
 
             modalOverlay.classList.add('active');
         }
 
         window.closeModal = function() {
             modalOverlay.classList.remove('active');
-            uploadedFileIds = [];
-            uploadedFileUrls = [];
-            renderUploadedImages();
         }
 
         window.saveMember = async function(event) {
@@ -1584,23 +1371,16 @@
                 email: document.getElementById('form-email').value.trim(),
                 age: parseInt(document.getElementById('form-age').value),
                 gender: document.getElementById('form-gender').value,
-                current_country: document.getElementById('form-current-country').value,
-                occupation: document.getElementById('form-occupation').value.trim(),
-                relationship_status: document.getElementById('form-relationship').value,
-                looking_for: document.getElementById('form-looking-for').value,
-                has_kids: document.getElementById('form-has-kids').value === 'true',
-                about_me: document.getElementById('form-about-me').value.trim(),
                 location: document.getElementById('form-location').value.trim(),
+                bio: document.getElementById('form-bio').value.trim(),
                 verified: document.getElementById('form-verified').value === 'true',
                 premium: document.getElementById('form-premium').value === 'true',
                 interests: document.getElementById('form-interests').value.split(',').map(s => s.trim()).filter(Boolean),
-                photo_file_ids: uploadedFileIds,
                 online: false,
                 joined: new Date().toISOString().slice(0, 10)
             };
 
-            if (!formData.name || !formData.email || !formData.age || !formData.gender ||
-                !formData.current_country || !formData.relationship_status || !formData.looking_for) {
+            if (!formData.name || !formData.email || !formData.age || !formData.gender) {
                 showToast('Please fill in all required fields.', 'error');
                 return;
             }
@@ -1608,34 +1388,22 @@
             const editId = editIdInput.value;
 
             try {
-                let result;
                 if (editId) {
-                    result = await supabase
+                    await supabase
                         .from('members')
-                        .update({
-                            ...formData,
-                            updated_at: new Date().toISOString()
-                        })
+                        .update(formData)
                         .eq('id', editId);
+                    showToast(`✅ ${formData.name} updated successfully!`, 'success');
                 } else {
-                    result = await supabase
+                    await supabase
                         .from('members')
-                        .insert([{
-                            ...formData,
-                            created_at: new Date().toISOString()
-                        }]);
+                        .insert([formData]);
+                    showToast(`✅ ${formData.name} added successfully!`, 'success');
                 }
 
-                if (result.error) throw result.error;
-
-                showToast(`✅ ${formData.name} ${editId ? 'updated' : 'added'} successfully!`, 'success');
                 closeModal();
                 memberForm.reset();
-                uploadedFileIds = [];
-                uploadedFileUrls = [];
-                renderUploadedImages();
                 loadMembers();
-
             } catch (error) {
                 console.error('Error saving member:', error);
                 showToast('Error saving member: ' + error.message, 'error');
@@ -1648,19 +1416,10 @@
 
             if (confirm(`Are you sure you want to delete ${member.name}? This action cannot be undone.`)) {
                 try {
-                    if (member.photo_file_ids && member.photo_file_ids.length > 0) {
-                        for (const fileId of member.photo_file_ids) {
-                            await supabase.storage.from('member_photos').remove([fileId]);
-                        }
-                    }
-
-                    const { error } = await supabase
+                    await supabase
                         .from('members')
                         .delete()
                         .eq('id', id);
-
-                    if (error) throw error;
-
                     showToast(`🗑️ ${member.name} was deleted.`, 'success');
                     loadMembers();
                 } catch (error) {
@@ -1722,9 +1481,10 @@
 
         loadMembers();
 
-        console.log('💎 ClassyDate Admin Panel - Updated with New Fields!');
-        console.log('📊 New fields: Current Country, Occupation, Relationship Status, Looking For, Has Kids, About Me');
-        console.log('📸 Upload photos directly to Supabase Storage!');
+        console.log('💎 ClassyDate Admin Panel - Responsive!');
+        console.log('✅ 2x2 stats on phones');
+        console.log('✅ Card rows on phones');
+        console.log('✅ Edit/Delete functionality');
     </script>
 
 </body>
