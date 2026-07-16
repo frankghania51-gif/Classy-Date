@@ -412,7 +412,7 @@
         }
 
         /* ============================================================ */
-        /* STATUS                                                       */
+        /* STATUS - ONLY SHOW ONLINE                                   */
         /* ============================================================ */
         .member-card__status {
             position: absolute;
@@ -444,7 +444,7 @@
         }
 
         .status-dot--offline {
-            background: rgba(255, 255, 255, 0.3);
+            display: none;
         }
 
         @keyframes pulse-dot {
@@ -486,8 +486,9 @@
             font-family: "Inter", sans-serif;
         }
 
+        /* ✅ FIXED: Bio now shows "About Me" content */
         .member-card__bio {
-            color: rgba(17, 42, 70, 0.5);
+            color: rgba(17, 42, 70, 0.6);
             font-size: 13px;
             margin-top: 6px;
             line-height: 1.5;
@@ -516,23 +517,23 @@
         }
 
         /* ============================================================ */
-        /* BUTTONS                                                      */
+        /* ✅ BIGGER BUTTONS                                            */
         /* ============================================================ */
         .member-card__actions {
             display: flex;
             gap: 10px;
-            margin-top: 12px;
-            padding-top: 12px;
+            margin-top: 14px;
+            padding-top: 14px;
             border-top: 1px solid rgba(17, 42, 70, 0.06);
         }
 
         .member-card__actions button {
             flex: 1;
-            padding: 10px 12px;
+            padding: 12px 16px;
             border: none;
             border-radius: 10px;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: "Inter", sans-serif;
@@ -684,22 +685,19 @@
             transform: rotate(90deg);
         }
 
-        /* ============================================================ */
-        /* AVATAR - KEPT AS YOU WANT                                   */
-        /* ============================================================ */
         .profile-modal-avatar {
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid #112A46;
-            margin: 0 auto 10px;
+            margin: 0 auto 8px;
             display: block;
         }
 
         .profile-modal-name {
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 24px;
+            font-size: 22px;
             color: #112A46;
             text-align: center;
             font-weight: 700;
@@ -724,22 +722,19 @@
             font-family: "Inter", sans-serif;
         }
 
-        /* ============================================================ */
-        /* DETAILS - KEPT AS YOU WANT                                  */
-        /* ============================================================ */
         .profile-modal-details {
-            margin-top: 16px;
+            margin-top: 14px;
             display: grid;
             gap: 6px;
             background: rgba(17, 42, 70, 0.03);
-            padding: 12px 16px;
+            padding: 10px 14px;
             border-radius: 12px;
         }
 
         .profile-modal-details .detail-item {
             display: flex;
             justify-content: space-between;
-            padding: 6px 0;
+            padding: 5px 0;
             border-bottom: 1px solid rgba(17, 42, 70, 0.04);
             font-family: "Inter", sans-serif;
             font-size: 14px;
@@ -760,11 +755,11 @@
         }
 
         /* ============================================================ */
-        /* BIO - KEPT AS YOU WANT                                      */
+        /* BIO - Uses "About Me" from member                           */
         /* ============================================================ */
         .profile-modal-bio {
-            margin-top: 12px;
-            padding: 12px 16px;
+            margin-top: 10px;
+            padding: 10px 14px;
             background: rgba(17, 42, 70, 0.04);
             border-radius: 10px;
             font-family: "Inter", sans-serif;
@@ -773,9 +768,6 @@
             line-height: 1.6;
         }
 
-        /* ============================================================ */
-        /* INTERESTS - KEPT AS YOU WANT                                */
-        /* ============================================================ */
         .profile-modal-interests {
             display: flex;
             flex-wrap: wrap;
@@ -795,14 +787,15 @@
         }
 
         /* ============================================================ */
-        /* 🔥 LARGE SLIDING PHOTOS - NO LABELS!                        */
+        /* ✅ RESIZED MODAL PHOTOS - BALANCED SIZE                    */
         /* ============================================================ */
         .modal-photos-container {
-            margin: 12px 0 8px;
+            margin: 10px 0 8px;
             border-radius: 12px;
             overflow: hidden;
             background: #e8ecf0;
             position: relative;
+            max-height: 350px;
         }
 
         .modal-carousel-wrapper {
@@ -819,7 +812,7 @@
 
         .modal-carousel-slide {
             min-width: 100%;
-            aspect-ratio: 1/1;
+            aspect-ratio: 16/9;
             overflow: hidden;
             background: #e8ecf0;
         }
@@ -830,9 +823,6 @@
             object-fit: cover;
         }
 
-        /* ============================================================ */
-        /* CAROUSEL BUTTONS - NO LABELS                                */
-        /* ============================================================ */
         .modal-carousel-btn {
             position: absolute;
             top: 50%;
@@ -842,9 +832,9 @@
             color: #fff;
             border: none;
             border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            font-size: 18px;
+            width: 32px;
+            height: 32px;
+            font-size: 16px;
             cursor: pointer;
             z-index: 5;
             display: flex;
@@ -857,22 +847,14 @@
             background: rgba(0, 0, 0, 0.7);
         }
 
-        .modal-carousel-btn.prev {
-            left: 8px;
-        }
+        .modal-carousel-btn.prev { left: 8px; }
+        .modal-carousel-btn.next { right: 8px; }
 
-        .modal-carousel-btn.next {
-            right: 8px;
-        }
-
-        /* ============================================================ */
-        /* DOTS - ONLY INDICATORS, NO NUMBERS                         */
-        /* ============================================================ */
         .modal-carousel-dots {
             display: flex;
             justify-content: center;
             gap: 8px;
-            padding: 8px 0 4px;
+            padding: 6px 0 2px;
             background: transparent;
         }
 
@@ -897,7 +879,7 @@
         .profile-modal .btn-message-profile {
             width: 100%;
             padding: 14px;
-            margin-top: 12px;
+            margin-top: 10px;
             background: linear-gradient(135deg, #112A46, #2E5A88);
             color: #fff;
             border: none;
@@ -995,8 +977,8 @@
             }
 
             .member-card__actions button {
-                font-size: 12px;
-                padding: 8px;
+                font-size: 13px;
+                padding: 10px 12px;
             }
 
             .filters-section {
@@ -1038,7 +1020,6 @@
                 font-size: 11px;
             }
 
-            /* ✅ FULL SCREEN MODAL ON MOBILE */
             .profile-modal-content {
                 padding: 16px 12px 12px;
                 border-radius: 0px;
@@ -1083,6 +1064,10 @@
 
             .modal-dot.active {
                 width: 18px;
+            }
+
+            .modal-photos-container {
+                max-height: 280px;
             }
 
             .toast {
@@ -1141,8 +1126,8 @@
             }
 
             .member-card__actions button {
-                font-size: 10px;
-                padding: 6px;
+                font-size: 11px;
+                padding: 8px 10px;
             }
 
             .carousel-btn {
@@ -1217,6 +1202,10 @@
                 width: 24px;
                 height: 24px;
                 font-size: 12px;
+            }
+
+            .modal-photos-container {
+                max-height: 220px;
             }
         }
 
@@ -1303,22 +1292,22 @@
     </main>
 
     <!-- ============================================================ -->
-    <!-- PROFILE MODAL - UPDATED WITH LARGE SLIDING PHOTOS            -->
+    <!-- PROFILE MODAL - UPDATED                                      -->
     <!-- ============================================================ -->
     <div class="profile-modal" id="profile-modal">
         <div class="profile-modal-content">
             <button class="profile-modal-close" onclick="closeProfileModal()">✕</button>
             
-            <!-- AVATAR - KEPT -->
+            <!-- AVATAR -->
             <img class="profile-modal-avatar" id="modal-avatar" src="" alt="Profile">
             
-            <!-- NAME - KEPT -->
+            <!-- NAME -->
             <h2 class="profile-modal-name" id="modal-name">Name</h2>
             
-            <!-- STATUS - KEPT -->
+            <!-- STATUS -->
             <div class="profile-modal-status" id="modal-status-text">📍 Location</div>
 
-            <!-- DETAILS - KEPT -->
+            <!-- DETAILS -->
             <div class="profile-modal-details" id="modal-details">
                 <div class="detail-item">
                     <span class="label">Age</span>
@@ -1346,14 +1335,14 @@
                 </div>
             </div>
 
-            <!-- BIO - KEPT -->
+            <!-- ✅ BIO - Shows "About Me" from member -->
             <div class="profile-modal-bio" id="modal-bio">No bio available.</div>
 
-            <!-- INTERESTS - KEPT -->
+            <!-- INTERESTS -->
             <div class="profile-modal-interests" id="modal-interests"></div>
 
             <!-- ============================================================ -->
-            <!-- 🔥 LARGE SLIDING PHOTOS - NO LABELS!                         -->
+            <!-- ✅ RESIZED PHOTOS                                            -->
             <!-- ============================================================ -->
             <div class="modal-photos-container" id="modal-photos-container">
                 <div class="modal-carousel-wrapper" id="modal-carousel-wrapper">
@@ -1560,11 +1549,11 @@
                 }
 
                 const verifiedHTML = member.verified ? `<span class="verified-badge">✓</span>` : '';
+                
+                // ✅ STATUS - Only show "Online", hide "Offline"
                 const statusHTML = member.online ? `
                     <span class="status-dot status-dot--online"></span> Online
-                ` : `
-                    <span class="status-dot status-dot--offline"></span> Offline
-                `;
+                ` : '';
 
                 return `
                     <div class="member-card" data-id="${member.id}">
@@ -1578,7 +1567,7 @@
                                 <button class="carousel-btn next" onclick="event.stopPropagation(); window.changePhoto('${member.id}', 1)">›</button>
                                 <div class="image-dots">${dotsHTML}</div>
                             ` : ''}
-                            <div class="member-card__status">${statusHTML}</div>
+                            ${statusHTML ? `<div class="member-card__status">${statusHTML}</div>` : ''}
                         </div>
                         <div class="member-card__info">
                             <div class="member-card__name">
@@ -1586,7 +1575,7 @@
                                 <span class="age">${member.age || '?'}</span>
                             </div>
                             <div class="member-card__location">📍 ${member.location || 'Location Unknown'}</div>
-                            <div class="member-card__bio">${member.bio || 'No bio yet.'}</div>
+                            <div class="member-card__bio">${member.about_me || member.bio || 'No bio yet.'}</div>
                             <div class="member-card__interests">
                                 ${(member.interests || []).map(i => `<span class="interest-tag">#${i}</span>`).join('')}
                             </div>
@@ -1679,7 +1668,7 @@
         }
 
         // ============================================================
-        // 🔥 OPEN PROFILE MODAL - LARGE SLIDING PHOTOS
+        // OPEN PROFILE MODAL
         // ============================================================
         window.openProfileModal = function(id) {
             const member = allMembers.find(m => m.id === id);
@@ -1727,8 +1716,8 @@
             document.getElementById('modal-verified').textContent = member.verified ? '✅ Yes' : '❌ No';
             document.getElementById('modal-premium').textContent = member.premium ? '⭐ Yes' : '—';
 
-            // Bio
-            document.getElementById('modal-bio').textContent = member.bio || 'No bio available.';
+            // ✅ BIO - Shows "About Me" from member
+            document.getElementById('modal-bio').textContent = member.about_me || member.bio || 'No bio available.';
 
             // Interests
             const interestsContainer = document.getElementById('modal-interests');
@@ -1739,7 +1728,7 @@
             }
 
             // ============================================================
-            // 🔥 LARGE SLIDING PHOTOS - NO LABELS!
+            // ✅ RESIZED PHOTOS
             // ============================================================
             const slidesContainer = document.getElementById('modal-carousel-slides');
             const dotsContainer = document.getElementById('modal-carousel-dots');
@@ -1747,7 +1736,6 @@
             modalPhotoIndex = 0;
 
             if (photos.length > 0) {
-                // Build slides
                 let slidesHTML = '';
                 photos.forEach((photo, index) => {
                     slidesHTML += `
@@ -1759,14 +1747,12 @@
                 slidesContainer.innerHTML = slidesHTML;
                 slidesContainer.style.transform = 'translateX(0%)';
 
-                // Build dots
                 let dotsHTML = '';
                 photos.forEach((_, index) => {
                     dotsHTML += `<span class="modal-dot ${index === 0 ? 'active' : ''}"></span>`;
                 });
                 dotsContainer.innerHTML = dotsHTML;
 
-                // Show/hide arrows
                 const prevBtn = document.querySelector('.modal-carousel-btn.prev');
                 const nextBtn = document.querySelector('.modal-carousel-btn.next');
                 if (photos.length <= 1) {
@@ -1777,7 +1763,6 @@
                     nextBtn.style.display = 'flex';
                 }
 
-                // Show container
                 document.getElementById('modal-photos-container').style.display = 'block';
             } else {
                 slidesContainer.innerHTML = `
@@ -1798,7 +1783,7 @@
         }
 
         // ============================================================
-        // 🔥 MODAL PHOTO CAROUSEL
+        // MODAL PHOTO CAROUSEL
         // ============================================================
         window.changeModalPhoto = function(direction) {
             const slides = document.getElementById('modal-carousel-slides');
@@ -1822,7 +1807,7 @@
         }
 
         // ============================================================
-        // TOUCH SWIPE SUPPORT FOR MODAL
+        // TOUCH SWIPE SUPPORT
         // ============================================================
         let touchStartX = 0;
         let touchEndX = 0;
@@ -1924,10 +1909,12 @@
         document.head.appendChild(style);
 
         console.log('💎 ClassyDate Members Page - UPDATED!');
-        console.log('✅ Large sliding photos in modal');
-        console.log('✅ No labels on photos');
+        console.log('✅ Photos resized (balanced)');
+        console.log('✅ View & Message buttons BIGGER');
+        console.log('✅ "Offline" status removed');
+        console.log('✅ Bio shows "About Me" content');
         console.log('✅ Full screen on mobile');
-        console.log('✅ Avatar + Name + Details + Bio + Interests kept');
     </script>
+
 </body>
 </html>
