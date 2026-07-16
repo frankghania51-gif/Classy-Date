@@ -13,10 +13,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
 
     <style>
-        /* ============================================================
-           CLASSYDATE - MEMBERS PAGE - FIXED VERSION
-           ============================================================ */
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -34,9 +30,6 @@
 
         a { text-decoration: none; color: inherit; }
 
-        /* ============================================================ */
-        /* HEADER                                                       */
-        /* ============================================================ */
         .cb-shell-header {
             position: fixed;
             top: 0;
@@ -105,9 +98,6 @@
             transform: translateY(-2px);
         }
 
-        /* ============================================================ */
-        /* MEMBERS CONTAINER                                            */
-        /* ============================================================ */
         .members-wrapper {
             flex: 1;
             padding: 100px 20px 60px;
@@ -175,7 +165,6 @@
             color: rgba(17, 42, 70, 0.7);
         }
 
-        /* Filters */
         .filters-section {
             display: flex;
             flex-wrap: wrap;
@@ -278,18 +267,12 @@
             background: rgba(255, 255, 255, 0.5);
         }
 
-        /* ============================================================ */
-        /* 2 COLUMN GRID                                                */
-        /* ============================================================ */
         .members-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
         }
 
-        /* ============================================================ */
-        /* MEMBER CARD                                                  */
-        /* ============================================================ */
         .member-card {
             background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(10px);
@@ -305,9 +288,6 @@
             box-shadow: 0 8px 32px rgba(17, 42, 70, 0.08);
         }
 
-        /* ============================================================ */
-        /* IMAGE CAROUSEL                                               */
-        /* ============================================================ */
         .member-card__image-wrapper {
             position: relative;
             overflow: hidden;
@@ -358,9 +338,6 @@
         .carousel-btn.prev { left: 6px; }
         .carousel-btn.next { right: 6px; }
 
-        /* ============================================================ */
-        /* ✅ INSTAGRAM-STYLE VERIFIED BADGE                           */
-        /* ============================================================ */
         .verified-badge {
             position: absolute;
             top: 10px;
@@ -380,9 +357,6 @@
             border: 2px solid #fff;
         }
 
-        /* ============================================================ */
-        /* DOT INDICATORS                                               */
-        /* ============================================================ */
         .image-dots {
             position: absolute;
             bottom: 8px;
@@ -411,9 +385,6 @@
             border-radius: 4px;
         }
 
-        /* ============================================================ */
-        /* STATUS                                                       */
-        /* ============================================================ */
         .member-card__status {
             position: absolute;
             bottom: 8px;
@@ -452,9 +423,6 @@
             50% { opacity: 0.3; }
         }
 
-        /* ============================================================ */
-        /* CARD INFO                                                    */
-        /* ============================================================ */
         .member-card__info {
             padding: 14px 16px 16px;
         }
@@ -515,9 +483,6 @@
             font-family: "Inter", sans-serif;
         }
 
-        /* ============================================================ */
-        /* BUTTONS                                                      */
-        /* ============================================================ */
         .member-card__actions {
             display: flex;
             gap: 10px;
@@ -557,9 +522,6 @@
             box-shadow: 0 4px 16px rgba(17, 42, 70, 0.25);
         }
 
-        /* ============================================================ */
-        /* EMPTY STATE                                                  */
-        /* ============================================================ */
         .empty-state {
             text-align: center;
             padding: 80px 20px;
@@ -583,9 +545,6 @@
             font-family: "Inter", sans-serif;
         }
 
-        /* ============================================================ */
-        /* PAGINATION                                                   */
-        /* ============================================================ */
         .pagination {
             display: flex;
             justify-content: center;
@@ -619,9 +578,6 @@
             cursor: not-allowed;
         }
 
-        /* ============================================================ */
-        /* PROFILE MODAL                                                */
-        /* ============================================================ */
         .profile-modal {
             display: none;
             position: fixed;
@@ -790,9 +746,6 @@
             transform: translateY(-2px);
         }
 
-        /* ============================================================ */
-        /* TOAST                                                       */
-        /* ============================================================ */
         .toast {
             position: fixed;
             bottom: 30px;
@@ -823,9 +776,6 @@
             background: #dc3545;
         }
 
-        /* ============================================================ */
-        /* RESPONSIVE                                                   */
-        /* ============================================================ */
         @media (max-width: 768px) {
             .members-header {
                 flex-direction: column;
@@ -1039,9 +989,6 @@
             }
         }
 
-        /* ============================================================ */
-        /* SPINNER                                                      */
-        /* ============================================================ */
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
@@ -1049,7 +996,6 @@
 </head>
 <body>
 
-    <!-- Header -->
     <header class="cb-shell-header" role="banner">
         <div class="cb-shell-header__inner">
             <a class="cb-shell-brand" href="/">Classy<span>Date</span></a>
@@ -1060,7 +1006,6 @@
         </div>
     </header>
 
-    <!-- Main -->
     <main class="members-wrapper">
         <div class="members-header">
             <div>
@@ -1073,7 +1018,6 @@
             </div>
         </div>
 
-        <!-- Filters -->
         <div class="filters-section">
             <div class="filter-group">
                 <label>Gender</label>
@@ -1117,16 +1061,11 @@
             </div>
         </div>
 
-        <!-- Members Grid -->
         <div class="members-grid" id="members-grid"></div>
 
-        <!-- Pagination -->
         <div class="pagination" id="pagination"></div>
     </main>
 
-    <!-- ============================================================ -->
-    <!-- PROFILE MODAL - FULL DETAILS                                 -->
-    <!-- ============================================================ -->
     <div class="profile-modal" id="profile-modal">
         <div class="profile-modal-content">
             <button class="profile-modal-close" onclick="closeProfileModal()">✕</button>
@@ -1171,12 +1110,8 @@
         </div>
     </div>
 
-    <!-- Toast -->
     <div class="toast" id="toast"></div>
 
-    <!-- ============================================================ -->
-    <!-- SCRIPTS - Supabase                                            -->
-    <!-- ============================================================ -->
     <script type="importmap">
         {
             "imports": {
@@ -1186,9 +1121,6 @@
     </script>
 
     <script type="module">
-        // ============================================================
-        // SUPABASE CONFIG
-        // ============================================================
         import { createClient } from "@supabase/supabase-js";
 
         const SUPABASE_URL = 'https://ehfnzsfnsoiyiwpxqmli.supabase.co';
@@ -1198,9 +1130,6 @@
 
         console.log('🔥 Supabase connected!');
 
-        // ============================================================
-        // STATE
-        // ============================================================
         let allMembers = [];
         let filteredMembers = [];
         let currentPage = 1;
@@ -1209,20 +1138,13 @@
         let isLoading = true;
         let selectedMemberId = null;
 
-        // Photo index tracking for carousel
         const photoIndexMap = {};
         const carouselIntervals = {};
 
-        // ============================================================
-        // DOM REFS
-        // ============================================================
         const grid = document.getElementById('members-grid');
         const paginationContainer = document.getElementById('pagination');
         const totalCount = document.getElementById('total-count');
 
-        // ============================================================
-        // GET PHOTO URL
-        // ============================================================
         function getPhotoUrl(fileId) {
             if (!fileId) return null;
             try {
@@ -1235,7 +1157,7 @@
         }
 
         // ============================================================
-        // LOAD MEMBERS
+        // 🔥 FIXED: LOAD MEMBERS - DIRECT RENDER
         // ============================================================
         async function loadMembers() {
             try {
@@ -1249,8 +1171,20 @@
                 allMembers = data || [];
                 isLoading = false;
                 console.log('📊 Members loaded from Supabase:', allMembers.length);
-                applyFilters();
+                console.log('📊 Member data:', allMembers);
+                
+                // ✅ FIX: Update total count FIRST
                 totalCount.textContent = allMembers.length;
+                
+                // ✅ FIX: Set filtered members to all members
+                filteredMembers = [...allMembers];
+                
+                // ✅ FIX: Render directly, don't wait for applyFilters
+                renderMembers(filteredMembers);
+                
+                // ✅ Also update filters if needed
+                updatePagination(filteredMembers.length);
+                
             } catch (error) {
                 console.error('Error loading members:', error);
                 showToast('Error loading members from Supabase: ' + error.message, 'error');
@@ -1265,9 +1199,6 @@
             }
         }
 
-        // ============================================================
-        // CAROUSEL FUNCTIONS - FIXED (Globally accessible)
-        // ============================================================
         window.changePhoto = function(memberId, direction) {
             const wrapper = document.querySelector(`.member-card__image-wrapper[data-member="${memberId}"]`);
             if (!wrapper) return;
@@ -1312,10 +1243,9 @@
             }
         }
 
-        // ============================================================
-        // RENDER - FIXED
-        // ============================================================
         function renderMembers(members) {
+            console.log('🎨 Rendering members:', members.length);
+            
             if (isLoading) {
                 grid.innerHTML = `
                     <div style="grid-column:1/-1;text-align:center;padding:60px;color:rgba(17,42,70,0.3);">
@@ -1343,7 +1273,6 @@
             totalCount.textContent = members.length;
 
             grid.innerHTML = members.map(member => {
-                // Get photos - with better error handling
                 let photos = [];
                 if (member.photo_file_ids && member.photo_file_ids.length > 0) {
                     photos = member.photo_file_ids
@@ -1351,33 +1280,31 @@
                         .filter(url => url !== null && url !== '');
                 }
 
-                // If no photos, use avatar
+                // ✅ ALWAYS use avatar if no photos
+                const memberName = member.name || 'User';
+                const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(memberName)}&background=112A46&color=fff&size=400`;
+                
                 if (photos.length === 0) {
-                    photos.push(`https://ui-avatars.com/api/?name=${encodeURIComponent(member.name || 'User')}&background=112A46&color=fff&size=400`);
+                    photos = [avatarUrl];
                 }
 
                 const isNew = member.joined ? new Date(member.joined) > new Date(Date.now() - 7 * 24 * 60 * 60 * 1000) : false;
 
-                // Build carousel slides
                 let slidesHTML = '';
                 photos.forEach((photo, index) => {
                     slidesHTML += `
                         <div class="carousel-slide" style="min-width:100%;aspect-ratio:1/1;overflow:hidden;">
-                            <img src="${photo}" alt="${member.name}" loading="lazy" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(member.name || 'User')}&background=112A46&color=fff&size=400'">
+                            <img src="${photo}" alt="${memberName}" loading="lazy" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(memberName)}&background=112A46&color=fff&size=400'">
                         </div>
                     `;
                 });
 
-                // Build dots
                 let dotsHTML = '';
                 for (let i = 0; i < photos.length; i++) {
                     dotsHTML += `<span class="dot ${i === 0 ? 'active' : ''}"></span>`;
                 }
 
-                // Verified badge - Instagram style
                 const verifiedHTML = member.verified ? `<span class="verified-badge">✓</span>` : '';
-
-                // Online/Offline status
                 const statusHTML = member.online ? `
                     <span class="status-dot status-dot--online"></span> Online
                 ` : `
@@ -1400,7 +1327,7 @@
                         </div>
                         <div class="member-card__info">
                             <div class="member-card__name">
-                                <h3>${member.name || 'Unknown'}</h3>
+                                <h3>${memberName}</h3>
                                 <span class="age">${member.age || '?'}</span>
                             </div>
                             <div class="member-card__location">📍 ${member.location || 'Location Unknown'}</div>
@@ -1417,7 +1344,6 @@
                 `;
             }).join('');
 
-            // Start carousels
             members.forEach(member => {
                 startCarousel(member.id);
             });
@@ -1425,9 +1351,6 @@
             updatePagination(members.length);
         }
 
-        // ============================================================
-        // VIEW TOGGLE
-        // ============================================================
         window.setView = function(view) {
             currentView = view;
             grid.className = 'members-grid' + (view === 'list' ? ' list-view' : '');
@@ -1436,9 +1359,6 @@
             renderMembers(filteredMembers);
         }
 
-        // ============================================================
-        // FILTERS
-        // ============================================================
         window.applyFilters = function() {
             const gender = document.getElementById('filter-gender').value;
             const status = document.getElementById('filter-status').value;
@@ -1475,9 +1395,6 @@
             document.getElementById('age-display').textContent = this.value;
         });
 
-        // ============================================================
-        // PAGINATION
-        // ============================================================
         function updatePagination(total) {
             const pages = Math.ceil(total / perPage);
             if (pages <= 1) {
@@ -1506,9 +1423,6 @@
             renderMembers(filteredMembers);
         }
 
-        // ============================================================
-        // ✅ FIXED: PROFILE MODAL - Now opens full modal!
-        // ============================================================
         window.openProfileModal = function(id) {
             const member = allMembers.find(m => m.id === id);
             if (!member) {
@@ -1518,7 +1432,6 @@
 
             selectedMemberId = id;
 
-            // Avatar
             let photos = [];
             if (member.photo_file_ids && member.photo_file_ids.length > 0) {
                 photos = member.photo_file_ids
@@ -1536,16 +1449,13 @@
                 this.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name || 'User')}&background=112A46&color=fff&size=200`;
             };
 
-            // Name with badges
             let nameHTML = member.name || 'Unknown';
             if (member.verified) nameHTML += ' <span class="verified-badge">✓</span>';
             if (member.premium) nameHTML += ' ⭐';
             document.getElementById('modal-name').innerHTML = nameHTML;
 
-            // Status text
             document.getElementById('modal-status-text').textContent = `📍 ${member.location || 'Location Unknown'}`;
 
-            // Details
             document.getElementById('modal-age').textContent = member.age || '—';
             document.getElementById('modal-gender').textContent = member.gender || '—';
             document.getElementById('modal-location').textContent = member.location || '—';
@@ -1553,10 +1463,8 @@
             document.getElementById('modal-verified').textContent = member.verified ? '✅ Yes' : '❌ No';
             document.getElementById('modal-premium').textContent = member.premium ? '⭐ Yes' : '—';
 
-            // Bio
             document.getElementById('modal-bio').textContent = member.bio || 'No bio available.';
 
-            // Interests
             const interestsContainer = document.getElementById('modal-interests');
             if (member.interests && member.interests.length > 0) {
                 interestsContainer.innerHTML = member.interests.map(i => `<span class="tag">#${i}</span>`).join('');
@@ -1564,7 +1472,6 @@
                 interestsContainer.innerHTML = '<span style="color:rgba(17,42,70,0.3);font-size:14px;">No interests listed</span>';
             }
 
-            // Photos
             const photosContainer = document.getElementById('modal-photos');
             if (photos.length > 0) {
                 photosContainer.innerHTML = photos.map(url => `<img src="${url}" alt="Photo" onerror="this.style.display='none'">`).join('');
@@ -1585,14 +1492,12 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Close modal on click outside
         document.getElementById('profile-modal').addEventListener('click', function(e) {
             if (e.target === this) {
                 closeProfileModal();
             }
         });
 
-        // Close on Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 closeProfileModal();
@@ -1605,9 +1510,6 @@
             }
         }
 
-        // ============================================================
-        // SEND MESSAGE
-        // ============================================================
         window.sendMessage = function(id) {
             const member = allMembers.find(m => m.id === id);
             if (!member) {
@@ -1615,10 +1517,8 @@
                 return;
             }
 
-            // Close modal
             closeProfileModal();
 
-            // Check if logged in
             const user = localStorage.getItem('classydate_user');
             if (!user) {
                 showToast('🔒 Please log in to send messages', 'error');
@@ -1631,9 +1531,6 @@
             window.location.href = `chat.html?user=${id}&name=${encodeURIComponent(member.name)}`;
         }
 
-        // ============================================================
-        // TOAST
-        // ============================================================
         let toastTimeout;
 
         function showToast(message, type = 'success') {
@@ -1648,7 +1545,7 @@
         }
 
         // ============================================================
-        // INIT
+        // ✅ INIT - CALL loadMembers()
         // ============================================================
         loadMembers();
 
@@ -1657,11 +1554,8 @@
         document.head.appendChild(style);
 
         console.log('💎 ClassyDate Members Page - FIXED VERSION!');
-        console.log('✅ Profile modal now works!');
-        console.log('✅ Carousel buttons now work!');
-        console.log('✅ Photo loading improved!');
-        console.log('✅ Instagram-style verified badge (blue checkmark)');
-        console.log('✅ Auto-slideshow on images');
+        console.log('✅ Members will show even without photos!');
+        console.log('✅ Direct rendering - no more empty filters!');
     </script>
 
 </body>
