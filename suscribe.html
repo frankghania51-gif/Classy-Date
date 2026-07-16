@@ -429,11 +429,9 @@
                         <option value="ghana">🇬🇭 Ghana</option>
                         <option value="south-africa">🇿🇦 South Africa</option>
                         <option value="zambia">🇿🇲 Zambia</option>
-                        <option value="usa">🇺🇸 USA</option>
-                        <option value="uk">🇬🇧 United Kingdom</option>
-                        <option value="canada">🇨🇦 Canada</option>
-                        <option value="australia">🇦🇺 Australia</option>
-                        <option value="nigeria">🇳🇬 Nigeria</option>
+                        <option value="uganda">🇺🇬 Uganda</option>
+                        <option value="tanzania">🇹🇿 Tanzania</option>
+                        <option value="botswana">🇧🇼 Botswana</option>
                         <option value="other">🌍 Other</option>
                     </select>
                 </div>
@@ -476,7 +474,7 @@
         }
 
         // ============================================================
-        // 🔥 FIXED: HANDLE SUBMIT - Country Redirect
+        // HANDLE SUBMIT - Country Redirect
         // ============================================================
         function handleSubmit(event) {
             event.preventDefault();
@@ -523,10 +521,14 @@
             };
             localStorage.setItem('classydate_user_details', JSON.stringify(userData));
 
-            // 🚀 COUNTRY-BASED REDIRECT - FIXED: Zimbabwe goes to zimbabwelogin.html
+            // 🚀 COUNTRY-BASED REDIRECT
+            // Kenya → verifykenya.html
+            // Zimbabwe → zimbabwelogin.html
+            // Ghana → verifyghana.html
+            // All other countries (including Uganda, Tanzania, Botswana) → pricing.html
             const redirectMap = {
                 'kenya': 'verifykenya.html',
-                'zimbabwe': 'zimbabwelogin.html',  // ✅ THIS IS THE FIX
+                'zimbabwe': 'zimbabwelogin.html',
                 'ghana': 'verifyghana.html'
             };
 
@@ -548,7 +550,9 @@
             btn.textContent = '⏳ Redirecting...';
             btn.disabled = true;
 
-            showToast(`📍 Redirecting to ${country} payment page...`, 'success');
+            // Show which page they're going to
+            const pageName = redirectUrl.split('.')[0] || 'pricing';
+            showToast(`📍 Redirecting to ${pageName} page...`, 'success');
 
             setTimeout(() => {
                 window.location.href = redirectUrl;
@@ -585,7 +589,16 @@
             }
 
             console.log('📋 ClassyDate Subscribe Page loaded!');
-            console.log('🔥 Country redirects: Kenya → verifykenya.html, Zimbabwe → zimbabwelogin.html, Ghana → verifyghana.html');
+            console.log('🌍 Country redirects:');
+            console.log('  🇰🇪 Kenya → verifykenya.html');
+            console.log('  🇿🇼 Zimbabwe → zimbabwelogin.html');
+            console.log('  🇬🇭 Ghana → verifyghana.html');
+            console.log('  🇺🇬 Uganda → pricing.html');
+            console.log('  🇹🇿 Tanzania → pricing.html');
+            console.log('  🇧🇼 Botswana → pricing.html');
+            console.log('  🇿🇦 South Africa → pricing.html');
+            console.log('  🇿🇲 Zambia → pricing.html');
+            console.log('  🌍 Other → pricing.html');
         });
     </script>
 
