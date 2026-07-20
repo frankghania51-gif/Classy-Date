@@ -14,7 +14,7 @@
 
     <style>
         /* ============================================================
-           CLASSYDATE - MEMBERS PAGE - FULLY FIXED
+           CLASSYDATE - MEMBERS PAGE - UPDATED
            ============================================================ */
 
         * {
@@ -73,7 +73,7 @@
         }
 
         /* ============================================================ */
-        /* ✅ 3-LINE HAMBURGER MENU                                     */
+        /* HAMBURGER MENU                                               */
         /* ============================================================ */
         .menu-container {
             position: relative;
@@ -139,12 +139,6 @@
 
         .menu-dropdown a:hover {
             background: rgba(17, 42, 70, 0.06);
-        }
-
-        .menu-dropdown .menu-divider {
-            height: 1px;
-            background: rgba(17, 42, 70, 0.06);
-            margin: 4px 0;
         }
 
         .menu-dropdown .logout-btn {
@@ -245,12 +239,21 @@
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.15);
             transition: all 0.4s ease;
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         .member-card:hover {
             transform: translateY(-4px);
             border-color: rgba(17, 42, 70, 0.1);
             box-shadow: 0 8px 32px rgba(17, 42, 70, 0.08);
+        }
+
+        /* Long press feedback */
+        .member-card.long-press {
+            background: rgba(17, 42, 70, 0.05);
+            transform: scale(0.98);
         }
 
         /* ============================================================ */
@@ -307,25 +310,53 @@
         .carousel-btn.next { right: 6px; }
 
         /* ============================================================ */
-        /* ✅ INSTAGRAM-STYLE VERIFIED BADGE                           */
+        /* ✅ INSTAGRAM-STYLE VERIFIED BADGE ON IMAGE                  */
         /* ============================================================ */
-        .verified-badge {
+        .verified-badge-image {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 8px;
+            right: 8px;
             z-index: 2;
             background: #1DA1F2;
             color: #fff;
             border-radius: 50%;
-            width: 22px;
-            height: 22px;
+            width: 24px;
+            height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 700;
-            box-shadow: 0 2px 8px rgba(29, 161, 242, 0.3);
+            box-shadow: 0 2px 8px rgba(29, 161, 242, 0.4);
             border: 2px solid #fff;
+        }
+
+        /* ============================================================ */
+        /* ✅ ONLINE BUTTON - GREEN DOT INSIDE IMAGE CORNER            */
+        /* ============================================================ */
+        .online-dot {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            z-index: 2;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #28a745;
+            border: 2.5px solid #fff;
+            box-shadow: 0 0 12px rgba(40, 167, 69, 0.5);
+            animation: pulse-online 1.8s infinite;
+        }
+
+        .online-dot.offline {
+            background: #adb5bd;
+            animation: none;
+            box-shadow: none;
+        }
+
+        @keyframes pulse-online {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
         }
 
         /* ============================================================ */
@@ -360,71 +391,41 @@
         }
 
         /* ============================================================ */
-        /* STATUS - ONLY SHOW ONLINE                                   */
-        /* ============================================================ */
-        .member-card__status {
-            position: absolute;
-            bottom: 8px;
-            right: 8px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            background: rgba(17, 42, 70, 0.4);
-            backdrop-filter: blur(4px);
-            padding: 2px 10px 2px 6px;
-            border-radius: 50px;
-            font-size: 10px;
-            font-family: "Inter", sans-serif;
-            color: #fff;
-            z-index: 2;
-        }
-
-        .status-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        .status-dot--online {
-            background: #28a745;
-            animation: pulse-dot 1.5s infinite;
-        }
-
-        .status-dot--offline {
-            display: none;
-        }
-
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
-
-        /* ============================================================ */
-        /* CARD INFO                                                    */
+        /* CARD INFO - UPDATED                                         */
         /* ============================================================ */
         .member-card__info {
             padding: 14px 16px 16px;
         }
 
-        .member-card__name {
+        .member-card__name-row {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: 6px;
+            flex-wrap: wrap;
         }
 
-        .member-card__name h3 {
+        .member-card__name-row h3 {
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
             font-size: 18px;
             font-weight: 700;
             color: #112A46;
         }
 
-        .member-card__name .age {
-            color: rgba(17, 42, 70, 0.4);
-            font-weight: 400;
-            font-size: 14px;
-            font-family: "Inter", sans-serif;
+        /* ✅ Instagram-style verified badge next to name */
+        .verified-badge-name {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #1DA1F2;
+            color: #fff;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 10px;
+            font-weight: 700;
+            border: 1.5px solid #fff;
+            box-shadow: 0 1px 4px rgba(29, 161, 242, 0.3);
+            flex-shrink: 0;
         }
 
         .member-card__location {
@@ -434,37 +435,17 @@
             font-family: "Inter", sans-serif;
         }
 
-        .member-card__bio {
-            color: rgba(17, 42, 70, 0.6);
-            font-size: 13px;
-            margin-top: 6px;
-            line-height: 1.5;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            font-family: "Inter", sans-serif;
-        }
-
-        .member-card__interests {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4px;
-            margin-top: 8px;
-        }
-
-        .interest-tag {
-            padding: 2px 10px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50px;
-            font-size: 10px;
+        .member-card__origin {
             color: rgba(17, 42, 70, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 13px;
+            margin-top: 1px;
             font-family: "Inter", sans-serif;
         }
+
+        /* Bio and Interests - REMOVED from card */
 
         /* ============================================================ */
-        /* ✅ BIGGER BUTTONS                                            */
+        /* BUTTONS                                                      */
         /* ============================================================ */
         .member-card__actions {
             display: flex;
@@ -565,6 +546,77 @@
         .pagination button:disabled {
             opacity: 0.3;
             cursor: not-allowed;
+        }
+
+        /* ============================================================ */
+        /* SHARE TOAST                                                  */
+        /* ============================================================ */
+        .share-toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: rgba(17, 42, 70, 0.95);
+            backdrop-filter: blur(12px);
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 14px;
+            font-family: "Inter", sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            z-index: 999;
+            opacity: 0;
+            transition: all 0.4s ease;
+            text-align: center;
+            max-width: 90%;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .share-toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .share-toast .close-share {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 0 0 0 12px;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .share-toast .close-share:hover {
+            opacity: 1;
+        }
+
+        .share-toast .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: #25D366;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 8px;
+            font-family: "Inter", sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .share-toast .share-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+        }
+
+        .share-toast .share-btn .icon {
+            font-size: 20px;
         }
 
         /* ============================================================ */
@@ -892,26 +944,16 @@
                 padding: 10px 12px 12px;
             }
 
-            .member-card__name h3 {
+            .member-card__name-row h3 {
                 font-size: 15px;
-            }
-
-            .member-card__name .age {
-                font-size: 12px;
             }
 
             .member-card__location {
                 font-size: 11px;
             }
 
-            .member-card__bio {
+            .member-card__origin {
                 font-size: 11px;
-                -webkit-line-clamp: 1;
-            }
-
-            .interest-tag {
-                font-size: 9px;
-                padding: 1px 8px;
             }
 
             .member-card__actions button {
@@ -955,49 +997,11 @@
                 font-size: 20px;
             }
 
-            .profile-modal-details .detail-item {
+            .share-toast {
+                bottom: 80px;
+                padding: 12px 20px;
                 font-size: 13px;
-                padding: 4px 0;
-            }
-
-            .profile-modal-bio {
-                font-size: 13px;
-                padding: 10px 12px;
-            }
-
-            .profile-modal-interests .tag {
-                font-size: 11px;
-                padding: 3px 10px;
-            }
-
-            .modal-carousel-btn {
-                width: 28px;
-                height: 28px;
-                font-size: 14px;
-            }
-
-            .modal-dot {
-                width: 6px;
-                height: 6px;
-            }
-
-            .modal-dot.active {
-                width: 18px;
-            }
-
-            .modal-photos-container {
-                max-height: 280px;
-            }
-
-            .menu-btn {
-                font-size: 24px;
-            }
-
-            .toast {
-                bottom: 20px;
-                right: 20px;
-                left: 20px;
-                text-align: center;
+                max-width: 95%;
             }
         }
 
@@ -1015,31 +1019,16 @@
                 padding: 8px 10px 10px;
             }
 
-            .member-card__name h3 {
+            .member-card__name-row h3 {
                 font-size: 13px;
-            }
-
-            .member-card__name .age {
-                font-size: 11px;
             }
 
             .member-card__location {
                 font-size: 10px;
             }
 
-            .member-card__bio {
+            .member-card__origin {
                 font-size: 10px;
-                -webkit-line-clamp: 1;
-            }
-
-            .member-card__interests {
-                gap: 3px;
-                margin-top: 4px;
-            }
-
-            .interest-tag {
-                font-size: 8px;
-                padding: 1px 6px;
             }
 
             .member-card__actions {
@@ -1059,38 +1048,25 @@
                 font-size: 10px;
             }
 
-            .verified-badge {
-                width: 18px;
-                height: 18px;
-                font-size: 10px;
-                top: 6px;
-                right: 6px;
+            .verified-badge-image {
+                width: 20px;
+                height: 20px;
+                font-size: 12px;
+                top: 5px;
+                right: 5px;
             }
 
-            .member-card__status {
+            .online-dot {
+                width: 12px;
+                height: 12px;
+                top: 5px;
+                left: 5px;
+            }
+
+            .verified-badge-name {
+                width: 15px;
+                height: 15px;
                 font-size: 8px;
-                padding: 1px 6px 1px 4px;
-                bottom: 4px;
-                right: 4px;
-            }
-
-            .status-dot {
-                width: 5px;
-                height: 5px;
-            }
-
-            .image-dots {
-                padding: 2px 6px;
-                bottom: 4px;
-            }
-
-            .image-dots .dot {
-                width: 4px;
-                height: 4px;
-            }
-
-            .image-dots .dot.active {
-                width: 10px;
             }
 
             .profile-modal-content {
@@ -1106,39 +1082,16 @@
                 font-size: 18px;
             }
 
-            .profile-modal-details .detail-item {
+            .share-toast {
+                bottom: 70px;
+                padding: 10px 16px;
                 font-size: 12px;
-                padding: 3px 0;
+                max-width: 95%;
             }
 
-            .profile-modal-bio {
+            .share-toast .share-btn {
+                padding: 6px 16px;
                 font-size: 12px;
-                padding: 8px 10px;
-            }
-
-            .profile-modal-interests .tag {
-                font-size: 10px;
-                padding: 2px 8px;
-            }
-
-            .modal-carousel-btn {
-                width: 24px;
-                height: 24px;
-                font-size: 12px;
-            }
-
-            .modal-photos-container {
-                max-height: 220px;
-            }
-
-            .menu-btn {
-                font-size: 22px;
-                padding: 4px 8px;
-            }
-
-            .menu-dropdown {
-                min-width: 150px;
-                right: -8px;
             }
         }
 
@@ -1156,7 +1109,6 @@
         <div class="cb-shell-header__inner">
             <a class="cb-shell-brand" href="/">Classy<span>Date</span></a>
 
-            <!-- ✅ 3-Line Hamburger Menu -->
             <div class="menu-container">
                 <button class="menu-btn" id="menuBtn" onclick="toggleMenu()">☰</button>
                 <div class="menu-dropdown" id="menuDropdown">
@@ -1181,12 +1133,22 @@
             </div>
         </div>
 
-        <!-- Members Grid -->
         <div class="members-grid" id="members-grid"></div>
-
-        <!-- Pagination -->
         <div class="pagination" id="pagination"></div>
     </main>
+
+    <!-- ============================================================ -->
+    <!-- SHARE TOAST - Appears on long press                          -->
+    <!-- ============================================================ -->
+    <div class="share-toast" id="share-toast">
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span>📤 Share this member via WhatsApp</span>
+            <button class="close-share" onclick="closeShareToast()">✕</button>
+        </div>
+        <button class="share-btn" id="share-whatsapp-btn">
+            <span class="icon">💬</span> Share on WhatsApp
+        </button>
+    </div>
 
     <!-- ============================================================ -->
     <!-- PROFILE MODAL                                                -->
@@ -1213,16 +1175,16 @@
                     <span class="value" id="modal-location">—</span>
                 </div>
                 <div class="detail-item">
+                    <span class="label">Origin</span>
+                    <span class="value" id="modal-origin">—</span>
+                </div>
+                <div class="detail-item">
                     <span class="label">Status</span>
                     <span class="value" id="modal-status">—</span>
                 </div>
                 <div class="detail-item">
                     <span class="label">Verified</span>
                     <span class="value" id="modal-verified">—</span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Premium</span>
-                    <span class="value" id="modal-premium">—</span>
                 </div>
             </div>
 
@@ -1273,6 +1235,7 @@
         let currentView = 'grid';
         let isLoading = true;
         let selectedMemberId = null;
+        let longPressMember = null;
 
         const photoIndexMap = {};
         const carouselIntervals = {};
@@ -1295,14 +1258,13 @@
         }
 
         // ============================================================
-        // ✅ MENU FUNCTIONS - FIXED LOGOUT
+        // MENU FUNCTIONS
         // ============================================================
         window.toggleMenu = function() {
             const dropdown = document.getElementById('menuDropdown');
             dropdown.classList.toggle('show');
         }
 
-        // Close menu when clicking outside
         document.addEventListener('click', function(e) {
             const container = document.querySelector('.menu-container');
             if (container && !container.contains(e.target)) {
@@ -1310,40 +1272,32 @@
             }
         });
 
-        // 🔥 FIXED: Logout function - removes ALL session data
         window.logoutUser = function() {
-            // Remove all user session data
             localStorage.removeItem('classy_user');
             localStorage.removeItem('classydate_user');
             localStorage.removeItem('classy_user_email');
             localStorage.removeItem('classy_user_name');
             localStorage.removeItem('classy_user_id');
-            
-            // Also remove admin session if exists
             localStorage.removeItem('admin_logged_in');
-            
-            // Redirect to login page
             window.location.href = 'login.html';
         }
 
         // ============================================================
-        // 🔥 FIX: LOAD MEMBERS - ONLY SHOW ADMIN-CREATED (verified = true)
+        // LOAD MEMBERS
         // ============================================================
         async function loadMembers() {
             try {
-                // 🔥 KEY FIX: Only load members where verified = true
                 const { data, error } = await supabase
                     .from('members')
                     .select('*')
-                    .eq('verified', true)  // 🔥 THIS IS THE FIX!
+                    .eq('verified', true)
                     .order('created_at', { ascending: false });
 
                 if (error) throw error;
 
                 allMembers = data || [];
                 isLoading = false;
-                console.log('📊 Admin members loaded from Supabase:', allMembers.length);
-                console.log('📊 Member data:', allMembers);
+                console.log('📊 Admin members loaded:', allMembers.length);
                 
                 totalCount.textContent = allMembers.length;
                 filteredMembers = [...allMembers];
@@ -1352,13 +1306,13 @@
                 
             } catch (error) {
                 console.error('Error loading members:', error);
-                showToast('Error loading members from Supabase: ' + error.message, 'error');
+                showToast('Error loading members: ' + error.message, 'error');
                 isLoading = false;
                 grid.innerHTML = `
                     <div class="empty-state" style="grid-column:1/-1;">
                         <div class="icon">⚠️</div>
                         <h3>Could not load members</h3>
-                        <p>Please check your Supabase connection.</p>
+                        <p>Please check your connection.</p>
                     </div>
                 `;
             }
@@ -1408,6 +1362,9 @@
             }
         }
 
+        // ============================================================
+        // RENDER MEMBERS - UPDATED
+        // ============================================================
         function renderMembers(members) {
             console.log('🎨 Rendering members:', members.length);
             
@@ -1427,9 +1384,6 @@
                         <div class="icon">💎</div>
                         <h3>No members yet</h3>
                         <p>Check back soon for amazing people!</p>
-                        <p style="margin-top:12px;font-size:13px;color:rgba(17,42,70,0.3);">
-                            Only admin-approved members are shown here.
-                        </p>
                     </div>
                 `;
                 return;
@@ -1466,39 +1420,42 @@
                     dotsHTML += `<span class="dot ${i === 0 ? 'active' : ''}"></span>`;
                 }
 
-                const verifiedHTML = member.verified ? `<span class="verified-badge">✓</span>` : '';
+                // ✅ Instagram-style verified badge on image
+                const verifiedBadgeImage = member.verified ? `<span class="verified-badge-image">✓</span>` : '';
                 
-                const statusHTML = member.online ? `
-                    <span class="status-dot status-dot--online"></span> Online
-                ` : '';
+                // ✅ Online dot - green dot in corner
+                const onlineDot = member.online ? 
+                    `<span class="online-dot"></span>` : 
+                    `<span class="online-dot offline"></span>`;
+
+                // ✅ Verified badge next to name (Instagram-style)
+                const verifiedBadgeName = member.verified ? 
+                    `<span class="verified-badge-name">✓</span>` : '';
 
                 return `
-                    <div class="member-card" data-id="${member.id}">
+                    <div class="member-card" data-id="${member.id}" data-name="${memberName}" data-location="${member.location || ''}" data-origin="${member.origin || ''}" data-age="${member.age || ''}" data-verified="${member.verified}">
                         <div class="member-card__image-wrapper" data-member="${member.id}">
                             <div class="carousel-slides" style="display:flex;transition:transform 0.5s ease;">
                                 ${slidesHTML}
                             </div>
-                            ${verifiedHTML}
+                            ${verifiedBadgeImage}
+                            ${onlineDot}
                             ${photos.length > 1 ? `
                                 <button class="carousel-btn prev" onclick="event.stopPropagation(); window.changePhoto('${member.id}', -1)">‹</button>
                                 <button class="carousel-btn next" onclick="event.stopPropagation(); window.changePhoto('${member.id}', 1)">›</button>
                                 <div class="image-dots">${dotsHTML}</div>
                             ` : ''}
-                            ${statusHTML ? `<div class="member-card__status">${statusHTML}</div>` : ''}
                         </div>
                         <div class="member-card__info">
-                            <div class="member-card__name">
+                            <div class="member-card__name-row">
                                 <h3>${memberName}</h3>
-                                <span class="age">${member.age || '?'}</span>
+                                ${verifiedBadgeName}
                             </div>
                             <div class="member-card__location">📍 ${member.location || 'Location Unknown'}</div>
-                            <div class="member-card__bio">${member.about_me || member.bio || 'No bio yet.'}</div>
-                            <div class="member-card__interests">
-                                ${(member.interests || []).map(i => `<span class="interest-tag">#${i}</span>`).join('')}
-                            </div>
+                            <div class="member-card__origin">🌍 Origin: ${member.origin || 'Not specified'}</div>
                             <div class="member-card__actions">
-                                <button class="btn-view" onclick="window.openProfileModal('${member.id}')">👤 View</button>
-                                <button class="btn-message" onclick="window.sendMessage('${member.id}')">💬 Message</button>
+                                <button class="btn-view" onclick="event.stopPropagation(); window.openProfileModal('${member.id}')">👤 View Profile</button>
+                                <button class="btn-message" onclick="event.stopPropagation(); window.sendMessage('${member.id}')">💬 Message</button>
                             </div>
                         </div>
                     </div>
@@ -1509,9 +1466,147 @@
                 startCarousel(member.id);
             });
 
+            // ✅ Add long press event listeners
+            document.querySelectorAll('.member-card').forEach(card => {
+                setupLongPress(card);
+            });
+
             updatePagination(members.length);
         }
 
+        // ============================================================
+        // ✅ LONG PRESS TO SHARE
+        // ============================================================
+        let longPressTimer = null;
+        let isLongPress = false;
+
+        function setupLongPress(card) {
+            // Touch events for mobile
+            card.addEventListener('touchstart', function(e) {
+                isLongPress = false;
+                longPressTimer = setTimeout(() => {
+                    isLongPress = true;
+                    handleLongPress(this, e);
+                }, 600);
+            });
+
+            card.addEventListener('touchmove', function(e) {
+                clearTimeout(longPressTimer);
+            });
+
+            card.addEventListener('touchend', function(e) {
+                clearTimeout(longPressTimer);
+                if (isLongPress) {
+                    e.preventDefault();
+                }
+            });
+
+            // Mouse events for desktop (right-click / long click)
+            card.addEventListener('mousedown', function(e) {
+                isLongPress = false;
+                longPressTimer = setTimeout(() => {
+                    isLongPress = true;
+                    handleLongPress(this, e);
+                }, 800);
+            });
+
+            card.addEventListener('mouseup', function(e) {
+                clearTimeout(longPressTimer);
+            });
+
+            card.addEventListener('mouseleave', function(e) {
+                clearTimeout(longPressTimer);
+            });
+        }
+
+        function handleLongPress(card, event) {
+            event.preventDefault();
+            
+            const id = card.dataset.id;
+            const name = card.dataset.name || 'Member';
+            const location = card.dataset.location || 'Unknown';
+            const origin = card.dataset.origin || 'Not specified';
+            const age = card.dataset.age || '?';
+            const verified = card.dataset.verified === 'true';
+
+            const member = allMembers.find(m => m.id === id);
+            if (!member) return;
+
+            // Save the member for sharing
+            longPressMember = member;
+
+            // Show share toast
+            const shareToast = document.getElementById('share-toast');
+            shareToast.classList.add('show');
+
+            // Setup WhatsApp share button
+            const shareBtn = document.getElementById('share-whatsapp-btn');
+            shareBtn.onclick = function() {
+                shareOnWhatsApp(member);
+            };
+
+            // Add visual feedback
+            card.classList.add('long-press');
+            setTimeout(() => {
+                card.classList.remove('long-press');
+            }, 300);
+
+            showToast('👆 Long press detected! Share this profile?', 'success');
+        }
+
+        window.closeShareToast = function() {
+            document.getElementById('share-toast').classList.remove('show');
+            longPressMember = null;
+        }
+
+        // ============================================================
+        // ✅ SHARE ON WHATSAPP
+        // ============================================================
+        function shareOnWhatsApp(member) {
+            const name = member.name || 'Member';
+            const location = member.location || 'Unknown';
+            const origin = member.origin || 'Not specified';
+            const age = member.age || '?';
+            const verified = member.verified ? '✅ Verified Member' : '';
+
+            // Get profile photo URL
+            let photoUrl = '';
+            if (member.photo_file_ids && member.photo_file_ids.length > 0) {
+                const { data } = supabase.storage.from('member_photos').getPublicUrl(member.photo_file_ids[0]);
+                if (data?.publicUrl) {
+                    photoUrl = data.publicUrl;
+                }
+            }
+
+            // Create share message
+            const message = `
+👤 *${name}* ${verified ? '✔️' : ''}
+📍 Location: ${location}
+🌍 Origin: ${origin}
+🎂 Age: ${age}
+💎 ClassyDate Member
+
+---
+Check out this member on ClassyDate!
+https://classydate.com/profile/${member.id}
+            `.trim();
+
+            // Encode for WhatsApp URL
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/?text=${encodedMessage}`;
+
+            // Close share toast
+            document.getElementById('share-toast').classList.remove('show');
+
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+
+            showToast('📤 Opening WhatsApp...', 'success');
+        }
+
+        // ============================================================
+        // VIEW FUNCTIONS
+        // ============================================================
         window.setView = function(view) {
             currentView = view;
             grid.className = 'members-grid' + (view === 'list' ? ' list-view' : '');
@@ -1549,7 +1644,7 @@
         }
 
         // ============================================================
-        // PROFILE MODAL FUNCTIONS
+        // PROFILE MODAL FUNCTIONS - UPDATED
         // ============================================================
         window.openProfileModal = function(id) {
             const member = allMembers.find(m => m.id === id);
@@ -1580,7 +1675,6 @@
 
             let nameHTML = memberName;
             if (member.verified) nameHTML += ' <span class="verified-badge" style="position:relative;top:auto;right:auto;display:inline-block;width:20px;height:20px;font-size:11px;margin-left:4px;">✓</span>';
-            if (member.premium) nameHTML += ' ⭐';
             document.getElementById('modal-name').innerHTML = nameHTML;
 
             document.getElementById('modal-status-text').textContent = `📍 ${member.location || 'Location Unknown'}`;
@@ -1588,9 +1682,9 @@
             document.getElementById('modal-age').textContent = member.age || '—';
             document.getElementById('modal-gender').textContent = member.gender || '—';
             document.getElementById('modal-location').textContent = member.location || '—';
+            document.getElementById('modal-origin').textContent = member.origin || '—';
             document.getElementById('modal-status').innerHTML = member.online ? '🟢 Online' : '⚪ Offline';
             document.getElementById('modal-verified').textContent = member.verified ? '✅ Yes' : '❌ No';
-            document.getElementById('modal-premium').textContent = member.premium ? '⭐ Yes' : '—';
 
             document.getElementById('modal-bio').textContent = member.about_me || member.bio || 'No bio available.';
 
@@ -1674,28 +1768,29 @@
             });
         }
 
-        // Touch swipe support
         let touchStartX = 0;
 
         document.addEventListener('DOMContentLoaded', function() {
             const modalContent = document.querySelector('.profile-modal-content');
             
-            modalContent.addEventListener('touchstart', function(e) {
-                touchStartX = e.changedTouches[0].screenX;
-            }, { passive: true });
+            if (modalContent) {
+                modalContent.addEventListener('touchstart', function(e) {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, { passive: true });
 
-            modalContent.addEventListener('touchend', function(e) {
-                const touchEndX = e.changedTouches[0].screenX;
-                const diff = touchStartX - touchEndX;
-                
-                if (Math.abs(diff) > 50) {
-                    if (diff > 0) {
-                        window.changeModalPhoto(1);
-                    } else {
-                        window.changeModalPhoto(-1);
+                modalContent.addEventListener('touchend', function(e) {
+                    const touchEndX = e.changedTouches[0].screenX;
+                    const diff = touchStartX - touchEndX;
+                    
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0) {
+                            window.changeModalPhoto(1);
+                        } else {
+                            window.changeModalPhoto(-1);
+                        }
                     }
-                }
-            }, { passive: true });
+                }, { passive: true });
+            }
         });
 
         window.closeProfileModal = function() {
@@ -1739,6 +1834,9 @@
                 return;
             }
 
+            // Save member data for the chat page
+            localStorage.setItem('classydate_selected_member', JSON.stringify(member));
+
             window.location.href = `chat.html?user=${id}&name=${encodeURIComponent(member.name)}`;
         }
 
@@ -1767,11 +1865,12 @@
         style.textContent = `@keyframes spin { to { transform: rotate(360deg); } }`;
         document.head.appendChild(style);
 
-        console.log('💎 ClassyDate Members Page - FULLY FIXED!');
-        console.log('✅ Logout now works properly');
-        console.log('✅ ONLY showing admin-created members (verified = true)');
-        console.log('❌ Regular sign-ups (verified = false) are HIDDEN');
-        console.log('👑 Admin: Go to admin panel to add members that appear here');
+        console.log('💎 ClassyDate Members Page - UPDATED!');
+        console.log('✅ Instagram-style verified badge ✔️');
+        console.log('✅ Online dot in image corner 🟢');
+        console.log('✅ Long press to share via WhatsApp 📤');
+        console.log('✅ Location and Origin only on card');
+        console.log('✅ Bio and Interests in View Profile only');
     </script>
 
 </body>
