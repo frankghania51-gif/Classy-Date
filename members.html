@@ -325,7 +325,7 @@
         .carousel-btn.next { right: 6px; }
 
         /* ============================================================ */
-        /* ✅ INSTAGRAM VERIFIED BADGE - FIXED                          */
+        /* ✅ INSTAGRAM VERIFIED BADGE                                  */
         /* ============================================================ */
         .verified-badge {
             position: absolute;
@@ -604,6 +604,273 @@
         }
 
         /* ============================================================ */
+        /* PROFILE MODAL                                                */
+        /* ============================================================ */
+        .profile-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 0px;
+            animation: fadeInModal 0.3s ease;
+        }
+
+        .profile-modal.active {
+            display: flex;
+        }
+
+        @keyframes fadeInModal {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .profile-modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 0px;
+            max-width: 100%;
+            width: 100%;
+            padding: 24px 20px 20px;
+            border: none;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+            max-height: 100vh;
+            height: 100vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .profile-modal-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: rgba(0, 0, 0, 0.05);
+            border: none;
+            font-size: 24px;
+            color: #112A46;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Inter", sans-serif;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .profile-modal-close:hover {
+            background: rgba(0, 0, 0, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .profile-modal-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #112A46;
+            margin: 0 auto 8px;
+            display: block;
+        }
+
+        .profile-modal-name {
+            font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
+            font-size: 22px;
+            color: #112A46;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .profile-modal-name .verified-badge {
+            position: relative;
+            top: auto;
+            right: auto;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            font-size: 11px;
+            margin-left: 4px;
+        }
+
+        .profile-modal-status {
+            text-align: center;
+            font-size: 14px;
+            color: rgba(17, 42, 70, 0.5);
+            margin-top: 2px;
+            font-family: "Inter", sans-serif;
+        }
+
+        .profile-modal-details {
+            margin-top: 14px;
+            display: grid;
+            gap: 6px;
+            background: rgba(17, 42, 70, 0.03);
+            padding: 10px 14px;
+            border-radius: 12px;
+        }
+
+        .profile-modal-details .detail-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(17, 42, 70, 0.04);
+            font-family: "Inter", sans-serif;
+            font-size: 14px;
+        }
+
+        .profile-modal-details .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .profile-modal-details .detail-item .label {
+            color: rgba(17, 42, 70, 0.4);
+            font-weight: 500;
+        }
+
+        .profile-modal-details .detail-item .value {
+            color: #112A46;
+            font-weight: 600;
+        }
+
+        .profile-modal-bio {
+            margin-top: 10px;
+            padding: 10px 14px;
+            background: rgba(17, 42, 70, 0.04);
+            border-radius: 10px;
+            font-family: "Inter", sans-serif;
+            font-size: 14px;
+            color: rgba(17, 42, 70, 0.7);
+            line-height: 1.6;
+        }
+
+        .profile-modal-interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+            margin-bottom: 12px;
+        }
+
+        .profile-modal-interests .tag {
+            padding: 4px 14px;
+            background: rgba(17, 42, 70, 0.06);
+            border-radius: 50px;
+            font-size: 12px;
+            color: #112A46;
+            font-family: "Inter", sans-serif;
+            font-weight: 500;
+        }
+
+        .modal-photos-container {
+            margin: 10px 0 8px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #e8ecf0;
+            position: relative;
+            max-height: 350px;
+        }
+
+        .modal-carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .modal-carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+            touch-action: pan-y;
+        }
+
+        .modal-carousel-slide {
+            min-width: 100%;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            background: #e8ecf0;
+        }
+
+        .modal-carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-carousel-btn:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-carousel-btn.prev { left: 8px; }
+        .modal-carousel-btn.next { right: 8px; }
+
+        .modal-carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 6px 0 2px;
+            background: transparent;
+        }
+
+        .modal-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(17, 42, 70, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .modal-dot.active {
+            background: #112A46;
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        .profile-modal .btn-message-profile {
+            width: 100%;
+            padding: 14px;
+            margin-top: 10px;
+            background: linear-gradient(135deg, #112A46, #2E5A88);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "Inter", sans-serif;
+        }
+
+        .profile-modal .btn-message-profile:hover {
+            background: linear-gradient(135deg, #2E5A88, #112A46);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================================ */
         /* TOAST                                                       */
         /* ============================================================ */
         .toast {
@@ -828,6 +1095,58 @@
         </button>
     </div>
 
+    <!-- Profile Modal -->
+    <div class="profile-modal" id="profile-modal">
+        <div class="profile-modal-content">
+            <button class="profile-modal-close" onclick="closeProfileModal()">✕</button>
+            
+            <img class="profile-modal-avatar" id="modal-avatar" src="" alt="Profile">
+            <h2 class="profile-modal-name" id="modal-name">Name</h2>
+            <div class="profile-modal-status" id="modal-status-text">📍 Location</div>
+
+            <div class="profile-modal-details" id="modal-details">
+                <div class="detail-item">
+                    <span class="label">Age</span>
+                    <span class="value" id="modal-age">—</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Gender</span>
+                    <span class="value" id="modal-gender">—</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Location</span>
+                    <span class="value" id="modal-location">—</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Origin</span>
+                    <span class="value" id="modal-origin">—</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Status</span>
+                    <span class="value" id="modal-status">—</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Verified</span>
+                    <span class="value" id="modal-verified">—</span>
+                </div>
+            </div>
+
+            <div class="profile-modal-bio" id="modal-bio">No bio available.</div>
+            <div class="profile-modal-interests" id="modal-interests"></div>
+
+            <div class="modal-photos-container" id="modal-photos-container">
+                <div class="modal-carousel-wrapper" id="modal-carousel-wrapper">
+                    <div class="modal-carousel-slides" id="modal-carousel-slides"></div>
+                    <button class="modal-carousel-btn prev" onclick="event.stopPropagation(); changeModalPhoto(-1)">‹</button>
+                    <button class="modal-carousel-btn next" onclick="event.stopPropagation(); changeModalPhoto(1)">›</button>
+                </div>
+                <div class="modal-carousel-dots" id="modal-carousel-dots"></div>
+            </div>
+
+            <button class="btn-message-profile" id="modal-message-btn" onclick="modalSendMessage()">💬 Send Message</button>
+        </div>
+    </div>
+
     <!-- Toast -->
     <div class="toast" id="toast"></div>
 
@@ -905,21 +1224,21 @@
         }
 
         // ============================================================
-        // LOAD MEMBERS
+        // 🔥 FIXED: LOAD MEMBERS - SHOW ALL MEMBERS (NO FILTER)
         // ============================================================
         async function loadMembers() {
             try {
+                // 🔥 REMOVED the .eq('verified', true) filter - shows ALL members
                 const { data, error } = await supabase
                     .from('members')
                     .select('*')
-                    .eq('verified', true)
                     .order('created_at', { ascending: false });
 
                 if (error) throw error;
 
                 allMembers = data || [];
                 isLoading = false;
-                console.log('📊 Admin members loaded:', allMembers.length);
+                console.log('📊 All members loaded from Supabase:', allMembers.length);
                 
                 totalCount.textContent = allMembers.length;
                 filteredMembers = [...allMembers];
@@ -941,7 +1260,7 @@
         }
 
         // ============================================================
-        // CHANGE PHOTO - FIXED for individual carousels
+        // CHANGE PHOTO
         // ============================================================
         window.changePhoto = function(memberId, direction) {
             const wrapper = document.querySelector(`.member-card__image-wrapper[data-member="${memberId}"]`);
@@ -975,7 +1294,7 @@
             const slides = wrapper.querySelector('.carousel-slides');
             if (!slides || slides.children.length <= 1) return;
 
-            // 🔥 EACH CARD GETS A DIFFERENT TIMING (3.5s - 5.5s)
+            // Each card gets different timing
             const randomDelay = 3500 + Math.random() * 2000;
             
             carouselIntervals[memberId] = setInterval(() => {
@@ -1043,7 +1362,7 @@
                     `;
                 });
 
-                // ✅ Instagram Verified Badge (using SVG)
+                // Instagram Verified Badge
                 const verifiedBadge = member.verified ? `
                     <div class="verified-badge">
                         <svg viewBox="0 0 24 24" fill="white">
@@ -1053,12 +1372,12 @@
                     </div>
                 ` : '';
 
-                // ✅ Online button
+                // Online button
                 const onlineDot = member.online ? 
                     `<span class="online-dot"></span>` : 
                     `<span class="online-dot offline"></span>`;
 
-                // ✅ Verified badge next to name
+                // Verified badge next to name
                 const verifiedBadgeName = member.verified ? 
                     `<span class="verified-badge-name">✓</span>` : '';
 
@@ -1091,7 +1410,7 @@
                 `;
             }).join('');
 
-            // 🔥 Start carousels with different timing
+            // Start carousels with different timing
             members.forEach(member => {
                 startCarousel(member.id);
             });
@@ -1466,11 +1785,11 @@ https://classydate.com/profile/${member.id}
         // ============================================================
         loadMembers();
 
-        console.log('💎 ClassyDate Members Page - FINAL VERSION!');
+        console.log('💎 ClassyDate Members Page - FINAL FIXED VERSION!');
+        console.log('✅ All members loaded - No filter applied');
         console.log('✅ Instagram verified badge with SVG');
         console.log('✅ Online button in corner');
         console.log('✅ Each card slides independently with different timing');
-        console.log('✅ No sliding dots');
         console.log('✅ Long press to share via WhatsApp');
     </script>
 
