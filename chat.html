@@ -25,7 +25,8 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow-x: hidden;
+            overflow: hidden;
+            height: 100vh;
         }
 
         a {
@@ -34,7 +35,7 @@
         }
 
         /* ============================================================ */
-        /* ✅ HEADER - NO "ClassyDate" WORD                            */
+        /* HEADER                                                       */
         /* ============================================================ */
         .cb-shell-header {
             position: fixed;
@@ -45,28 +46,28 @@
             background: rgba(172, 200, 229, 0.92);
             backdrop-filter: blur(16px);
             border-bottom: 1px solid rgba(17, 42, 70, 0.08);
+            flex-shrink: 0;
         }
 
         .cb-shell-header__inner {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
-            height: 64px;
+            padding: 0 16px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
-        /* ✅ NO BRAND TEXT - Just back button and profile */
         .cb-shell-actions {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             width: 100%;
         }
 
         .cb-shell-button {
-            padding: 8px 20px;
+            padding: 6px 16px;
             border-radius: 50px;
             font-weight: 600;
             font-size: 13px;
@@ -98,38 +99,39 @@
         }
 
         /* ============================================================ */
-        /* CHAT WRAPPER                                                 */
+        /* CHAT WRAPPER - REDUCED HEIGHT                               */
         /* ============================================================ */
         .chat-wrapper {
-            flex: 1;
             display: flex;
             flex-direction: column;
-            padding: 80px 20px 20px;
+            padding: 72px 16px 12px;
             max-width: 900px;
             margin: 0 auto;
             width: 100%;
             height: 100vh;
+            max-height: 100vh;
+            overflow: hidden;
         }
 
         /* ============================================================ */
-        /* CHAT HEADER                                                  */
+        /* CHAT HEADER - COMPACT                                       */
         /* ============================================================ */
         .chat-header {
             display: flex;
             align-items: center;
-            gap: 16px;
-            padding: 16px 20px;
+            gap: 12px;
+            padding: 10px 16px;
             background: rgba(255, 255, 255, 0.30);
-            border-radius: 16px;
+            border-radius: 14px;
             border: 1px solid rgba(255, 255, 255, 0.20);
             backdrop-filter: blur(10px);
-            margin-bottom: 16px;
             flex-shrink: 0;
+            margin-bottom: 10px;
         }
 
         .chat-header__avatar {
-            width: 56px;
-            height: 56px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid #112A46;
@@ -138,43 +140,46 @@
 
         .chat-header__info {
             flex: 1;
+            min-width: 0;
         }
 
         .chat-header__info h2 {
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 20px;
+            font-size: 17px;
             font-weight: 700;
             color: #112A46;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            flex-wrap: wrap;
         }
 
         .chat-header__info .verified-badge {
-            font-size: 11px;
+            font-size: 10px;
             background: rgba(17, 42, 70, 0.10);
-            padding: 2px 10px;
+            padding: 1px 8px;
             border-radius: 50px;
             font-weight: 600;
             color: #112A46;
         }
 
         .chat-header__info .location {
-            font-size: 13px;
+            font-size: 12px;
             color: rgba(17, 42, 70, 0.5);
         }
 
         .chat-header__status {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 13px;
+            gap: 4px;
+            font-size: 12px;
             font-weight: 500;
+            flex-shrink: 0;
         }
 
         .status-dot {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
             display: inline-block;
         }
@@ -194,15 +199,15 @@
         }
 
         .chat-header__actions button {
-            padding: 8px 12px;
+            padding: 4px 8px;
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             background: rgba(255, 255, 255, 0.3);
             color: #112A46;
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: "Inter", sans-serif;
-            font-size: 16px;
+            font-size: 14px;
         }
 
         .chat-header__actions button:hover {
@@ -211,22 +216,23 @@
         }
 
         /* ============================================================ */
-        /* MESSAGES CONTAINER                                           */
+        /* MESSAGES CONTAINER - FLEXIBLE                              */
         /* ============================================================ */
         .messages-container {
             flex: 1;
             overflow-y: auto;
-            padding: 16px 20px;
+            padding: 10px 14px;
             background: rgba(255, 255, 255, 0.15);
-            border-radius: 16px;
+            border-radius: 14px;
             border: 1px solid rgba(255, 255, 255, 0.10);
             backdrop-filter: blur(5px);
-            margin-bottom: 16px;
-            min-height: 300px;
+            margin-bottom: 8px;
+            min-height: 0;
+            max-height: calc(100vh - 300px);
         }
 
         .messages-container::-webkit-scrollbar {
-            width: 6px;
+            width: 4px;
         }
         .messages-container::-webkit-scrollbar-track {
             background: rgba(255, 255, 255, 0.05);
@@ -240,12 +246,12 @@
         .message {
             display: flex;
             flex-direction: column;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             animation: messageIn 0.3s ease;
         }
 
         @keyframes messageIn {
-            0% { opacity: 0; transform: translateY(10px); }
+            0% { opacity: 0; transform: translateY(8px); }
             100% { opacity: 1; transform: translateY(0); }
         }
 
@@ -257,11 +263,11 @@
         }
 
         .message__bubble {
-            max-width: 75%;
-            padding: 12px 16px;
-            border-radius: 16px;
-            font-size: 15px;
-            line-height: 1.5;
+            max-width: 78%;
+            padding: 8px 14px;
+            border-radius: 14px;
+            font-size: 14px;
+            line-height: 1.4;
             word-wrap: break-word;
         }
 
@@ -279,30 +285,31 @@
         }
 
         .message__time {
-            font-size: 11px;
+            font-size: 10px;
             color: rgba(17, 42, 70, 0.3);
-            margin-top: 4px;
+            margin-top: 2px;
             padding: 0 4px;
         }
 
         .message__sender {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             color: rgba(17, 42, 70, 0.4);
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             padding: 0 4px;
         }
 
         /* ============================================================ */
-        /* TYPING INDICATOR                                             */
+        /* TYPING INDICATOR                                            */
         /* ============================================================ */
         .typing-indicator {
             display: none;
-            padding: 8px 16px;
-            font-size: 14px;
+            padding: 4px 12px;
+            font-size: 13px;
             color: rgba(17, 42, 70, 0.4);
             font-weight: 500;
             font-family: "Inter", sans-serif;
+            flex-shrink: 0;
         }
 
         .typing-indicator.show {
@@ -313,7 +320,7 @@
         .typing-indicator .dots span {
             display: inline-block;
             animation: dotBounce 1.4s infinite;
-            font-size: 20px;
+            font-size: 18px;
             line-height: 1;
         }
 
@@ -326,37 +333,37 @@
 
         @keyframes dotBounce {
             0%, 60%, 100% { transform: translateY(0); }
-            30% { transform: translateY(-6px); }
+            30% { transform: translateY(-4px); }
         }
 
         /* ============================================================ */
-        /* ✅ INPUT - RAISED UP FROM BOTTOM                            */
+        /* INPUT - COMPACT & VISIBLE                                   */
         /* ============================================================ */
         .message-input-container {
             display: flex;
-            gap: 12px;
-            padding: 12px 16px;
+            gap: 8px;
+            padding: 8px 12px;
             background: rgba(255, 255, 255, 0.30);
-            border-radius: 16px;
+            border-radius: 14px;
             border: 1px solid rgba(255, 255, 255, 0.20);
             backdrop-filter: blur(10px);
             flex-shrink: 0;
             align-items: center;
-            margin-bottom: 20px; /* ✅ RAISED UP - creates gap from bottom */
-            margin-top: auto;
+            margin-bottom: 0;
         }
 
         .message-input-container input {
             flex: 1;
-            padding: 12px 16px;
+            padding: 8px 14px;
             background: rgba(255, 255, 255, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
+            border-radius: 10px;
             color: #112A46;
-            font-size: 15px;
+            font-size: 14px;
             outline: none;
             font-family: "Inter", sans-serif;
             transition: all 0.3s ease;
+            min-height: 38px;
         }
 
         .message-input-container input::placeholder {
@@ -366,19 +373,29 @@
         .message-input-container input:focus {
             border-color: #112A46;
             background: rgba(255, 255, 255, 0.6);
-            box-shadow: 0 0 0 4px rgba(17, 42, 70, 0.06);
+            box-shadow: 0 0 0 3px rgba(17, 42, 70, 0.06);
+        }
+
+        .message-input-container .input-actions {
+            display: flex;
+            gap: 4px;
+            align-items: center;
         }
 
         .message-input-container .input-actions button {
-            padding: 10px 14px;
+            padding: 6px 10px;
             border: none;
-            border-radius: 12px;
+            border-radius: 10px;
             background: rgba(255, 255, 255, 0.3);
             color: #112A46;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 18px;
+            font-size: 16px;
             font-family: "Inter", sans-serif;
+            min-height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .message-input-container .input-actions button:hover {
@@ -387,19 +404,20 @@
         }
 
         .btn-send {
-            padding: 12px 28px !important;
+            padding: 8px 20px !important;
             background: #112A46 !important;
             color: #fff !important;
             font-weight: 700 !important;
-            font-size: 14px !important;
-            border-radius: 12px !important;
+            font-size: 13px !important;
+            border-radius: 10px !important;
             cursor: pointer !important;
+            min-height: 38px !important;
         }
 
         .btn-send:hover {
             background: #2E5A88 !important;
             transform: translateY(-2px) !important;
-            box-shadow: 0 4px 20px rgba(17, 42, 70, 0.2);
+            box-shadow: 0 4px 16px rgba(17, 42, 70, 0.2);
         }
 
         .empty-chat {
@@ -413,19 +431,19 @@
         }
 
         .empty-chat .icon {
-            font-size: 64px;
-            margin-bottom: 16px;
+            font-size: 48px;
+            margin-bottom: 12px;
         }
 
         .empty-chat h3 {
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 24px;
+            font-size: 20px;
             color: #112A46;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
 
         .empty-chat p {
-            font-size: 15px;
+            font-size: 14px;
             font-family: "Inter", sans-serif;
         }
 
@@ -455,12 +473,12 @@
         }
 
         .coins-popup-card {
-            max-width: 420px;
+            max-width: 400px;
             width: 100%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            border-radius: 24px;
-            padding: 40px 32px 32px;
+            border-radius: 20px;
+            padding: 32px 28px 28px;
             border: 1px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
             text-align: center;
@@ -468,33 +486,33 @@
         }
 
         .coins-popup-card .icon {
-            font-size: 56px;
+            font-size: 48px;
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .coins-popup-card .title {
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 26px;
+            font-size: 22px;
             font-weight: 700;
             color: #112A46;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .coins-popup-card .divider {
-            width: 40px;
+            width: 32px;
             height: 3px;
             background: linear-gradient(135deg, #112A46, #2E5A88);
-            margin: 8px auto 16px;
+            margin: 6px auto 12px;
             border-radius: 4px;
         }
 
         .coins-popup-card .message {
-            font-size: 15px;
+            font-size: 14px;
             color: rgba(17, 42, 70, 0.6);
             line-height: 1.6;
             font-family: "Inter", sans-serif;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .coins-popup-card .message .member-name {
@@ -504,17 +522,17 @@
 
         .btn-proceed {
             width: 100%;
-            padding: 14px;
+            padding: 12px;
             background: linear-gradient(135deg, #112A46, #2E5A88);
             color: #fff;
             border: none;
             border-radius: 12px;
             font-weight: 700;
-            font-size: 16px;
+            font-size: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: "Inter", sans-serif;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .btn-proceed:hover {
@@ -526,7 +544,7 @@
             background: none;
             border: none;
             color: rgba(17, 42, 70, 0.3);
-            font-size: 14px;
+            font-size: 13px;
             cursor: pointer;
             font-family: "Inter", sans-serif;
             font-weight: 500;
@@ -545,19 +563,19 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            padding: 14px 24px;
+            padding: 12px 20px;
             background: #112A46;
             color: #fff;
-            border-radius: 12px;
+            border-radius: 10px;
             font-family: "Inter", sans-serif;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             z-index: 999;
             transform: translateY(100px);
             opacity: 0;
             transition: all 0.4s ease;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            max-width: 400px;
+            max-width: 360px;
         }
 
         .toast.show {
@@ -576,89 +594,57 @@
         /* ============================================================ */
         @media (max-width: 768px) {
             .chat-wrapper {
-                padding: 72px 12px 12px;
-                height: 100vh;
+                padding: 68px 12px 10px;
             }
             .chat-header {
-                padding: 12px 16px;
-                flex-wrap: wrap;
+                padding: 8px 12px;
+                gap: 10px;
+                margin-bottom: 8px;
             }
             .chat-header__avatar {
-                width: 44px;
-                height: 44px;
-            }
-            .chat-header__info h2 {
-                font-size: 17px;
-            }
-            .chat-header__info .location {
-                font-size: 12px;
-            }
-            .chat-header__status {
-                font-size: 12px;
-            }
-            .messages-container {
-                padding: 12px 14px;
-            }
-            .message__bubble {
-                font-size: 14px;
-                padding: 10px 14px;
-                max-width: 85%;
-            }
-            .message-input-container {
-                padding: 10px 12px;
-                flex-wrap: wrap;
-                margin-bottom: 16px;
-            }
-            .message-input-container input {
-                font-size: 14px;
-                padding: 10px 14px;
-                min-width: 100px;
-            }
-            .btn-send {
-                padding: 10px 20px !important;
-                font-size: 13px !important;
-            }
-            .cb-shell-button {
-                padding: 6px 14px;
-                font-size: 12px;
-            }
-            .coins-popup-card {
-                padding: 32px 24px 28px;
-            }
-            .coins-popup-card .title {
-                font-size: 22px;
-            }
-            .toast {
-                bottom: 20px;
-                right: 20px;
-                left: 20px;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .chat-header {
-                gap: 10px;
+                width: 38px;
+                height: 38px;
             }
             .chat-header__info h2 {
                 font-size: 15px;
-                flex-wrap: wrap;
+            }
+            .chat-header__info .location {
+                font-size: 11px;
             }
             .chat-header__status {
                 font-size: 11px;
             }
+            .messages-container {
+                padding: 8px 12px;
+                max-height: calc(100vh - 280px);
+            }
             .message__bubble {
                 font-size: 13px;
                 padding: 8px 12px;
-                max-width: 90%;
+                max-width: 85%;
+            }
+            .message-input-container {
+                padding: 6px 10px;
+                gap: 6px;
             }
             .message-input-container input {
                 font-size: 13px;
-                padding: 8px 12px;
+                padding: 6px 10px;
+                min-height: 34px;
+            }
+            .btn-send {
+                padding: 6px 14px !important;
+                font-size: 12px !important;
+                min-height: 34px !important;
             }
             .message-input-container .input-actions button {
-                padding: 8px 10px;
-                font-size: 16px;
+                padding: 4px 8px;
+                font-size: 14px;
+                min-height: 34px;
+            }
+            .cb-shell-button {
+                padding: 4px 12px;
+                font-size: 12px;
             }
             .coins-popup-card {
                 padding: 28px 20px 24px;
@@ -666,11 +652,117 @@
             .coins-popup-card .title {
                 font-size: 20px;
             }
-            .coins-popup-card .message {
-                font-size: 14px;
+            .toast {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                text-align: center;
+            }
+            .chat-header__actions button {
+                padding: 4px 6px;
+                font-size: 12px;
+            }
+            .typing-indicator {
+                font-size: 12px;
+                padding: 2px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .chat-wrapper {
+                padding: 62px 8px 8px;
+            }
+            .chat-header {
+                padding: 6px 10px;
+                gap: 8px;
+            }
+            .chat-header__avatar {
+                width: 34px;
+                height: 34px;
+            }
+            .chat-header__info h2 {
+                font-size: 13px;
+            }
+            .chat-header__info .location {
+                font-size: 10px;
+            }
+            .chat-header__status {
+                font-size: 10px;
+            }
+            .messages-container {
+                padding: 6px 8px;
+                max-height: calc(100vh - 260px);
+            }
+            .message__bubble {
+                font-size: 12px;
+                padding: 6px 10px;
+                max-width: 90%;
+            }
+            .message {
+                margin-bottom: 6px;
+            }
+            .message__time {
+                font-size: 9px;
+            }
+            .message__sender {
+                font-size: 10px;
             }
             .message-input-container {
-                margin-bottom: 12px;
+                padding: 4px 8px;
+                gap: 4px;
+            }
+            .message-input-container input {
+                font-size: 12px;
+                padding: 4px 8px;
+                min-height: 30px;
+            }
+            .btn-send {
+                padding: 4px 12px !important;
+                font-size: 11px !important;
+                min-height: 30px !important;
+            }
+            .message-input-container .input-actions button {
+                padding: 4px 6px;
+                font-size: 12px;
+                min-height: 30px;
+            }
+            .cb-shell-button {
+                padding: 4px 10px;
+                font-size: 11px;
+            }
+            .cb-shell-header__inner {
+                height: 52px;
+                padding: 0 10px;
+            }
+            .coins-popup-card {
+                padding: 24px 16px 20px;
+            }
+            .coins-popup-card .title {
+                font-size: 18px;
+            }
+            .coins-popup-card .message {
+                font-size: 13px;
+            }
+            .btn-proceed {
+                padding: 10px;
+                font-size: 14px;
+            }
+            .typing-indicator {
+                font-size: 11px;
+                padding: 2px 8px;
+            }
+            .chat-header__actions button {
+                padding: 2px 6px;
+                font-size: 11px;
+            }
+            .empty-chat .icon {
+                font-size: 36px;
+            }
+            .empty-chat h3 {
+                font-size: 17px;
+            }
+            .empty-chat p {
+                font-size: 12px;
             }
         }
     </style>
@@ -678,13 +770,13 @@
 <body>
 
     <!-- ============================================================ -->
-    <!-- ✅ HEADER - NO "ClassyDate" WORD                             -->
+    <!-- HEADER                                                       -->
     <!-- ============================================================ -->
     <header class="cb-shell-header" role="banner">
         <div class="cb-shell-header__inner">
             <div class="cb-shell-actions">
-                <a href="members.html" class="cb-shell-button cb-shell-button--back">← Back to Members</a>
-                <a href="#" class="cb-shell-button cb-shell-button--profile">👤 My Profile</a>
+                <a href="members.html" class="cb-shell-button cb-shell-button--back">← Back</a>
+                <a href="profile.html" class="cb-shell-button cb-shell-button--profile">👤 Profile</a>
             </div>
         </div>
     </header>
@@ -723,7 +815,6 @@
             </span>
         </div>
 
-        <!-- ✅ INPUT - RAISED UP WITH MARGIN-BOTTOM -->
         <div class="message-input-container">
             <button onclick="showToast('📎 Attachments coming soon!', 'success')">📎</button>
             <input type="text" id="message-input" placeholder="Type a message...">
@@ -767,6 +858,7 @@
         const userId = urlParams.get('user');
         const userName = urlParams.get('name');
         const userLocation = urlParams.get('location') || 'USA';
+        const userOrigin = urlParams.get('origin') || 'Unknown';
 
         // If no user ID, go back to members
         if (!userId) {
@@ -780,6 +872,7 @@
             id: parseInt(userId) || 0,
             name: memberName,
             location: userLocation,
+            origin: userOrigin,
             photo: 'https://ui-avatars.com/api/?name=' + encodeURIComponent(memberName) + '&background=112A46&color=fff&size=200',
             verified: true,
             online: true
@@ -825,10 +918,8 @@
             // Update title
             document.title = `Chat with ${chatPartner.name} | ClassyDate`;
 
-            // ============================================================
             // ✅ PRE-WRITTEN MESSAGE WITH LOCATION
-            // ============================================================
-            const preWrittenMessage = `Hello, I'm ${chatPartner.name}. I'm from ${chatPartner.location}. Nice to meet you.`;
+            const preWrittenMessage = `Nice to meet you! I'm from ${chatPartner.location} and originally from ${chatPartner.origin}.`;
 
             const now = new Date();
             messages.push({
@@ -860,6 +951,7 @@
 
             console.log('💬 Chat page ready with:', chatPartner.name);
             console.log('📍 Location:', chatPartner.location);
+            console.log('🌍 Origin:', chatPartner.origin);
         }
 
         // ============================================================
@@ -934,12 +1026,12 @@
                 }));
             }
 
-            localStorage.setItem('redirect_after_subscribe', `chat.html?user=${chatPartner.id}&name=${encodeURIComponent(chatPartner.name)}&location=${encodeURIComponent(chatPartner.location)}`);
+            localStorage.setItem('redirect_after_subscribe', `chat.html?user=${chatPartner.id}&name=${encodeURIComponent(chatPartner.name)}&location=${encodeURIComponent(chatPartner.location)}&origin=${encodeURIComponent(chatPartner.origin)}`);
 
             closeCoinsPopup();
 
             setTimeout(() => {
-                window.location.href = 'suscribe.html';
+                window.location.href = 'subscribe.html';
             }, 300);
         }
 
@@ -988,10 +1080,10 @@
         initChat();
 
         console.log('💬 ClassyDate Chat Page - FINAL VERSION!');
-        console.log('✅ Input raised up from bottom');
-        console.log('✅ No "ClassyDate" in top bar');
-        console.log('✅ Location shows actual location');
-        console.log('✅ Pre-written message uses location');
+        console.log('✅ Compact height - no scrolling needed');
+        console.log('✅ Input box always visible');
+        console.log('✅ Location and Origin in pre-written message');
+        console.log('✅ Back button works');
     </script>
 
 </body>
