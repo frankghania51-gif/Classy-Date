@@ -224,7 +224,7 @@
         }
 
         /* ============================================================ */
-        /* MEMBER CARD - NO BORDER RADIUS                             */
+        /* MEMBER CARD - CLICKABLE                                     */
         /* ============================================================ */
         .member-card {
             background: rgba(255, 255, 255, 0.25);
@@ -1531,11 +1531,31 @@
                 startCarousel(member.id);
             });
 
+            // ✅ ADD CLICK EVENT TO CARDS - opens profile modal
             document.querySelectorAll('.member-card').forEach(card => {
+                // Remove any existing click listeners to avoid duplicates
+                card.removeEventListener('click', handleCardClick);
+                card.addEventListener('click', handleCardClick);
+                
+                // Setup long press
                 setupLongPress(card);
             });
 
             updatePagination(members.length);
+        }
+
+        // ✅ NEW: Handle card click to open profile modal
+        function handleCardClick(e) {
+            // Don't open if clicking on buttons (they have their own handlers)
+            if (e.target.closest('.btn-view') || e.target.closest('.btn-message') || e.target.closest('.carousel-btn')) {
+                return;
+            }
+            
+            const card = e.currentTarget;
+            const id = card.dataset.id;
+            if (id) {
+                window.openProfileModal(id);
+            }
         }
 
         // ============================================================
@@ -1682,9 +1702,11 @@ https://classydate.com/profile/${member.id}
         }
 
         // ============================================================
-        // PROFILE MODAL - FULL DETAILS
+        // ✅ PROFILE MODAL - FULL DETAILS (FIXED)
         // ============================================================
         window.openProfileModal = function(id) {
+            console.log('🔍 Opening profile for:', id);
+            
             const member = allMembers.find(m => m.id === id);
             if (!member) {
                 showToast('❌ Member not found', 'error');
@@ -1909,16 +1931,12 @@ https://classydate.com/profile/${member.id}
         // ============================================================
         loadMembers();
 
-        console.log('💎 ClassyDate Members Page - FINAL COMPLETE!');
-        console.log('✅ Cards touch left and right edges (NO gaps)');
-        console.log('✅ No dot indicators on cards');
-        console.log('✅ Cards are shorter (max-height: 200px)');
-        console.log('✅ View Profile opens full details popup');
-        console.log('✅ Only admin-created members (verified=true)');
-        console.log('✅ Random online status');
-        console.log('✅ Instagram verified badge');
-        console.log('✅ Long press to share via WhatsApp');
-        console.log('✅ Each card slides independently');
+        console.log('💎 ClassyDate Members Page - FULLY WORKING!');
+        console.log('✅ Tap anywhere on card opens profile popup');
+        console.log('✅ View Profile button opens popup');
+        console.log('✅ Cards touch left and right edges');
+        console.log('✅ No dot indicators');
+        console.log('✅ Cards are shorter');
     </script>
 
 </body>
