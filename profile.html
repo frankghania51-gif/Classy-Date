@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
     <title>Profile | ClassyDate</title>
-    <meta name="description" content="View member profile.">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,7 +42,7 @@
             backdrop-filter: blur(16px);
             border-bottom: 1px solid rgba(17, 42, 70, 0.08);
             padding: 0 16px;
-            height: 64px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -51,7 +50,7 @@
 
         .profile-header .brand {
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
             color: #112A46;
         }
@@ -63,14 +62,14 @@
         }
 
         .profile-header .back-btn {
-            padding: 6px 16px;
+            padding: 6px 14px;
             border-radius: 50px;
             background: rgba(17, 42, 70, 0.08);
             color: #112A46;
             border: none;
             cursor: pointer;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             font-family: "Inter", sans-serif;
             transition: all 0.3s ease;
         }
@@ -84,7 +83,7 @@
         /* ============================================================ */
         .profile-wrapper {
             flex: 1;
-            padding: 76px 0 0;
+            padding: 72px 0 0;
             max-width: 100%;
             margin: 0;
             width: 100%;
@@ -106,24 +105,23 @@
         /* ============================================================ */
         .profile-top {
             text-align: center;
-            padding: 24px 20px 18px;
-            position: relative;
+            padding: 20px 16px 14px;
         }
 
         .profile-avatar {
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #FFFFFF;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
-            margin: 0 auto 14px;
+            border: 3px solid #FFFFFF;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin: 0 auto 12px;
             display: block;
         }
 
         .profile-name {
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 28px;
+            font-size: 22px;
             font-weight: 700;
             color: #112A46;
         }
@@ -135,50 +133,48 @@
             background: #1DA1F2;
             color: #fff;
             border-radius: 50%;
-            width: 22px;
-            height: 22px;
-            font-size: 12px;
+            width: 18px;
+            height: 18px;
+            font-size: 10px;
             font-weight: 700;
             border: 2px solid #fff;
             box-shadow: 0 2px 8px rgba(29, 161, 242, 0.4);
-            margin-left: 6px;
+            margin-left: 4px;
         }
 
         .profile-location {
-            font-size: 16px;
-            color: rgba(17, 42, 70, 0.5);
-            margin-top: 4px;
-            font-family: "Inter", sans-serif;
-        }
-
-        .profile-origin {
-            font-size: 16px;
+            font-size: 14px;
             color: rgba(17, 42, 70, 0.5);
             margin-top: 2px;
             font-family: "Inter", sans-serif;
         }
 
-        /* ✅ Status - Shows Online/Offline */
+        .profile-origin {
+            font-size: 14px;
+            color: rgba(17, 42, 70, 0.5);
+            margin-top: 1px;
+            font-family: "Inter", sans-serif;
+        }
+
         .profile-status-row {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 16px;
-            margin-top: 10px;
+            margin-top: 8px;
         }
 
         .profile-status {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 15px;
+            gap: 6px;
+            font-size: 13px;
             font-weight: 600;
             font-family: "Inter", sans-serif;
         }
 
         .profile-status .dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             display: inline-block;
         }
@@ -209,23 +205,23 @@
         /* DETAILS SECTION                                             */
         /* ============================================================ */
         .profile-details {
-            padding: 0 20px;
+            padding: 0 16px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 14px;
+            gap: 10px;
+            margin-bottom: 12px;
         }
 
         .detail-box {
             background: rgba(255, 255, 255, 0.3);
-            border-radius: 12px;
-            padding: 12px 14px;
+            border-radius: 10px;
+            padding: 10px 12px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             text-align: center;
         }
 
         .detail-box .label {
-            font-size: 11px;
+            font-size: 10px;
             color: rgba(17, 42, 70, 0.4);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -234,10 +230,10 @@
         }
 
         .detail-box .value {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 700;
             color: #112A46;
-            margin-top: 3px;
+            margin-top: 2px;
             font-family: "Inter", sans-serif;
         }
 
@@ -245,19 +241,19 @@
         /* ABOUT ME                                                    */
         /* ============================================================ */
         .profile-about {
-            padding: 0 20px;
-            margin-bottom: 14px;
+            padding: 0 16px;
+            margin-bottom: 12px;
         }
 
         .profile-about .about-box {
             background: rgba(255, 255, 255, 0.3);
-            border-radius: 12px;
-            padding: 14px 16px;
+            border-radius: 10px;
+            padding: 12px 14px;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .profile-about .about-box .about-label {
-            font-size: 11px;
+            font-size: 10px;
             color: rgba(17, 42, 70, 0.4);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -268,9 +264,9 @@
         }
 
         .profile-about .about-box .about-text {
-            font-size: 16px;
+            font-size: 14px;
             color: rgba(17, 42, 70, 0.7);
-            line-height: 1.6;
+            line-height: 1.5;
             font-family: "Inter", sans-serif;
         }
 
@@ -278,19 +274,19 @@
         /* LOOKING FOR                                                 */
         /* ============================================================ */
         .profile-looking {
-            padding: 0 20px;
-            margin-bottom: 14px;
+            padding: 0 16px;
+            margin-bottom: 12px;
         }
 
         .profile-looking .looking-box {
             background: rgba(255, 255, 255, 0.3);
-            border-radius: 12px;
-            padding: 14px 16px;
+            border-radius: 10px;
+            padding: 12px 14px;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .profile-looking .looking-box .looking-label {
-            font-size: 11px;
+            font-size: 10px;
             color: rgba(17, 42, 70, 0.4);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -301,9 +297,9 @@
         }
 
         .profile-looking .looking-box .looking-text {
-            font-size: 16px;
+            font-size: 14px;
             color: rgba(17, 42, 70, 0.7);
-            line-height: 1.6;
+            line-height: 1.5;
             font-family: "Inter", sans-serif;
         }
 
@@ -311,19 +307,19 @@
         /* INTERESTS                                                   */
         /* ============================================================ */
         .profile-interests {
-            padding: 0 20px;
-            margin-bottom: 18px;
+            padding: 0 16px;
+            margin-bottom: 16px;
         }
 
         .profile-interests .interests-box {
             background: rgba(255, 255, 255, 0.3);
-            border-radius: 12px;
-            padding: 14px 16px;
+            border-radius: 10px;
+            padding: 12px 14px;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .profile-interests .interests-box .interests-label {
-            font-size: 11px;
+            font-size: 10px;
             color: rgba(17, 42, 70, 0.4);
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -335,10 +331,10 @@
 
         .profile-interests .tag {
             display: inline-block;
-            padding: 4px 14px;
+            padding: 3px 12px;
             background: rgba(17, 42, 70, 0.06);
             border-radius: 50px;
-            font-size: 13px;
+            font-size: 12px;
             color: #112A46;
             font-family: "Inter", sans-serif;
             font-weight: 500;
@@ -346,10 +342,10 @@
         }
 
         /* ============================================================ */
-        /* PHOTOS CAROUSEL - IMAGES NOT CUT                           */
+        /* PHOTOS CAROUSEL                                             */
         /* ============================================================ */
         .profile-photos {
-            padding: 0 0 18px;
+            padding: 0 0 16px;
             margin: 0;
             width: 100%;
         }
@@ -360,7 +356,7 @@
             width: 100%;
             background: rgba(0, 0, 0, 0.05);
             aspect-ratio: 16/10;
-            max-height: 350px;
+            max-height: 300px;
         }
 
         .profile-photos .photos-slides {
@@ -382,7 +378,6 @@
             justify-content: center;
         }
 
-        /* ✅ FIX: Images NOT cut - use contain to show full image */
         .profile-photos .photo-slide img {
             width: 100%;
             height: 100%;
@@ -399,9 +394,9 @@
             color: #fff;
             border: none;
             border-radius: 50%;
-            width: 34px;
-            height: 34px;
-            font-size: 18px;
+            width: 30px;
+            height: 30px;
+            font-size: 16px;
             cursor: pointer;
             z-index: 5;
             display: flex;
@@ -414,25 +409,25 @@
             background: rgba(17, 42, 70, 0.7);
         }
 
-        .photo-nav-btn.prev { left: 10px; }
-        .photo-nav-btn.next { right: 10px; }
+        .photo-nav-btn.prev { left: 8px; }
+        .photo-nav-btn.next { right: 8px; }
 
         /* ============================================================ */
         /* ACTION BUTTONS                                              */
         /* ============================================================ */
         .profile-actions {
-            padding: 0 20px 24px;
+            padding: 0 16px 20px;
             display: flex;
-            gap: 12px;
+            gap: 10px;
         }
 
         .profile-actions button {
             flex: 1;
-            padding: 14px;
+            padding: 12px;
             border: none;
-            border-radius: 12px;
+            border-radius: 10px;
             font-weight: 700;
-            font-size: 16px;
+            font-size: 14px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: "Inter", sans-serif;
@@ -467,19 +462,19 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            padding: 14px 24px;
+            padding: 12px 20px;
             background: #112A46;
             color: #fff;
-            border-radius: 12px;
+            border-radius: 10px;
             font-family: "Inter", sans-serif;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             z-index: 999;
             transform: translateY(100px);
             opacity: 0;
             transition: all 0.4s ease;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            max-width: 400px;
+            max-width: 360px;
         }
 
         .toast.show {
@@ -494,108 +489,11 @@
         }
 
         /* ============================================================ */
-        /* RESPONSIVE - PHONE PERFECT                                 */
+        /* RESPONSIVE                                                   */
         /* ============================================================ */
         @media (max-width: 768px) {
             .profile-wrapper {
-                padding: 72px 0 0;
-            }
-
-            .profile-top {
-                padding: 20px 16px 16px;
-            }
-
-            .profile-avatar {
-                width: 100px;
-                height: 100px;
-            }
-
-            .profile-name {
-                font-size: 24px;
-            }
-
-            .profile-location,
-            .profile-origin {
-                font-size: 15px;
-            }
-
-            .profile-status {
-                font-size: 14px;
-            }
-
-            .profile-status .dot {
-                width: 11px;
-                height: 11px;
-            }
-
-            .profile-details {
-                padding: 0 16px;
-                gap: 10px;
-            }
-
-            .detail-box .value {
-                font-size: 15px;
-            }
-
-            .profile-about,
-            .profile-looking {
-                padding: 0 16px;
-                margin-bottom: 12px;
-            }
-
-            .profile-about .about-box .about-text,
-            .profile-looking .looking-box .looking-text {
-                font-size: 15px;
-            }
-
-            .profile-interests {
-                padding: 0 16px;
-                margin-bottom: 16px;
-            }
-
-            .profile-interests .tag {
-                font-size: 12px;
-            }
-
-            .profile-photos .photos-wrapper {
-                aspect-ratio: 16/10;
-                max-height: 300px;
-            }
-
-            .profile-actions {
-                padding: 0 16px 20px;
-                gap: 10px;
-            }
-
-            .profile-actions button {
-                font-size: 15px;
-                padding: 12px;
-            }
-
-            .photo-nav-btn {
-                width: 30px;
-                height: 30px;
-                font-size: 16px;
-            }
-
-            .profile-header {
-                height: 60px;
-                padding: 0 14px;
-            }
-
-            .profile-header .brand {
-                font-size: 20px;
-            }
-
-            .profile-header .back-btn {
-                font-size: 13px;
-                padding: 5px 14px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .profile-wrapper {
-                padding: 66px 0 0;
+                padding: 68px 0 0;
             }
 
             .profile-top {
@@ -605,7 +503,6 @@
             .profile-avatar {
                 width: 85px;
                 height: 85px;
-                border-width: 3px;
             }
 
             .profile-name {
@@ -618,12 +515,7 @@
             }
 
             .profile-status {
-                font-size: 13px;
-            }
-
-            .profile-status .dot {
-                width: 10px;
-                height: 10px;
+                font-size: 12px;
             }
 
             .profile-details {
@@ -632,11 +524,11 @@
             }
 
             .detail-box {
-                padding: 10px 12px;
+                padding: 8px 10px;
             }
 
             .detail-box .value {
-                font-size: 14px;
+                font-size: 13px;
             }
 
             .profile-about,
@@ -650,14 +542,9 @@
                 padding: 10px 12px;
             }
 
-            .profile-about .about-box .about-label,
-            .profile-looking .looking-box .looking-label {
-                font-size: 10px;
-            }
-
             .profile-about .about-box .about-text,
             .profile-looking .looking-box .looking-text {
-                font-size: 14px;
+                font-size: 13px;
             }
 
             .profile-interests {
@@ -669,18 +556,13 @@
                 padding: 10px 12px;
             }
 
-            .profile-interests .interests-label {
-                font-size: 10px;
-            }
-
             .profile-interests .tag {
                 font-size: 11px;
-                padding: 3px 10px;
             }
 
             .profile-photos .photos-wrapper {
                 aspect-ratio: 16/10;
-                max-height: 240px;
+                max-height: 260px;
             }
 
             .profile-actions {
@@ -691,7 +573,6 @@
             .profile-actions button {
                 font-size: 13px;
                 padding: 10px;
-                border-radius: 10px;
             }
 
             .photo-nav-btn {
@@ -701,17 +582,144 @@
             }
 
             .profile-header {
-                height: 54px;
-                padding: 0 12px;
+                height: 56px;
+                padding: 0 14px;
             }
 
             .profile-header .brand {
-                font-size: 17px;
+                font-size: 18px;
             }
 
             .profile-header .back-btn {
                 font-size: 12px;
-                padding: 4px 12px;
+                padding: 5px 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-wrapper {
+                padding: 62px 0 0;
+            }
+
+            .profile-top {
+                padding: 14px 12px 10px;
+            }
+
+            .profile-avatar {
+                width: 75px;
+                height: 75px;
+                border-width: 2px;
+            }
+
+            .profile-name {
+                font-size: 18px;
+            }
+
+            .profile-location,
+            .profile-origin {
+                font-size: 12px;
+            }
+
+            .profile-status {
+                font-size: 12px;
+            }
+
+            .profile-status .dot {
+                width: 8px;
+                height: 8px;
+            }
+
+            .profile-details {
+                padding: 0 12px;
+                gap: 6px;
+            }
+
+            .detail-box {
+                padding: 6px 8px;
+                border-radius: 8px;
+            }
+
+            .detail-box .label {
+                font-size: 9px;
+            }
+
+            .detail-box .value {
+                font-size: 12px;
+            }
+
+            .profile-about,
+            .profile-looking {
+                padding: 0 12px;
+                margin-bottom: 8px;
+            }
+
+            .profile-about .about-box,
+            .profile-looking .looking-box {
+                padding: 8px 10px;
+            }
+
+            .profile-about .about-box .about-label,
+            .profile-looking .looking-box .looking-label {
+                font-size: 9px;
+            }
+
+            .profile-about .about-box .about-text,
+            .profile-looking .looking-box .looking-text {
+                font-size: 12px;
+            }
+
+            .profile-interests {
+                padding: 0 12px;
+                margin-bottom: 12px;
+            }
+
+            .profile-interests .interests-box {
+                padding: 8px 10px;
+            }
+
+            .profile-interests .interests-label {
+                font-size: 9px;
+            }
+
+            .profile-interests .tag {
+                font-size: 10px;
+                padding: 2px 10px;
+            }
+
+            .profile-photos .photos-wrapper {
+                aspect-ratio: 16/10;
+                max-height: 200px;
+            }
+
+            .profile-actions {
+                padding: 0 12px 14px;
+                gap: 6px;
+            }
+
+            .profile-actions button {
+                font-size: 12px;
+                padding: 8px;
+                border-radius: 8px;
+            }
+
+            .photo-nav-btn {
+                width: 24px;
+                height: 24px;
+                font-size: 12px;
+            }
+
+            .profile-header {
+                height: 50px;
+                padding: 0 10px;
+            }
+
+            .profile-header .brand {
+                font-size: 16px;
+            }
+
+            .profile-header .back-btn {
+                font-size: 11px;
+                padding: 4px 10px;
             }
 
             .toast {
@@ -720,8 +728,8 @@
                 left: 16px;
                 text-align: center;
                 max-width: 100%;
-                font-size: 13px;
-                padding: 12px 16px;
+                font-size: 12px;
+                padding: 10px 16px;
             }
         }
     </style>
@@ -743,9 +751,7 @@
     <main class="profile-wrapper">
         <div class="profile-card">
 
-            <!-- ============================================================ -->
-            <!-- TOP SECTION - AVATAR + INFO                                 -->
-            <!-- ============================================================ -->
+            <!-- TOP SECTION - AVATAR + INFO -->
             <div class="profile-top">
                 <img class="profile-avatar" id="profile-avatar" src="" alt="Profile">
                 <h1 class="profile-name" id="profile-name">
@@ -755,7 +761,6 @@
                 <div class="profile-location" id="profile-location">📍 Loading...</div>
                 <div class="profile-origin" id="profile-origin">🌍 Origin: Loading...</div>
 
-                <!-- ✅ Online/Offline status -->
                 <div class="profile-status-row">
                     <span class="profile-status">
                         <span class="dot online" id="status-dot"></span>
@@ -764,9 +769,7 @@
                 </div>
             </div>
 
-            <!-- ============================================================ -->
-            /* DETAILS SECTION                                             */
-            <!-- ============================================================ -->
+            <!-- DETAILS -->
             <div class="profile-details">
                 <div class="detail-box">
                     <div class="label">Age</div>
@@ -778,9 +781,7 @@
                 </div>
             </div>
 
-            <!-- ============================================================ -->
-            /* ABOUT ME                                                    */
-            <!-- ============================================================ -->
+            <!-- ABOUT ME -->
             <div class="profile-about">
                 <div class="about-box">
                     <span class="about-label">📝 About Me</span>
@@ -788,9 +789,7 @@
                 </div>
             </div>
 
-            <!-- ============================================================ -->
-            /* LOOKING FOR                                                 */
-            <!-- ============================================================ -->
+            <!-- LOOKING FOR -->
             <div class="profile-looking">
                 <div class="looking-box">
                     <span class="looking-label">🔍 Looking For</span>
@@ -798,21 +797,17 @@
                 </div>
             </div>
 
-            <!-- ============================================================ -->
-            /* INTERESTS                                                   */
-            <!-- ============================================================ -->
+            <!-- INTERESTS -->
             <div class="profile-interests">
                 <div class="interests-box">
                     <span class="interests-label">🏷️ Interests</span>
                     <div id="profile-interests">
-                        <span style="color:rgba(17,42,70,0.3);font-size:14px;">No interests listed</span>
+                        <span style="color:rgba(17,42,70,0.3);font-size:13px;">No interests listed</span>
                     </div>
                 </div>
             </div>
 
-            <!-- ============================================================ -->
-            /* PHOTOS CAROUSEL - IMAGES NOT CUT                           */
-            <!-- ============================================================ -->
+            <!-- PHOTOS CAROUSEL -->
             <div class="profile-photos">
                 <div class="photos-wrapper" id="photos-wrapper">
                     <div class="photos-slides" id="photos-slides"></div>
@@ -821,9 +816,7 @@
                 </div>
             </div>
 
-            <!-- ============================================================ -->
-            /* ACTION BUTTONS                                              */
-            <!-- ============================================================ -->
+            <!-- ACTIONS -->
             <div class="profile-actions">
                 <button class="btn-message-profile" id="message-btn" onclick="sendMessage()">💬 Send Message</button>
                 <button class="btn-share" onclick="shareProfile()">↗ Share</button>
@@ -862,17 +855,11 @@
         let profilePhotos = [];
         let currentPhotoIndex = 0;
 
-        // ============================================================
-        // GET MEMBER ID FROM URL
-        // ============================================================
         function getMemberIdFromURL() {
             const params = new URLSearchParams(window.location.search);
             return params.get('id');
         }
 
-        // ============================================================
-        // GET PHOTO URL
-        // ============================================================
         function getPhotoUrl(fileId) {
             if (!fileId) return null;
             try {
@@ -884,9 +871,6 @@
             }
         }
 
-        // ============================================================
-        // LOAD MEMBER PROFILE
-        // ============================================================
         async function loadProfile() {
             const memberId = getMemberIdFromURL();
             if (!memberId) {
@@ -924,13 +908,9 @@
             }
         }
 
-        // ============================================================
-        // RENDER PROFILE
-        // ============================================================
         function renderProfile(member) {
             const memberName = member.name || 'User';
 
-            // Avatar (first photo or avatar)
             let photos = [];
             if (member.photo_file_ids && member.photo_file_ids.length > 0) {
                 photos = member.photo_file_ids
@@ -946,18 +926,15 @@
                 this.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(memberName)}&background=112A46&color=fff&size=200`;
             };
 
-            // Name with verified badge
             let nameHTML = memberName;
             if (member.verified) {
                 nameHTML += ' <span class="verified-badge">✓</span>';
             }
             document.getElementById('profile-name').innerHTML = nameHTML;
 
-            // Location & Origin
             document.getElementById('profile-location').textContent = `📍 ${member.location || 'Location Unknown'}`;
             document.getElementById('profile-origin').textContent = `🌍 Origin: ${member.origin || 'Not specified'}`;
 
-            // ✅ Status - Shows Online/Offline
             const statusDot = document.getElementById('status-dot');
             const statusText = document.getElementById('status-text');
             if (member.online) {
@@ -970,45 +947,34 @@
                 statusText.style.color = 'rgba(17,42,70,0.3)';
             }
 
-            // Age & Gender
             document.getElementById('profile-age').textContent = member.age || '—';
             document.getElementById('profile-gender').textContent = member.gender || '—';
-
-            // About Me (was Bio)
             document.getElementById('profile-bio').textContent = member.about_me || member.bio || 'No bio available.';
-
-            // Looking For
             document.getElementById('profile-looking').textContent = member.looking_for || 'Not specified';
 
-            // Interests
             const interestsContainer = document.getElementById('profile-interests');
             if (member.interests && member.interests.length > 0) {
                 interestsContainer.innerHTML = member.interests.map(i => `<span class="tag">#${i}</span>`).join('');
             } else {
-                interestsContainer.innerHTML = '<span style="color:rgba(17,42,70,0.3);font-size:14px;">No interests listed</span>';
+                interestsContainer.innerHTML = '<span style="color:rgba(17,42,70,0.3);font-size:13px;">No interests listed</span>';
             }
 
-            // Photos Carousel
             profilePhotos = photos.length > 0 ? photos : [
                 `https://ui-avatars.com/api/?name=${encodeURIComponent(memberName)}&background=112A46&color=fff&size=400`
             ];
             renderPhotos();
 
-            // Message button
             document.getElementById('message-btn').onclick = function() {
                 sendMessage(member);
             };
         }
 
-        // ============================================================
-        // RENDER PHOTOS CAROUSEL - IMAGES NOT CUT
-        // ============================================================
         function renderPhotos() {
             const slidesContainer = document.getElementById('photos-slides');
             
             if (profilePhotos.length === 0) {
                 slidesContainer.innerHTML = `
-                    <div class="photo-slide" style="display:flex;align-items:center;justify-content:center;background:#d0d5da;color:rgba(17,42,70,0.3);font-family:'Inter',sans-serif;font-size:16px;">
+                    <div class="photo-slide" style="display:flex;align-items:center;justify-content:center;background:#d0d5da;color:rgba(17,42,70,0.3);font-family:'Inter',sans-serif;font-size:14px;">
                         No photos available
                     </div>
                 `;
@@ -1024,7 +990,6 @@
             currentPhotoIndex = 0;
             slidesContainer.style.transform = 'translateX(0%)';
 
-            // Show/hide navigation buttons
             const prevBtn = document.querySelector('.photo-nav-btn.prev');
             const nextBtn = document.querySelector('.photo-nav-btn.next');
             if (profilePhotos.length <= 1) {
@@ -1036,9 +1001,6 @@
             }
         }
 
-        // ============================================================
-        // CHANGE PHOTO
-        // ============================================================
         window.changeProfilePhoto = function(direction) {
             const slides = document.getElementById('photos-slides');
             if (!slides) return;
@@ -1054,9 +1016,6 @@
             currentPhotoIndex = newIndex;
         }
 
-        // ============================================================
-        // SEND MESSAGE
-        // ============================================================
         window.sendMessage = function(member) {
             const targetMember = member || memberData;
             if (!targetMember) {
@@ -1077,9 +1036,6 @@
             window.location.href = `chat.html?user=${targetMember.id}&name=${encodeURIComponent(targetMember.name)}&location=${encodeURIComponent(targetMember.location || '')}&origin=${encodeURIComponent(targetMember.origin || '')}`;
         }
 
-        // ============================================================
-        // SHARE PROFILE
-        // ============================================================
         window.shareProfile = function() {
             if (!memberData) return;
 
@@ -1107,16 +1063,10 @@ ${window.location.href}
             showToast('📤 Opening WhatsApp...', 'success');
         }
 
-        // ============================================================
-        // GO BACK
-        // ============================================================
         window.goBack = function() {
             window.location.href = 'members.html';
         }
 
-        // ============================================================
-        // TOAST
-        // ============================================================
         let toastTimeout;
 
         function showToast(message, type = 'success') {
@@ -1130,9 +1080,6 @@ ${window.location.href}
             }, 3000);
         }
 
-        // ============================================================
-        // TOUCH SWIPE SUPPORT FOR PHOTOS
-        // ============================================================
         let touchStartX = 0;
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -1158,16 +1105,14 @@ ${window.location.href}
             }
         });
 
-        // ============================================================
-        // INIT
-        // ============================================================
         loadProfile();
 
-        console.log('💎 Profile View Page - FIXED!');
-        console.log('✅ Images NOT cut - object-fit: contain');
-        console.log('✅ Fonts increased');
+        console.log('💎 Profile View Page - CLEAN & COMPRESSED!');
+        console.log('✅ Consistent font sizes');
+        console.log('✅ No oversized fonts');
+        console.log('✅ Clean layout');
+        console.log('✅ Images NOT cut');
         console.log('✅ Online/Offline dot restored');
-        console.log('✅ Perfect on phone');
     </script>
 
 </body>
