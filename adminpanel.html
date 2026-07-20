@@ -66,39 +66,92 @@
             color: #2E5A88;
         }
 
-        .cb-shell-actions {
+        /* ============================================================ */
+        /* ✅ 3-LINE HAMBURGER MENU - ADMIN                            */
+        /* ============================================================ */
+        .menu-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px 12px;
+            font-size: 28px;
+            color: #112A46;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .menu-btn:hover {
+            background: rgba(17, 42, 70, 0.08);
+        }
+
+        .menu-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 50px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            min-width: 200px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            z-index: 200;
+        }
+
+        .menu-dropdown.show {
+            display: block;
+            animation: slideDown 0.2s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .menu-dropdown a {
             display: flex;
             align-items: center;
-            gap: 12px;
-        }
-
-        .cb-shell-button {
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 13px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            font-family: "Inter", sans-serif;
-        }
-
-        .cb-shell-button--secondary {
-            background: rgba(17, 42, 70, 0.1);
+            gap: 10px;
+            padding: 12px 20px;
             color: #112A46;
-            border: 1px solid rgba(17, 42, 70, 0.12);
-        }
-        .cb-shell-button--secondary:hover {
-            background: rgba(17, 42, 70, 0.18);
+            font-size: 14px;
+            font-weight: 500;
+            font-family: "Inter", sans-serif;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(17, 42, 70, 0.04);
         }
 
-        .cb-shell-button--primary {
-            background: #112A46;
-            color: #fff;
+        .menu-dropdown a:last-child {
+            border-bottom: none;
         }
-        .cb-shell-button--primary:hover {
-            background: #2E5A88;
-            transform: translateY(-2px);
+
+        .menu-dropdown a:hover {
+            background: rgba(17, 42, 70, 0.06);
+        }
+
+        .menu-dropdown .menu-divider {
+            height: 1px;
+            background: rgba(17, 42, 70, 0.06);
+            margin: 4px 0;
+        }
+
+        .menu-dropdown .logout-btn {
+            color: #dc3545;
+            font-weight: 600;
+        }
+
+        .menu-dropdown .logout-btn:hover {
+            background: rgba(220, 53, 69, 0.06);
+        }
+
+        .menu-dropdown .menu-icon {
+            font-size: 18px;
         }
 
         .admin-badge-nav {
@@ -786,11 +839,6 @@
                 font-size: 18px;
             }
 
-            .cb-shell-button {
-                padding: 4px 12px;
-                font-size: 11px;
-            }
-
             .admin-wrapper {
                 padding: 76px 12px 40px;
             }
@@ -915,6 +963,11 @@
                 left: 20px;
                 text-align: center;
             }
+
+            .menu-dropdown {
+                min-width: 180px;
+                right: -8px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -966,6 +1019,16 @@
                 width: 50px;
                 height: 50px;
             }
+
+            .menu-btn {
+                font-size: 24px;
+                padding: 4px 8px;
+            }
+
+            .menu-dropdown {
+                min-width: 160px;
+                right: -8px;
+            }
         }
 
         @keyframes spin {
@@ -978,7 +1041,7 @@
 <body>
 
     <!-- ============================================================ -->
-    <!-- HEADER                                                       -->
+    <!-- HEADER - WITH 3-LINE MENU                                    -->
     <!-- ============================================================ -->
     <header class="cb-shell-header" role="banner">
         <div class="cb-shell-header__inner">
@@ -987,8 +1050,25 @@
             </a>
             <div class="cb-shell-actions">
                 <span class="admin-badge-nav">🔑 Admin</span>
-                <a href="members.html" class="cb-shell-button cb-shell-button--secondary">Members</a>
-                <a href="#" class="cb-shell-button cb-shell-button--primary" onclick="logoutAdmin()">Log out</a>
+                <!-- ✅ 3-Line Hamburger Menu -->
+                <div class="menu-container">
+                    <button class="menu-btn" id="menuBtn" onclick="toggleMenu()">☰</button>
+                    <div class="menu-dropdown" id="menuDropdown">
+                        <a href="#" onclick="openAddModal(); closeMenu();">
+                            <span class="menu-icon">➕</span> Add New Member
+                        </a>
+                        <a href="#" onclick="showTab('members'); closeMenu();" id="tab-members-link">
+                            <span class="menu-icon">👥</span> Total Members
+                        </a>
+                        <a href="#" onclick="showTab('users'); closeMenu();" id="tab-users-link">
+                            <span class="menu-icon">👤</span> Users
+                        </a>
+                        <div class="menu-divider"></div>
+                        <a href="#" onclick="logoutAdmin(); closeMenu();" class="logout-btn">
+                            <span class="menu-icon">🚪</span> Log Out
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -999,10 +1079,10 @@
     <main class="admin-wrapper" id="admin-wrapper">
         <div class="admin-header">
             <div>
-                <h1>Admin Panel</h1>
-                <span class="badge-admin">🔒 Secure Admin Access</span>
+                <h1 id="page-title">Admin Panel</h1>
+                <span class="badge-admin" id="page-badge">🔒 Secure Admin Access</span>
             </div>
-            <button class="btn-add" onclick="openAddModal()">➕ Add New Member</button>
+            <button class="btn-add" id="add-member-btn" onclick="openAddModal()">➕ Add New Member</button>
         </div>
 
         <!-- STATS -->
@@ -1030,12 +1110,12 @@
         </div>
 
         <!-- SEARCH -->
-        <div class="admin-toolbar">
+        <div class="admin-toolbar" id="admin-toolbar">
             <input type="text" id="search-input" placeholder="🔍 Search members..." oninput="filterMembers()">
         </div>
 
         <!-- MEMBERS TABLE -->
-        <div class="admin-table-wrapper">
+        <div class="admin-table-wrapper" id="table-wrapper">
             <table class="admin-table">
                 <thead>
                     <tr>
@@ -1057,6 +1137,33 @@
                 </tbody>
             </table>
             <div class="admin-pagination" id="admin-pagination"></div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- ✅ USERS TABLE (Hidden by default)                          -->
+        <!-- ============================================================ -->
+        <div class="admin-table-wrapper" id="users-table-wrapper" style="display:none;">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Gender</th>
+                        <th>Location</th>
+                        <th>Origin</th>
+                        <th>Joined</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="users-table-body">
+                    <tr>
+                        <td colspan="6" style="text-align:center;padding:40px;color:rgba(17,42,70,0.3);">
+                            <span style="display:inline-block;width:24px;height:24px;border:3px solid rgba(17,42,70,0.1);border-top-color:#112A46;border-radius:50%;animation:spin 0.8s linear infinite;"></span>
+                            <br><br>Loading users...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="admin-pagination" id="users-pagination"></div>
         </div>
     </main>
 
@@ -1188,16 +1295,24 @@
         console.log('🔗 Supabase connected!');
 
         let members = [];
+        let users = [];
         let filteredMembers = [];
+        let filteredUsers = [];
         let currentPage = 1;
+        let currentUsersPage = 1;
         const perPage = 5;
+        const usersPerPage = 5;
         let isLoading = true;
+        let isLoadingUsers = true;
         let uploadedFileIds = [];
         let uploadedFileUrls = [];
         let editingId = null;
+        let currentTab = 'members'; // 'members' or 'users'
 
         const tbody = document.getElementById('admin-table-body');
+        const usersTbody = document.getElementById('users-table-body');
         const paginationContainer = document.getElementById('admin-pagination');
+        const usersPaginationContainer = document.getElementById('users-pagination');
         const modalOverlay = document.getElementById('modal-overlay');
         const memberForm = document.getElementById('member-form');
         const editIdInput = document.getElementById('edit-id');
@@ -1205,6 +1320,62 @@
         const uploadedImagesContainer = document.getElementById('uploaded-images');
         const fileInput = document.getElementById('file-input');
         const uploadZone = document.getElementById('file-upload-zone');
+        const tableWrapper = document.getElementById('table-wrapper');
+        const usersTableWrapper = document.getElementById('users-table-wrapper');
+        const searchInput = document.getElementById('search-input');
+
+        // ============================================================
+        // ✅ MENU FUNCTIONS
+        // ============================================================
+        window.toggleMenu = function() {
+            const dropdown = document.getElementById('menuDropdown');
+            dropdown.classList.toggle('show');
+        }
+
+        window.closeMenu = function() {
+            document.getElementById('menuDropdown').classList.remove('show');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const container = document.querySelector('.menu-container');
+            if (container && !container.contains(e.target)) {
+                document.getElementById('menuDropdown').classList.remove('show');
+            }
+        });
+
+        // ============================================================
+        // ✅ TAB FUNCTIONS
+        // ============================================================
+        window.showTab = function(tab) {
+            currentTab = tab;
+            
+            if (tab === 'members') {
+                tableWrapper.style.display = 'block';
+                usersTableWrapper.style.display = 'none';
+                document.getElementById('page-title').textContent = 'Admin Panel';
+                document.getElementById('page-badge').textContent = '🔒 Secure Admin Access';
+                document.getElementById('add-member-btn').style.display = 'flex';
+                document.getElementById('admin-toolbar').style.display = 'flex';
+                document.getElementById('stats-grid').style.display = 'grid';
+                document.getElementById('tab-members-link').style.background = 'rgba(17,42,70,0.06)';
+                document.getElementById('tab-users-link').style.background = 'none';
+                renderTable();
+                renderPagination();
+            } else if (tab === 'users') {
+                tableWrapper.style.display = 'none';
+                usersTableWrapper.style.display = 'block';
+                document.getElementById('page-title').textContent = 'Users';
+                document.getElementById('page-badge').textContent = '👤 Registered Users';
+                document.getElementById('add-member-btn').style.display = 'none';
+                document.getElementById('admin-toolbar').style.display = 'none';
+                document.getElementById('stats-grid').style.display = 'none';
+                document.getElementById('tab-users-link').style.background = 'rgba(17,42,70,0.06)';
+                document.getElementById('tab-members-link').style.background = 'none';
+                renderUsersTable();
+                renderUsersPagination();
+            }
+        }
 
         // ============================================================
         // LOAD MEMBERS
@@ -1227,6 +1398,32 @@
                 console.error('Error loading members:', error);
                 showToast('Error loading members from Supabase: ' + error.message, 'error');
                 isLoading = false;
+            }
+        }
+
+        // ============================================================
+        // ✅ LOAD USERS (verified = false)
+        // ============================================================
+        async function loadUsers() {
+            try {
+                const { data, error } = await supabase
+                    .from('members')
+                    .select('*')
+                    .eq('verified', false)
+                    .order('created_at', { ascending: false });
+
+                if (error) throw error;
+
+                users = data || [];
+                isLoadingUsers = false;
+                filteredUsers = [...users];
+                console.log('👤 Users loaded from Supabase:', users.length);
+                renderUsersTable();
+                renderUsersPagination();
+            } catch (error) {
+                console.error('Error loading users:', error);
+                showToast('Error loading users: ' + error.message, 'error');
+                isLoadingUsers = false;
             }
         }
 
@@ -1265,8 +1462,10 @@
             });
 
             currentPage = 1;
-            renderTable();
-            renderPagination();
+            if (currentTab === 'members') {
+                renderTable();
+                renderPagination();
+            }
         }
 
         // ============================================================
@@ -1348,6 +1547,74 @@
         }
 
         // ============================================================
+        // ✅ RENDER USERS TABLE
+        // ============================================================
+        function renderUsersTable() {
+            if (isLoadingUsers) {
+                usersTbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="text-align:center;padding:40px;color:rgba(17,42,70,0.3);">
+                            <span style="display:inline-block;width:24px;height:24px;border:3px solid rgba(17,42,70,0.1);border-top-color:#112A46;border-radius:50%;animation:spin 0.8s linear infinite;"></span>
+                            <br><br>Loading users...
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            const start = (currentUsersPage - 1) * usersPerPage;
+            const pageUsers = filteredUsers.slice(start, start + usersPerPage);
+
+            if (pageUsers.length === 0) {
+                usersTbody.innerHTML = `
+                    <tr>
+                        <td colspan="6">
+                            <div style="text-align:center;padding:40px;color:rgba(17,42,70,0.3);">
+                                <div style="font-size:48px;margin-bottom:12px;">👤</div>
+                                <h3 style="color:#112A46;font-size:20px;font-family:'Playfair Display',serif;">No users found</h3>
+                                <p style="color:rgba(17,42,70,0.4);">No registered users yet.</p>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            usersTbody.innerHTML = pageUsers.map(u => {
+                let userPhoto = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(u.name || 'User') + '&background=112A46&color=fff&size=100';
+                if (u.photo_file_ids && u.photo_file_ids.length > 0) {
+                    const fileId = u.photo_file_ids[0];
+                    const { data } = supabase.storage.from('member_photos').getPublicUrl(fileId);
+                    if (data && data.publicUrl) {
+                        userPhoto = data.publicUrl;
+                    }
+                }
+
+                const statusHTML = u.online ? '<span class="status-dot online"></span> Online' : '<span class="status-dot offline"></span> Offline';
+                const joinedDate = u.joined ? new Date(u.joined).toLocaleDateString() : '—';
+
+                return `
+                    <tr>
+                        <td data-label="User">
+                            <div class="member-cell">
+                                <img src="${userPhoto}" alt="${u.name}" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(u.name || 'User')}&background=112A46&color=fff&size=100'">
+                                <div>
+                                    <div class="name">${u.name || 'Unknown'}</div>
+                                    <div class="email">${u.email || 'No email'}</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td data-label="Gender">${u.gender === 'male' ? '👨 Male' : u.gender === 'female' ? '👩 Female' : '—'}</td>
+                        <td data-label="Location">${u.location || '—'}</td>
+                        <td data-label="Origin">${u.origin || '—'}</td>
+                        <td data-label="Joined">${joinedDate}</td>
+                        <td data-label="Status">${statusHTML}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // ============================================================
         // PAGINATION
         // ============================================================
         function renderPagination() {
@@ -1375,12 +1642,48 @@
             paginationContainer.innerHTML = html;
         }
 
+        // ============================================================
+        // ✅ USERS PAGINATION
+        // ============================================================
+        function renderUsersPagination() {
+            const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
+
+            if (totalPages <= 1) {
+                usersPaginationContainer.innerHTML = '';
+                return;
+            }
+
+            let html = '';
+            html += `<button onclick="window.goToUsersPage(${currentUsersPage - 1})" ${currentUsersPage === 1 ? 'disabled' : ''}>‹</button>`;
+
+            for (let i = 1; i <= Math.min(totalPages, 5); i++) {
+                html += `<button class="${i === currentUsersPage ? 'active' : ''}" onclick="window.goToUsersPage(${i})">${i}</button>`;
+            }
+
+            if (totalPages > 5) {
+                html += `<span style="color:rgba(17,42,70,0.15);padding:6px;">…</span>`;
+                html += `<button onclick="window.goToUsersPage(${totalPages})">${totalPages}</button>`;
+            }
+
+            html += `<button onclick="window.goToUsersPage(${currentUsersPage + 1})" ${currentUsersPage === totalPages ? 'disabled' : ''}>›</button>`;
+
+            usersPaginationContainer.innerHTML = html;
+        }
+
         window.goToPage = function(page) {
             const totalPages = Math.ceil(filteredMembers.length / perPage);
             if (page < 1 || page > totalPages) return;
             currentPage = page;
             renderTable();
             renderPagination();
+        }
+
+        window.goToUsersPage = function(page) {
+            const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
+            if (page < 1 || page > totalPages) return;
+            currentUsersPage = page;
+            renderUsersTable();
+            renderUsersPagination();
         }
 
         // ============================================================
@@ -1467,7 +1770,7 @@
         }
 
         // ============================================================
-        // CRUD OPERATIONS - FULLY FIXED WITH BIO
+        // CRUD OPERATIONS
         // ============================================================
 
         // Open Add Modal
@@ -1482,6 +1785,7 @@
             uploadedFileUrls = [];
             renderUploadedImages();
             modalOverlay.classList.add('active');
+            closeMenu();
         }
 
         // Open Edit Modal
@@ -1520,6 +1824,7 @@
             renderUploadedImages();
 
             modalOverlay.classList.add('active');
+            closeMenu();
         }
 
         // Close Modal
@@ -1531,7 +1836,7 @@
         }
 
         // ============================================================
-        // SAVE MEMBER - COMPLETELY FIXED WITH BIO
+        // SAVE MEMBER
         // ============================================================
         window.saveMember = async function(event) {
             event.preventDefault();
@@ -1539,33 +1844,29 @@
             const editId = editIdInput.value;
             const isEdit = !!editId;
 
-            // Get existing member data if editing
             let existingMember = null;
             if (isEdit) {
                 existingMember = members.find(m => m.id === editId);
             }
 
-            // Format interests as array
             const interestsArray = document.getElementById('form-interests').value
                 .split(',')
                 .map(s => s.trim())
                 .filter(Boolean);
 
-            // Prepare form data - INCLUDES BIO NOW
             const formData = {
                 name: document.getElementById('form-name').value.trim(),
                 email: document.getElementById('form-email').value.trim(),
                 age: parseInt(document.getElementById('form-age').value),
                 gender: document.getElementById('form-gender').value,
                 location: document.getElementById('form-location').value.trim(),
-                bio: document.getElementById('form-bio').value.trim(), // BIO IS NOW INCLUDED
+                bio: document.getElementById('form-bio').value.trim(),
                 verified: document.getElementById('form-verified').value === 'true',
                 premium: document.getElementById('form-premium').value === 'true',
                 interests: interestsArray,
                 photo_file_ids: uploadedFileIds
             };
 
-            // Add online and joined
             if (isEdit && existingMember) {
                 formData.online = existingMember.online || false;
                 formData.joined = existingMember.joined || new Date().toISOString().slice(0, 10);
@@ -1574,7 +1875,6 @@
                 formData.joined = new Date().toISOString().slice(0, 10);
             }
 
-            // Validate required fields
             if (!formData.name || !formData.email || !formData.age || !formData.gender) {
                 showToast('Please fill in all required fields.', 'error');
                 return;
@@ -1585,7 +1885,6 @@
             try {
                 let result;
                 if (isEdit) {
-                    // UPDATE
                     const { data, error } = await supabase
                         .from('members')
                         .update(formData)
@@ -1599,7 +1898,6 @@
                     result = data;
                     showToast(`✅ ${formData.name} updated successfully!`, 'success');
                 } else {
-                    // INSERT
                     const { data, error } = await supabase
                         .from('members')
                         .insert([formData])
@@ -1621,9 +1919,9 @@
                 uploadedFileUrls = [];
                 renderUploadedImages();
                 
-                // Reload members and refresh UI
                 await loadMembers();
                 filterMembers();
+                await loadUsers();
                 
             } catch (error) {
                 console.error('❌ Error saving member:', error);
@@ -1656,6 +1954,7 @@
                     showToast(`🗑️ ${member.name} was deleted.`, 'success');
                     await loadMembers();
                     filterMembers();
+                    await loadUsers();
                 } catch (error) {
                     console.error('Error deleting member:', error);
                     showToast('Error deleting member: ' + error.message, 'error');
@@ -1698,16 +1997,19 @@
             if (e.target === this) closeModal();
         });
 
-        loadMembers();
+        // Load both members and users
+        await loadMembers();
+        await loadUsers();
+        
+        // Show members tab by default
+        showTab('members');
 
-        console.log('💎 ClassyDate Admin Panel - FULLY WORKING WITH BIO!');
-        console.log('✅ Add Member button works');
-        console.log('✅ Edit Member button works');
-        console.log('✅ Delete Member button works');
-        console.log('✅ Photo upload works');
-        console.log('✅ Search works');
-        console.log('✅ Pagination works');
-        console.log('✅ Bio field is now included!');
+        console.log('💎 ClassyDate Admin Panel - UPDATED!');
+        console.log('✅ 3-line menu with tabs');
+        console.log('✅ Total Members - default view');
+        console.log('✅ Users tab - shows sign-ups');
+        console.log('✅ Add New Member - opens form');
+        console.log('✅ Log Out - works');
     </script>
 
 </body>
