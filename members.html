@@ -205,6 +205,7 @@
             color: rgba(17, 42, 70, 0.7);
         }
 
+        /* ✅ FULL WIDTH CARDS */
         .members-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -221,6 +222,7 @@
             cursor: pointer;
             user-select: none;
             -webkit-user-select: none;
+            width: 100%;
         }
 
         .member-card:hover {
@@ -239,6 +241,7 @@
             overflow: hidden;
             aspect-ratio: 1/1;
             background: #ACC8E5;
+            width: 100%;
         }
 
         .member-card__image-wrapper img {
@@ -561,16 +564,17 @@
             box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
         }
 
+        /* ✅ FULL SCREEN PROFILE MODAL */
         .profile-modal {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(12px);
             z-index: 1000;
             align-items: center;
             justify-content: center;
-            padding: 0px;
+            padding: 20px;
             animation: fadeInModal 0.3s ease;
         }
 
@@ -586,14 +590,13 @@
         .profile-modal-content {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            border-radius: 0px;
-            max-width: 100%;
+            border-radius: 24px;
+            max-width: 500px;
             width: 100%;
-            padding: 24px 20px 20px;
-            border: none;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
-            max-height: 100vh;
-            height: 100vh;
+            padding: 32px 28px 28px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            max-height: 90vh;
             overflow-y: auto;
             position: relative;
         }
@@ -624,18 +627,18 @@
         }
 
         .profile-modal-avatar {
-            width: 90px;
-            height: 90px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid #112A46;
-            margin: 0 auto 8px;
+            margin: 0 auto 12px;
             display: block;
         }
 
         .profile-modal-name {
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 22px;
+            font-size: 26px;
             color: #112A46;
             text-align: center;
             font-weight: 700;
@@ -646,34 +649,34 @@
             top: auto;
             right: auto;
             display: inline-block;
-            width: 20px;
-            height: 20px;
-            font-size: 11px;
-            margin-left: 4px;
+            width: 22px;
+            height: 22px;
+            font-size: 12px;
+            margin-left: 6px;
         }
 
         .profile-modal-status {
             text-align: center;
             font-size: 14px;
             color: rgba(17, 42, 70, 0.5);
-            margin-top: 2px;
+            margin-top: 4px;
             font-family: "Inter", sans-serif;
         }
 
         .profile-modal-details {
-            margin-top: 14px;
+            margin-top: 16px;
             display: grid;
-            gap: 6px;
-            background: rgba(17, 42, 70, 0.03);
-            padding: 10px 14px;
-            border-radius: 12px;
+            gap: 8px;
+            background: rgba(17, 42, 70, 0.04);
+            padding: 14px 16px;
+            border-radius: 14px;
         }
 
         .profile-modal-details .detail-item {
             display: flex;
             justify-content: space-between;
-            padding: 5px 0;
-            border-bottom: 1px solid rgba(17, 42, 70, 0.04);
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(17, 42, 70, 0.06);
             font-family: "Inter", sans-serif;
             font-size: 14px;
         }
@@ -683,7 +686,7 @@
         }
 
         .profile-modal-details .detail-item .label {
-            color: rgba(17, 42, 70, 0.4);
+            color: rgba(17, 42, 70, 0.5);
             font-weight: 500;
         }
 
@@ -693,14 +696,24 @@
         }
 
         .profile-modal-bio {
-            margin-top: 10px;
-            padding: 10px 14px;
+            margin-top: 12px;
+            padding: 12px 16px;
             background: rgba(17, 42, 70, 0.04);
-            border-radius: 10px;
+            border-radius: 12px;
             font-family: "Inter", sans-serif;
             font-size: 14px;
             color: rgba(17, 42, 70, 0.7);
             line-height: 1.6;
+        }
+
+        .profile-modal-bio .bio-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(17, 42, 70, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 4px;
         }
 
         .profile-modal-interests {
@@ -722,18 +735,18 @@
         }
 
         .modal-photos-container {
-            margin: 10px 0 8px;
-            border-radius: 12px;
+            margin: 12px 0 10px;
+            border-radius: 14px;
             overflow: hidden;
             background: #e8ecf0;
             position: relative;
-            max-height: 350px;
+            max-height: 300px;
         }
 
         .modal-carousel-wrapper {
             position: relative;
             overflow: hidden;
-            border-radius: 12px;
+            border-radius: 14px;
         }
 
         .modal-carousel-slides {
@@ -786,7 +799,7 @@
             display: flex;
             justify-content: center;
             gap: 8px;
-            padding: 6px 0 2px;
+            padding: 8px 0 4px;
             background: transparent;
         }
 
@@ -808,11 +821,11 @@
         .profile-modal .btn-message-profile {
             width: 100%;
             padding: 14px;
-            margin-top: 10px;
+            margin-top: 12px;
             background: linear-gradient(135deg, #112A46, #2E5A88);
             color: #fff;
             border: none;
-            border-radius: 12px;
+            border-radius: 14px;
             font-weight: 700;
             font-size: 16px;
             cursor: pointer;
@@ -823,6 +836,7 @@
         .profile-modal .btn-message-profile:hover {
             background: linear-gradient(135deg, #2E5A88, #112A46);
             transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(17, 42, 70, 0.25);
         }
 
         .toast {
@@ -911,6 +925,12 @@
                 top: 8px;
                 left: 8px;
             }
+            .profile-modal-content {
+                padding: 24px 16px 20px;
+                max-width: 100%;
+                margin: 10px;
+                border-radius: 16px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -965,6 +985,19 @@
                 height: 15px;
                 font-size: 8px;
             }
+            .profile-modal-content {
+                padding: 20px 14px 16px;
+                max-width: 100%;
+                margin: 10px;
+                border-radius: 16px;
+            }
+            .profile-modal-avatar {
+                width: 80px;
+                height: 80px;
+            }
+            .profile-modal-name {
+                font-size: 22px;
+            }
         }
 
         @keyframes spin {
@@ -1012,6 +1045,7 @@
         </button>
     </div>
 
+    <!-- ✅ PROFILE MODAL - Full Details Popup -->
     <div class="profile-modal" id="profile-modal">
         <div class="profile-modal-content">
             <button class="profile-modal-close" onclick="closeProfileModal()">✕</button>
@@ -1045,9 +1079,17 @@
                     <span class="label">Verified</span>
                     <span class="value" id="modal-verified">—</span>
                 </div>
+                <div class="detail-item">
+                    <span class="label">Premium</span>
+                    <span class="value" id="modal-premium">—</span>
+                </div>
             </div>
 
-            <div class="profile-modal-bio" id="modal-bio">No bio available.</div>
+            <div class="profile-modal-bio" id="modal-bio">
+                <span class="bio-label">📝 About Me</span>
+                <span id="modal-bio-text">No bio available.</span>
+            </div>
+
             <div class="profile-modal-interests" id="modal-interests"></div>
 
             <div class="modal-photos-container" id="modal-photos-container">
@@ -1132,13 +1174,13 @@
             window.location.href = 'login.html';
         }
 
-        // 🔥 FIX 1: ONLY LOAD VERIFIED MEMBERS (ADMIN-CREATED)
+        // ✅ ONLY LOAD VERIFIED MEMBERS (ADMIN-CREATED)
         async function loadMembers() {
             try {
                 const { data, error } = await supabase
                     .from('members')
                     .select('*')
-                    .eq('verified', true)  // ← ONLY ADMIN-CREATED MEMBERS
+                    .eq('verified', true)
                     .order('created_at', { ascending: false });
 
                 if (error) throw error;
@@ -1268,7 +1310,7 @@
                     </div>
                 ` : '';
 
-                // 🔥 FIX 2: RANDOM ONLINE STATUS
+                // Random online status
                 const isOnline = Math.random() > 0.5;
                 const onlineDot = isOnline ? 
                     `<span class="online-dot"></span>` : 
@@ -1454,6 +1496,7 @@ https://classydate.com/profile/${member.id}
             renderMembers(filteredMembers);
         }
 
+        // ✅ OPEN PROFILE MODAL - FULL DETAILS
         window.openProfileModal = function(id) {
             const member = allMembers.find(m => m.id === id);
             if (!member) {
@@ -1481,21 +1524,32 @@ https://classydate.com/profile/${member.id}
                 this.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(memberName)}&background=112A46&color=fff&size=200`;
             };
 
+            // ✅ Name with verified badge
             let nameHTML = memberName;
-            if (member.verified) nameHTML += ' <span class="verified-badge" style="position:relative;top:auto;right:auto;display:inline-block;width:20px;height:20px;font-size:11px;margin-left:4px;">✓</span>';
+            if (member.verified) {
+                nameHTML += ' <span class="verified-badge" style="position:relative;top:auto;right:auto;display:inline-block;width:22px;height:22px;font-size:12px;margin-left:6px;background:#1DA1F2;border-radius:50%;border:2px solid #fff;box-shadow:0 2px 8px rgba(29,161,242,0.5);">✓</span>';
+            }
+            if (member.premium) {
+                nameHTML += ' ⭐';
+            }
             document.getElementById('modal-name').innerHTML = nameHTML;
 
             document.getElementById('modal-status-text').textContent = `📍 ${member.location || 'Location Unknown'}`;
 
+            // ✅ All details
             document.getElementById('modal-age').textContent = member.age || '—';
             document.getElementById('modal-gender').textContent = member.gender || '—';
             document.getElementById('modal-location').textContent = member.location || '—';
             document.getElementById('modal-origin').textContent = member.origin || '—';
             document.getElementById('modal-status').innerHTML = member.online ? '🟢 Online' : '⚪ Offline';
             document.getElementById('modal-verified').textContent = member.verified ? '✅ Yes' : '❌ No';
+            document.getElementById('modal-premium').textContent = member.premium ? '⭐ Yes' : '—';
 
-            document.getElementById('modal-bio').textContent = member.about_me || member.bio || 'No bio available.';
+            // ✅ Bio
+            const bioText = member.about_me || member.bio || 'No bio available.';
+            document.getElementById('modal-bio-text').textContent = bioText;
 
+            // ✅ Interests
             const interestsContainer = document.getElementById('modal-interests');
             if (member.interests && member.interests.length > 0) {
                 interestsContainer.innerHTML = member.interests.map(i => `<span class="tag">#${i}</span>`).join('');
@@ -1503,6 +1557,7 @@ https://classydate.com/profile/${member.id}
                 interestsContainer.innerHTML = '<span style="color:rgba(17,42,70,0.3);font-size:14px;">No interests listed</span>';
             }
 
+            // ✅ Photos Carousel
             const slidesContainer = document.getElementById('modal-carousel-slides');
             const dotsContainer = document.getElementById('modal-carousel-dots');
             
@@ -1661,9 +1716,10 @@ https://classydate.com/profile/${member.id}
 
         loadMembers();
 
-        console.log('💎 ClassyDate Members Page - FINAL FIXED!');
-        console.log('✅ ONLY admin-created members (verified=true)');
-        console.log('✅ Sign-ups are hidden');
+        console.log('💎 ClassyDate Members Page - FINAL!');
+        console.log('✅ View Profile shows ALL member details');
+        console.log('✅ Cards full width');
+        console.log('✅ Only admin-created members');
         console.log('✅ Random online status');
         console.log('✅ Instagram verified badge');
         console.log('✅ Long press to share');
