@@ -30,9 +30,6 @@
 
         a { text-decoration: none; color: inherit; }
 
-        /* ============================================================ */
-        /* HEADER                                                       */
-        /* ============================================================ */
         .cb-shell-header {
             position: fixed;
             top: 0;
@@ -68,9 +65,6 @@
             color: #2E5A88;
         }
 
-        /* ============================================================ */
-        /* HAMBURGER MENU                                               */
-        /* ============================================================ */
         .menu-container {
             position: relative;
             display: inline-block;
@@ -146,9 +140,6 @@
             background: rgba(220, 53, 69, 0.06);
         }
 
-        /* ============================================================ */
-        /* MEMBERS CONTAINER                                            */
-        /* ============================================================ */
         .members-wrapper {
             flex: 1;
             padding: 100px 20px 60px;
@@ -214,18 +205,12 @@
             color: rgba(17, 42, 70, 0.7);
         }
 
-        /* ============================================================ */
-        /* 2 COLUMN GRID                                                */
-        /* ============================================================ */
         .members-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
         }
 
-        /* ============================================================ */
-        /* MEMBER CARD                                                  */
-        /* ============================================================ */
         .member-card {
             background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(10px);
@@ -249,9 +234,6 @@
             transform: scale(0.98);
         }
 
-        /* ============================================================ */
-        /* IMAGE WRAPPER                                               */
-        /* ============================================================ */
         .member-card__image-wrapper {
             position: relative;
             overflow: hidden;
@@ -270,7 +252,6 @@
             transform: scale(1.03);
         }
 
-        /* Carousel Slides */
         .carousel-slides {
             display: flex;
             transition: transform 0.8s ease;
@@ -291,7 +272,6 @@
             object-fit: cover;
         }
 
-        /* Carousel Buttons */
         .carousel-btn {
             position: absolute;
             top: 50%;
@@ -324,9 +304,6 @@
         .carousel-btn.prev { left: 6px; }
         .carousel-btn.next { right: 6px; }
 
-        /* ============================================================ */
-        /* ✅ INSTAGRAM VERIFIED BADGE                                  */
-        /* ============================================================ */
         .verified-badge {
             position: absolute;
             top: 10px;
@@ -351,9 +328,6 @@
             display: block;
         }
 
-        /* ============================================================ */
-        /* ✅ ONLINE BUTTON - GREEN DOT IN CORNER                      */
-        /* ============================================================ */
         .online-dot {
             position: absolute;
             top: 10px;
@@ -380,9 +354,6 @@
             50% { transform: scale(1.15); opacity: 0.7; }
         }
 
-        /* ============================================================ */
-        /* CARD INFO                                                    */
-        /* ============================================================ */
         .member-card__info {
             padding: 14px 16px 16px;
         }
@@ -401,7 +372,6 @@
             color: #112A46;
         }
 
-        /* Verified badge next to name */
         .verified-badge-name {
             display: inline-flex;
             align-items: center;
@@ -432,9 +402,6 @@
             font-family: "Inter", sans-serif;
         }
 
-        /* ============================================================ */
-        /* BUTTONS                                                      */
-        /* ============================================================ */
         .member-card__actions {
             display: flex;
             gap: 10px;
@@ -474,9 +441,6 @@
             box-shadow: 0 4px 16px rgba(17, 42, 70, 0.25);
         }
 
-        /* ============================================================ */
-        /* EMPTY STATE                                                  */
-        /* ============================================================ */
         .empty-state {
             text-align: center;
             padding: 80px 20px;
@@ -500,9 +464,6 @@
             font-family: "Inter", sans-serif;
         }
 
-        /* ============================================================ */
-        /* PAGINATION                                                   */
-        /* ============================================================ */
         .pagination {
             display: flex;
             justify-content: center;
@@ -536,9 +497,6 @@
             cursor: not-allowed;
         }
 
-        /* ============================================================ */
-        /* SHARE TOAST                                                  */
-        /* ============================================================ */
         .share-toast {
             position: fixed;
             bottom: 100px;
@@ -603,9 +561,6 @@
             box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
         }
 
-        /* ============================================================ */
-        /* PROFILE MODAL                                                */
-        /* ============================================================ */
         .profile-modal {
             display: none;
             position: fixed;
@@ -870,9 +825,6 @@
             transform: translateY(-2px);
         }
 
-        /* ============================================================ */
-        /* TOAST                                                       */
-        /* ============================================================ */
         .toast {
             position: fixed;
             bottom: 30px;
@@ -903,9 +855,6 @@
             background: #dc3545;
         }
 
-        /* ============================================================ */
-        /* RESPONSIVE                                                   */
-        /* ============================================================ */
         @media (max-width: 768px) {
             .members-header {
                 flex-direction: column;
@@ -914,60 +863,48 @@
             .members-header h1 {
                 font-size: 28px;
             }
-
             .members-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
             }
-
             .member-card__info {
                 padding: 10px 12px 12px;
             }
-
             .member-card__name-row h3 {
                 font-size: 15px;
             }
-
             .member-card__location {
                 font-size: 11px;
             }
-
             .member-card__origin {
                 font-size: 11px;
             }
-
             .member-card__actions button {
                 font-size: 13px;
                 padding: 10px 12px;
             }
-
             .carousel-btn {
                 width: 22px;
                 height: 22px;
                 font-size: 11px;
             }
-
             .cb-shell-header__inner {
                 height: 60px;
                 padding: 0 12px;
             }
-
             .cb-shell-brand {
                 font-size: 18px;
             }
-
             .verified-badge {
                 width: 20px;
                 height: 20px;
                 top: 8px;
                 right: 8px;
             }
-
             .verified-badge svg {
                 width: 12px;
                 height: 12px;
             }
-
             .online-dot {
                 width: 14px;
                 height: 14px;
@@ -981,59 +918,48 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 8px;
             }
-
             .member-card__info {
                 padding: 8px 10px 10px;
             }
-
             .member-card__name-row h3 {
                 font-size: 13px;
             }
-
             .member-card__location {
                 font-size: 10px;
             }
-
             .member-card__origin {
                 font-size: 10px;
             }
-
             .member-card__actions {
                 gap: 4px;
                 margin-top: 8px;
                 padding-top: 8px;
             }
-
             .member-card__actions button {
                 font-size: 11px;
                 padding: 8px 10px;
             }
-
             .carousel-btn {
                 width: 20px;
                 height: 20px;
                 font-size: 10px;
             }
-
             .verified-badge {
                 width: 18px;
                 height: 18px;
                 top: 6px;
                 right: 6px;
             }
-
             .verified-badge svg {
                 width: 10px;
                 height: 10px;
             }
-
             .online-dot {
                 width: 12px;
                 height: 12px;
                 top: 6px;
                 left: 6px;
             }
-
             .verified-badge-name {
                 width: 15px;
                 height: 15px;
@@ -1048,9 +974,6 @@
 </head>
 <body>
 
-    <!-- ============================================================ -->
-    <!-- HEADER                                                        -->
-    <!-- ============================================================ -->
     <header class="cb-shell-header" role="banner">
         <div class="cb-shell-header__inner">
             <a class="cb-shell-brand" href="/">Classy<span>Date</span></a>
@@ -1063,9 +986,6 @@
         </div>
     </header>
 
-    <!-- ============================================================ -->
-    <!-- MAIN CONTENT                                                  -->
-    <!-- ============================================================ -->
     <main class="members-wrapper">
         <div class="members-header">
             <div>
@@ -1082,9 +1002,6 @@
         <div class="pagination" id="pagination"></div>
     </main>
 
-    <!-- ============================================================ -->
-    <!-- SHARE TOAST                                                   -->
-    <!-- ============================================================ -->
     <div class="share-toast" id="share-toast">
         <div style="display:flex;align-items:center;justify-content:space-between;">
             <span>📤 Share this member via WhatsApp</span>
@@ -1095,7 +1012,6 @@
         </button>
     </div>
 
-    <!-- Profile Modal -->
     <div class="profile-modal" id="profile-modal">
         <div class="profile-modal-content">
             <button class="profile-modal-close" onclick="closeProfileModal()">✕</button>
@@ -1147,12 +1063,8 @@
         </div>
     </div>
 
-    <!-- Toast -->
     <div class="toast" id="toast"></div>
 
-    <!-- ============================================================ -->
-    <!-- SCRIPTS                                                      -->
-    <!-- ============================================================ -->
     <script type="importmap">
         {
             "imports": {
@@ -1198,9 +1110,6 @@
             }
         }
 
-        // ============================================================
-        // MENU FUNCTIONS
-        // ============================================================
         window.toggleMenu = function() {
             const dropdown = document.getElementById('menuDropdown');
             dropdown.classList.toggle('show');
@@ -1223,22 +1132,20 @@
             window.location.href = 'login.html';
         }
 
-        // ============================================================
-        // 🔥 FIXED: LOAD MEMBERS - SHOW ALL MEMBERS (NO FILTER)
-        // ============================================================
+        // 🔥 FIX 1: ONLY LOAD VERIFIED MEMBERS (ADMIN-CREATED)
         async function loadMembers() {
             try {
-                // 🔥 REMOVED the .eq('verified', true) filter - shows ALL members
                 const { data, error } = await supabase
                     .from('members')
                     .select('*')
+                    .eq('verified', true)  // ← ONLY ADMIN-CREATED MEMBERS
                     .order('created_at', { ascending: false });
 
                 if (error) throw error;
 
                 allMembers = data || [];
                 isLoading = false;
-                console.log('📊 All members loaded from Supabase:', allMembers.length);
+                console.log('📊 Admin members loaded:', allMembers.length);
                 
                 totalCount.textContent = allMembers.length;
                 filteredMembers = [...allMembers];
@@ -1259,9 +1166,6 @@
             }
         }
 
-        // ============================================================
-        // CHANGE PHOTO
-        // ============================================================
         window.changePhoto = function(memberId, direction) {
             const wrapper = document.querySelector(`.member-card__image-wrapper[data-member="${memberId}"]`);
             if (!wrapper) return;
@@ -1282,9 +1186,6 @@
             photoIndexMap[memberId] = newIndex;
         }
 
-        // ============================================================
-        // START CAROUSEL - EACH CARD HAS DIFFERENT TIMING
-        // ============================================================
         function startCarousel(memberId) {
             if (carouselIntervals[memberId]) clearInterval(carouselIntervals[memberId]);
             
@@ -1294,7 +1195,6 @@
             const slides = wrapper.querySelector('.carousel-slides');
             if (!slides || slides.children.length <= 1) return;
 
-            // Each card gets different timing
             const randomDelay = 3500 + Math.random() * 2000;
             
             carouselIntervals[memberId] = setInterval(() => {
@@ -1309,9 +1209,6 @@
             }
         }
 
-        // ============================================================
-        // RENDER MEMBERS
-        // ============================================================
         function renderMembers(members) {
             console.log('🎨 Rendering members:', members.length);
             
@@ -1362,7 +1259,6 @@
                     `;
                 });
 
-                // Instagram Verified Badge
                 const verifiedBadge = member.verified ? `
                     <div class="verified-badge">
                         <svg viewBox="0 0 24 24" fill="white">
@@ -1372,12 +1268,12 @@
                     </div>
                 ` : '';
 
-                // Online button
-                const onlineDot = member.online ? 
+                // 🔥 FIX 2: RANDOM ONLINE STATUS
+                const isOnline = Math.random() > 0.5;
+                const onlineDot = isOnline ? 
                     `<span class="online-dot"></span>` : 
                     `<span class="online-dot offline"></span>`;
 
-                // Verified badge next to name
                 const verifiedBadgeName = member.verified ? 
                     `<span class="verified-badge-name">✓</span>` : '';
 
@@ -1410,12 +1306,10 @@
                 `;
             }).join('');
 
-            // Start carousels with different timing
             members.forEach(member => {
                 startCarousel(member.id);
             });
 
-            // Add long press event listeners
             document.querySelectorAll('.member-card').forEach(card => {
                 setupLongPress(card);
             });
@@ -1423,9 +1317,6 @@
             updatePagination(members.length);
         }
 
-        // ============================================================
-        // LONG PRESS TO SHARE
-        // ============================================================
         let longPressTimer = null;
         let isLongPress = false;
 
@@ -1500,9 +1391,6 @@
             longPressMember = null;
         }
 
-        // ============================================================
-        // SHARE ON WHATSAPP
-        // ============================================================
         function shareOnWhatsApp(member) {
             const name = member.name || 'Member';
             const location = member.location || 'Unknown';
@@ -1530,9 +1418,6 @@ https://classydate.com/profile/${member.id}
             showToast('📤 Opening WhatsApp...', 'success');
         }
 
-        // ============================================================
-        // VIEW FUNCTIONS
-        // ============================================================
         window.setView = function(view) {
             currentView = view;
             grid.className = 'members-grid' + (view === 'list' ? ' list-view' : '');
@@ -1569,9 +1454,6 @@ https://classydate.com/profile/${member.id}
             renderMembers(filteredMembers);
         }
 
-        // ============================================================
-        // PROFILE MODAL FUNCTIONS
-        // ============================================================
         window.openProfileModal = function(id) {
             const member = allMembers.find(m => m.id === id);
             if (!member) {
@@ -1764,9 +1646,6 @@ https://classydate.com/profile/${member.id}
             window.location.href = `chat.html?user=${id}&name=${encodeURIComponent(member.name)}`;
         }
 
-        // ============================================================
-        // TOAST
-        // ============================================================
         let toastTimeout;
 
         function showToast(message, type = 'success') {
@@ -1780,17 +1659,14 @@ https://classydate.com/profile/${member.id}
             }, 3000);
         }
 
-        // ============================================================
-        // INIT
-        // ============================================================
         loadMembers();
 
-        console.log('💎 ClassyDate Members Page - FINAL FIXED VERSION!');
-        console.log('✅ All members loaded - No filter applied');
-        console.log('✅ Instagram verified badge with SVG');
-        console.log('✅ Online button in corner');
-        console.log('✅ Each card slides independently with different timing');
-        console.log('✅ Long press to share via WhatsApp');
+        console.log('💎 ClassyDate Members Page - FINAL FIXED!');
+        console.log('✅ ONLY admin-created members (verified=true)');
+        console.log('✅ Sign-ups are hidden');
+        console.log('✅ Random online status');
+        console.log('✅ Instagram verified badge');
+        console.log('✅ Long press to share');
     </script>
 
 </body>
