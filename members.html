@@ -13,10 +13,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
 
     <style>
-        /* ============================================================
-           CLASSYDATE - MEMBERS PAGE - UPDATED
-           ============================================================ */
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -177,8 +173,6 @@
             font-weight: 700;
         }
 
-        .members-header h1 span { color: #112A46; }
-
         .members-header .member-count {
             color: rgba(17, 42, 70, 0.5);
             font-size: 15px;
@@ -250,14 +244,13 @@
             box-shadow: 0 8px 32px rgba(17, 42, 70, 0.08);
         }
 
-        /* Long press feedback */
         .member-card.long-press {
             background: rgba(17, 42, 70, 0.05);
             transform: scale(0.98);
         }
 
         /* ============================================================ */
-        /* IMAGE CAROUSEL                                               */
+        /* IMAGE WRAPPER                                               */
         /* ============================================================ */
         .member-card__image-wrapper {
             position: relative;
@@ -277,6 +270,28 @@
             transform: scale(1.03);
         }
 
+        /* Carousel Slides */
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.8s ease;
+            height: 100%;
+            width: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Carousel Buttons */
         .carousel-btn {
             position: absolute;
             top: 50%;
@@ -310,42 +325,48 @@
         .carousel-btn.next { right: 6px; }
 
         /* ============================================================ */
-        /* ✅ INSTAGRAM-STYLE VERIFIED BADGE ON IMAGE                  */
+        /* ✅ INSTAGRAM VERIFIED BADGE - FIXED                          */
         /* ============================================================ */
-        .verified-badge-image {
+        .verified-badge {
             position: absolute;
-            top: 8px;
-            right: 8px;
-            z-index: 2;
-            background: #1DA1F2;
-            color: #fff;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
+            top: 10px;
+            right: 10px;
+            z-index: 5;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
-            font-weight: 700;
-            box-shadow: 0 2px 8px rgba(29, 161, 242, 0.4);
-            border: 2px solid #fff;
+            width: 24px;
+            height: 24px;
+            background: #1DA1F2;
+            border-radius: 50%;
+            border: 2px solid #FFFFFF;
+            box-shadow: 0 2px 8px rgba(29, 161, 242, 0.5);
+            pointer-events: none;
+        }
+
+        .verified-badge svg {
+            width: 14px;
+            height: 14px;
+            fill: #FFFFFF;
+            display: block;
         }
 
         /* ============================================================ */
-        /* ✅ ONLINE BUTTON - GREEN DOT INSIDE IMAGE CORNER            */
+        /* ✅ ONLINE BUTTON - GREEN DOT IN CORNER                      */
         /* ============================================================ */
         .online-dot {
             position: absolute;
-            top: 8px;
-            left: 8px;
-            z-index: 2;
+            top: 10px;
+            left: 10px;
+            z-index: 5;
             width: 16px;
             height: 16px;
             border-radius: 50%;
             background: #28a745;
-            border: 2.5px solid #fff;
-            box-shadow: 0 0 12px rgba(40, 167, 69, 0.5);
+            border: 2.5px solid #FFFFFF;
+            box-shadow: 0 0 12px rgba(40, 167, 69, 0.6);
             animation: pulse-online 1.8s infinite;
+            pointer-events: none;
         }
 
         .online-dot.offline {
@@ -356,42 +377,11 @@
 
         @keyframes pulse-online {
             0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.7; }
+            50% { transform: scale(1.15); opacity: 0.7; }
         }
 
         /* ============================================================ */
-        /* DOT INDICATORS                                               */
-        /* ============================================================ */
-        .image-dots {
-            position: absolute;
-            bottom: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 5px;
-            z-index: 2;
-            background: rgba(17, 42, 70, 0.3);
-            backdrop-filter: blur(4px);
-            padding: 4px 8px;
-            border-radius: 50px;
-        }
-
-        .image-dots .dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .image-dots .dot.active {
-            background: #fff;
-            width: 16px;
-            border-radius: 4px;
-        }
-
-        /* ============================================================ */
-        /* CARD INFO - UPDATED                                         */
+        /* CARD INFO                                                    */
         /* ============================================================ */
         .member-card__info {
             padding: 14px 16px 16px;
@@ -411,7 +401,7 @@
             color: #112A46;
         }
 
-        /* ✅ Instagram-style verified badge next to name */
+        /* Verified badge next to name */
         .verified-badge-name {
             display: inline-flex;
             align-items: center;
@@ -441,8 +431,6 @@
             margin-top: 1px;
             font-family: "Inter", sans-serif;
         }
-
-        /* Bio and Interests - REMOVED from card */
 
         /* ============================================================ */
         /* BUTTONS                                                      */
@@ -615,277 +603,6 @@
             box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
         }
 
-        .share-toast .share-btn .icon {
-            font-size: 20px;
-        }
-
-        /* ============================================================ */
-        /* PROFILE MODAL                                                */
-        /* ============================================================ */
-        .profile-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 0px;
-            animation: fadeInModal 0.3s ease;
-        }
-
-        .profile-modal.active {
-            display: flex;
-        }
-
-        @keyframes fadeInModal {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .profile-modal-content {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 0px;
-            max-width: 100%;
-            width: 100%;
-            padding: 24px 20px 20px;
-            border: none;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
-            max-height: 100vh;
-            height: 100vh;
-            overflow-y: auto;
-            position: relative;
-        }
-
-        .profile-modal-close {
-            position: absolute;
-            top: 12px;
-            right: 16px;
-            background: rgba(0, 0, 0, 0.05);
-            border: none;
-            font-size: 24px;
-            color: #112A46;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: "Inter", sans-serif;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-        }
-
-        .profile-modal-close:hover {
-            background: rgba(0, 0, 0, 0.1);
-            transform: rotate(90deg);
-        }
-
-        .profile-modal-avatar {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #112A46;
-            margin: 0 auto 8px;
-            display: block;
-        }
-
-        .profile-modal-name {
-            font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 22px;
-            color: #112A46;
-            text-align: center;
-            font-weight: 700;
-        }
-
-        .profile-modal-name .verified-badge {
-            position: relative;
-            top: auto;
-            right: auto;
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            font-size: 11px;
-            margin-left: 4px;
-        }
-
-        .profile-modal-status {
-            text-align: center;
-            font-size: 14px;
-            color: rgba(17, 42, 70, 0.5);
-            margin-top: 2px;
-            font-family: "Inter", sans-serif;
-        }
-
-        .profile-modal-details {
-            margin-top: 14px;
-            display: grid;
-            gap: 6px;
-            background: rgba(17, 42, 70, 0.03);
-            padding: 10px 14px;
-            border-radius: 12px;
-        }
-
-        .profile-modal-details .detail-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 5px 0;
-            border-bottom: 1px solid rgba(17, 42, 70, 0.04);
-            font-family: "Inter", sans-serif;
-            font-size: 14px;
-        }
-
-        .profile-modal-details .detail-item:last-child {
-            border-bottom: none;
-        }
-
-        .profile-modal-details .detail-item .label {
-            color: rgba(17, 42, 70, 0.4);
-            font-weight: 500;
-        }
-
-        .profile-modal-details .detail-item .value {
-            color: #112A46;
-            font-weight: 600;
-        }
-
-        .profile-modal-bio {
-            margin-top: 10px;
-            padding: 10px 14px;
-            background: rgba(17, 42, 70, 0.04);
-            border-radius: 10px;
-            font-family: "Inter", sans-serif;
-            font-size: 14px;
-            color: rgba(17, 42, 70, 0.7);
-            line-height: 1.6;
-        }
-
-        .profile-modal-interests {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 10px;
-            margin-bottom: 12px;
-        }
-
-        .profile-modal-interests .tag {
-            padding: 4px 14px;
-            background: rgba(17, 42, 70, 0.06);
-            border-radius: 50px;
-            font-size: 12px;
-            color: #112A46;
-            font-family: "Inter", sans-serif;
-            font-weight: 500;
-        }
-
-        .modal-photos-container {
-            margin: 10px 0 8px;
-            border-radius: 12px;
-            overflow: hidden;
-            background: #e8ecf0;
-            position: relative;
-            max-height: 350px;
-        }
-
-        .modal-carousel-wrapper {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-        }
-
-        .modal-carousel-slides {
-            display: flex;
-            transition: transform 0.5s ease;
-            touch-action: pan-y;
-        }
-
-        .modal-carousel-slide {
-            min-width: 100%;
-            aspect-ratio: 16/9;
-            overflow: hidden;
-            background: #e8ecf0;
-        }
-
-        .modal-carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .modal-carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(4px);
-            color: #fff;
-            border: none;
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            font-size: 16px;
-            cursor: pointer;
-            z-index: 5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .modal-carousel-btn:hover {
-            background: rgba(0, 0, 0, 0.7);
-        }
-
-        .modal-carousel-btn.prev { left: 8px; }
-        .modal-carousel-btn.next { right: 8px; }
-
-        .modal-carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            padding: 6px 0 2px;
-            background: transparent;
-        }
-
-        .modal-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(17, 42, 70, 0.2);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .modal-dot.active {
-            background: #112A46;
-            width: 24px;
-            border-radius: 4px;
-        }
-
-        .profile-modal .btn-message-profile {
-            width: 100%;
-            padding: 14px;
-            margin-top: 10px;
-            background: linear-gradient(135deg, #112A46, #2E5A88);
-            color: #fff;
-            border: none;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: "Inter", sans-serif;
-        }
-
-        .profile-modal .btn-message-profile:hover {
-            background: linear-gradient(135deg, #2E5A88, #112A46);
-            transform: translateY(-2px);
-        }
-
         /* ============================================================ */
         /* TOAST                                                       */
         /* ============================================================ */
@@ -936,10 +653,6 @@
                 gap: 12px;
             }
 
-            .member-card__image-wrapper {
-                aspect-ratio: 1/1;
-            }
-
             .member-card__info {
                 padding: 10px 12px 12px;
             }
@@ -961,11 +674,6 @@
                 padding: 10px 12px;
             }
 
-            .view-toggle button {
-                padding: 6px 12px;
-                font-size: 12px;
-            }
-
             .carousel-btn {
                 width: 22px;
                 height: 22px;
@@ -981,27 +689,23 @@
                 font-size: 18px;
             }
 
-            .profile-modal-content {
-                padding: 16px 12px 12px;
-                border-radius: 0px;
-                height: 100vh;
-                max-height: 100vh;
+            .verified-badge {
+                width: 20px;
+                height: 20px;
+                top: 8px;
+                right: 8px;
             }
 
-            .profile-modal-avatar {
-                width: 70px;
-                height: 70px;
+            .verified-badge svg {
+                width: 12px;
+                height: 12px;
             }
 
-            .profile-modal-name {
-                font-size: 20px;
-            }
-
-            .share-toast {
-                bottom: 80px;
-                padding: 12px 20px;
-                font-size: 13px;
-                max-width: 95%;
+            .online-dot {
+                width: 14px;
+                height: 14px;
+                top: 8px;
+                left: 8px;
             }
         }
 
@@ -1009,10 +713,6 @@
             .members-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 8px;
-            }
-
-            .member-card__image-wrapper {
-                aspect-ratio: 1/1;
             }
 
             .member-card__info {
@@ -1048,50 +748,29 @@
                 font-size: 10px;
             }
 
-            .verified-badge-image {
-                width: 20px;
-                height: 20px;
-                font-size: 12px;
-                top: 5px;
-                right: 5px;
+            .verified-badge {
+                width: 18px;
+                height: 18px;
+                top: 6px;
+                right: 6px;
+            }
+
+            .verified-badge svg {
+                width: 10px;
+                height: 10px;
             }
 
             .online-dot {
                 width: 12px;
                 height: 12px;
-                top: 5px;
-                left: 5px;
+                top: 6px;
+                left: 6px;
             }
 
             .verified-badge-name {
                 width: 15px;
                 height: 15px;
                 font-size: 8px;
-            }
-
-            .profile-modal-content {
-                padding: 12px 10px 10px;
-            }
-
-            .profile-modal-avatar {
-                width: 60px;
-                height: 60px;
-            }
-
-            .profile-modal-name {
-                font-size: 18px;
-            }
-
-            .share-toast {
-                bottom: 70px;
-                padding: 10px 16px;
-                font-size: 12px;
-                max-width: 95%;
-            }
-
-            .share-toast .share-btn {
-                padding: 6px 16px;
-                font-size: 12px;
             }
         }
 
@@ -1103,12 +782,11 @@
 <body>
 
     <!-- ============================================================ -->
-    <!-- HEADER - WITH 3-LINE MENU                                    -->
+    <!-- HEADER                                                        -->
     <!-- ============================================================ -->
     <header class="cb-shell-header" role="banner">
         <div class="cb-shell-header__inner">
             <a class="cb-shell-brand" href="/">Classy<span>Date</span></a>
-
             <div class="menu-container">
                 <button class="menu-btn" id="menuBtn" onclick="toggleMenu()">☰</button>
                 <div class="menu-dropdown" id="menuDropdown">
@@ -1138,7 +816,7 @@
     </main>
 
     <!-- ============================================================ -->
-    <!-- SHARE TOAST - Appears on long press                          -->
+    <!-- SHARE TOAST                                                   -->
     <!-- ============================================================ -->
     <div class="share-toast" id="share-toast">
         <div style="display:flex;align-items:center;justify-content:space-between;">
@@ -1148,60 +826,6 @@
         <button class="share-btn" id="share-whatsapp-btn">
             <span class="icon">💬</span> Share on WhatsApp
         </button>
-    </div>
-
-    <!-- ============================================================ -->
-    <!-- PROFILE MODAL                                                -->
-    <!-- ============================================================ -->
-    <div class="profile-modal" id="profile-modal">
-        <div class="profile-modal-content">
-            <button class="profile-modal-close" onclick="closeProfileModal()">✕</button>
-            
-            <img class="profile-modal-avatar" id="modal-avatar" src="" alt="Profile">
-            <h2 class="profile-modal-name" id="modal-name">Name</h2>
-            <div class="profile-modal-status" id="modal-status-text">📍 Location</div>
-
-            <div class="profile-modal-details" id="modal-details">
-                <div class="detail-item">
-                    <span class="label">Age</span>
-                    <span class="value" id="modal-age">—</span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Gender</span>
-                    <span class="value" id="modal-gender">—</span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Location</span>
-                    <span class="value" id="modal-location">—</span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Origin</span>
-                    <span class="value" id="modal-origin">—</span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Status</span>
-                    <span class="value" id="modal-status">—</span>
-                </div>
-                <div class="detail-item">
-                    <span class="label">Verified</span>
-                    <span class="value" id="modal-verified">—</span>
-                </div>
-            </div>
-
-            <div class="profile-modal-bio" id="modal-bio">No bio available.</div>
-            <div class="profile-modal-interests" id="modal-interests"></div>
-
-            <div class="modal-photos-container" id="modal-photos-container">
-                <div class="modal-carousel-wrapper" id="modal-carousel-wrapper">
-                    <div class="modal-carousel-slides" id="modal-carousel-slides"></div>
-                    <button class="modal-carousel-btn prev" onclick="event.stopPropagation(); changeModalPhoto(-1)">‹</button>
-                    <button class="modal-carousel-btn next" onclick="event.stopPropagation(); changeModalPhoto(1)">›</button>
-                </div>
-                <div class="modal-carousel-dots" id="modal-carousel-dots"></div>
-            </div>
-
-            <button class="btn-message-profile" id="modal-message-btn" onclick="modalSendMessage()">💬 Send Message</button>
-        </div>
     </div>
 
     <!-- Toast -->
@@ -1243,8 +867,6 @@
         const grid = document.getElementById('members-grid');
         const paginationContainer = document.getElementById('pagination');
         const totalCount = document.getElementById('total-count');
-
-        let modalPhotoIndex = 0;
 
         function getPhotoUrl(fileId) {
             if (!fileId) return null;
@@ -1318,6 +940,9 @@
             }
         }
 
+        // ============================================================
+        // CHANGE PHOTO - FIXED for individual carousels
+        // ============================================================
         window.changePhoto = function(memberId, direction) {
             const wrapper = document.querySelector(`.member-card__image-wrapper[data-member="${memberId}"]`);
             if (!wrapper) return;
@@ -1336,23 +961,26 @@
 
             slides.style.transform = `translateX(-${newIndex * 100}%)`;
             photoIndexMap[memberId] = newIndex;
-
-            const dots = wrapper.querySelectorAll('.dot');
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === newIndex);
-            });
         }
 
+        // ============================================================
+        // START CAROUSEL - EACH CARD HAS DIFFERENT TIMING
+        // ============================================================
         function startCarousel(memberId) {
             if (carouselIntervals[memberId]) clearInterval(carouselIntervals[memberId]);
+            
             const wrapper = document.querySelector(`.member-card__image-wrapper[data-member="${memberId}"]`);
             if (!wrapper) return;
+            
             const slides = wrapper.querySelector('.carousel-slides');
             if (!slides || slides.children.length <= 1) return;
 
+            // 🔥 EACH CARD GETS A DIFFERENT TIMING (3.5s - 5.5s)
+            const randomDelay = 3500 + Math.random() * 2000;
+            
             carouselIntervals[memberId] = setInterval(() => {
                 window.changePhoto(memberId, 1);
-            }, 3500);
+            }, randomDelay);
         }
 
         function stopCarousel(memberId) {
@@ -1363,7 +991,7 @@
         }
 
         // ============================================================
-        // RENDER MEMBERS - UPDATED
+        // RENDER MEMBERS
         // ============================================================
         function renderMembers(members) {
             console.log('🎨 Rendering members:', members.length);
@@ -1409,41 +1037,42 @@
                 let slidesHTML = '';
                 photos.forEach((photo, index) => {
                     slidesHTML += `
-                        <div class="carousel-slide" style="min-width:100%;aspect-ratio:1/1;overflow:hidden;">
+                        <div class="carousel-slide">
                             <img src="${photo}" alt="${memberName}" loading="lazy" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(memberName)}&background=112A46&color=fff&size=400'">
                         </div>
                     `;
                 });
 
-                let dotsHTML = '';
-                for (let i = 0; i < photos.length; i++) {
-                    dotsHTML += `<span class="dot ${i === 0 ? 'active' : ''}"></span>`;
-                }
+                // ✅ Instagram Verified Badge (using SVG)
+                const verifiedBadge = member.verified ? `
+                    <div class="verified-badge">
+                        <svg viewBox="0 0 24 24" fill="white">
+                            <path d="M12 1L9.5 5L5 6L7 10L5 14L9.5 15L12 19L14.5 15L19 14L17 10L19 6L14.5 5L12 1Z" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+                            <path d="M9 12L11 14L15 10" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                ` : '';
 
-                // ✅ Instagram-style verified badge on image
-                const verifiedBadgeImage = member.verified ? `<span class="verified-badge-image">✓</span>` : '';
-                
-                // ✅ Online dot - green dot in corner
+                // ✅ Online button
                 const onlineDot = member.online ? 
                     `<span class="online-dot"></span>` : 
                     `<span class="online-dot offline"></span>`;
 
-                // ✅ Verified badge next to name (Instagram-style)
+                // ✅ Verified badge next to name
                 const verifiedBadgeName = member.verified ? 
                     `<span class="verified-badge-name">✓</span>` : '';
 
                 return `
                     <div class="member-card" data-id="${member.id}" data-name="${memberName}" data-location="${member.location || ''}" data-origin="${member.origin || ''}" data-age="${member.age || ''}" data-verified="${member.verified}">
                         <div class="member-card__image-wrapper" data-member="${member.id}">
-                            <div class="carousel-slides" style="display:flex;transition:transform 0.5s ease;">
+                            <div class="carousel-slides" style="display:flex;transition:transform 0.8s ease;">
                                 ${slidesHTML}
                             </div>
-                            ${verifiedBadgeImage}
+                            ${verifiedBadge}
                             ${onlineDot}
                             ${photos.length > 1 ? `
                                 <button class="carousel-btn prev" onclick="event.stopPropagation(); window.changePhoto('${member.id}', -1)">‹</button>
                                 <button class="carousel-btn next" onclick="event.stopPropagation(); window.changePhoto('${member.id}', 1)">›</button>
-                                <div class="image-dots">${dotsHTML}</div>
                             ` : ''}
                         </div>
                         <div class="member-card__info">
@@ -1462,11 +1091,12 @@
                 `;
             }).join('');
 
+            // 🔥 Start carousels with different timing
             members.forEach(member => {
                 startCarousel(member.id);
             });
 
-            // ✅ Add long press event listeners
+            // Add long press event listeners
             document.querySelectorAll('.member-card').forEach(card => {
                 setupLongPress(card);
             });
@@ -1475,13 +1105,12 @@
         }
 
         // ============================================================
-        // ✅ LONG PRESS TO SHARE
+        // LONG PRESS TO SHARE
         // ============================================================
         let longPressTimer = null;
         let isLongPress = false;
 
         function setupLongPress(card) {
-            // Touch events for mobile
             card.addEventListener('touchstart', function(e) {
                 isLongPress = false;
                 longPressTimer = setTimeout(() => {
@@ -1501,7 +1130,6 @@
                 }
             });
 
-            // Mouse events for desktop (right-click / long click)
             card.addEventListener('mousedown', function(e) {
                 isLongPress = false;
                 longPressTimer = setTimeout(() => {
@@ -1532,26 +1160,20 @@
             const member = allMembers.find(m => m.id === id);
             if (!member) return;
 
-            // Save the member for sharing
             longPressMember = member;
 
-            // Show share toast
             const shareToast = document.getElementById('share-toast');
             shareToast.classList.add('show');
 
-            // Setup WhatsApp share button
             const shareBtn = document.getElementById('share-whatsapp-btn');
             shareBtn.onclick = function() {
                 shareOnWhatsApp(member);
             };
 
-            // Add visual feedback
             card.classList.add('long-press');
             setTimeout(() => {
                 card.classList.remove('long-press');
             }, 300);
-
-            showToast('👆 Long press detected! Share this profile?', 'success');
         }
 
         window.closeShareToast = function() {
@@ -1560,7 +1182,7 @@
         }
 
         // ============================================================
-        // ✅ SHARE ON WHATSAPP
+        // SHARE ON WHATSAPP
         // ============================================================
         function shareOnWhatsApp(member) {
             const name = member.name || 'Member';
@@ -1569,16 +1191,6 @@
             const age = member.age || '?';
             const verified = member.verified ? '✅ Verified Member' : '';
 
-            // Get profile photo URL
-            let photoUrl = '';
-            if (member.photo_file_ids && member.photo_file_ids.length > 0) {
-                const { data } = supabase.storage.from('member_photos').getPublicUrl(member.photo_file_ids[0]);
-                if (data?.publicUrl) {
-                    photoUrl = data.publicUrl;
-                }
-            }
-
-            // Create share message
             const message = `
 👤 *${name}* ${verified ? '✔️' : ''}
 📍 Location: ${location}
@@ -1591,16 +1203,11 @@ Check out this member on ClassyDate!
 https://classydate.com/profile/${member.id}
             `.trim();
 
-            // Encode for WhatsApp URL
             const encodedMessage = encodeURIComponent(message);
             const whatsappUrl = `https://wa.me/?text=${encodedMessage}`;
 
-            // Close share toast
             document.getElementById('share-toast').classList.remove('show');
-
-            // Open WhatsApp
             window.open(whatsappUrl, '_blank');
-
             showToast('📤 Opening WhatsApp...', 'success');
         }
 
@@ -1644,7 +1251,7 @@ https://classydate.com/profile/${member.id}
         }
 
         // ============================================================
-        // PROFILE MODAL FUNCTIONS - UPDATED
+        // PROFILE MODAL FUNCTIONS
         // ============================================================
         window.openProfileModal = function(id) {
             const member = allMembers.find(m => m.id === id);
@@ -1834,9 +1441,7 @@ https://classydate.com/profile/${member.id}
                 return;
             }
 
-            // Save member data for the chat page
             localStorage.setItem('classydate_selected_member', JSON.stringify(member));
-
             window.location.href = `chat.html?user=${id}&name=${encodeURIComponent(member.name)}`;
         }
 
@@ -1861,16 +1466,12 @@ https://classydate.com/profile/${member.id}
         // ============================================================
         loadMembers();
 
-        const style = document.createElement('style');
-        style.textContent = `@keyframes spin { to { transform: rotate(360deg); } }`;
-        document.head.appendChild(style);
-
-        console.log('💎 ClassyDate Members Page - UPDATED!');
-        console.log('✅ Instagram-style verified badge ✔️');
-        console.log('✅ Online dot in image corner 🟢');
-        console.log('✅ Long press to share via WhatsApp 📤');
-        console.log('✅ Location and Origin only on card');
-        console.log('✅ Bio and Interests in View Profile only');
+        console.log('💎 ClassyDate Members Page - FINAL VERSION!');
+        console.log('✅ Instagram verified badge with SVG');
+        console.log('✅ Online button in corner');
+        console.log('✅ Each card slides independently with different timing');
+        console.log('✅ No sliding dots');
+        console.log('✅ Long press to share via WhatsApp');
     </script>
 
 </body>
