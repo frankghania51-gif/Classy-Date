@@ -67,7 +67,7 @@
         }
 
         /* ============================================================ */
-        /* ✅ 3-LINE HAMBURGER MENU - ADMIN                            */
+        /* 3-LINE HAMBURGER MENU - ADMIN                               */
         /* ============================================================ */
         .menu-container {
             position: relative;
@@ -163,6 +163,9 @@
             font-weight: 700;
         }
 
+        /* ============================================================ */
+        /* ADMIN WRAPPER - CLASSIC DESIGN                             */
+        /* ============================================================ */
         .admin-wrapper {
             max-width: 1200px;
             margin: 0 auto;
@@ -183,16 +186,6 @@
             font-size: 32px;
             color: #112A46;
             font-weight: 700;
-        }
-
-        .admin-header .badge-admin {
-            background: rgba(17, 42, 70, 0.08);
-            color: #112A46;
-            padding: 4px 14px;
-            border-radius: 50px;
-            font-size: 12px;
-            font-weight: 600;
-            border: 1px solid rgba(17, 42, 70, 0.06);
         }
 
         .admin-header .btn-add {
@@ -216,48 +209,9 @@
             box-shadow: 0 8px 30px rgba(17, 42, 70, 0.25);
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-
-        .stat-card-admin {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(12px);
-            border-radius: 14px;
-            padding: 18px 20px;
-            border: 1px solid rgba(255, 255, 255, 0.20);
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .stat-card-admin:hover {
-            transform: translateY(-3px);
-            border-color: rgba(17, 42, 70, 0.15);
-            box-shadow: 0 8px 30px rgba(17, 42, 70, 0.08);
-        }
-
-        .stat-card-admin .stat-icon {
-            font-size: 28px;
-            display: block;
-            margin-bottom: 2px;
-        }
-
-        .stat-card-admin .stat-number {
-            font-size: 28px;
-            font-weight: 700;
-            color: #112A46;
-            font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-        }
-
-        .stat-card-admin .stat-label {
-            font-size: 13px;
-            color: rgba(17, 42, 70, 0.5);
-            font-weight: 500;
-        }
-
+        /* ============================================================ */
+        /* SEARCH TOOLBAR                                              */
+        /* ============================================================ */
         .admin-toolbar {
             display: flex;
             flex-wrap: wrap;
@@ -294,6 +248,9 @@
             box-shadow: 0 0 0 4px rgba(17, 42, 70, 0.06);
         }
 
+        /* ============================================================ */
+        /* TABLE WRAPPER                                               */
+        /* ============================================================ */
         .admin-table-wrapper {
             background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(12px);
@@ -404,13 +361,8 @@
         }
 
         @keyframes pulse-dot {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.3;
-            }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
         }
 
         .actions-cell {
@@ -490,7 +442,14 @@
         }
 
         /* ============================================================ */
-        /* MODAL - WITH PHOTO UPLOAD                                    */
+        /* USERS TABLE (Hidden by default)                             */
+        /* ============================================================ */
+        #users-table-wrapper {
+            display: none;
+        }
+
+        /* ============================================================ */
+        /* MODAL - CLASSIC DESIGN                                      */
         /* ============================================================ */
         .modal-overlay {
             display: none;
@@ -510,14 +469,8 @@
         }
 
         @keyframes fadeInModal {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .modal {
@@ -852,19 +805,6 @@
                 font-size: 13px;
             }
 
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-
-            .stat-card-admin {
-                padding: 14px 16px;
-            }
-
-            .stat-card-admin .stat-number {
-                font-size: 24px;
-            }
-
             .admin-toolbar {
                 padding: 12px 14px;
             }
@@ -971,27 +911,6 @@
         }
 
         @media (max-width: 480px) {
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
-            }
-
-            .stat-card-admin {
-                padding: 12px 14px;
-            }
-
-            .stat-card-admin .stat-number {
-                font-size: 20px;
-            }
-
-            .stat-card-admin .stat-icon {
-                font-size: 22px;
-            }
-
-            .stat-card-admin .stat-label {
-                font-size: 11px;
-            }
-
             .admin-header h1 {
                 font-size: 22px;
             }
@@ -1032,9 +951,7 @@
         }
 
         @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -1050,7 +967,6 @@
             </a>
             <div class="cb-shell-actions">
                 <span class="admin-badge-nav">🔑 Admin</span>
-                <!-- ✅ 3-Line Hamburger Menu -->
                 <div class="menu-container">
                     <button class="menu-btn" id="menuBtn" onclick="toggleMenu()">☰</button>
                     <div class="menu-dropdown" id="menuDropdown">
@@ -1078,35 +994,8 @@
     <!-- ============================================================ -->
     <main class="admin-wrapper" id="admin-wrapper">
         <div class="admin-header">
-            <div>
-                <h1 id="page-title">Admin Panel</h1>
-                <span class="badge-admin" id="page-badge">🔒 Secure Admin Access</span>
-            </div>
+            <h1 id="page-title">Admin Panel</h1>
             <button class="btn-add" id="add-member-btn" onclick="openAddModal()">➕ Add New Member</button>
-        </div>
-
-        <!-- STATS -->
-        <div class="stats-grid" id="stats-grid">
-            <div class="stat-card-admin">
-                <span class="stat-icon">👥</span>
-                <div class="stat-number" id="total-members">0</div>
-                <div class="stat-label">Total Members</div>
-            </div>
-            <div class="stat-card-admin">
-                <span class="stat-icon">🟢</span>
-                <div class="stat-number" id="online-members">0</div>
-                <div class="stat-label">Online Now</div>
-            </div>
-            <div class="stat-card-admin">
-                <span class="stat-icon">✅</span>
-                <div class="stat-number" id="verified-members">0</div>
-                <div class="stat-label">Verified</div>
-            </div>
-            <div class="stat-card-admin">
-                <span class="stat-icon">🆕</span>
-                <div class="stat-number" id="new-members">0</div>
-                <div class="stat-label">New This Month</div>
-            </div>
         </div>
 
         <!-- SEARCH -->
@@ -1139,10 +1028,8 @@
             <div class="admin-pagination" id="admin-pagination"></div>
         </div>
 
-        <!-- ============================================================ -->
-        <!-- ✅ USERS TABLE (Hidden by default)                          -->
-        <!-- ============================================================ -->
-        <div class="admin-table-wrapper" id="users-table-wrapper" style="display:none;">
+        <!-- USERS TABLE (Hidden by default) -->
+        <div class="admin-table-wrapper" id="users-table-wrapper">
             <table class="admin-table">
                 <thead>
                     <tr>
@@ -1168,7 +1055,7 @@
     </main>
 
     <!-- ============================================================ -->
-    <!-- MODAL - ADD/EDIT MEMBER                                     -->
+    <!-- MODAL - ADD/EDIT MEMBER (UPDATED)                           -->
     <!-- ============================================================ -->
     <div class="modal-overlay" id="modal-overlay">
         <div class="modal">
@@ -1184,11 +1071,6 @@
                 <div class="form-group">
                     <label for="form-name">Full Name <span class="required">*</span></label>
                     <input type="text" id="form-name" placeholder="John Doe" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="form-email">Email Address <span class="required">*</span></label>
-                    <input type="email" id="form-email" placeholder="john@example.com" required>
                 </div>
 
                 <div class="form-row">
@@ -1212,9 +1094,16 @@
                     <input type="text" id="form-location" placeholder="New York, USA">
                 </div>
 
+                <!-- ✅ About Me (was Bio) -->
                 <div class="form-group">
-                    <label for="form-bio">Bio</label>
+                    <label for="form-bio">About Me</label>
                     <textarea id="form-bio" placeholder="Write a short bio about this member..."></textarea>
+                </div>
+
+                <!-- ✅ Looking For (NEW) -->
+                <div class="form-group">
+                    <label for="form-looking">Looking For</label>
+                    <input type="text" id="form-looking" placeholder="e.g. Serious Relationship, Friendship, Casual Dating">
                 </div>
 
                 <!-- PHOTO UPLOAD -->
@@ -1307,7 +1196,7 @@
         let uploadedFileIds = [];
         let uploadedFileUrls = [];
         let editingId = null;
-        let currentTab = 'members'; // 'members' or 'users'
+        let currentTab = 'members';
 
         const tbody = document.getElementById('admin-table-body');
         const usersTbody = document.getElementById('users-table-body');
@@ -1325,7 +1214,7 @@
         const searchInput = document.getElementById('search-input');
 
         // ============================================================
-        // ✅ MENU FUNCTIONS
+        // MENU FUNCTIONS
         // ============================================================
         window.toggleMenu = function() {
             const dropdown = document.getElementById('menuDropdown');
@@ -1336,7 +1225,6 @@
             document.getElementById('menuDropdown').classList.remove('show');
         }
 
-        // Close menu when clicking outside
         document.addEventListener('click', function(e) {
             const container = document.querySelector('.menu-container');
             if (container && !container.contains(e.target)) {
@@ -1345,7 +1233,7 @@
         });
 
         // ============================================================
-        // ✅ TAB FUNCTIONS
+        // TAB FUNCTIONS
         // ============================================================
         window.showTab = function(tab) {
             currentTab = tab;
@@ -1354,10 +1242,8 @@
                 tableWrapper.style.display = 'block';
                 usersTableWrapper.style.display = 'none';
                 document.getElementById('page-title').textContent = 'Admin Panel';
-                document.getElementById('page-badge').textContent = '🔒 Secure Admin Access';
                 document.getElementById('add-member-btn').style.display = 'flex';
                 document.getElementById('admin-toolbar').style.display = 'flex';
-                document.getElementById('stats-grid').style.display = 'grid';
                 document.getElementById('tab-members-link').style.background = 'rgba(17,42,70,0.06)';
                 document.getElementById('tab-users-link').style.background = 'none';
                 renderTable();
@@ -1366,10 +1252,8 @@
                 tableWrapper.style.display = 'none';
                 usersTableWrapper.style.display = 'block';
                 document.getElementById('page-title').textContent = 'Users';
-                document.getElementById('page-badge').textContent = '👤 Registered Users';
                 document.getElementById('add-member-btn').style.display = 'none';
                 document.getElementById('admin-toolbar').style.display = 'none';
-                document.getElementById('stats-grid').style.display = 'none';
                 document.getElementById('tab-users-link').style.background = 'rgba(17,42,70,0.06)';
                 document.getElementById('tab-members-link').style.background = 'none';
                 renderUsersTable();
@@ -1391,7 +1275,6 @@
 
                 members = data || [];
                 isLoading = false;
-                updateStats();
                 filterMembers();
                 console.log('📊 Members loaded from Supabase:', members.length);
             } catch (error) {
@@ -1402,7 +1285,7 @@
         }
 
         // ============================================================
-        // ✅ LOAD USERS (verified = false)
+        // LOAD USERS (verified = false)
         // ============================================================
         async function loadUsers() {
             try {
@@ -1425,27 +1308,6 @@
                 showToast('Error loading users: ' + error.message, 'error');
                 isLoadingUsers = false;
             }
-        }
-
-        // ============================================================
-        // STATS
-        // ============================================================
-        function updateStats() {
-            const total = members.length;
-            const online = members.filter(m => m.online).length;
-            const verified = members.filter(m => m.verified).length;
-            const now = new Date();
-            const thisMonth = now.getMonth();
-            const thisYear = now.getFullYear();
-            const newThisMonth = members.filter(m => {
-                const joined = m.joined ? new Date(m.joined) : null;
-                return joined && joined.getMonth() === thisMonth && joined.getFullYear() === thisYear;
-            }).length;
-
-            document.getElementById('total-members').textContent = total;
-            document.getElementById('online-members').textContent = online;
-            document.getElementById('verified-members').textContent = verified;
-            document.getElementById('new-members').textContent = newThisMonth;
         }
 
         // ============================================================
@@ -1547,7 +1409,7 @@
         }
 
         // ============================================================
-        // ✅ RENDER USERS TABLE
+        // RENDER USERS TABLE
         // ============================================================
         function renderUsersTable() {
             if (isLoadingUsers) {
@@ -1642,9 +1504,6 @@
             paginationContainer.innerHTML = html;
         }
 
-        // ============================================================
-        // ✅ USERS PAGINATION
-        // ============================================================
         function renderUsersPagination() {
             const totalPages = Math.ceil(filteredUsers.length / usersPerPage);
 
@@ -1773,7 +1632,6 @@
         // CRUD OPERATIONS
         // ============================================================
 
-        // Open Add Modal
         window.openAddModal = function() {
             editingId = null;
             document.getElementById('modal-title').textContent = 'Add New Member';
@@ -1788,7 +1646,6 @@
             closeMenu();
         }
 
-        // Open Edit Modal
         window.openEditModal = async function(id) {
             const member = members.find(m => m.id === id);
             if (!member) {
@@ -1803,11 +1660,11 @@
 
             editIdInput.value = id;
             document.getElementById('form-name').value = member.name || '';
-            document.getElementById('form-email').value = member.email || '';
             document.getElementById('form-age').value = member.age || '';
             document.getElementById('form-gender').value = member.gender || '';
             document.getElementById('form-location').value = member.location || '';
             document.getElementById('form-bio').value = member.bio || '';
+            document.getElementById('form-looking').value = member.looking_for || '';
             document.getElementById('form-verified').value = member.verified ? 'true' : 'false';
             document.getElementById('form-premium').value = member.premium ? 'true' : 'false';
             document.getElementById('form-interests').value = (member.interests || []).join(', ');
@@ -1827,7 +1684,6 @@
             closeMenu();
         }
 
-        // Close Modal
         window.closeModal = function() {
             modalOverlay.classList.remove('active');
             uploadedFileIds = [];
@@ -1836,7 +1692,7 @@
         }
 
         // ============================================================
-        // SAVE MEMBER
+        // SAVE MEMBER (UPDATED with Looking For)
         // ============================================================
         window.saveMember = async function(event) {
             event.preventDefault();
@@ -1856,11 +1712,11 @@
 
             const formData = {
                 name: document.getElementById('form-name').value.trim(),
-                email: document.getElementById('form-email').value.trim(),
                 age: parseInt(document.getElementById('form-age').value),
                 gender: document.getElementById('form-gender').value,
                 location: document.getElementById('form-location').value.trim(),
                 bio: document.getElementById('form-bio').value.trim(),
+                looking_for: document.getElementById('form-looking').value.trim(),
                 verified: document.getElementById('form-verified').value === 'true',
                 premium: document.getElementById('form-premium').value === 'true',
                 interests: interestsArray,
@@ -1875,7 +1731,7 @@
                 formData.joined = new Date().toISOString().slice(0, 10);
             }
 
-            if (!formData.name || !formData.email || !formData.age || !formData.gender) {
+            if (!formData.name || !formData.age || !formData.gender) {
                 showToast('Please fill in all required fields.', 'error');
                 return;
             }
@@ -1997,19 +1853,18 @@
             if (e.target === this) closeModal();
         });
 
-        // Load both members and users
         await loadMembers();
         await loadUsers();
         
-        // Show members tab by default
         showTab('members');
 
-        console.log('💎 ClassyDate Admin Panel - UPDATED!');
+        console.log('💎 ClassyDate Admin Panel - CLASSIC & FANTASTIC!');
+        console.log('✅ Removed: Email field');
+        console.log('✅ Changed: Bio → About Me');
+        console.log('✅ Added: Looking For field');
+        console.log('✅ Removed: Stats boxes on hero');
+        console.log('✅ Removed: "Secure Admin Access" badge');
         console.log('✅ 3-line menu with tabs');
-        console.log('✅ Total Members - default view');
-        console.log('✅ Users tab - shows sign-ups');
-        console.log('✅ Add New Member - opens form');
-        console.log('✅ Log Out - works');
     </script>
 
 </body>
