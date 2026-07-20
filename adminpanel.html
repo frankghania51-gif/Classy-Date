@@ -164,7 +164,7 @@
         }
 
         /* ============================================================ */
-        /* ADMIN WRAPPER - CLASSIC DESIGN                             */
+        /* ADMIN WRAPPER                                               */
         /* ============================================================ */
         .admin-wrapper {
             max-width: 1200px;
@@ -449,7 +449,7 @@
         }
 
         /* ============================================================ */
-        /* MODAL - CLASSIC DESIGN                                      */
+        /* MODAL - WITH UPDATED FIELDS                                */
         /* ============================================================ */
         .modal-overlay {
             display: none;
@@ -958,7 +958,7 @@
 <body>
 
     <!-- ============================================================ -->
-    <!-- HEADER - WITH 3-LINE MENU                                    -->
+    /* HEADER - WITH 3-LINE MENU                                    */
     <!-- ============================================================ -->
     <header class="cb-shell-header" role="banner">
         <div class="cb-shell-header__inner">
@@ -990,7 +990,7 @@
     </header>
 
     <!-- ============================================================ -->
-    <!-- ADMIN PANEL                                                   -->
+    /* ADMIN PANEL                                                   */
     <!-- ============================================================ -->
     <main class="admin-wrapper" id="admin-wrapper">
         <div class="admin-header">
@@ -1055,7 +1055,7 @@
     </main>
 
     <!-- ============================================================ -->
-    <!-- MODAL - ADD/EDIT MEMBER (UPDATED)                           -->
+    /* MODAL - ADD/EDIT MEMBER (UPDATED FIELDS)                     */
     <!-- ============================================================ -->
     <div class="modal-overlay" id="modal-overlay">
         <div class="modal">
@@ -1089,18 +1089,25 @@
                     </div>
                 </div>
 
+                <!-- ✅ NEW: Current Location (was Location) -->
                 <div class="form-group">
-                    <label for="form-location">Location</label>
-                    <input type="text" id="form-location" placeholder="New York, USA">
+                    <label for="form-current-location">Current Location</label>
+                    <input type="text" id="form-current-location" placeholder="New York, USA">
                 </div>
 
-                <!-- ✅ About Me (was Bio) -->
+                <!-- ✅ NEW: Home Country -->
+                <div class="form-group">
+                    <label for="form-home-country">Home Country</label>
+                    <input type="text" id="form-home-country" placeholder="Zimbabwe">
+                </div>
+
+                <!-- About Me (was Bio) -->
                 <div class="form-group">
                     <label for="form-bio">About Me</label>
                     <textarea id="form-bio" placeholder="Write a short bio about this member..."></textarea>
                 </div>
 
-                <!-- ✅ Looking For (NEW) -->
+                <!-- Looking For -->
                 <div class="form-group">
                     <label for="form-looking">Looking For</label>
                     <input type="text" id="form-looking" placeholder="e.g. Serious Relationship, Friendship, Casual Dating">
@@ -1319,7 +1326,8 @@
             filteredMembers = members.filter(m => {
                 const matchSearch = (m.name || '').toLowerCase().includes(search) ||
                     (m.email || '').toLowerCase().includes(search) ||
-                    (m.location || '').toLowerCase().includes(search);
+                    (m.current_location || '').toLowerCase().includes(search) ||
+                    (m.home_country || '').toLowerCase().includes(search);
                 return matchSearch;
             });
 
@@ -1382,6 +1390,10 @@
                     ${totalPhotos > 0 ? `<span class="badge-small" style="background:rgba(17,42,70,0.06);color:#112A46;">📸 ${totalPhotos}</span>` : ''}
                 `;
 
+                // ✅ Updated to show current_location and home_country
+                const locationDisplay = m.current_location || m.location || '—';
+                const homeDisplay = m.home_country || m.origin || '—';
+
                 return `
                     <tr>
                         <td data-label="Member">
@@ -1394,7 +1406,7 @@
                             </div>
                         </td>
                         <td data-label="Gender">${m.gender === 'male' ? '👨 Male' : m.gender === 'female' ? '👩 Female' : '—'}</td>
-                        <td data-label="Location">${m.location || '—'}</td>
+                        <td data-label="Location">${locationDisplay}</td>
                         <td data-label="Status">${statusHTML}</td>
                         <td data-label="Badges">${badgesHTML}</td>
                         <td data-label="Actions">
@@ -1467,8 +1479,8 @@
                             </div>
                         </td>
                         <td data-label="Gender">${u.gender === 'male' ? '👨 Male' : u.gender === 'female' ? '👩 Female' : '—'}</td>
-                        <td data-label="Location">${u.location || '—'}</td>
-                        <td data-label="Origin">${u.origin || '—'}</td>
+                        <td data-label="Location">${u.current_location || u.location || '—'}</td>
+                        <td data-label="Origin">${u.home_country || u.origin || '—'}</td>
                         <td data-label="Joined">${joinedDate}</td>
                         <td data-label="Status">${statusHTML}</td>
                     </tr>
@@ -1646,6 +1658,9 @@
             closeMenu();
         }
 
+        // ============================================================
+        // OPEN EDIT MODAL - UPDATED FIELDS
+        // ============================================================
         window.openEditModal = async function(id) {
             const member = members.find(m => m.id === id);
             if (!member) {
@@ -1662,7 +1677,8 @@
             document.getElementById('form-name').value = member.name || '';
             document.getElementById('form-age').value = member.age || '';
             document.getElementById('form-gender').value = member.gender || '';
-            document.getElementById('form-location').value = member.location || '';
+            document.getElementById('form-current-location').value = member.current_location || member.location || '';
+            document.getElementById('form-home-country').value = member.home_country || member.origin || '';
             document.getElementById('form-bio').value = member.bio || '';
             document.getElementById('form-looking').value = member.looking_for || '';
             document.getElementById('form-verified').value = member.verified ? 'true' : 'false';
@@ -1692,7 +1708,7 @@
         }
 
         // ============================================================
-        // SAVE MEMBER (UPDATED with Looking For)
+        // SAVE MEMBER - UPDATED WITH NEW FIELDS
         // ============================================================
         window.saveMember = async function(event) {
             event.preventDefault();
@@ -1714,7 +1730,8 @@
                 name: document.getElementById('form-name').value.trim(),
                 age: parseInt(document.getElementById('form-age').value),
                 gender: document.getElementById('form-gender').value,
-                location: document.getElementById('form-location').value.trim(),
+                current_location: document.getElementById('form-current-location').value.trim(),
+                home_country: document.getElementById('form-home-country').value.trim(),
                 bio: document.getElementById('form-bio').value.trim(),
                 looking_for: document.getElementById('form-looking').value.trim(),
                 verified: document.getElementById('form-verified').value === 'true',
@@ -1858,12 +1875,10 @@
         
         showTab('members');
 
-        console.log('💎 ClassyDate Admin Panel - CLASSIC & FANTASTIC!');
-        console.log('✅ Removed: Email field');
-        console.log('✅ Changed: Bio → About Me');
-        console.log('✅ Added: Looking For field');
-        console.log('✅ Removed: Stats boxes on hero');
-        console.log('✅ Removed: "Secure Admin Access" badge');
+        console.log('💎 ClassyDate Admin Panel - UPDATED FIELDS!');
+        console.log('✅ Removed: Location field');
+        console.log('✅ Added: Current Location');
+        console.log('✅ Added: Home Country');
         console.log('✅ 3-line menu with tabs');
     </script>
 
