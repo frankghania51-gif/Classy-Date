@@ -767,7 +767,7 @@
 <body>
 
     <!-- ============================================================ -->
-    /* HEADER                                                       */
+    <!-- HEADER                                                       -->
     <!-- ============================================================ -->
     <header class="cb-shell-header" role="banner">
         <div class="cb-shell-header__inner">
@@ -779,7 +779,7 @@
     </header>
 
     <!-- ============================================================ -->
-    /* CHAT PAGE                                                    */
+    <!-- CHAT PAGE                                                    -->
     <!-- ============================================================ -->
     <main class="chat-wrapper">
         <div class="chat-header" id="chat-header">
@@ -823,7 +823,7 @@
     </main>
 
     <!-- ============================================================ -->
-    /* COINS POPUP                                                  */
+    <!-- COINS POPUP                                                  -->
     <!-- ============================================================ -->
     <div class="coins-popup-overlay" id="coins-popup">
         <div class="coins-popup-card">
@@ -840,12 +840,12 @@
     </div>
 
     <!-- ============================================================ -->
-    /* TOAST                                                       */
+    <!-- TOAST                                                       -->
     <!-- ============================================================ -->
     <div class="toast" id="toast"></div>
 
     <!-- ============================================================ -->
-    /* SCRIPTS                                                      */
+    <!-- SCRIPTS                                                      -->
     <!-- ============================================================ -->
     <script>
         // ============================================================
@@ -1012,7 +1012,7 @@
         }
 
         // ============================================================
-        // ✅ PROCEED TO SUBSCRIBE - Then redirect based on country
+        // ✅ PROCEED TO SUSCRIBE (with a 'c')
         // ============================================================
         function proceedToSubscribe() {
             const input = document.getElementById('message-input');
@@ -1032,9 +1032,9 @@
 
             closeCoinsPopup();
 
-            // ✅ Navigate to subscribe page (which will redirect based on country)
+            // ✅ Navigate to suscribe.html (with a 'c')
             setTimeout(() => {
-                window.location.href = 'subscribe.html';
+                window.location.href = 'suscribe.html';
             }, 300);
         }
 
@@ -1083,7 +1083,7 @@
         initChat();
 
         console.log('💬 ClassyDate Chat Page - FINAL VERSION!');
-        console.log('✅ Proceed → subscribe.html → Country redirect → Verification');
+        console.log('✅ Proceed → suscribe.html (with a "c")');
         console.log('✅ After subscription → Returns to chat');
         console.log('✅ Compact height - no scrolling needed');
         console.log('✅ Input box always visible');
