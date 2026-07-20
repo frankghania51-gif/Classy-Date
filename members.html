@@ -30,6 +30,9 @@
 
         a { text-decoration: none; color: inherit; }
 
+        /* ============================================================ */
+        /* HEADER                                                       */
+        /* ============================================================ */
         .cb-shell-header {
             position: fixed;
             top: 0;
@@ -140,11 +143,14 @@
             background: rgba(220, 53, 69, 0.06);
         }
 
+        /* ============================================================ */
+        /* MEMBERS WRAPPER - NO SIDE PADDING                           */
+        /* ============================================================ */
         .members-wrapper {
             flex: 1;
-            padding: 100px 20px 60px;
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 100px 0 60px;
+            max-width: 100%;
+            margin: 0;
             width: 100%;
         }
 
@@ -154,19 +160,20 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 16px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            padding: 0 16px;
         }
 
         .members-header h1 {
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 36px;
+            font-size: 28px;
             color: #112A46;
             font-weight: 700;
         }
 
         .members-header .member-count {
             color: rgba(17, 42, 70, 0.5);
-            font-size: 15px;
+            font-size: 14px;
             font-family: "Inter", sans-serif;
         }
 
@@ -179,19 +186,19 @@
             display: flex;
             gap: 4px;
             background: rgba(255, 255, 255, 0.3);
-            border-radius: 12px;
+            border-radius: 10px;
             padding: 4px;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .view-toggle button {
-            padding: 8px 16px;
+            padding: 6px 14px;
             background: none;
             border: none;
             border-radius: 8px;
             color: rgba(17, 42, 70, 0.4);
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
             transition: all 0.3s ease;
             font-family: "Inter", sans-serif;
             font-weight: 600;
@@ -205,17 +212,23 @@
             color: rgba(17, 42, 70, 0.7);
         }
 
-        /* ✅ FULL WIDTH CARDS */
+        /* ============================================================ */
+        /* GRID - NO SIDE PADDING, EDGE TO EDGE                       */
+        /* ============================================================ */
         .members-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 4px;
+            padding: 0;
+            width: 100%;
         }
 
+        /* ============================================================ */
+        /* MEMBER CARD - NO BORDER RADIUS                             */
+        /* ============================================================ */
         .member-card {
             background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(10px);
-            border-radius: 16px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.15);
             transition: all 0.4s ease;
@@ -223,12 +236,13 @@
             user-select: none;
             -webkit-user-select: none;
             width: 100%;
+            border-radius: 0;
         }
 
         .member-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-2px);
             border-color: rgba(17, 42, 70, 0.1);
-            box-shadow: 0 8px 32px rgba(17, 42, 70, 0.08);
+            box-shadow: 0 4px 16px rgba(17, 42, 70, 0.08);
         }
 
         .member-card.long-press {
@@ -236,11 +250,15 @@
             transform: scale(0.98);
         }
 
+        /* ============================================================ */
+        /* IMAGE WRAPPER - REDUCED HEIGHT                             */
+        /* ============================================================ */
         .member-card__image-wrapper {
             position: relative;
             overflow: hidden;
             aspect-ratio: 1/1;
             background: #ACC8E5;
+            max-height: 200px;
             width: 100%;
         }
 
@@ -284,9 +302,9 @@
             color: #fff;
             border: none;
             border-radius: 50%;
-            width: 28px;
-            height: 28px;
-            font-size: 14px;
+            width: 24px;
+            height: 24px;
+            font-size: 12px;
             cursor: pointer;
             z-index: 3;
             display: flex;
@@ -304,19 +322,22 @@
             background: rgba(17, 42, 70, 0.9);
         }
 
-        .carousel-btn.prev { left: 6px; }
-        .carousel-btn.next { right: 6px; }
+        .carousel-btn.prev { left: 4px; }
+        .carousel-btn.next { right: 4px; }
 
+        /* ============================================================ */
+        /* VERIFIED BADGE - TOP RIGHT                                 */
+        /* ============================================================ */
         .verified-badge {
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 8px;
+            right: 8px;
             z-index: 5;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             background: #1DA1F2;
             border-radius: 50%;
             border: 2px solid #FFFFFF;
@@ -325,19 +346,22 @@
         }
 
         .verified-badge svg {
-            width: 14px;
-            height: 14px;
+            width: 12px;
+            height: 12px;
             fill: #FFFFFF;
             display: block;
         }
 
+        /* ============================================================ */
+        /* ONLINE DOT - TOP LEFT                                      */
+        /* ============================================================ */
         .online-dot {
             position: absolute;
-            top: 10px;
-            left: 10px;
+            top: 8px;
+            left: 8px;
             z-index: 5;
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background: #28a745;
             border: 2.5px solid #FFFFFF;
@@ -357,20 +381,23 @@
             50% { transform: scale(1.15); opacity: 0.7; }
         }
 
+        /* ============================================================ */
+        /* CARD INFO - REDUCED PADDING                                */
+        /* ============================================================ */
         .member-card__info {
-            padding: 14px 16px 16px;
+            padding: 8px 10px 10px;
         }
 
         .member-card__name-row {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
             flex-wrap: wrap;
         }
 
         .member-card__name-row h3 {
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 18px;
+            font-size: 15px;
             font-weight: 700;
             color: #112A46;
         }
@@ -382,9 +409,9 @@
             background: #1DA1F2;
             color: #fff;
             border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            font-size: 10px;
+            width: 16px;
+            height: 16px;
+            font-size: 9px;
             font-weight: 700;
             border: 1.5px solid #fff;
             box-shadow: 0 1px 4px rgba(29, 161, 242, 0.3);
@@ -393,33 +420,36 @@
 
         .member-card__location {
             color: rgba(17, 42, 70, 0.4);
-            font-size: 13px;
-            margin-top: 2px;
+            font-size: 11px;
+            margin-top: 1px;
             font-family: "Inter", sans-serif;
         }
 
         .member-card__origin {
             color: rgba(17, 42, 70, 0.4);
-            font-size: 13px;
+            font-size: 11px;
             margin-top: 1px;
             font-family: "Inter", sans-serif;
         }
 
+        /* ============================================================ */
+        /* BUTTONS - SMALLER                                          */
+        /* ============================================================ */
         .member-card__actions {
             display: flex;
-            gap: 10px;
-            margin-top: 14px;
-            padding-top: 14px;
+            gap: 6px;
+            margin-top: 8px;
+            padding-top: 8px;
             border-top: 1px solid rgba(17, 42, 70, 0.06);
         }
 
         .member-card__actions button {
             flex: 1;
-            padding: 12px 16px;
+            padding: 8px 10px;
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: "Inter", sans-serif;
@@ -444,47 +474,54 @@
             box-shadow: 0 4px 16px rgba(17, 42, 70, 0.25);
         }
 
+        /* ============================================================ */
+        /* EMPTY STATE                                                  */
+        /* ============================================================ */
         .empty-state {
             text-align: center;
-            padding: 80px 20px;
+            padding: 60px 20px;
             color: rgba(17, 42, 70, 0.3);
             grid-column: 1 / -1;
         }
 
         .empty-state .icon {
-            font-size: 64px;
-            margin-bottom: 16px;
+            font-size: 48px;
+            margin-bottom: 12px;
         }
 
         .empty-state h3 {
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 24px;
+            font-size: 22px;
             color: #112A46;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .empty-state p {
             font-family: "Inter", sans-serif;
         }
 
+        /* ============================================================ */
+        /* PAGINATION                                                   */
+        /* ============================================================ */
         .pagination {
             display: flex;
             justify-content: center;
-            gap: 8px;
-            margin-top: 30px;
+            gap: 6px;
+            margin-top: 20px;
+            padding: 0 16px;
         }
 
         .pagination button {
-            padding: 6px 14px;
+            padding: 4px 12px;
             background: rgba(255, 255, 255, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 8px;
+            border-radius: 6px;
             color: rgba(17, 42, 70, 0.4);
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: "Inter", sans-serif;
             font-weight: 600;
-            font-size: 13px;
+            font-size: 12px;
         }
 
         .pagination button:hover {
@@ -500,6 +537,9 @@
             cursor: not-allowed;
         }
 
+        /* ============================================================ */
+        /* SHARE TOAST                                                  */
+        /* ============================================================ */
         .share-toast {
             position: fixed;
             bottom: 100px;
@@ -508,11 +548,11 @@
             background: rgba(17, 42, 70, 0.95);
             backdrop-filter: blur(12px);
             color: #fff;
-            padding: 14px 28px;
-            border-radius: 14px;
+            padding: 12px 24px;
+            border-radius: 12px;
             font-family: "Inter", sans-serif;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             z-index: 999;
             opacity: 0;
             transition: all 0.4s ease;
@@ -531,9 +571,9 @@
             background: none;
             border: none;
             color: #fff;
-            font-size: 18px;
+            font-size: 16px;
             cursor: pointer;
-            padding: 0 0 0 12px;
+            padding: 0 0 0 10px;
             opacity: 0.5;
             transition: all 0.3s ease;
         }
@@ -546,15 +586,15 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 20px;
+            padding: 6px 16px;
             background: #25D366;
             color: #fff;
             border: none;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 13px;
             cursor: pointer;
-            margin-top: 8px;
+            margin-top: 6px;
             font-family: "Inter", sans-serif;
             transition: all 0.3s ease;
         }
@@ -564,7 +604,9 @@
             box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
         }
 
-        /* ✅ FULL SCREEN PROFILE MODAL */
+        /* ============================================================ */
+        /* PROFILE MODAL - FULL DETAILS POPUP                         */
+        /* ============================================================ */
         .profile-modal {
             display: none;
             position: fixed;
@@ -590,10 +632,10 @@
         .profile-modal-content {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            border-radius: 24px;
-            max-width: 500px;
+            border-radius: 20px;
+            max-width: 480px;
             width: 100%;
-            padding: 32px 28px 28px;
+            padding: 28px 24px 24px;
             border: 1px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
             max-height: 90vh;
@@ -603,17 +645,17 @@
 
         .profile-modal-close {
             position: absolute;
-            top: 12px;
-            right: 16px;
+            top: 10px;
+            right: 14px;
             background: rgba(0, 0, 0, 0.05);
             border: none;
-            font-size: 24px;
+            font-size: 22px;
             color: #112A46;
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: "Inter", sans-serif;
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -627,18 +669,18 @@
         }
 
         .profile-modal-avatar {
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid #112A46;
-            margin: 0 auto 12px;
+            margin: 0 auto 10px;
             display: block;
         }
 
         .profile-modal-name {
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 26px;
+            font-size: 24px;
             color: #112A46;
             text-align: center;
             font-weight: 700;
@@ -649,36 +691,40 @@
             top: auto;
             right: auto;
             display: inline-block;
-            width: 22px;
-            height: 22px;
-            font-size: 12px;
+            width: 20px;
+            height: 20px;
+            font-size: 11px;
             margin-left: 6px;
+            background: #1DA1F2;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 8px rgba(29, 161, 242, 0.5);
         }
 
         .profile-modal-status {
             text-align: center;
-            font-size: 14px;
+            font-size: 13px;
             color: rgba(17, 42, 70, 0.5);
-            margin-top: 4px;
+            margin-top: 2px;
             font-family: "Inter", sans-serif;
         }
 
         .profile-modal-details {
-            margin-top: 16px;
+            margin-top: 14px;
             display: grid;
-            gap: 8px;
+            gap: 6px;
             background: rgba(17, 42, 70, 0.04);
-            padding: 14px 16px;
-            border-radius: 14px;
+            padding: 12px 14px;
+            border-radius: 12px;
         }
 
         .profile-modal-details .detail-item {
             display: flex;
             justify-content: space-between;
-            padding: 6px 0;
+            padding: 5px 0;
             border-bottom: 1px solid rgba(17, 42, 70, 0.06);
             font-family: "Inter", sans-serif;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .profile-modal-details .detail-item:last-child {
@@ -696,18 +742,18 @@
         }
 
         .profile-modal-bio {
-            margin-top: 12px;
-            padding: 12px 16px;
+            margin-top: 10px;
+            padding: 10px 14px;
             background: rgba(17, 42, 70, 0.04);
-            border-radius: 12px;
+            border-radius: 10px;
             font-family: "Inter", sans-serif;
-            font-size: 14px;
+            font-size: 13px;
             color: rgba(17, 42, 70, 0.7);
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         .profile-modal-bio .bio-label {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             color: rgba(17, 42, 70, 0.4);
             text-transform: uppercase;
@@ -721,32 +767,32 @@
             flex-wrap: wrap;
             gap: 6px;
             margin-top: 10px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .profile-modal-interests .tag {
-            padding: 4px 14px;
+            padding: 4px 12px;
             background: rgba(17, 42, 70, 0.06);
             border-radius: 50px;
-            font-size: 12px;
+            font-size: 11px;
             color: #112A46;
             font-family: "Inter", sans-serif;
             font-weight: 500;
         }
 
         .modal-photos-container {
-            margin: 12px 0 10px;
-            border-radius: 14px;
+            margin: 10px 0 8px;
+            border-radius: 12px;
             overflow: hidden;
             background: #e8ecf0;
             position: relative;
-            max-height: 300px;
+            max-height: 280px;
         }
 
         .modal-carousel-wrapper {
             position: relative;
             overflow: hidden;
-            border-radius: 14px;
+            border-radius: 12px;
         }
 
         .modal-carousel-slides {
@@ -777,9 +823,9 @@
             color: #fff;
             border: none;
             border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            font-size: 16px;
+            width: 28px;
+            height: 28px;
+            font-size: 14px;
             cursor: pointer;
             z-index: 5;
             display: flex;
@@ -792,20 +838,20 @@
             background: rgba(0, 0, 0, 0.7);
         }
 
-        .modal-carousel-btn.prev { left: 8px; }
-        .modal-carousel-btn.next { right: 8px; }
+        .modal-carousel-btn.prev { left: 6px; }
+        .modal-carousel-btn.next { right: 6px; }
 
         .modal-carousel-dots {
             display: flex;
             justify-content: center;
-            gap: 8px;
-            padding: 8px 0 4px;
+            gap: 6px;
+            padding: 6px 0 2px;
             background: transparent;
         }
 
         .modal-dot {
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
             background: rgba(17, 42, 70, 0.2);
             transition: all 0.3s ease;
@@ -814,20 +860,20 @@
 
         .modal-dot.active {
             background: #112A46;
-            width: 24px;
+            width: 18px;
             border-radius: 4px;
         }
 
         .profile-modal .btn-message-profile {
             width: 100%;
-            padding: 14px;
-            margin-top: 12px;
+            padding: 12px;
+            margin-top: 10px;
             background: linear-gradient(135deg, #112A46, #2E5A88);
             color: #fff;
             border: none;
-            border-radius: 14px;
+            border-radius: 12px;
             font-weight: 700;
-            font-size: 16px;
+            font-size: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: "Inter", sans-serif;
@@ -839,23 +885,26 @@
             box-shadow: 0 4px 16px rgba(17, 42, 70, 0.25);
         }
 
+        /* ============================================================ */
+        /* TOAST                                                       */
+        /* ============================================================ */
         .toast {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            padding: 14px 24px;
+            padding: 12px 20px;
             background: #112A46;
             color: #fff;
-            border-radius: 12px;
+            border-radius: 10px;
             font-family: "Inter", sans-serif;
             font-weight: 600;
-            font-size: 14px;
+            font-size: 13px;
             z-index: 999;
             transform: translateY(100px);
             opacity: 0;
             transition: all 0.4s ease;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            max-width: 400px;
+            max-width: 360px;
         }
 
         .toast.show {
@@ -869,134 +918,233 @@
             background: #dc3545;
         }
 
+        /* ============================================================ */
+        /* RESPONSIVE - PHONES                                         */
+        /* ============================================================ */
         @media (max-width: 768px) {
+            .members-wrapper {
+                padding: 90px 0 40px;
+            }
+
             .members-header {
-                flex-direction: column;
-                align-items: flex-start;
+                padding: 0 10px;
+                margin-bottom: 12px;
             }
+
             .members-header h1 {
-                font-size: 28px;
+                font-size: 22px;
             }
+
             .members-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
+                gap: 3px;
             }
+
+            .member-card__image-wrapper {
+                max-height: 170px;
+            }
+
             .member-card__info {
-                padding: 10px 12px 12px;
+                padding: 6px 8px 8px;
             }
+
             .member-card__name-row h3 {
-                font-size: 15px;
-            }
-            .member-card__location {
-                font-size: 11px;
-            }
-            .member-card__origin {
-                font-size: 11px;
-            }
-            .member-card__actions button {
                 font-size: 13px;
-                padding: 10px 12px;
             }
-            .carousel-btn {
-                width: 22px;
-                height: 22px;
-                font-size: 11px;
-            }
-            .cb-shell-header__inner {
-                height: 60px;
-                padding: 0 12px;
-            }
-            .cb-shell-brand {
-                font-size: 18px;
-            }
-            .verified-badge {
-                width: 20px;
-                height: 20px;
-                top: 8px;
-                right: 8px;
-            }
-            .verified-badge svg {
-                width: 12px;
-                height: 12px;
-            }
-            .online-dot {
+
+            .verified-badge-name {
                 width: 14px;
                 height: 14px;
-                top: 8px;
-                left: 8px;
+                font-size: 8px;
             }
-            .profile-modal-content {
-                padding: 24px 16px 20px;
-                max-width: 100%;
-                margin: 10px;
-                border-radius: 16px;
-            }
-        }
 
-        @media (max-width: 480px) {
-            .members-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
-            }
-            .member-card__info {
-                padding: 8px 10px 10px;
-            }
-            .member-card__name-row h3 {
-                font-size: 13px;
-            }
             .member-card__location {
                 font-size: 10px;
             }
+
             .member-card__origin {
                 font-size: 10px;
             }
+
             .member-card__actions {
                 gap: 4px;
-                margin-top: 8px;
-                padding-top: 8px;
+                margin-top: 6px;
+                padding-top: 6px;
             }
+
             .member-card__actions button {
-                font-size: 11px;
-                padding: 8px 10px;
-            }
-            .carousel-btn {
-                width: 20px;
-                height: 20px;
                 font-size: 10px;
+                padding: 6px 8px;
+                border-radius: 6px;
             }
+
             .verified-badge {
                 width: 18px;
                 height: 18px;
                 top: 6px;
                 right: 6px;
             }
+
             .verified-badge svg {
                 width: 10px;
                 height: 10px;
             }
+
             .online-dot {
                 width: 12px;
                 height: 12px;
                 top: 6px;
                 left: 6px;
             }
-            .verified-badge-name {
-                width: 15px;
-                height: 15px;
-                font-size: 8px;
+
+            .carousel-btn {
+                width: 20px;
+                height: 20px;
+                font-size: 10px;
             }
+
             .profile-modal-content {
-                padding: 20px 14px 16px;
+                padding: 20px 16px 16px;
                 max-width: 100%;
                 margin: 10px;
                 border-radius: 16px;
             }
+
             .profile-modal-avatar {
-                width: 80px;
-                height: 80px;
+                width: 75px;
+                height: 75px;
             }
+
             .profile-modal-name {
-                font-size: 22px;
+                font-size: 20px;
+            }
+
+            .toast {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                text-align: center;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .members-wrapper {
+                padding: 80px 0 30px;
+            }
+
+            .members-header h1 {
+                font-size: 18px;
+            }
+
+            .members-header .member-count {
+                font-size: 12px;
+            }
+
+            .view-toggle button {
+                font-size: 11px;
+                padding: 4px 10px;
+            }
+
+            .members-grid {
+                gap: 2px;
+            }
+
+            .member-card__image-wrapper {
+                max-height: 140px;
+            }
+
+            .member-card__info {
+                padding: 4px 6px 6px;
+            }
+
+            .member-card__name-row h3 {
+                font-size: 11px;
+            }
+
+            .verified-badge-name {
+                width: 12px;
+                height: 12px;
+                font-size: 7px;
+            }
+
+            .member-card__location {
+                font-size: 9px;
+            }
+
+            .member-card__origin {
+                font-size: 9px;
+            }
+
+            .member-card__actions button {
+                font-size: 9px;
+                padding: 4px 6px;
+                border-radius: 4px;
+            }
+
+            .verified-badge {
+                width: 16px;
+                height: 16px;
+                top: 4px;
+                right: 4px;
+            }
+
+            .verified-badge svg {
+                width: 9px;
+                height: 9px;
+            }
+
+            .online-dot {
+                width: 10px;
+                height: 10px;
+                top: 4px;
+                left: 4px;
+                border-width: 2px;
+            }
+
+            .carousel-btn {
+                width: 18px;
+                height: 18px;
+                font-size: 9px;
+            }
+
+            .profile-modal-content {
+                padding: 16px 12px 12px;
+                margin: 8px;
+                border-radius: 14px;
+            }
+
+            .profile-modal-avatar {
+                width: 60px;
+                height: 60px;
+            }
+
+            .profile-modal-name {
+                font-size: 18px;
+            }
+
+            .profile-modal-details .detail-item {
+                font-size: 12px;
+                padding: 4px 0;
+            }
+
+            .profile-modal-bio {
+                font-size: 12px;
+                padding: 8px 10px;
+            }
+
+            .modal-photos-container {
+                max-height: 200px;
+            }
+
+            .modal-carousel-btn {
+                width: 24px;
+                height: 24px;
+                font-size: 12px;
+            }
+
+            .pagination button {
+                font-size: 11px;
+                padding: 3px 10px;
             }
         }
 
@@ -1007,6 +1155,9 @@
 </head>
 <body>
 
+    <!-- ============================================================ -->
+    <!-- HEADER                                                        -->
+    <!-- ============================================================ -->
     <header class="cb-shell-header" role="banner">
         <div class="cb-shell-header__inner">
             <a class="cb-shell-brand" href="/">Classy<span>Date</span></a>
@@ -1019,6 +1170,9 @@
         </div>
     </header>
 
+    <!-- ============================================================ -->
+    <!-- MAIN CONTENT                                                  -->
+    <!-- ============================================================ -->
     <main class="members-wrapper">
         <div class="members-header">
             <div>
@@ -1035,6 +1189,9 @@
         <div class="pagination" id="pagination"></div>
     </main>
 
+    <!-- ============================================================ -->
+    <!-- SHARE TOAST                                                   -->
+    <!-- ============================================================ -->
     <div class="share-toast" id="share-toast">
         <div style="display:flex;align-items:center;justify-content:space-between;">
             <span>📤 Share this member via WhatsApp</span>
@@ -1045,7 +1202,9 @@
         </button>
     </div>
 
-    <!-- ✅ PROFILE MODAL - Full Details Popup -->
+    <!-- ============================================================ -->
+    <!-- PROFILE MODAL - FULL DETAILS POPUP                          -->
+    <!-- ============================================================ -->
     <div class="profile-modal" id="profile-modal">
         <div class="profile-modal-content">
             <button class="profile-modal-close" onclick="closeProfileModal()">✕</button>
@@ -1105,8 +1264,14 @@
         </div>
     </div>
 
+    <!-- ============================================================ -->
+    <!-- TOAST                                                       -->
+    <!-- ============================================================ -->
     <div class="toast" id="toast"></div>
 
+    <!-- ============================================================ -->
+    <!-- SCRIPTS                                                      -->
+    <!-- ============================================================ -->
     <script type="importmap">
         {
             "imports": {
@@ -1152,6 +1317,9 @@
             }
         }
 
+        // ============================================================
+        // MENU FUNCTIONS
+        // ============================================================
         window.toggleMenu = function() {
             const dropdown = document.getElementById('menuDropdown');
             dropdown.classList.toggle('show');
@@ -1174,7 +1342,9 @@
             window.location.href = 'login.html';
         }
 
-        // ✅ ONLY LOAD VERIFIED MEMBERS (ADMIN-CREATED)
+        // ============================================================
+        // LOAD MEMBERS - ONLY VERIFIED (ADMIN-CREATED)
+        // ============================================================
         async function loadMembers() {
             try {
                 const { data, error } = await supabase
@@ -1208,6 +1378,9 @@
             }
         }
 
+        // ============================================================
+        // CHANGE PHOTO
+        // ============================================================
         window.changePhoto = function(memberId, direction) {
             const wrapper = document.querySelector(`.member-card__image-wrapper[data-member="${memberId}"]`);
             if (!wrapper) return;
@@ -1228,6 +1401,9 @@
             photoIndexMap[memberId] = newIndex;
         }
 
+        // ============================================================
+        // START CAROUSEL - EACH CARD DIFFERENT TIMING
+        // ============================================================
         function startCarousel(memberId) {
             if (carouselIntervals[memberId]) clearInterval(carouselIntervals[memberId]);
             
@@ -1251,13 +1427,16 @@
             }
         }
 
+        // ============================================================
+        // RENDER MEMBERS
+        // ============================================================
         function renderMembers(members) {
             console.log('🎨 Rendering members:', members.length);
             
             if (isLoading) {
                 grid.innerHTML = `
-                    <div style="grid-column:1/-1;text-align:center;padding:60px;color:rgba(17,42,70,0.3);">
-                        <span style="display:inline-block;width:32px;height:32px;border:3px solid rgba(17,42,70,0.1);border-top-color:#112A46;border-radius:50%;animation:spin 0.8s linear infinite;"></span>
+                    <div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:rgba(17,42,70,0.3);">
+                        <span style="display:inline-block;width:30px;height:30px;border:3px solid rgba(17,42,70,0.1);border-top-color:#112A46;border-radius:50%;animation:spin 0.8s linear infinite;"></span>
                         <br><br>Loading members...
                     </div>
                 `;
@@ -1340,7 +1519,7 @@
                             <div class="member-card__location">📍 ${member.location || 'Location Unknown'}</div>
                             <div class="member-card__origin">🌍 Origin: ${member.origin || 'Not specified'}</div>
                             <div class="member-card__actions">
-                                <button class="btn-view" onclick="event.stopPropagation(); window.openProfileModal('${member.id}')">👤 View Profile</button>
+                                <button class="btn-view" onclick="event.stopPropagation(); window.openProfileModal('${member.id}')">👤 View</button>
                                 <button class="btn-message" onclick="event.stopPropagation(); window.sendMessage('${member.id}')">💬 Message</button>
                             </div>
                         </div>
@@ -1359,6 +1538,9 @@
             updatePagination(members.length);
         }
 
+        // ============================================================
+        // LONG PRESS TO SHARE
+        // ============================================================
         let longPressTimer = null;
         let isLongPress = false;
 
@@ -1460,6 +1642,9 @@ https://classydate.com/profile/${member.id}
             showToast('📤 Opening WhatsApp...', 'success');
         }
 
+        // ============================================================
+        // VIEW FUNCTIONS
+        // ============================================================
         window.setView = function(view) {
             currentView = view;
             grid.className = 'members-grid' + (view === 'list' ? ' list-view' : '');
@@ -1496,7 +1681,9 @@ https://classydate.com/profile/${member.id}
             renderMembers(filteredMembers);
         }
 
-        // ✅ OPEN PROFILE MODAL - FULL DETAILS
+        // ============================================================
+        // PROFILE MODAL - FULL DETAILS
+        // ============================================================
         window.openProfileModal = function(id) {
             const member = allMembers.find(m => m.id === id);
             if (!member) {
@@ -1524,10 +1711,10 @@ https://classydate.com/profile/${member.id}
                 this.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(memberName)}&background=112A46&color=fff&size=200`;
             };
 
-            // ✅ Name with verified badge
+            // Name with verified badge
             let nameHTML = memberName;
             if (member.verified) {
-                nameHTML += ' <span class="verified-badge" style="position:relative;top:auto;right:auto;display:inline-block;width:22px;height:22px;font-size:12px;margin-left:6px;background:#1DA1F2;border-radius:50%;border:2px solid #fff;box-shadow:0 2px 8px rgba(29,161,242,0.5);">✓</span>';
+                nameHTML += ' <span class="verified-badge" style="position:relative;top:auto;right:auto;display:inline-block;width:20px;height:20px;font-size:11px;margin-left:6px;background:#1DA1F2;border-radius:50%;border:2px solid #fff;box-shadow:0 2px 8px rgba(29,161,242,0.5);">✓</span>';
             }
             if (member.premium) {
                 nameHTML += ' ⭐';
@@ -1536,7 +1723,7 @@ https://classydate.com/profile/${member.id}
 
             document.getElementById('modal-status-text').textContent = `📍 ${member.location || 'Location Unknown'}`;
 
-            // ✅ All details
+            // All details
             document.getElementById('modal-age').textContent = member.age || '—';
             document.getElementById('modal-gender').textContent = member.gender || '—';
             document.getElementById('modal-location').textContent = member.location || '—';
@@ -1545,11 +1732,11 @@ https://classydate.com/profile/${member.id}
             document.getElementById('modal-verified').textContent = member.verified ? '✅ Yes' : '❌ No';
             document.getElementById('modal-premium').textContent = member.premium ? '⭐ Yes' : '—';
 
-            // ✅ Bio
+            // Bio
             const bioText = member.about_me || member.bio || 'No bio available.';
             document.getElementById('modal-bio-text').textContent = bioText;
 
-            // ✅ Interests
+            // Interests
             const interestsContainer = document.getElementById('modal-interests');
             if (member.interests && member.interests.length > 0) {
                 interestsContainer.innerHTML = member.interests.map(i => `<span class="tag">#${i}</span>`).join('');
@@ -1557,7 +1744,7 @@ https://classydate.com/profile/${member.id}
                 interestsContainer.innerHTML = '<span style="color:rgba(17,42,70,0.3);font-size:14px;">No interests listed</span>';
             }
 
-            // ✅ Photos Carousel
+            // Photos Carousel
             const slidesContainer = document.getElementById('modal-carousel-slides');
             const dotsContainer = document.getElementById('modal-carousel-dots');
             
@@ -1701,6 +1888,9 @@ https://classydate.com/profile/${member.id}
             window.location.href = `chat.html?user=${id}&name=${encodeURIComponent(member.name)}`;
         }
 
+        // ============================================================
+        // TOAST
+        // ============================================================
         let toastTimeout;
 
         function showToast(message, type = 'success') {
@@ -1714,15 +1904,21 @@ https://classydate.com/profile/${member.id}
             }, 3000);
         }
 
+        // ============================================================
+        // INIT
+        // ============================================================
         loadMembers();
 
-        console.log('💎 ClassyDate Members Page - FINAL!');
-        console.log('✅ View Profile shows ALL member details');
-        console.log('✅ Cards full width');
-        console.log('✅ Only admin-created members');
+        console.log('💎 ClassyDate Members Page - FINAL COMPLETE!');
+        console.log('✅ Cards touch left and right edges (NO gaps)');
+        console.log('✅ No dot indicators on cards');
+        console.log('✅ Cards are shorter (max-height: 200px)');
+        console.log('✅ View Profile opens full details popup');
+        console.log('✅ Only admin-created members (verified=true)');
         console.log('✅ Random online status');
         console.log('✅ Instagram verified badge');
-        console.log('✅ Long press to share');
+        console.log('✅ Long press to share via WhatsApp');
+        console.log('✅ Each card slides independently');
     </script>
 
 </body>
