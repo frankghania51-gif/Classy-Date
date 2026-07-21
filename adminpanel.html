@@ -21,8 +21,8 @@
 
         body {
             font-family: "Inter", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-            background: #ACC8E5;
-            color: #112A46;
+            background: #f3e8ff;
+            color: #4a1a6b;
             min-height: 100vh;
         }
 
@@ -37,9 +37,9 @@
             left: 0;
             right: 0;
             z-index: 100;
-            background: rgba(172, 200, 229, 0.92);
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(17, 42, 70, 0.08);
+            border-bottom: 1px solid rgba(108, 60, 179, 0.12);
         }
 
         .cb-shell-header__inner {
@@ -58,12 +58,12 @@
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
             font-size: 22px;
             font-weight: 700;
-            color: #112A46;
+            color: #4a1a6b;
         }
         .cb-shell-brand span {
             font-family: "Inter", sans-serif;
             font-weight: 300;
-            color: #2E5A88;
+            color: #6c3cb3;
         }
 
         /* ============================================================ */
@@ -80,13 +80,13 @@
             cursor: pointer;
             padding: 8px 12px;
             font-size: 28px;
-            color: #112A46;
+            color: #4a1a6b;
             transition: all 0.3s ease;
             border-radius: 8px;
         }
 
         .menu-btn:hover {
-            background: rgba(17, 42, 70, 0.08);
+            background: rgba(108, 60, 179, 0.08);
         }
 
         .menu-dropdown {
@@ -119,12 +119,12 @@
             align-items: center;
             gap: 10px;
             padding: 12px 20px;
-            color: #112A46;
+            color: #4a1a6b;
             font-size: 14px;
             font-weight: 500;
             font-family: "Inter", sans-serif;
             transition: all 0.2s ease;
-            border-bottom: 1px solid rgba(17, 42, 70, 0.04);
+            border-bottom: 1px solid rgba(108, 60, 179, 0.06);
         }
 
         .menu-dropdown a:last-child {
@@ -132,12 +132,12 @@
         }
 
         .menu-dropdown a:hover {
-            background: rgba(17, 42, 70, 0.06);
+            background: rgba(108, 60, 179, 0.06);
         }
 
         .menu-dropdown .menu-divider {
             height: 1px;
-            background: rgba(17, 42, 70, 0.06);
+            background: rgba(108, 60, 179, 0.06);
             margin: 4px 0;
         }
 
@@ -155,7 +155,7 @@
         }
 
         .admin-badge-nav {
-            background: #112A46;
+            background: #6c3cb3;
             color: #fff;
             padding: 4px 14px;
             border-radius: 50px;
@@ -184,13 +184,13 @@
         .admin-header h1 {
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
             font-size: 32px;
-            color: #112A46;
+            color: #4a1a6b;
             font-weight: 700;
         }
 
         .admin-header .btn-add {
             padding: 10px 24px;
-            background: linear-gradient(135deg, #112A46, #2E5A88);
+            background: linear-gradient(135deg, #6c3cb3, #4a1a6b);
             color: #fff;
             border: none;
             border-radius: 12px;
@@ -206,7 +206,8 @@
 
         .admin-header .btn-add:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(17, 42, 70, 0.25);
+            box-shadow: 0 8px 30px rgba(108, 60, 179, 0.35);
+            background: linear-gradient(135deg, #4a1a6b, #6c3cb3);
         }
 
         /* ============================================================ */
@@ -218,19 +219,19 @@
             gap: 10px;
             margin-bottom: 20px;
             padding: 14px 18px;
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(12px);
             border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.20);
+            border: 1px solid rgba(108, 60, 179, 0.12);
         }
 
         .admin-toolbar input {
             flex: 1;
             padding: 10px 16px;
-            background: rgba(255, 255, 255, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(108, 60, 179, 0.15);
             border-radius: 8px;
-            color: #112A46;
+            color: #4a1a6b;
             font-size: 14px;
             font-family: "Inter", sans-serif;
             outline: none;
@@ -239,23 +240,23 @@
         }
 
         .admin-toolbar input::placeholder {
-            color: rgba(17, 42, 70, 0.3);
+            color: rgba(74, 26, 107, 0.3);
         }
 
         .admin-toolbar input:focus {
-            border-color: #112A46;
-            background: rgba(255, 255, 255, 0.6);
-            box-shadow: 0 0 0 4px rgba(17, 42, 70, 0.06);
+            border-color: #6c3cb3;
+            background: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 0 0 4px rgba(108, 60, 179, 0.08);
         }
 
         /* ============================================================ */
         /* TABLE WRAPPER                                               */
         /* ============================================================ */
         .admin-table-wrapper {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(12px);
             border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.20);
+            border: 1px solid rgba(108, 60, 179, 0.12);
             overflow: hidden;
         }
 
@@ -271,17 +272,17 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: rgba(17, 42, 70, 0.4);
-            background: rgba(255, 255, 255, 0.08);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            color: rgba(74, 26, 107, 0.4);
+            background: rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(108, 60, 179, 0.08);
             font-family: "Inter", sans-serif;
         }
 
         .admin-table td {
             padding: 10px 16px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            border-bottom: 1px solid rgba(108, 60, 179, 0.04);
             font-size: 14px;
-            color: rgba(17, 42, 70, 0.8);
+            color: rgba(74, 26, 107, 0.8);
             vertical-align: middle;
         }
 
@@ -290,7 +291,7 @@
         }
 
         .admin-table tr:hover td {
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .admin-table .member-cell {
@@ -304,18 +305,18 @@
             height: 40px;
             border-radius: 50%;
             object-fit: cover;
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(108, 60, 179, 0.15);
         }
 
         .admin-table .member-cell .name {
             font-weight: 600;
-            color: #112A46;
+            color: #4a1a6b;
         }
 
         .admin-table .member-cell .email {
             font-size: 12px;
-            color: rgba(17, 42, 70, 0.4);
+            color: rgba(74, 26, 107, 0.4);
         }
 
         .badge-small {
@@ -357,7 +358,7 @@
         }
 
         .status-dot.offline {
-            background: rgba(17, 42, 70, 0.2);
+            background: rgba(74, 26, 107, 0.2);
         }
 
         @keyframes pulse-dot {
@@ -386,12 +387,12 @@
         }
 
         .btn-edit {
-            background: rgba(17, 42, 70, 0.08);
-            color: #112A46;
+            background: rgba(108, 60, 179, 0.08);
+            color: #4a1a6b;
         }
 
         .btn-edit:hover {
-            background: rgba(17, 42, 70, 0.18);
+            background: rgba(108, 60, 179, 0.18);
             transform: translateY(-2px);
         }
 
@@ -410,15 +411,15 @@
             justify-content: center;
             gap: 6px;
             padding: 14px 16px;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-top: 1px solid rgba(108, 60, 179, 0.08);
         }
 
         .admin-pagination button {
             padding: 5px 12px;
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(108, 60, 179, 0.08);
             border-radius: 6px;
-            color: rgba(17, 42, 70, 0.4);
+            color: rgba(74, 26, 107, 0.4);
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: "Inter", sans-serif;
@@ -427,13 +428,13 @@
         }
 
         .admin-pagination button:hover {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.5);
         }
 
         .admin-pagination button.active {
-            background: #112A46;
+            background: #6c3cb3;
             color: #fff;
-            border-color: #112A46;
+            border-color: #6c3cb3;
         }
 
         .admin-pagination button:disabled {
@@ -449,7 +450,7 @@
         }
 
         /* ============================================================ */
-        /* MODAL - WITH UPDATED FIELDS                                */
+        /* MODAL                                                       */
         /* ============================================================ */
         .modal-overlay {
             display: none;
@@ -496,26 +497,26 @@
         .modal .modal-header h2 {
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
             font-size: 24px;
-            color: #112A46;
+            color: #4a1a6b;
         }
 
         .modal .modal-close {
             background: none;
             border: none;
             font-size: 24px;
-            color: rgba(17, 42, 70, 0.3);
+            color: rgba(74, 26, 107, 0.3);
             cursor: pointer;
             transition: all 0.3s ease;
             padding: 0 8px;
         }
 
         .modal .modal-close:hover {
-            color: #112A46;
+            color: #4a1a6b;
             transform: rotate(90deg);
         }
 
         .modal .modal-subtitle {
-            color: rgba(17, 42, 70, 0.4);
+            color: rgba(74, 26, 107, 0.4);
             font-size: 14px;
             margin-bottom: 20px;
             font-family: "Inter", sans-serif;
@@ -529,7 +530,7 @@
             display: block;
             font-size: 13px;
             font-weight: 600;
-            color: rgba(17, 42, 70, 0.6);
+            color: rgba(74, 26, 107, 0.6);
             margin-bottom: 4px;
             font-family: "Inter", sans-serif;
         }
@@ -544,9 +545,9 @@
             width: 100%;
             padding: 10px 14px;
             background: rgba(255, 255, 255, 0.4);
-            border: 1px solid rgba(17, 42, 70, 0.1);
+            border: 1px solid rgba(108, 60, 179, 0.1);
             border-radius: 8px;
-            color: #112A46;
+            color: #4a1a6b;
             font-size: 14px;
             font-family: "Inter", sans-serif;
             outline: none;
@@ -556,9 +557,9 @@
         .modal .form-group input:focus,
         .modal .form-group select:focus,
         .modal .form-group textarea:focus {
-            border-color: #112A46;
+            border-color: #6c3cb3;
             background: rgba(255, 255, 255, 0.7);
-            box-shadow: 0 0 0 4px rgba(17, 42, 70, 0.06);
+            box-shadow: 0 0 0 4px rgba(108, 60, 179, 0.08);
         }
 
         .modal .form-group textarea {
@@ -579,13 +580,13 @@
 
         .file-upload-section .hint {
             font-size: 12px;
-            color: rgba(17, 42, 70, 0.4);
+            color: rgba(74, 26, 107, 0.4);
             margin-bottom: 6px;
             font-family: "Inter", sans-serif;
         }
 
         .file-upload-zone {
-            border: 2px dashed rgba(17, 42, 70, 0.15);
+            border: 2px dashed rgba(108, 60, 179, 0.15);
             border-radius: 12px;
             padding: 20px;
             text-align: center;
@@ -597,7 +598,7 @@
         }
 
         .file-upload-zone:hover {
-            border-color: #112A46;
+            border-color: #6c3cb3;
             background: rgba(255, 255, 255, 0.4);
         }
 
@@ -608,7 +609,7 @@
         }
 
         .file-upload-zone p {
-            color: rgba(17, 42, 70, 0.4);
+            color: rgba(74, 26, 107, 0.4);
             font-size: 13px;
             font-family: "Inter", sans-serif;
         }
@@ -628,14 +629,14 @@
             margin-top: 8px;
             width: 100%;
             height: 4px;
-            background: rgba(17, 42, 70, 0.1);
+            background: rgba(108, 60, 179, 0.1);
             border-radius: 4px;
             overflow: hidden;
         }
 
         .file-upload-zone .upload-progress .bar {
             height: 100%;
-            background: #112A46;
+            background: #6c3cb3;
             width: 0%;
             border-radius: 4px;
             transition: width 0.3s ease;
@@ -663,7 +664,7 @@
             border-radius: 8px;
             overflow: hidden;
             position: relative;
-            border: 1px solid rgba(17, 42, 70, 0.1);
+            border: 1px solid rgba(108, 60, 179, 0.1);
         }
 
         .uploaded-image-item img {
@@ -708,23 +709,23 @@
         }
 
         .modal .btn-modal-save {
-            background: linear-gradient(135deg, #112A46, #2E5A88);
+            background: linear-gradient(135deg, #6c3cb3, #4a1a6b);
             color: #fff;
         }
 
         .modal .btn-modal-save:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(17, 42, 70, 0.3);
+            box-shadow: 0 8px 30px rgba(108, 60, 179, 0.3);
         }
 
         .modal .btn-modal-cancel {
-            background: rgba(17, 42, 70, 0.06);
-            color: rgba(17, 42, 70, 0.5);
-            border: 1px solid rgba(17, 42, 70, 0.08);
+            background: rgba(108, 60, 179, 0.06);
+            color: rgba(74, 26, 107, 0.5);
+            border: 1px solid rgba(108, 60, 179, 0.08);
         }
 
         .modal .btn-modal-cancel:hover {
-            background: rgba(17, 42, 70, 0.12);
+            background: rgba(108, 60, 179, 0.12);
         }
 
         /* ============================================================ */
@@ -751,7 +752,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            color: #112A46;
+            color: #4a1a6b;
         }
 
         .toast.show {
@@ -820,14 +821,14 @@
             .admin-table tbody tr {
                 display: block;
                 padding: 14px 16px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-                background: rgba(255, 255, 255, 0.05);
+                border-bottom: 1px solid rgba(108, 60, 179, 0.08);
+                background: rgba(255, 255, 255, 0.1);
                 margin: 4px 0;
                 border-radius: 12px;
             }
 
             .admin-table tbody tr:hover {
-                background: rgba(255, 255, 255, 0.12);
+                background: rgba(255, 255, 255, 0.2);
             }
 
             .admin-table tbody td {
@@ -846,7 +847,7 @@
             .admin-table tbody td::before {
                 content: attr(data-label);
                 font-weight: 600;
-                color: rgba(17, 42, 70, 0.4);
+                color: rgba(74, 26, 107, 0.4);
                 font-size: 12px;
             }
 
@@ -958,7 +959,7 @@
 <body>
 
     <!-- ============================================================ -->
-    /* HEADER - WITH 3-LINE MENU                                    */
+    <!-- HEADER - WITH 3-LINE MENU                                    -->
     <!-- ============================================================ -->
     <header class="cb-shell-header" role="banner">
         <div class="cb-shell-header__inner">
@@ -990,7 +991,7 @@
     </header>
 
     <!-- ============================================================ -->
-    /* ADMIN PANEL                                                   */
+    <!-- ADMIN PANEL                                                   -->
     <!-- ============================================================ -->
     <main class="admin-wrapper" id="admin-wrapper">
         <div class="admin-header">
@@ -1018,8 +1019,8 @@
                 </thead>
                 <tbody id="admin-table-body">
                     <tr>
-                        <td colspan="6" style="text-align:center;padding:40px;color:rgba(17,42,70,0.3);">
-                            <span style="display:inline-block;width:24px;height:24px;border:3px solid rgba(17,42,70,0.1);border-top-color:#112A46;border-radius:50%;animation:spin 0.8s linear infinite;"></span>
+                        <td colspan="6" style="text-align:center;padding:40px;color:rgba(74,26,107,0.3);">
+                            <span style="display:inline-block;width:24px;height:24px;border:3px solid rgba(108,60,179,0.1);border-top-color:#6c3cb3;border-radius:50%;animation:spin 0.8s linear infinite;"></span>
                             <br><br>Loading members from Supabase...
                         </td>
                     </tr>
@@ -1043,8 +1044,8 @@
                 </thead>
                 <tbody id="users-table-body">
                     <tr>
-                        <td colspan="6" style="text-align:center;padding:40px;color:rgba(17,42,70,0.3);">
-                            <span style="display:inline-block;width:24px;height:24px;border:3px solid rgba(17,42,70,0.1);border-top-color:#112A46;border-radius:50%;animation:spin 0.8s linear infinite;"></span>
+                        <td colspan="6" style="text-align:center;padding:40px;color:rgba(74,26,107,0.3);">
+                            <span style="display:inline-block;width:24px;height:24px;border:3px solid rgba(108,60,179,0.1);border-top-color:#6c3cb3;border-radius:50%;animation:spin 0.8s linear infinite;"></span>
                             <br><br>Loading users...
                         </td>
                     </tr>
@@ -1055,7 +1056,7 @@
     </main>
 
     <!-- ============================================================ -->
-    /* MODAL - ADD/EDIT MEMBER (UPDATED FIELDS)                     */
+    <!-- MODAL - ADD/EDIT MEMBER                                     -->
     <!-- ============================================================ -->
     <div class="modal-overlay" id="modal-overlay">
         <div class="modal">
@@ -1089,25 +1090,21 @@
                     </div>
                 </div>
 
-                <!-- ✅ NEW: Current Location (was Location) -->
                 <div class="form-group">
                     <label for="form-current-location">Current Location</label>
                     <input type="text" id="form-current-location" placeholder="New York, USA">
                 </div>
 
-                <!-- ✅ NEW: Home Country -->
                 <div class="form-group">
                     <label for="form-home-country">Home Country</label>
                     <input type="text" id="form-home-country" placeholder="Zimbabwe">
                 </div>
 
-                <!-- About Me (was Bio) -->
                 <div class="form-group">
                     <label for="form-bio">About Me</label>
                     <textarea id="form-bio" placeholder="Write a short bio about this member..."></textarea>
                 </div>
 
-                <!-- Looking For -->
                 <div class="form-group">
                     <label for="form-looking">Looking For</label>
                     <input type="text" id="form-looking" placeholder="e.g. Serious Relationship, Friendship, Casual Dating">
@@ -1121,7 +1118,7 @@
                     <div class="file-upload-zone" id="file-upload-zone">
                         <span class="icon">📸</span>
                         <p>Tap to select photos</p>
-                        <p style="font-size:11px;color:rgba(17,42,70,0.3);">JPG, PNG, GIF up to 5MB each</p>
+                        <p style="font-size:11px;color:rgba(74,26,107,0.3);">JPG, PNG, GIF up to 5MB each</p>
                         <input type="file" id="file-input" accept="image/*" multiple onchange="handleFileSelect(event)">
                         <div class="upload-progress">
                             <div class="bar" id="upload-progress-bar"></div>
@@ -1251,7 +1248,7 @@
                 document.getElementById('page-title').textContent = 'Admin Panel';
                 document.getElementById('add-member-btn').style.display = 'flex';
                 document.getElementById('admin-toolbar').style.display = 'flex';
-                document.getElementById('tab-members-link').style.background = 'rgba(17,42,70,0.06)';
+                document.getElementById('tab-members-link').style.background = 'rgba(108,60,179,0.08)';
                 document.getElementById('tab-users-link').style.background = 'none';
                 renderTable();
                 renderPagination();
@@ -1261,7 +1258,7 @@
                 document.getElementById('page-title').textContent = 'Users';
                 document.getElementById('add-member-btn').style.display = 'none';
                 document.getElementById('admin-toolbar').style.display = 'none';
-                document.getElementById('tab-users-link').style.background = 'rgba(17,42,70,0.06)';
+                document.getElementById('tab-users-link').style.background = 'rgba(108,60,179,0.08)';
                 document.getElementById('tab-members-link').style.background = 'none';
                 renderUsersTable();
                 renderUsersPagination();
@@ -1345,8 +1342,8 @@
             if (isLoading) {
                 tbody.innerHTML = `
                     <tr>
-                        <td colspan="6" style="text-align:center;padding:40px;color:rgba(17,42,70,0.3);">
-                            <span style="display:inline-block;width:24px;height:24px;border:3px solid rgba(17,42,70,0.1);border-top-color:#112A46;border-radius:50%;animation:spin 0.8s linear infinite;"></span>
+                        <td colspan="6" style="text-align:center;padding:40px;color:rgba(74,26,107,0.3);">
+                            <span style="display:inline-block;width:24px;height:24px;border:3px solid rgba(108,60,179,0.1);border-top-color:#6c3cb3;border-radius:50%;animation:spin 0.8s linear infinite;"></span>
                             <br><br>Loading members from Supabase...
                         </td>
                     </tr>
@@ -1361,10 +1358,10 @@
                 tbody.innerHTML = `
                     <tr>
                         <td colspan="6">
-                            <div style="text-align:center;padding:40px;color:rgba(17,42,70,0.3);">
+                            <div style="text-align:center;padding:40px;color:rgba(74,26,107,0.3);">
                                 <div style="font-size:48px;margin-bottom:12px;">👤</div>
-                                <h3 style="color:#112A46;font-size:20px;font-family:'Playfair Display',serif;">No members found</h3>
-                                <p style="color:rgba(17,42,70,0.4);">Try adjusting your search or add a new member.</p>
+                                <h3 style="color:#4a1a6b;font-size:20px;font-family:'Playfair Display',serif;">No members found</h3>
+                                <p style="color:rgba(74,26,107,0.4);">Try adjusting your search or add a new member.</p>
                             </div>
                         </td>
                     </tr>
@@ -1373,7 +1370,7 @@
             }
 
             tbody.innerHTML = pageMembers.map(m => {
-                let mainPhoto = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(m.name || 'User') + '&background=112A46&color=fff&size=100';
+                let mainPhoto = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(m.name || 'User') + '&background=6c3cb3&color=fff&size=100';
                 if (m.photo_file_ids && m.photo_file_ids.length > 0) {
                     const fileId = m.photo_file_ids[0];
                     const { data } = supabase.storage.from('member_photos').getPublicUrl(fileId);
@@ -1387,10 +1384,9 @@
                 const badgesHTML = `
                     ${m.verified ? '<span class="badge-small badge-small--verified">✅ Verified</span>' : '<span class="badge-small badge-small--pending">⏳ Pending</span>'}
                     ${m.premium ? '<span class="badge-small badge-small--premium">⭐ Premium</span>' : ''}
-                    ${totalPhotos > 0 ? `<span class="badge-small" style="background:rgba(17,42,70,0.06);color:#112A46;">📸 ${totalPhotos}</span>` : ''}
+                    ${totalPhotos > 0 ? `<span class="badge-small" style="background:rgba(108,60,179,0.06);color:#4a1a6b;">📸 ${totalPhotos}</span>` : ''}
                 `;
 
-                // ✅ Updated to show current_location and home_country
                 const locationDisplay = m.current_location || m.location || '—';
                 const homeDisplay = m.home_country || m.origin || '—';
 
@@ -1398,7 +1394,7 @@
                     <tr>
                         <td data-label="Member">
                             <div class="member-cell">
-                                <img src="${mainPhoto}" alt="${m.name}" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(m.name || 'User')}&background=112A46&color=fff&size=100'">
+                                <img src="${mainPhoto}" alt="${m.name}" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(m.name || 'User')}&background=6c3cb3&color=fff&size=100'">
                                 <div>
                                     <div class="name">${m.name || 'Unknown'}</div>
                                     <div class="email">${m.email || 'No email'}</div>
@@ -1427,8 +1423,8 @@
             if (isLoadingUsers) {
                 usersTbody.innerHTML = `
                     <tr>
-                        <td colspan="6" style="text-align:center;padding:40px;color:rgba(17,42,70,0.3);">
-                            <span style="display:inline-block;width:24px;height:24px;border:3px solid rgba(17,42,70,0.1);border-top-color:#112A46;border-radius:50%;animation:spin 0.8s linear infinite;"></span>
+                        <td colspan="6" style="text-align:center;padding:40px;color:rgba(74,26,107,0.3);">
+                            <span style="display:inline-block;width:24px;height:24px;border:3px solid rgba(108,60,179,0.1);border-top-color:#6c3cb3;border-radius:50%;animation:spin 0.8s linear infinite;"></span>
                             <br><br>Loading users...
                         </td>
                     </tr>
@@ -1443,10 +1439,10 @@
                 usersTbody.innerHTML = `
                     <tr>
                         <td colspan="6">
-                            <div style="text-align:center;padding:40px;color:rgba(17,42,70,0.3);">
+                            <div style="text-align:center;padding:40px;color:rgba(74,26,107,0.3);">
                                 <div style="font-size:48px;margin-bottom:12px;">👤</div>
-                                <h3 style="color:#112A46;font-size:20px;font-family:'Playfair Display',serif;">No users found</h3>
-                                <p style="color:rgba(17,42,70,0.4);">No registered users yet.</p>
+                                <h3 style="color:#4a1a6b;font-size:20px;font-family:'Playfair Display',serif;">No users found</h3>
+                                <p style="color:rgba(74,26,107,0.4);">No registered users yet.</p>
                             </div>
                         </td>
                     </tr>
@@ -1455,7 +1451,7 @@
             }
 
             usersTbody.innerHTML = pageUsers.map(u => {
-                let userPhoto = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(u.name || 'User') + '&background=112A46&color=fff&size=100';
+                let userPhoto = 'https://ui-avatars.com/api/?name=' + encodeURIComponent(u.name || 'User') + '&background=6c3cb3&color=fff&size=100';
                 if (u.photo_file_ids && u.photo_file_ids.length > 0) {
                     const fileId = u.photo_file_ids[0];
                     const { data } = supabase.storage.from('member_photos').getPublicUrl(fileId);
@@ -1471,7 +1467,7 @@
                     <tr>
                         <td data-label="User">
                             <div class="member-cell">
-                                <img src="${userPhoto}" alt="${u.name}" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(u.name || 'User')}&background=112A46&color=fff&size=100'">
+                                <img src="${userPhoto}" alt="${u.name}" onerror="this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(u.name || 'User')}&background=6c3cb3&color=fff&size=100'">
                                 <div>
                                     <div class="name">${u.name || 'Unknown'}</div>
                                     <div class="email">${u.email || 'No email'}</div>
@@ -1507,7 +1503,7 @@
             }
 
             if (totalPages > 5) {
-                html += `<span style="color:rgba(17,42,70,0.15);padding:6px;">…</span>`;
+                html += `<span style="color:rgba(74,26,107,0.15);padding:6px;">…</span>`;
                 html += `<button onclick="window.goToPage(${totalPages})">${totalPages}</button>`;
             }
 
@@ -1532,7 +1528,7 @@
             }
 
             if (totalPages > 5) {
-                html += `<span style="color:rgba(17,42,70,0.15);padding:6px;">…</span>`;
+                html += `<span style="color:rgba(74,26,107,0.15);padding:6px;">…</span>`;
                 html += `<button onclick="window.goToUsersPage(${totalPages})">${totalPages}</button>`;
             }
 
@@ -1658,9 +1654,6 @@
             closeMenu();
         }
 
-        // ============================================================
-        // OPEN EDIT MODAL - UPDATED FIELDS
-        // ============================================================
         window.openEditModal = async function(id) {
             const member = members.find(m => m.id === id);
             if (!member) {
@@ -1708,7 +1701,7 @@
         }
 
         // ============================================================
-        // SAVE MEMBER - UPDATED WITH NEW FIELDS
+        // SAVE MEMBER - FIXED: Auto-generates email
         // ============================================================
         window.saveMember = async function(event) {
             event.preventDefault();
@@ -1721,13 +1714,18 @@
                 existingMember = members.find(m => m.id === editId);
             }
 
+            const name = document.getElementById('form-name').value.trim();
             const interestsArray = document.getElementById('form-interests').value
                 .split(',')
                 .map(s => s.trim())
                 .filter(Boolean);
 
+            // ✅ AUTO-GENERATE EMAIL
+            const email = `${name.toLowerCase().replace(/\s/g, '.')}_${Date.now()}@classydate.com`;
+
             const formData = {
-                name: document.getElementById('form-name').value.trim(),
+                name: name,
+                email: email,
                 age: parseInt(document.getElementById('form-age').value),
                 gender: document.getElementById('form-gender').value,
                 current_location: document.getElementById('form-current-location').value.trim(),
@@ -1875,11 +1873,11 @@
         
         showTab('members');
 
-        console.log('💎 ClassyDate Admin Panel - UPDATED FIELDS!');
-        console.log('✅ Removed: Location field');
-        console.log('✅ Added: Current Location');
-        console.log('✅ Added: Home Country');
-        console.log('✅ 3-line menu with tabs');
+        console.log('💎 ClassyDate Admin Panel - MODERN PURPLE!');
+        console.log('✅ Removed: Stats boxes');
+        console.log('✅ Email auto-generated');
+        console.log('✅ Users tab shows all sign-ups');
+        console.log('✅ Modern Purple theme');
     </script>
 
 </body>
