@@ -47,13 +47,14 @@
         .cb-shell-header__inner {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 16px;
             height: 72px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
+        /* ✅ Title starts at corner edge */
         .cb-shell-brand {
             display: flex;
             align-items: center;
@@ -61,13 +62,24 @@
             font-size: 24px;
             font-weight: 700;
             color: #1a0533;
+            margin-left: -4px;
+            padding-left: 0;
         }
+
+        .cb-shell-brand .heart {
+            color: #ff0000;
+            display: inline-block;
+        }
+
         .cb-shell-brand span {
             font-family: "Inter", sans-serif;
             font-weight: 300;
             color: #6c3cb3;
         }
 
+        /* ============================================================ */
+        /* HAMBURGER MENU                                              */
+        /* ============================================================ */
         .menu-container {
             position: relative;
             display: inline-block;
@@ -326,7 +338,7 @@
         .carousel-btn.next { right: 4px; }
 
         /* ============================================================ */
-        /* ✅ ONLINE DOT - TOP RIGHT                                   */
+        /* ONLINE DOT - TOP RIGHT                                     */
         /* ============================================================ */
         .online-dot {
             position: absolute;
@@ -355,7 +367,7 @@
         }
 
         /* ============================================================ */
-        /* ✅ LOVE ICON - BOTTOM RIGHT                                 */
+        /* LOVE ICON - BOTTOM RIGHT                                   */
         /* ============================================================ */
         .love-btn {
             position: absolute;
@@ -718,6 +730,14 @@
                 text-align: center;
                 max-width: 100%;
             }
+            /* ✅ Title smaller on mobile */
+            .cb-shell-brand {
+                font-size: 20px;
+            }
+            .cb-shell-header__inner {
+                height: 60px;
+                padding: 0 12px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -783,6 +803,14 @@
                 font-size: 11px;
                 padding: 3px 10px;
             }
+            /* ✅ Title even smaller on small phones */
+            .cb-shell-brand {
+                font-size: 17px;
+            }
+            .cb-shell-header__inner {
+                height: 54px;
+                padding: 0 10px;
+            }
         }
 
         @keyframes spin {
@@ -793,11 +821,13 @@
 <body>
 
     <!-- ============================================================ -->
-    /* HEADER                                                        */
+    <!-- HEADER - ClassyDate❤️ at corner edge                         -->
     <!-- ============================================================ -->
     <header class="cb-shell-header" role="banner">
         <div class="cb-shell-header__inner">
-            <a class="cb-shell-brand" href="/">Classy<span>Date</span></a>
+            <a class="cb-shell-brand" href="/">
+                ClassyDate<span class="heart">❤️</span>
+            </a>
             <div class="menu-container">
                 <button class="menu-btn" id="menuBtn" onclick="toggleMenu()">☰</button>
                 <div class="menu-dropdown" id="menuDropdown">
@@ -808,7 +838,7 @@
     </header>
 
     <!-- ============================================================ -->
-    /* MAIN CONTENT                                                  */
+    <!-- MAIN CONTENT                                                  -->
     <!-- ============================================================ -->
     <main class="members-wrapper">
         <div class="members-header">
@@ -827,25 +857,25 @@
     </main>
 
     <!-- ============================================================ -->
-    /* SHARE TOAST                                                  */
+    <!-- SHARE TOAST                                                  -->
     <!-- ============================================================ -->
     <div class="share-toast" id="share-toast">
         <div style="display:flex;align-items:center;justify-content:space-between;">
-            <span>📤 Share this member via WhatsApp</span>
+            <span>📤 Share this member</span>
             <button class="close-share" onclick="closeShareToast()">✕</button>
         </div>
         <button class="share-btn" id="share-whatsapp-btn">
-            <span class="icon">💬</span> Share on WhatsApp
+            <span class="icon">💬</span> Share
         </button>
     </div>
 
     <!-- ============================================================ -->
-    /* TOAST                                                       */
+    <!-- TOAST                                                       -->
     <!-- ============================================================ -->
     <div class="toast" id="toast"></div>
 
     <!-- ============================================================ -->
-    /* SCRIPTS                                                      */
+    <!-- SCRIPTS                                                      -->
     <!-- ============================================================ -->
     <script type="importmap">
         {
@@ -1368,18 +1398,13 @@ https://classydate.com/profile/${member.id}
             });
         });
 
-        console.log('💎 ClassyDate Members Page - UPDATED!');
+        console.log('💎 ClassyDate Members Page - FINAL!');
+        console.log('✅ ClassyDate❤️ at corner edge');
         console.log('✅ Modern Purple theme');
-        console.log('✅ Love icon at bottom-right of photo');
-        console.log('✅ Love icon turns RED when tapped ❤️');
+        console.log('✅ Love icon at bottom-right ❤️');
         console.log('✅ Online dot at top-right 🟢');
-        console.log('✅ Name: label format');
-        console.log('✅ Age: label format');
-        console.log('✅ Current Location: label format');
-        console.log('✅ Origin Country: label format');
-        console.log('✅ Verified badge next to name');
-        console.log('✅ View Profile → profile.html');
-        console.log('✅ Send Message → chat.html');
+        console.log('✅ Label format: Name, Age, Location, Origin');
+        console.log('✅ Removed extra text from share toast');
     </script>
 
 </body>
