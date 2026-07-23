@@ -59,6 +59,7 @@
         .profile-header .brand .heart {
             color: #ff0000;
             display: inline-block;
+            font-size: 20px;
         }
 
         .profile-header .brand span {
@@ -75,7 +76,7 @@
             border: none;
             cursor: pointer;
             font-weight: 600;
-            font-size: 13px;
+            font-size: 14px;
             font-family: "Inter", sans-serif;
             transition: all 0.3s ease;
         }
@@ -127,7 +128,7 @@
 
         .profile-name {
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 700;
             color: #1a0533;
         }
@@ -139,13 +140,13 @@
             background: #1DA1F2;
             color: #fff;
             border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            font-size: 11px;
+            width: 22px;
+            height: 22px;
+            font-size: 12px;
             font-weight: 700;
             border: 2px solid #fff;
             box-shadow: 0 2px 8px rgba(29, 161, 242, 0.4);
-            margin-left: 4px;
+            margin-left: 6px;
         }
 
         /* Status - Online/Offline */
@@ -159,15 +160,15 @@
         .profile-status {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 14px;
+            gap: 8px;
+            font-size: 15px;
             font-weight: 600;
             font-family: "Inter", sans-serif;
         }
 
         .profile-status .dot {
-            width: 11px;
-            height: 11px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             display: inline-block;
         }
@@ -186,7 +187,7 @@
         }
 
         .profile-status .offline-text {
-            color: rgba(26, 5, 51, 0.3);
+            color: rgba(26, 5, 51, 0.4);
         }
 
         @keyframes pulse-online {
@@ -195,27 +196,28 @@
         }
 
         /* ============================================================ */
-        /* DETAILS - NO BOXES (Plain text)                            */
+        /* DETAILS - NO BOXES (Plain text) - FONT CLEARER             */
         /* ============================================================ */
         .profile-details {
             padding: 0 20px;
             display: flex;
             flex-direction: column;
-            gap: 4px;
-            margin-bottom: 16px;
+            gap: 6px;
+            margin-bottom: 18px;
         }
 
         .profile-details .detail-line {
-            font-size: 15px;
+            font-size: 16px;
             color: #1a0533;
             font-family: "Inter", sans-serif;
             padding: 4px 0;
             line-height: 1.6;
+            font-weight: 500;
         }
 
         .profile-details .detail-line .label {
-            font-weight: 600;
-            color: rgba(26, 5, 51, 0.5);
+            font-weight: 700;
+            color: #2d0a4a;
         }
 
         .profile-details .detail-line .value {
@@ -239,21 +241,22 @@
         }
 
         .profile-about .about-box .about-label {
-            font-size: 10px;
-            color: rgba(26, 5, 51, 0.4);
+            font-size: 11px;
+            color: rgba(26, 5, 51, 0.5);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            font-weight: 600;
+            font-weight: 700;
             display: block;
             margin-bottom: 4px;
             font-family: "Inter", sans-serif;
         }
 
         .profile-about .about-box .about-text {
-            font-size: 14px;
-            color: rgba(26, 5, 51, 0.7);
+            font-size: 15px;
+            color: #1a0533;
             line-height: 1.6;
             font-family: "Inter", sans-serif;
+            font-weight: 400;
         }
 
         /* ============================================================ */
@@ -272,21 +275,22 @@
         }
 
         .profile-looking .looking-box .looking-label {
-            font-size: 10px;
-            color: rgba(26, 5, 51, 0.4);
+            font-size: 11px;
+            color: rgba(26, 5, 51, 0.5);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            font-weight: 600;
+            font-weight: 700;
             display: block;
             margin-bottom: 4px;
             font-family: "Inter", sans-serif;
         }
 
         .profile-looking .looking-box .looking-text {
-            font-size: 14px;
-            color: rgba(26, 5, 51, 0.7);
+            font-size: 15px;
+            color: #1a0533;
             line-height: 1.6;
             font-family: "Inter", sans-serif;
+            font-weight: 400;
         }
 
         /* ============================================================ */
@@ -305,11 +309,11 @@
         }
 
         .profile-interests .interests-box .interests-label {
-            font-size: 10px;
-            color: rgba(26, 5, 51, 0.4);
+            font-size: 11px;
+            color: rgba(26, 5, 51, 0.5);
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            font-weight: 600;
+            font-weight: 700;
             display: block;
             margin-bottom: 6px;
             font-family: "Inter", sans-serif;
@@ -317,10 +321,10 @@
 
         .profile-interests .tag {
             display: inline-block;
-            padding: 3px 12px;
+            padding: 4px 14px;
             background: rgba(108, 60, 179, 0.08);
             border-radius: 50px;
-            font-size: 12px;
+            font-size: 13px;
             color: #1a0533;
             font-family: "Inter", sans-serif;
             font-weight: 500;
@@ -413,7 +417,7 @@
             border: none;
             border-radius: 10px;
             font-weight: 700;
-            font-size: 14px;
+            font-size: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: "Inter", sans-serif;
@@ -492,21 +496,26 @@
             }
 
             .profile-name {
-                font-size: 20px;
+                font-size: 22px;
             }
 
             .profile-status {
-                font-size: 13px;
+                font-size: 14px;
+            }
+
+            .profile-status .dot {
+                width: 10px;
+                height: 10px;
             }
 
             .profile-details {
                 padding: 0 16px;
-                gap: 2px;
-                margin-bottom: 12px;
+                gap: 4px;
+                margin-bottom: 14px;
             }
 
             .profile-details .detail-line {
-                font-size: 14px;
+                font-size: 15px;
                 padding: 3px 0;
             }
 
@@ -523,7 +532,7 @@
 
             .profile-about .about-box .about-text,
             .profile-looking .looking-box .looking-text {
-                font-size: 13px;
+                font-size: 14px;
             }
 
             .profile-interests {
@@ -536,7 +545,7 @@
             }
 
             .profile-interests .tag {
-                font-size: 11px;
+                font-size: 12px;
             }
 
             .profile-photos .photos-wrapper {
@@ -550,7 +559,7 @@
             }
 
             .profile-actions button {
-                font-size: 13px;
+                font-size: 14px;
                 padding: 10px;
             }
 
@@ -569,8 +578,12 @@
                 font-size: 18px;
             }
 
+            .profile-header .brand .heart {
+                font-size: 18px;
+            }
+
             .profile-header .back-btn {
-                font-size: 12px;
+                font-size: 13px;
                 padding: 5px 12px;
             }
         }
@@ -591,11 +604,11 @@
             }
 
             .profile-name {
-                font-size: 17px;
+                font-size: 19px;
             }
 
             .profile-status {
-                font-size: 12px;
+                font-size: 13px;
             }
 
             .profile-status .dot {
@@ -605,12 +618,12 @@
 
             .profile-details {
                 padding: 0 12px;
-                gap: 2px;
-                margin-bottom: 10px;
+                gap: 3px;
+                margin-bottom: 12px;
             }
 
             .profile-details .detail-line {
-                font-size: 13px;
+                font-size: 14px;
                 padding: 2px 0;
             }
 
@@ -627,12 +640,12 @@
 
             .profile-about .about-box .about-label,
             .profile-looking .looking-box .looking-label {
-                font-size: 9px;
+                font-size: 10px;
             }
 
             .profile-about .about-box .about-text,
             .profile-looking .looking-box .looking-text {
-                font-size: 12px;
+                font-size: 13px;
             }
 
             .profile-interests {
@@ -645,11 +658,11 @@
             }
 
             .profile-interests .interests-label {
-                font-size: 9px;
+                font-size: 10px;
             }
 
             .profile-interests .tag {
-                font-size: 10px;
+                font-size: 11px;
                 padding: 2px 10px;
             }
 
@@ -664,7 +677,7 @@
             }
 
             .profile-actions button {
-                font-size: 12px;
+                font-size: 13px;
                 padding: 8px;
                 border-radius: 8px;
             }
@@ -684,8 +697,12 @@
                 font-size: 16px;
             }
 
+            .profile-header .brand .heart {
+                font-size: 16px;
+            }
+
             .profile-header .back-btn {
-                font-size: 11px;
+                font-size: 12px;
                 padding: 4px 10px;
             }
 
@@ -704,7 +721,7 @@
 <body>
 
     <!-- ============================================================ -->
-    <!-- HEADER - ClassyDate❤️                                        -->
+    <!-- HEADER - ClassyDate❤️ (Corrected)                           -->
     <!-- ============================================================ -->
     <header class="profile-header">
         <button class="back-btn" onclick="goBack()">← Back</button>
@@ -913,7 +930,7 @@
             }
             document.getElementById('profile-name').innerHTML = nameHTML;
 
-            // ✅ Status - Show Online/Offline from database
+            // Status - Show Online/Offline from database
             const statusDot = document.getElementById('status-dot');
             const statusText = document.getElementById('status-text');
             if (member.online) {
@@ -923,15 +940,13 @@
             } else {
                 statusDot.className = 'dot offline';
                 statusText.textContent = 'Offline';
-                statusText.style.color = 'rgba(26,5,51,0.3)';
+                statusText.style.color = 'rgba(26,5,51,0.4)';
             }
 
-            // ✅ Details - No boxes (plain text)
-            // Current Location - use current_location or fallback to location
+            // Details - No boxes (plain text)
             const currentLocation = member.current_location || member.location || 'Location Unknown';
             document.getElementById('profile-location').textContent = currentLocation;
 
-            // Origin Country - use home_country or fallback to origin
             const homeCountry = member.home_country || member.origin || 'Not specified';
             document.getElementById('profile-origin').textContent = homeCountry;
 
@@ -1130,13 +1145,12 @@ ${window.location.href}
         // ============================================================
         loadProfile();
 
-        console.log('💎 Profile View Page - FINAL!');
+        console.log('💎 Profile View Page - FIXED!');
+        console.log('✅ Title: ClassyDate❤️ (corrected)');
+        console.log('✅ Fonts clearer and bigger');
         console.log('✅ Avatar bigger (120px)');
-        console.log('✅ Current Location, Origin Country, Age, Gender - NO BOXES');
-        console.log('✅ About Me, Looking For, Interests - WITH BOXES');
         console.log('✅ Status from database (online/offline)');
         console.log('✅ Modern Purple theme');
-        console.log('✅ ClassyDate❤️ at corner edge');
     </script>
 
 </body>
