@@ -20,8 +20,8 @@
 
         body {
             font-family: "Inter", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-            background: #ACC8E5;
-            color: #112A46;
+            background: #f3e8ff;
+            color: #1a0533;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -30,7 +30,7 @@
         a { text-decoration: none; color: inherit; }
 
         /* ============================================================ */
-        /* HEADER                                                       */
+        /* HEADER - MODERN PURPLE                                      */
         /* ============================================================ */
         .profile-header {
             position: fixed;
@@ -38,9 +38,9 @@
             left: 0;
             right: 0;
             z-index: 100;
-            background: rgba(172, 200, 229, 0.92);
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(17, 42, 70, 0.08);
+            border-bottom: 1px solid rgba(108, 60, 179, 0.12);
             padding: 0 16px;
             height: 60px;
             display: flex;
@@ -52,20 +52,26 @@
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
             font-size: 20px;
             font-weight: 700;
-            color: #112A46;
+            color: #1a0533;
+            margin-left: -4px;
+        }
+
+        .profile-header .brand .heart {
+            color: #ff0000;
+            display: inline-block;
         }
 
         .profile-header .brand span {
             font-family: "Inter", sans-serif;
             font-weight: 300;
-            color: #2E5A88;
+            color: #6c3cb3;
         }
 
         .profile-header .back-btn {
             padding: 6px 14px;
             border-radius: 50px;
-            background: rgba(17, 42, 70, 0.08);
-            color: #112A46;
+            background: rgba(108, 60, 179, 0.08);
+            color: #1a0533;
             border: none;
             cursor: pointer;
             font-weight: 600;
@@ -75,7 +81,7 @@
         }
 
         .profile-header .back-btn:hover {
-            background: rgba(17, 42, 70, 0.15);
+            background: rgba(108, 60, 179, 0.15);
         }
 
         /* ============================================================ */
@@ -87,11 +93,11 @@
             max-width: 100%;
             margin: 0;
             width: 100%;
-            background: #ACC8E5;
+            background: #f3e8ff;
         }
 
         .profile-card {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(20px);
             overflow: hidden;
             border: none;
@@ -101,29 +107,29 @@
         }
 
         /* ============================================================ */
-        /* TOP SECTION - AVATAR + INFO                                 */
+        /* TOP SECTION - AVATAR + NAME                                */
         /* ============================================================ */
         .profile-top {
             text-align: center;
-            padding: 20px 16px 14px;
+            padding: 24px 16px 16px;
         }
 
         .profile-avatar {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #FFFFFF;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            margin: 0 auto 12px;
+            border: 4px solid #FFFFFF;
+            box-shadow: 0 4px 24px rgba(108, 60, 179, 0.15);
+            margin: 0 auto 14px;
             display: block;
         }
 
         .profile-name {
             font-family: "Playfair Display", Georgia, 'Times New Roman', serif;
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 700;
-            color: #112A46;
+            color: #1a0533;
         }
 
         .profile-name .verified-badge {
@@ -133,48 +139,35 @@
             background: #1DA1F2;
             color: #fff;
             border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            font-size: 10px;
+            width: 20px;
+            height: 20px;
+            font-size: 11px;
             font-weight: 700;
             border: 2px solid #fff;
             box-shadow: 0 2px 8px rgba(29, 161, 242, 0.4);
             margin-left: 4px;
         }
 
-        .profile-location {
-            font-size: 14px;
-            color: rgba(17, 42, 70, 0.5);
-            margin-top: 2px;
-            font-family: "Inter", sans-serif;
-        }
-
-        .profile-origin {
-            font-size: 14px;
-            color: rgba(17, 42, 70, 0.5);
-            margin-top: 1px;
-            font-family: "Inter", sans-serif;
-        }
-
+        /* Status - Online/Offline */
         .profile-status-row {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-top: 8px;
+            margin-top: 6px;
         }
 
         .profile-status {
             display: flex;
             align-items: center;
             gap: 6px;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
             font-family: "Inter", sans-serif;
         }
 
         .profile-status .dot {
-            width: 10px;
-            height: 10px;
+            width: 11px;
+            height: 11px;
             border-radius: 50%;
             display: inline-block;
         }
@@ -193,7 +186,7 @@
         }
 
         .profile-status .offline-text {
-            color: rgba(17, 42, 70, 0.3);
+            color: rgba(26, 5, 51, 0.3);
         }
 
         @keyframes pulse-online {
@@ -202,43 +195,36 @@
         }
 
         /* ============================================================ */
-        /* DETAILS SECTION                                             */
+        /* DETAILS - NO BOXES (Plain text)                            */
         /* ============================================================ */
         .profile-details {
-            padding: 0 16px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 12px;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-bottom: 16px;
         }
 
-        .detail-box {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            padding: 10px 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
+        .profile-details .detail-line {
+            font-size: 15px;
+            color: #1a0533;
+            font-family: "Inter", sans-serif;
+            padding: 4px 0;
+            line-height: 1.6;
         }
 
-        .detail-box .label {
-            font-size: 10px;
-            color: rgba(17, 42, 70, 0.4);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .profile-details .detail-line .label {
             font-weight: 600;
-            font-family: "Inter", sans-serif;
+            color: rgba(26, 5, 51, 0.5);
         }
 
-        .detail-box .value {
-            font-size: 14px;
-            font-weight: 700;
-            color: #112A46;
-            margin-top: 2px;
-            font-family: "Inter", sans-serif;
+        .profile-details .detail-line .value {
+            font-weight: 500;
+            color: #1a0533;
         }
 
         /* ============================================================ */
-        /* ABOUT ME                                                    */
+        /* ABOUT ME - BOX                                              */
         /* ============================================================ */
         .profile-about {
             padding: 0 16px;
@@ -249,12 +235,12 @@
             background: rgba(255, 255, 255, 0.3);
             border-radius: 10px;
             padding: 12px 14px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(108, 60, 179, 0.08);
         }
 
         .profile-about .about-box .about-label {
             font-size: 10px;
-            color: rgba(17, 42, 70, 0.4);
+            color: rgba(26, 5, 51, 0.4);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             font-weight: 600;
@@ -265,13 +251,13 @@
 
         .profile-about .about-box .about-text {
             font-size: 14px;
-            color: rgba(17, 42, 70, 0.7);
-            line-height: 1.5;
+            color: rgba(26, 5, 51, 0.7);
+            line-height: 1.6;
             font-family: "Inter", sans-serif;
         }
 
         /* ============================================================ */
-        /* LOOKING FOR                                                 */
+        /* LOOKING FOR - BOX                                           */
         /* ============================================================ */
         .profile-looking {
             padding: 0 16px;
@@ -282,12 +268,12 @@
             background: rgba(255, 255, 255, 0.3);
             border-radius: 10px;
             padding: 12px 14px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(108, 60, 179, 0.08);
         }
 
         .profile-looking .looking-box .looking-label {
             font-size: 10px;
-            color: rgba(17, 42, 70, 0.4);
+            color: rgba(26, 5, 51, 0.4);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             font-weight: 600;
@@ -298,13 +284,13 @@
 
         .profile-looking .looking-box .looking-text {
             font-size: 14px;
-            color: rgba(17, 42, 70, 0.7);
-            line-height: 1.5;
+            color: rgba(26, 5, 51, 0.7);
+            line-height: 1.6;
             font-family: "Inter", sans-serif;
         }
 
         /* ============================================================ */
-        /* INTERESTS                                                   */
+        /* INTERESTS - BOX                                             */
         /* ============================================================ */
         .profile-interests {
             padding: 0 16px;
@@ -315,12 +301,12 @@
             background: rgba(255, 255, 255, 0.3);
             border-radius: 10px;
             padding: 12px 14px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(108, 60, 179, 0.08);
         }
 
         .profile-interests .interests-box .interests-label {
             font-size: 10px;
-            color: rgba(17, 42, 70, 0.4);
+            color: rgba(26, 5, 51, 0.4);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             font-weight: 600;
@@ -332,10 +318,10 @@
         .profile-interests .tag {
             display: inline-block;
             padding: 3px 12px;
-            background: rgba(17, 42, 70, 0.06);
+            background: rgba(108, 60, 179, 0.08);
             border-radius: 50px;
             font-size: 12px;
-            color: #112A46;
+            color: #1a0533;
             font-family: "Inter", sans-serif;
             font-weight: 500;
             margin: 2px 4px 2px 0;
@@ -389,7 +375,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(17, 42, 70, 0.4);
+            background: rgba(26, 5, 51, 0.4);
             backdrop-filter: blur(4px);
             color: #fff;
             border: none;
@@ -406,7 +392,7 @@
         }
 
         .photo-nav-btn:hover {
-            background: rgba(17, 42, 70, 0.7);
+            background: rgba(26, 5, 51, 0.7);
         }
 
         .photo-nav-btn.prev { left: 8px; }
@@ -416,7 +402,7 @@
         /* ACTION BUTTONS                                              */
         /* ============================================================ */
         .profile-actions {
-            padding: 0 16px 20px;
+            padding: 0 16px 24px;
             display: flex;
             gap: 10px;
         }
@@ -434,24 +420,24 @@
         }
 
         .btn-message-profile {
-            background: linear-gradient(135deg, #112A46, #2E5A88);
+            background: linear-gradient(135deg, #6c3cb3, #4a1a6b);
             color: #fff;
         }
 
         .btn-message-profile:hover {
-            background: linear-gradient(135deg, #2E5A88, #112A46);
+            background: linear-gradient(135deg, #4a1a6b, #6c3cb3);
             transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(17, 42, 70, 0.25);
+            box-shadow: 0 4px 16px rgba(108, 60, 179, 0.25);
         }
 
         .btn-share {
-            background: rgba(17, 42, 70, 0.08);
-            color: #112A46;
+            background: rgba(108, 60, 179, 0.08);
+            color: #1a0533;
             flex: 0.5;
         }
 
         .btn-share:hover {
-            background: rgba(17, 42, 70, 0.18);
+            background: rgba(108, 60, 179, 0.18);
             transform: translateY(-2px);
         }
 
@@ -463,7 +449,7 @@
             bottom: 30px;
             right: 30px;
             padding: 12px 20px;
-            background: #112A46;
+            background: #1a0533;
             color: #fff;
             border-radius: 10px;
             font-family: "Inter", sans-serif;
@@ -497,38 +483,31 @@
             }
 
             .profile-top {
-                padding: 16px 14px 12px;
+                padding: 18px 14px 12px;
             }
 
             .profile-avatar {
-                width: 85px;
-                height: 85px;
+                width: 100px;
+                height: 100px;
             }
 
             .profile-name {
                 font-size: 20px;
             }
 
-            .profile-location,
-            .profile-origin {
-                font-size: 13px;
-            }
-
             .profile-status {
-                font-size: 12px;
+                font-size: 13px;
             }
 
             .profile-details {
-                padding: 0 14px;
-                gap: 8px;
+                padding: 0 16px;
+                gap: 2px;
+                margin-bottom: 12px;
             }
 
-            .detail-box {
-                padding: 8px 10px;
-            }
-
-            .detail-box .value {
-                font-size: 13px;
+            .profile-details .detail-line {
+                font-size: 14px;
+                padding: 3px 0;
             }
 
             .profile-about,
@@ -566,7 +545,7 @@
             }
 
             .profile-actions {
-                padding: 0 14px 16px;
+                padding: 0 14px 18px;
                 gap: 8px;
             }
 
@@ -606,18 +585,13 @@
             }
 
             .profile-avatar {
-                width: 75px;
-                height: 75px;
-                border-width: 2px;
+                width: 85px;
+                height: 85px;
+                border-width: 3px;
             }
 
             .profile-name {
-                font-size: 18px;
-            }
-
-            .profile-location,
-            .profile-origin {
-                font-size: 12px;
+                font-size: 17px;
             }
 
             .profile-status {
@@ -625,26 +599,19 @@
             }
 
             .profile-status .dot {
-                width: 8px;
-                height: 8px;
+                width: 9px;
+                height: 9px;
             }
 
             .profile-details {
                 padding: 0 12px;
-                gap: 6px;
+                gap: 2px;
+                margin-bottom: 10px;
             }
 
-            .detail-box {
-                padding: 6px 8px;
-                border-radius: 8px;
-            }
-
-            .detail-box .label {
-                font-size: 9px;
-            }
-
-            .detail-box .value {
-                font-size: 12px;
+            .profile-details .detail-line {
+                font-size: 13px;
+                padding: 2px 0;
             }
 
             .profile-about,
@@ -737,11 +704,11 @@
 <body>
 
     <!-- ============================================================ -->
-    <!-- HEADER                                                        -->
+    <!-- HEADER - ClassyDate❤️                                        -->
     <!-- ============================================================ -->
     <header class="profile-header">
         <button class="back-btn" onclick="goBack()">← Back</button>
-        <a class="brand" href="/">Classy<span>Date</span></a>
+        <a class="brand" href="/">Classy<span class="heart">❤️</span></a>
         <div style="width:50px;"></div>
     </header>
 
@@ -751,16 +718,13 @@
     <main class="profile-wrapper">
         <div class="profile-card">
 
-            <!-- TOP SECTION - AVATAR + INFO -->
+            <!-- TOP SECTION - AVATAR + NAME + STATUS -->
             <div class="profile-top">
                 <img class="profile-avatar" id="profile-avatar" src="" alt="Profile">
                 <h1 class="profile-name" id="profile-name">
                     Loading...
                     <span class="verified-badge">✓</span>
                 </h1>
-                <div class="profile-location" id="profile-location">📍 Loading...</div>
-                <div class="profile-origin" id="profile-origin">🌍 Origin: Loading...</div>
-
                 <div class="profile-status-row">
                     <span class="profile-status">
                         <span class="dot online" id="status-dot"></span>
@@ -769,19 +733,27 @@
                 </div>
             </div>
 
-            <!-- DETAILS -->
-            <div class="profile-details">
-                <div class="detail-box">
-                    <div class="label">Age</div>
-                    <div class="value" id="profile-age">—</div>
+            <!-- DETAILS - NO BOXES (Plain text) -->
+            <div class="profile-details" id="profile-details">
+                <div class="detail-line">
+                    <span class="label">Current Location: </span>
+                    <span class="value" id="profile-location">Loading...</span>
                 </div>
-                <div class="detail-box">
-                    <div class="label">Gender</div>
-                    <div class="value" id="profile-gender">—</div>
+                <div class="detail-line">
+                    <span class="label">Origin Country: </span>
+                    <span class="value" id="profile-origin">Loading...</span>
+                </div>
+                <div class="detail-line">
+                    <span class="label">Age: </span>
+                    <span class="value" id="profile-age">—</span>
+                </div>
+                <div class="detail-line">
+                    <span class="label">Gender: </span>
+                    <span class="value" id="profile-gender">—</span>
                 </div>
             </div>
 
-            <!-- ABOUT ME -->
+            <!-- ABOUT ME - BOX -->
             <div class="profile-about">
                 <div class="about-box">
                     <span class="about-label">📝 About Me</span>
@@ -789,7 +761,7 @@
                 </div>
             </div>
 
-            <!-- LOOKING FOR -->
+            <!-- LOOKING FOR - BOX -->
             <div class="profile-looking">
                 <div class="looking-box">
                     <span class="looking-label">🔍 Looking For</span>
@@ -797,12 +769,12 @@
                 </div>
             </div>
 
-            <!-- INTERESTS -->
+            <!-- INTERESTS - BOX -->
             <div class="profile-interests">
                 <div class="interests-box">
                     <span class="interests-label">🏷️ Interests</span>
                     <div id="profile-interests">
-                        <span style="color:rgba(17,42,70,0.3);font-size:13px;">No interests listed</span>
+                        <span style="color:rgba(26,5,51,0.3);font-size:13px;">No interests listed</span>
                     </div>
                 </div>
             </div>
@@ -871,6 +843,9 @@
             }
         }
 
+        // ============================================================
+        // LOAD PROFILE
+        // ============================================================
         async function loadProfile() {
             const memberId = getMemberIdFromURL();
             if (!memberId) {
@@ -908,9 +883,13 @@
             }
         }
 
+        // ============================================================
+        // RENDER PROFILE
+        // ============================================================
         function renderProfile(member) {
             const memberName = member.name || 'User';
 
+            // Get photos
             let photos = [];
             if (member.photo_file_ids && member.photo_file_ids.length > 0) {
                 photos = member.photo_file_ids
@@ -918,23 +897,23 @@
                     .filter(url => url !== null && url !== '');
             }
 
+            // Avatar (first photo or avatar)
             const avatarUrl = photos.length > 0 ? photos[0] : 
-                `https://ui-avatars.com/api/?name=${encodeURIComponent(memberName)}&background=112A46&color=fff&size=200`;
+                `https://ui-avatars.com/api/?name=${encodeURIComponent(memberName)}&background=6c3cb3&color=fff&size=200`;
 
             document.getElementById('profile-avatar').src = avatarUrl;
             document.getElementById('profile-avatar').onerror = function() {
-                this.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(memberName)}&background=112A46&color=fff&size=200`;
+                this.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(memberName)}&background=6c3cb3&color=fff&size=200`;
             };
 
+            // Name with verified badge
             let nameHTML = memberName;
             if (member.verified) {
                 nameHTML += ' <span class="verified-badge">✓</span>';
             }
             document.getElementById('profile-name').innerHTML = nameHTML;
 
-            document.getElementById('profile-location').textContent = `📍 ${member.location || 'Location Unknown'}`;
-            document.getElementById('profile-origin').textContent = `🌍 Origin: ${member.origin || 'Not specified'}`;
-
+            // ✅ Status - Show Online/Offline from database
             const statusDot = document.getElementById('status-dot');
             const statusText = document.getElementById('status-text');
             if (member.online) {
@@ -944,37 +923,56 @@
             } else {
                 statusDot.className = 'dot offline';
                 statusText.textContent = 'Offline';
-                statusText.style.color = 'rgba(17,42,70,0.3)';
+                statusText.style.color = 'rgba(26,5,51,0.3)';
             }
+
+            // ✅ Details - No boxes (plain text)
+            // Current Location - use current_location or fallback to location
+            const currentLocation = member.current_location || member.location || 'Location Unknown';
+            document.getElementById('profile-location').textContent = currentLocation;
+
+            // Origin Country - use home_country or fallback to origin
+            const homeCountry = member.home_country || member.origin || 'Not specified';
+            document.getElementById('profile-origin').textContent = homeCountry;
 
             document.getElementById('profile-age').textContent = member.age || '—';
             document.getElementById('profile-gender').textContent = member.gender || '—';
+
+            // About Me
             document.getElementById('profile-bio').textContent = member.about_me || member.bio || 'No bio available.';
+
+            // Looking For
             document.getElementById('profile-looking').textContent = member.looking_for || 'Not specified';
 
+            // Interests
             const interestsContainer = document.getElementById('profile-interests');
             if (member.interests && member.interests.length > 0) {
                 interestsContainer.innerHTML = member.interests.map(i => `<span class="tag">#${i}</span>`).join('');
             } else {
-                interestsContainer.innerHTML = '<span style="color:rgba(17,42,70,0.3);font-size:13px;">No interests listed</span>';
+                interestsContainer.innerHTML = '<span style="color:rgba(26,5,51,0.3);font-size:13px;">No interests listed</span>';
             }
 
+            // Photos Carousel
             profilePhotos = photos.length > 0 ? photos : [
-                `https://ui-avatars.com/api/?name=${encodeURIComponent(memberName)}&background=112A46&color=fff&size=400`
+                `https://ui-avatars.com/api/?name=${encodeURIComponent(memberName)}&background=6c3cb3&color=fff&size=400`
             ];
             renderPhotos();
 
+            // Message button
             document.getElementById('message-btn').onclick = function() {
                 sendMessage(member);
             };
         }
 
+        // ============================================================
+        // RENDER PHOTOS
+        // ============================================================
         function renderPhotos() {
             const slidesContainer = document.getElementById('photos-slides');
             
             if (profilePhotos.length === 0) {
                 slidesContainer.innerHTML = `
-                    <div class="photo-slide" style="display:flex;align-items:center;justify-content:center;background:#d0d5da;color:rgba(17,42,70,0.3);font-family:'Inter',sans-serif;font-size:14px;">
+                    <div class="photo-slide" style="display:flex;align-items:center;justify-content:center;background:#d0d5da;color:rgba(26,5,51,0.3);font-family:'Inter',sans-serif;font-size:14px;">
                         No photos available
                     </div>
                 `;
@@ -1001,6 +999,9 @@
             }
         }
 
+        // ============================================================
+        // CHANGE PHOTO
+        // ============================================================
         window.changeProfilePhoto = function(direction) {
             const slides = document.getElementById('photos-slides');
             if (!slides) return;
@@ -1016,6 +1017,9 @@
             currentPhotoIndex = newIndex;
         }
 
+        // ============================================================
+        // SEND MESSAGE
+        // ============================================================
         window.sendMessage = function(member) {
             const targetMember = member || memberData;
             if (!targetMember) {
@@ -1033,22 +1037,29 @@
             }
 
             localStorage.setItem('classydate_selected_member', JSON.stringify(targetMember));
-            window.location.href = `chat.html?user=${targetMember.id}&name=${encodeURIComponent(targetMember.name)}&location=${encodeURIComponent(targetMember.location || '')}&origin=${encodeURIComponent(targetMember.origin || '')}`;
+            
+            const currentLocation = targetMember.current_location || targetMember.location || '';
+            const homeCountry = targetMember.home_country || targetMember.origin || '';
+            
+            window.location.href = `chat.html?user=${targetMember.id}&name=${encodeURIComponent(targetMember.name)}&location=${encodeURIComponent(currentLocation)}&origin=${encodeURIComponent(homeCountry)}`;
         }
 
+        // ============================================================
+        // SHARE PROFILE
+        // ============================================================
         window.shareProfile = function() {
             if (!memberData) return;
 
             const name = memberData.name || 'Member';
-            const location = memberData.location || 'Unknown';
-            const origin = memberData.origin || 'Not specified';
+            const currentLocation = memberData.current_location || memberData.location || 'Unknown';
+            const homeCountry = memberData.home_country || memberData.origin || 'Not specified';
             const age = memberData.age || '?';
             const verified = memberData.verified ? '✅ Verified Member' : '';
 
             const message = `
 👤 *${name}* ${verified ? '✔️' : ''}
-📍 Location: ${location}
-🌍 Origin: ${origin}
+📍 Location: ${currentLocation}
+🌍 Origin: ${homeCountry}
 🎂 Age: ${age}
 💎 ClassyDate Member
 
@@ -1063,10 +1074,16 @@ ${window.location.href}
             showToast('📤 Opening WhatsApp...', 'success');
         }
 
+        // ============================================================
+        // GO BACK
+        // ============================================================
         window.goBack = function() {
             window.location.href = 'members.html';
         }
 
+        // ============================================================
+        // TOAST
+        // ============================================================
         let toastTimeout;
 
         function showToast(message, type = 'success') {
@@ -1080,6 +1097,9 @@ ${window.location.href}
             }, 3000);
         }
 
+        // ============================================================
+        // TOUCH SWIPE SUPPORT
+        // ============================================================
         let touchStartX = 0;
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -1105,14 +1125,18 @@ ${window.location.href}
             }
         });
 
+        // ============================================================
+        // INIT
+        // ============================================================
         loadProfile();
 
-        console.log('💎 Profile View Page - CLEAN & COMPRESSED!');
-        console.log('✅ Consistent font sizes');
-        console.log('✅ No oversized fonts');
-        console.log('✅ Clean layout');
-        console.log('✅ Images NOT cut');
-        console.log('✅ Online/Offline dot restored');
+        console.log('💎 Profile View Page - FINAL!');
+        console.log('✅ Avatar bigger (120px)');
+        console.log('✅ Current Location, Origin Country, Age, Gender - NO BOXES');
+        console.log('✅ About Me, Looking For, Interests - WITH BOXES');
+        console.log('✅ Status from database (online/offline)');
+        console.log('✅ Modern Purple theme');
+        console.log('✅ ClassyDate❤️ at corner edge');
     </script>
 
 </body>
